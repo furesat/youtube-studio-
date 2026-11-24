@@ -8,7 +8,7 @@ Dosya adı kuralı: `{video}_{Sxxx}_v{K}.png` → `videos/001/images/`
 - **Dosya:** `001_S001_v1.png`
 - **Anlatım (L001):** Elinde bir fincan kahve varsa, dikkatli tut.
 - **Tahmini süre:** 3.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S061_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -37,7 +37,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S002_v1.png`
 - **Anlatım (L002):** Tarih boyunca bu içecek yüzünden dükkânlar kapatıldı, çuvallar yakıldı, krallar fermanlar yazdı.
 - **Tahmini süre:** 6.4 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S001_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -64,7 +64,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S003_v1.png`
 - **Anlatım (L003):** Mekke, İstanbul, Londra, Prusya, İsveç… Kahve en az beş farklı yerde yasaklandı.
 - **Tahmini süre:** 5.4 sn (estimate)
-- **Referanslar:** `character-references/boards/03_paletler.png`
+- **Referanslar:** `character-references/boards/03_paletler.png`, `images/001_S002_vK.png (süreklilik)`
 - **Metin katmanı (motor):** 5 YASAK
 
 ```
@@ -87,7 +87,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S004_v1.png`
 - **Anlatım (L004):** Ve her seferinde kaybeden taraf yasaklayan oldu.
 - **Tahmini süre:** 3.5 sn (estimate)
-- **Referanslar:** `character-references/boards/01_genel_bakis.png`
+- **Referanslar:** `character-references/boards/01_genel_bakis.png`, `images/001_S009_vK.png (süreklilik)`, `images/001_S024_vK.png (süreklilik)`, `images/001_S038_vK.png (süreklilik)`, `images/001_S043_vK.png (süreklilik)`, `images/001_S049_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -118,7 +118,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S005_v1.png`
 - **Anlatım (L005, L006):** Ama işin garibi şu: Bu yasakların neredeyse hiçbiri aslında kahveyle ilgili değildi. Peki neyle ilgiliydi?
 - **Tahmini süre:** 8.2 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `images/001_S001_vK.png (süreklilik)`, `images/001_S002_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -194,7 +194,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S008_v1.png`
 - **Anlatım (L009):** Kısa sürede şehirde kahve dükkânları açılıyor. İnsanlar toplanıyor, sohbet ediyor, şarkı söylüyor.
 - **Tahmini süre:** 7.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S006_vK.png (süreklilik)`, `images/001_S015_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -222,7 +222,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S009_v1.png`
 - **Anlatım (L010):** Bunu hiç sevmeyen biri var: Şehrin asayişinden sorumlu Hayır Bey.
 - **Tahmini süre:** 4.5 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S008_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -249,7 +249,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S010_v1.png`
 - **Anlatım (L011):** Bir akşam kahve içip neşelenen bir grup görüyor. Ve şüpheleniyor.
 - **Tahmini süre:** 4.6 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S009_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -276,7 +276,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S011_v1.png`
 - **Anlatım (L012):** Hemen âlimleri ve hekimleri topluyor. Soru basit: Bu içecek insanı sarhoş eder mi?
 - **Tahmini süre:** 6.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S009_vK.png (süreklilik)`, `images/001_S010_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -306,7 +306,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S013_v1.png`
 - **Anlatım (L014):** Dükkânlar kapatılıyor, kahve çuvalları sokakta yakılıyor.
 - **Tahmini süre:** 4.3 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S008_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -361,7 +361,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S015_v1.png`
 - **Anlatım (L017, L018):** Kahire'den gelen mesaj net: Şüpheli toplantılarla uğraş, ama insanların kahvesine dokunma. Yasak birkaç hafta içinde çöküyor.
 - **Tahmini süre:** 9.0 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S011_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -443,7 +443,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S018_v1.png`
 - **Anlatım (L021):** Tarihçi Peçevi'ye göre Halep'ten Hakem, Şam'dan Şems adında iki adam Tahtakale'de birer dükkân açıyor.
 - **Tahmini süre:** 7.0 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S017_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -471,7 +471,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S019_v1.png`
 - **Anlatım (L022, L023):** Fikir basit: Kahve sat, insanları oturt. Sonuç: Şehir buna bayılıyor.
 - **Tahmini süre:** 5.4 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S018_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -500,7 +500,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S020_v1.png`
 - **Anlatım (L024):** Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan, tavla oynayan, şiir yazan…
 - **Tahmini süre:** 6.8 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S021_vK.png (süreklilik)`, `images/001_S026_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -529,7 +529,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S021_v1.png`
 - **Anlatım (L025):** Ve tabii ki herkes devlet hakkında konuşuyor.
 - **Tahmini süre:** 3.3 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S020_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -558,7 +558,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S022_v1.png`
 - **Anlatım (L026):** Bazı âlimler itiraz ediyor: İnsanlar ibadeti bırakıp kahvehaneye koşuyor.
 - **Tahmini süre:** 5.8 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S018_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -614,7 +614,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S024_v1.png`
 - **Anlatım (L028):** Sonra sahneye Dördüncü Murad çıkıyor.
 - **Tahmini süre:** 2.8 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S025_vK.png (süreklilik)`, `images/001_S028_vK.png (süreklilik)`, `images/001_S030_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -668,7 +668,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S026_v1.png`
 - **Anlatım (L031):** Peki yeniçerilerin en sevdiği buluşma yeri neresi? Tahmin et.
 - **Tahmini süre:** 4.7 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S020_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -697,7 +697,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S027_v1.png`
 - **Anlatım (L032):** 1633'te İstanbul'da büyük bir yangın çıkıyor. Şehrin beşte biri kül oluyor.
 - **Tahmini süre:** 6.0 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `images/001_S017_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -725,7 +725,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S028_v1.png`
 - **Anlatım (L033):** Murad fırsatı kaçırmıyor. Yangın tehlikesi gerekçesiyle kahvehaneleri kapattırıyor. Tütünü de yasaklıyor.
 - **Tahmini süre:** 7.8 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S018_vK.png (süreklilik)`, `images/001_S024_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -752,7 +752,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S029_v1.png`
 - **Anlatım (L034):** Cezalar ağır. Yasağı çiğneyen, ölümle bile cezalandırılabiliyor.
 - **Tahmini süre:** 5.2 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S028_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -780,7 +780,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S030_v1.png`
 - **Anlatım (L035):** Anlatılana göre Murad geceleri kılık değiştirip sokaklarda dolaşıyor, suçluları bizzat yakalıyordu.
 - **Tahmini süre:** 7.4 sn (estimate)
-- **Referanslar:** `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S024_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -809,7 +809,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S032_v1.png`
 - **Anlatım (L037):** İşin ilginç yanı: Murad kahveyi değil, kahvehaneyi hedef alıyor. Evde içmek serbest.
 - **Tahmini süre:** 6.1 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S028_vK.png (süreklilik)`, `images/001_S029_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -836,7 +836,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S034_v1.png`
 - **Anlatım (L039):** Yasak tutmuş gibi görünüyor. Murad öldükten on yıl sonra bile Kâtip Çelebi, kahvehanelerin cahilin gönlü kadar ıssız olduğunu yazıyor.
 - **Tahmini süre:** 9.3 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S028_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -863,7 +863,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S035_v1.png`
 - **Anlatım (L040, L041):** Ama 1649'da tütün yasağı kalkıyor ve kahvehaneler birer birer yeniden açılıyor. Masa geri geldi.
 - **Tahmini süre:** 8.2 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `images/001_S016_vK.png (süreklilik)`, `images/001_S028_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -919,7 +919,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S037_v1.png`
 - **Anlatım (L043):** Bir peni ver, kahveni al, istediğin kadar otur ve tartış. Bu yüzden onlara peni üniversiteleri deniyor.
 - **Tahmini süre:** 7.5 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S040_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -948,7 +948,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S038_v1.png`
 - **Anlatım (L044):** Kral İkinci Charles bundan pek hoşlanmıyor.
 - **Tahmini süre:** 2.8 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S039_vK.png (süreklilik)`, `images/001_S042_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -975,7 +975,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S039_v1.png`
 - **Anlatım (L045):** 29 Aralık 1675'te bir ferman yayımlıyor: Kahvehaneler 10 Ocak'tan itibaren kapatılacak.
 - **Tahmini süre:** 7.7 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S036_vK.png (süreklilik)`
 - **Metin katmanı (motor):** 29 ARALIK 1675
 
 ```
@@ -1002,7 +1002,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S040_v1.png`
 - **Anlatım (L046):** Gerekçe: Buralar tembel ve hoşnutsuz insanların toplandığı, hükümet hakkında yalan haberlerin yayıldığı yerler.
 - **Tahmini süre:** 7.5 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S037_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1029,7 +1029,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S041_v1.png`
 - **Anlatım (L047):** Londra ayağa kalkıyor. Tüccarlar, esnaf, hatta kralın kendi adamları bile itiraz ediyor.
 - **Tahmini süre:** 6.4 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `images/001_S037_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1058,7 +1058,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S042_v1.png`
 - **Anlatım (L048, L049):** Ve yasak daha başlamadan, 8 Ocak'ta geri çekiliyor. Ferman ile geri adım arasında sadece on gün var.
 - **Tahmini süre:** 7.8 sn (estimate)
-- **Referanslar:** `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S038_vK.png (süreklilik)`
 - **Metin katmanı (motor):** 10 GÜN
 
 ```
@@ -1085,7 +1085,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S043_v1.png`
 - **Anlatım (L050):** Yüz yıl sonra Prusya'da Büyük Friedrich'in derdi bambaşka: Para.
 - **Tahmini süre:** 4.2 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S044_vK.png (süreklilik)`, `images/001_S045_vK.png (süreklilik)`
 - **Metin katmanı (motor):** PRUSYA · 1777
 
 ```
@@ -1112,7 +1112,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S044_v1.png`
 - **Anlatım (L051):** Kahve yurt dışından geliyor ve kralın hesabına göre her yıl yüz binlerce taler ülkeden çıkıp gidiyor.
 - **Tahmini süre:** 6.5 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S043_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1139,7 +1139,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S045_v1.png`
 - **Anlatım (L052, L053):** 1777'de halkının kahve tutkusundan şikâyet ediyor. Çözümü de hazır: Bira için. Bir mektubunda şöyle diyor: Kral bira çorbasıyla büyüdü, halk da büyüyebilir.
 - **Tahmini süre:** 12.2 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S043_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1194,7 +1194,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S047_v1.png`
 - **Anlatım (L055, L056):** Ve sokaklara özel bir birlik çıkarıyor: Yaklaşık dört yüz savaş gazisi. Görevleri, gizlice kavrulan kahvenin kokusunu almak. Halk onlara kahve koklayıcılar diyor.
 - **Tahmini süre:** 11.3 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S048_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1224,7 +1224,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S048_v1.png`
 - **Anlatım (L057):** Friedrich 1786'da ölüyor. Kahve kuralları da çok geçmeden onunla birlikte gömülüyor.
 - **Tahmini süre:** 7.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/03_pozlar.png`, `images/001_S047_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1254,7 +1254,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S049_v1.png`
 - **Anlatım (L058, L059):** Ama inatta birincilik İsveç'in. Önce vergi, sonra fincanlara el koyma, sonunda yasak. İsveç kahveyi tam beş kez yasaklıyor.
 - **Tahmini süre:** 8.8 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S052_vK.png (süreklilik)`, `images/001_S053_vK.png (süreklilik)`
 - **Metin katmanı (motor):** İSVEÇ · 1756–1823
 
 ```
@@ -1311,7 +1311,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S051_v1.png`
 - **Anlatım (L061):** 1794'teki yasağa tepki olarak bazı İsveçliler kahve demlikleri için cenaze töreni bile düzenliyor.
 - **Tahmini süre:** 8.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/05_komik_tepkiler.png`
+- **Referanslar:** `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S049_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1340,7 +1340,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S052_v1.png`
 - **Anlatım (L062):** Bir de meşhur hikâye var: Kral Üçüncü Gustav, idam mahkûmu ikiz kardeşlerle bir deney yaptırmış. Biri her gün kahve, diğeri çay içecekmiş.
 - **Tahmini süre:** 9.0 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S053_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1369,7 +1369,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S053_v1.png`
 - **Anlatım (L063):** Hikâyeye göre önce deneyi izleyen doktorlar öldü, sonra kral öldü. İkizler hâlâ yaşıyordu.
 - **Tahmini süre:** 6.7 sn (estimate)
-- **Referanslar:** —
+- **Referanslar:** `images/001_S052_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1482,7 +1482,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S059_v1.png`
 - **Anlatım (L070, L071, L072):** Peki bütün bu yasakların ortak noktası ne? Mekke'de toplantılar. İstanbul'da isyan korkusu. Londra'da dedikodu. Prusya'da para. Hiçbiri gerçekten fincandaki o siyah sıvıyla ilgili değildi.
 - **Tahmini süre:** 13.5 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S016_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1515,7 +1515,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S060_v1.png`
 - **Anlatım (L073, L074):** Kahvenin asıl suçu insanları bir masa etrafında toplaması, konuşturması ve uyanık tutmasıydı. Ve bunu yasaklamaya çalışan herkes kaybetti.
 - **Tahmini süre:** 10.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S016_vK.png (süreklilik)`, `images/001_S059_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1546,7 +1546,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S061_v1.png`
 - **Anlatım (L075):** Yani bir dahaki sefere kahveni içerken biri sana ters ters bakarsa, sadece şunu söyle: Sultanlar denedi. Krallar denedi. Olmadı.
 - **Tahmini süre:** 9.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S001_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```

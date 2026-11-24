@@ -32,8 +32,12 @@ Bu repo, yüz göstermeyen, çizimli, Türkçe bir bilim/tarih anlatım kanalın
 ```
 python3 engine/tools/prompts.py videos/001       # SCENES.json → IMAGE_PROMPTS.md + STORYBOARD.md + tahmini süreler
 python3 engine/tools/status.py  videos/001       # images/ ve audio/ tarar → STATUS.json günceller
-python3 engine/tools/assemble.py videos/001 --lang tr   # görseller + metin katmanı + ses → render (yerelde)
+python3 engine/tools/assemble.py videos/001 --lang tr --placeholders  # eksik görseller kart olur → animatik MP4
+python3 engine/tools/assemble.py videos/001 --lang tr   # tüm görseller hazırsa final render (renders/, git dışı)
+python3 engine/tools/voice_render.py videos/001 --lang tr  # voice_config.json'daki sağlayıcıyla ses + timing_tr.json
+python3 engine/tools/build_scenes_001.py         # 001'in sahne planı kaynağı (SCENES.json'u yeniden üretir)
 ```
+Sahne planını değiştirmek: ya `SCENES.json`'u doğrudan düzenle ya da `build_scenes_001.py`'yi düzenleyip çalıştır; sonra `prompts.py`.
 Gerekenler: Python 3, Pillow, Playwright + Chrome (metin katmanı), FFmpeg.
 
 ## 5. Commit kuralı

@@ -17,7 +17,7 @@ Bu dosya, görsel üreten oturum (ChatGPT) için **zorunlu** talimattır.
 - **Karakter tutarlılığı:** Fasulye her zaman dönüş sayfasındaki gibi. Atkı rengi, saç perçemi ve göz stili değişmez. Diğer insanlar da fasulye anatomisinde.
 - **Stil:** el yapımı mürekkep konturu + düz renk + ince tarama + sıcak kâğıt dokusu. 3B, anime, fotogerçekçi değil.
 - **Kompozisyon:** alt %15 ve üst %12 bandı sade bırak (metin katmanı için).
-- **Süreklilik:** prompt bloğundaki `Continuity:` satırına uy (aynı mekân, ışık, kostüm, kamera tarafı).
+- **Süreklilik:** prompt bloğundaki `CONTINUITY:` satırına uy. `Referanslar` satırında "(süreklilik)" diye işaretli önceki sahne görsellerini de yükle (aynı mekân, ışık, kostüm).
 - **Hassas içerik:** dini mekânlar ve semboller çizilmez. Şiddet ima edilir, gösterilmez (ör. kılıç kında).
 
 ## 2. Dosya isimlendirme (otomatik eşleştirme buna dayanır)

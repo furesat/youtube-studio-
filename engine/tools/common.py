@@ -57,7 +57,9 @@ def estimate_line(text, lang="tr"):
 
 def line_timings(vdir, lang="tr"):
     """{Lxxx: süre} + kaynak. Gerçek ses varsa audio/timing_<lang>.json kazanır."""
-    tp = os.path.join(vdir, "audio", f"timing_{lang}.json")
+    tp = os.path.join(vdir, "audio", f"timing_{lang}_final.json")
+    if not os.path.exists(tp):
+        tp = os.path.join(vdir, "audio", f"timing_{lang}.json")
     if os.path.exists(tp):
         t = load_json(tp)
         return {k: float(v["dur"] if isinstance(v, dict) else v) for k, v in t["lines"].items()}, "audio"

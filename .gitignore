@@ -21,3 +21,7 @@ Your*Ink*Explainer*
 *.key
 *secret*
 voice_secrets.json
+
+# büyük üretim dosyaları (yerelde kalır)
+videos/*/images/
+videos/*/audio/full_*

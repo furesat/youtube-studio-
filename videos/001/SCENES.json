@@ -1,0 +1,2158 @@
+{
+ "video": "001",
+ "title": {
+  "tr": "Kahve Neden Defalarca Yasaklandı?",
+  "de": "Warum wurde Kaffee immer wieder verboten?",
+  "en": "Why Was Coffee Banned So Many Times?"
+ },
+ "lang_primary": "tr",
+ "resolution": [
+  1920,
+  1080
+ ],
+ "fps": 30,
+ "target_shot_sec": 2.2,
+ "style_block_ref": "IMAGE_GENERATION_GUIDE.md §4",
+ "cast": {
+  "fasulye": "FASULYE (the narrator mascot): a single smooth egg/bean-shaped body that is head and torso in one, slightly narrower at the top, off-white paper colour #FFFAF0 with a pale beige shadow #E7DFD0 and fine ink hatching on the right side; NO neck, NO nose. Face in the upper third: two large round white eyes with thin ink outline, small black pupils and a tiny white highlight, short thin eyebrows, a single-line mouth, barely visible peach cheeks. Signature: ONE curly hair tuft on top shaped like a small question-mark curl, and a knotted terracotta scarf #E4572E around the 'neck' area with one end hanging to his right. Thin ink-line arms with elbows, small round light-coloured hands (not gloves, not black), thin legs (about 0.27 of body height), small black oval shoes. Calm, curious, dry-humoured; reactions are small and understated.",
+  "bean_people": "All other humans share Fasulye's exact bean anatomy (one egg-shaped head-body, big round eyes, no nose, thin ink limbs, small round hands, small oval shoes). Identity comes ONLY from hair, facial hair (drawn as an ink mass on the lower face), headwear, clothing and colour. No realistic faces, no portrait likeness.",
+  "hayir_bey": "HAYIR BEY (Mecca market/order inspector, 1511): bean person, stern; thick black moustache and short black beard, heavy frowning eyebrows; white turban wrapped around a dark red cap, long dark indigo robe #2C3B57 with an ochre sash, a short official staff.",
+  "scholars": "SCHOLARS & PHYSICIAN: elderly bean people with long white or grey beards, large white turbans, cream and olive robes; the physician wears a dark teal robe #2A7F7A and carries a small brass mortar.",
+  "kansu_gavri": "SULTAN QANSUH AL-GHAWRI (Mamluk sultan in Cairo): bean person with a full grey beard, very tall white Mamluk turban with a rounded crown shape, rich green and gold robe, relaxed and amused.",
+  "hakem_sems": "HAKEM of Aleppo: practical merchant, short black beard, green-and-cream striped robe, small white turban, rolled sleeves. ŞEMS of Damascus: elegant, slim curled moustache, saffron kaftan #E9A33B with a fine sash, neat small turban.",
+  "bostanzade": "BOSTANZADE MEHMED EFENDİ (Ottoman Şeyhülislam, 1590s): dignified elderly bean person, long white beard, very large rounded white turban, white robe with dark green over-robe, kind half-smile.",
+  "murad4": "SULTAN MURAD IV (Ottoman, 1630s): young, strong bean person with a full short black beard and thick eyebrows; very large white Ottoman ceremonial turban (kavuk) with a jewelled aigrette and feather plume; crimson-and-gold kaftan #B83A2B with gold buttons; stern, intense gaze. DISGUISED VERSION: long dark brown hooded cloak covering the turban, only the eyes and beard visible.",
+  "janissary": "JANISSARIES: bean people with bushy moustaches, tall white felt börk caps that fold down at the back (with a small spoon-holder at the front), blue-grey long coats, red sashes; rowdy and cheerful when off-duty. Weapons are never drawn.",
+  "katip": "KÂTİP ÇELEBİ (Ottoman scholar, 1650s): bean person with a neat brown beard, medium white turban, olive robe, reed pen in hand, books stacked around.",
+  "osmanli_crowd": "OTTOMAN COFFEEHOUSE CROWD: bean people in fezzes or small turbans, cream entari robes, saffron or indigo sashes, waistcoats; various beards and moustaches.",
+  "charles2": "KING CHARLES II (England, 1670s): bean person with a long, very curly black wig falling to the shoulders, thin black moustache, small gold crown, lace cravat, dark red velvet coat; vain, sulky expression.",
+  "london_crowd": "LONDON 1670s CROWD: bean people in long brown or grey periwigs and wide-brim hats, plain dark coats, white collars; merchants, tradesmen with aprons.",
+  "frederick": "FREDERICK THE GREAT (Prussia, 1770s): older bean person with grey powdered hair tied in a queue, black tricorn hat, worn Prussian-blue uniform coat with red cuffs, walking cane; sharp, thrifty, calculating eyes.",
+  "prussian_crowd": "PRUSSIAN TOWNSFOLK: bean people in simple 18th-century working clothes, bonnets and aprons for women, brown waistcoats for men.",
+  "sniffer": "COFFEE SNIFFER: war-veteran bean person in a faded blue uniform coat, one wooden peg leg and a crutch, very large comical sniffing nose added for the gag (the only bean person with a nose), bushy grey moustache.",
+  "gustav3": "KING GUSTAV III (Sweden, 1770s): bean person with white powdered wig with side rolls, light blue silk coat, ermine-trimmed cloak, theatrical gesture.",
+  "swedish_folk": "SWEDISH TOWNSFOLK: bean people in thick wool coats, knitted caps and shawls, rosy cheeks; women in long skirts and white caps.",
+  "twins": "THE TWINS: two identical bean people with identical short sandy hair and stubble, plain grey prison smocks; one always holds a coffee cup, the other a tea cup.",
+  "doctors": "TWO DOCTORS: bean people with white wigs, black coats, notebooks and quills, very serious.",
+  "kolschitzky": "KOLSCHITZKY (legend hero, Vienna 1683): bean person with a long drooping moustache, tall fur kalpak hat, long red-and-dark-blue coat, adventurous pose.",
+  "diodato": "JOHANNES DIODATO (Armenian merchant, Vienna 1685): bean person with a dark curly beard, fur-trimmed brown cap, long dark green coat, apron, holding a copper coffee pot; welcoming and businesslike.",
+  "vienna_crowd": "VIENNA 1680s CROWD: bean people in wigs, tricorn-less broad hats, coats and bonnets.",
+  "modern_crowd": "MODERN PEOPLE: bean people in casual contemporary clothes (hoodies, cardigans), various hair styles."
+ },
+ "fasulye_costumes": {
+  "modern": "Fasulye wears only his signature terracotta scarf (modern look).",
+  "hicaz": "Fasulye keeps his scarf and wears a small white turban and a cream robe (16th-century Hijaz look).",
+  "osmanli": "Fasulye keeps his scarf and wears a red fez and a cream entari with a saffron sash (Ottoman townsman).",
+  "kahveci": "Fasulye keeps his scarf and wears a white turban, a striped apron and carries a brass tray with small cups (Ottoman coffee server).",
+  "london": "Fasulye keeps his scarf and wears a long brown curly periwig and a dark coat (London 1670s).",
+  "prussia": "Fasulye keeps his scarf and wears a small black tricorn hat and a brown waistcoat (Prussia 1770s).",
+  "sweden": "Fasulye keeps his scarf and wears a knitted grey wool cap and a thick wool coat (Sweden).",
+  "vienna": "Fasulye keeps his scarf and wears a broad-brim felt hat and a long coat (Vienna 1680s)."
+ },
+ "scenes": [
+  {
+   "id": "S001",
+   "kind": "imagegen",
+   "lines": [
+    "L001"
+   ],
+   "title": "Modern kafe: Fasulye ve fincan",
+   "location": "modern café",
+   "cast": [
+    "fasulye",
+    "modern_crowd"
+   ],
+   "fasulye_costume": "modern",
+   "action": "Fasulye sits at a small round café table holding a white coffee cup with both hands close to his body; a thin curl of steam rises. Two blurred bean-people customers in the far background.",
+   "expression": "looking straight at the viewer, eyebrows slightly raised: a calm 'careful now' look",
+   "composition": "Fasulye centre-left, cup at the optical centre; table edge along the lower third; empty calm wall on the right for later overlays",
+   "camera": "medium shot, eye level, straight-on",
+   "background": "simple warm café interior: plastered wall #F2DCC2, one window with soft daylight, a hanging lamp, a plant; low detail",
+   "palette": "Base palette, warm daylight.",
+   "function": "Hook opener: establishes the narrator and the everyday object that the whole story is about.",
+   "continuity": "First shot of the video. The same café, table and cup return in S061 (bookend).",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.42,
+    0.55
+   ],
+   "est_dur": 3.08
+  },
+  {
+   "id": "S002",
+   "kind": "imagegen",
+   "lines": [
+    "L002"
+   ],
+   "title": "Buharda tarih: taç, ferman, alev",
+   "location": "modern café (close-up)",
+   "cast": [
+    "fasulye"
+   ],
+   "fasulye_costume": "modern",
+   "action": "Close-up of the cup in Fasulye's hands; the rising steam swirls into three ghostly ink silhouettes floating above it: a royal crown, a rolled decree scroll with a wax seal, and a small flame.",
+   "expression": "Fasulye's eyes look up at the steam shapes, pupils small, a single sweat drop",
+   "composition": "cup and hands in the lower centre, steam shapes spreading across the upper two thirds",
+   "camera": "close-up, slightly low angle",
+   "background": "same café wall as S001, slightly darker vignette",
+   "palette": "Steam drawn in thin grey ink lines; crown and seal tinted soft gold and red #B83A2B.",
+   "function": "Shows that coffee has a dramatic, dangerous history before any facts are given.",
+   "continuity": "Direct continuation of S001: same cup, same scarf, same café light.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "est_dur": 6.414
+  },
+  {
+   "id": "S003",
+   "kind": "imagegen",
+   "lines": [
+    "L003"
+   ],
+   "title": "Harita: beş yasak noktası",
+   "location": "map",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "A hand-drawn antique-style map seen from above covering Western Europe, Scandinavia, the Mediterranean, Anatolia, Egypt and the Arabian Peninsula; coastlines in ink, sea in pale teal #DDEBE6, land in sand #E9D8B4, a few tiny hand-drawn mountains and waves, a small compass rose in a corner. Completely unlabelled.",
+   "expression": "",
+   "composition": "Scandinavia at the top centre, Britain upper left, the Arabian Peninsula lower right, Anatolia centre right, generous margins",
+   "camera": "top-down flat map",
+   "background": "parchment paper texture",
+   "palette": "Muted map palette: sand land, pale teal sea, ink coastlines.",
+   "function": "Background for five red pins (added by the engine): Mecca, Istanbul, London, Prussia, Sweden.",
+   "continuity": "After S002 (cut away from the café).",
+   "references": [
+    "character-references/boards/03_paletler.png"
+   ],
+   "overlay": {
+    "tr": "5 YASAK",
+    "de": "5 VERBOTE",
+    "en": "5 BANS"
+   },
+   "effects": [
+    {
+     "type": "map_pins",
+     "note": "Koordinatlar görsel gelince ayarlanır (0–1, tam kare)",
+     "pins": [
+      [
+       "Mekke",
+       0.74,
+       0.82
+      ],
+      [
+       "İstanbul",
+       0.66,
+       0.52
+      ],
+      [
+       "Londra",
+       0.3,
+       0.33
+      ],
+      [
+       "Prusya",
+       0.5,
+       0.3
+      ],
+      [
+       "İsveç",
+       0.53,
+       0.14
+      ]
+     ]
+    }
+   ],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 5.406
+  },
+  {
+   "id": "S004",
+   "kind": "imagegen",
+   "lines": [
+    "L004"
+   ],
+   "title": "Yenik hükümdarlar ve muzaffer fincan",
+   "location": "symbolic stage",
+   "cast": [
+    "bean_people",
+    "murad4",
+    "charles2",
+    "frederick",
+    "gustav3",
+    "hayir_bey"
+   ],
+   "fasulye_costume": "",
+   "action": "A giant steaming coffee cup stands in the centre like a champion on a small podium. Around its base five rulers sit slumped and defeated: Hayır Bey, Murad IV, Charles II, Frederick the Great and Gustav III, each holding a tiny torn blank decree.",
+   "expression": "the rulers look sulky and exhausted; the cup has no face (it is an object)",
+   "composition": "symmetrical, cup centred and tall, rulers in a semicircle in the lower half",
+   "camera": "wide shot, eye level",
+   "background": "plain warm paper background with a soft spotlight circle on the floor",
+   "palette": "Base palette; each ruler keeps his signature colour (indigo, crimson, dark red, Prussian blue, light blue).",
+   "function": "Payoff of the hook: every ban failed. Introduces the recurring rulers in one image.",
+   "continuity": "Rulers' costumes must match their later scenes (S009, S024, S038, S043, S049).",
+   "references": [
+    "character-references/boards/01_genel_bakis.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "est_dur": 3.496
+  },
+  {
+   "id": "S005",
+   "kind": "imagegen",
+   "lines": [
+    "L005",
+    "L006"
+   ],
+   "title": "Dedektif Fasulye",
+   "location": "modern café (table top)",
+   "cast": [
+    "fasulye"
+   ],
+   "fasulye_costume": "modern",
+   "action": "Fasulye leans over the café table holding a large magnifying glass over a single coffee bean lying on a saucer.",
+   "expression": "one eyebrow raised, squinting, suspicious detective look",
+   "composition": "Fasulye left third, magnifying glass lens over the bean at the right of centre (the lens enlarges the bean)",
+   "camera": "medium close-up, slightly high angle",
+   "background": "same café as S001, softly defocused",
+   "palette": "Base palette.",
+   "function": "Poses the central question: if it was not about coffee, what was it about?",
+   "continuity": "Same café and table as S001/S002.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.6,
+    0.55
+   ],
+   "est_dur": 8.183
+  },
+  {
+   "id": "S006",
+   "kind": "imagegen",
+   "lines": [
+    "L007"
+   ],
+   "title": "Mekke 1511 kuruluş planı",
+   "location": "Mecca, 1511 (town view)",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "Establishing view of a 16th-century Hijaz town at dusk: clustered flat-roofed stone houses with wooden lattice balconies, a dusty market lane, dry rocky mountains behind. NO mosque, NO religious buildings or symbols.",
+   "expression": "",
+   "composition": "wide panorama, horizon at the upper third",
+   "camera": "extreme wide shot",
+   "background": "golden dusk sky #F6C27A fading to pale teal, mountains in stone colours #B9AFA2 / #8E8478",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Chapter card background: place and year.",
+   "continuity": "Start of chapter 1; new location.",
+   "references": [
+    "character-references/locations/tepe.png"
+   ],
+   "overlay": {
+    "tr": "MEKKE · 1511",
+    "de": "MEKKA · 1511",
+    "en": "MECCA · 1511"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "est_dur": 2.069
+  },
+  {
+   "id": "S007",
+   "kind": "imagegen",
+   "lines": [
+    "L008"
+   ],
+   "title": "Gece uyanık kalan sufiler",
+   "location": "Yemen/Hijaz, night gathering",
+   "cast": [
+    "bean_people"
+   ],
+   "fasulye_costume": "",
+   "action": "A circle of bean people in plain white robes and small turbans sit on a rug at night around an oil lamp and a clay coffee pot with tiny handle-less cups; most are wide awake and calm, one in the back is yawning but sipping.",
+   "expression": "serene, wide-awake eyes; one sleepy yawner as a small gag",
+   "composition": "circle composition, lamp in the centre as the light source",
+   "camera": "medium wide, slightly high angle",
+   "background": "dark blue night #17233A, warm lamp glow, a simple courtyard wall; no religious symbols",
+   "palette": "Night palette with warm lamp light #FFD166.",
+   "function": "Shows coffee's original use: staying awake at night.",
+   "continuity": "New location; night.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "est_dur": 5.461
+  },
+  {
+   "id": "S008",
+   "kind": "imagegen",
+   "lines": [
+    "L009"
+   ],
+   "title": "Mekke'de kahve dükkânı",
+   "location": "Mecca coffee shop",
+   "cast": [
+    "fasulye",
+    "bean_people"
+   ],
+   "fasulye_costume": "hicaz",
+   "action": "A lively open-front coffee shop: bean people sit on low benches talking, one plays a small lute, two laugh, a server pours from a long-spouted pot. Fasulye sits among them holding a tiny cup, enjoying it.",
+   "expression": "everyone cheerful; Fasulye content, eyes half closed in enjoyment",
+   "composition": "shop front fills the frame, Fasulye just right of centre",
+   "camera": "medium wide, eye level",
+   "background": "Mecca market lane from S006, lanterns, sacks of beans",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Shows the coffeehouse as a social place (the 'table' motif begins).",
+   "continuity": "Same town architecture as S006; Fasulye's Hijaz costume used through S015.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.55,
+    0.55
+   ],
+   "est_dur": 7.13
+  },
+  {
+   "id": "S009",
+   "kind": "imagegen",
+   "lines": [
+    "L010"
+   ],
+   "title": "Hayır Bey tanıtım",
+   "location": "Mecca street corner",
+   "cast": [
+    "hayir_bey"
+   ],
+   "fasulye_costume": "",
+   "action": "Hayır Bey stands at a street corner with arms crossed and his short staff tucked under one arm, glaring off-screen toward the noisy coffee shop.",
+   "expression": "deep frown, narrowed eyes, pressed lips",
+   "composition": "Hayır Bey centred, full figure, strong silhouette",
+   "camera": "medium shot, slightly low angle (makes him imposing)",
+   "background": "plain sun-baked wall and a corner of the market lane, low detail",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Introduces the first antagonist.",
+   "continuity": "Same lane as S008, seen from the other side.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "est_dur": 4.509
+  },
+  {
+   "id": "S010",
+   "kind": "imagegen",
+   "lines": [
+    "L011"
+   ],
+   "title": "Hayır Bey gözetliyor",
+   "location": "Mecca evening",
+   "cast": [
+    "hayir_bey",
+    "bean_people"
+   ],
+   "fasulye_costume": "",
+   "action": "Evening. Hayır Bey peeks from behind a wall corner; in the background a small group of men laughs and drinks coffee under a lantern.",
+   "expression": "Hayır Bey: suspicious side-eye, one eyebrow raised; the group: merry",
+   "composition": "Hayır Bey big in the left foreground (cut at the waist), group small in the right background",
+   "camera": "over-the-shoulder style, eye level",
+   "background": "dusk blue sky, lantern glow",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "The moment of suspicion.",
+   "continuity": "Same costume as S009; time is evening.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.3,
+    0.45
+   ],
+   "est_dur": 4.569
+  },
+  {
+   "id": "S011",
+   "kind": "imagegen",
+   "lines": [
+    "L012"
+   ],
+   "title": "Âlimler ve hekimler meclisi",
+   "location": "council room",
+   "cast": [
+    "hayir_bey",
+    "scholars",
+    "fasulye"
+   ],
+   "fasulye_costume": "hicaz",
+   "action": "A council room: Hayır Bey stands at the head of a low table; elderly scholars sit on cushions, one physician holds a small coffee cup up to the light and examines it. Fasulye peeks in through a small window at the back.",
+   "expression": "Hayır Bey leading, pointing at the cup; scholars thoughtful; Fasulye worried",
+   "composition": "table across the middle third, cup held up at the visual centre",
+   "camera": "medium wide, eye level",
+   "background": "simple room with arched window, books and scrolls (blank), carpet",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "The 'trial' of coffee.",
+   "continuity": "Hayır Bey same as S009–S010.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "est_dur": 6.117
+  },
+  {
+   "id": "S012",
+   "kind": "derived",
+   "lines": [
+    "L013"
+   ],
+   "title": "Karar: yasak (türev)",
+   "location": "council room",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "",
+   "expression": "",
+   "composition": "",
+   "camera": "",
+   "background": "",
+   "palette": "",
+   "function": "Verdict: engine stamps a red X over the cup.",
+   "continuity": "Derived from S011.",
+   "references": [],
+   "overlay": {
+    "tr": "YASAK",
+    "de": "VERBOTEN",
+    "en": "BANNED"
+   },
+   "effects": [
+    {
+     "type": "punch_in",
+     "scale": 1.35
+    },
+    {
+     "type": "red_x"
+    }
+   ],
+   "focus": [
+    0.5,
+    0.42
+   ],
+   "source": "S011",
+   "est_dur": 3.676
+  },
+  {
+   "id": "S013",
+   "kind": "imagegen",
+   "lines": [
+    "L014"
+   ],
+   "title": "Çuvallar yakılıyor",
+   "location": "Mecca street, bonfire",
+   "cast": [
+    "bean_people",
+    "fasulye"
+   ],
+   "fasulye_costume": "hicaz",
+   "action": "Two guards in plain robes empty a coffee sack onto a street bonfire; beans spill into the flames, grey smoke rises. Fasulye in the foreground holds his head in shock.",
+   "expression": "guards indifferent; Fasulye horrified (mouth small 'o', shock lines)",
+   "composition": "bonfire right of centre, Fasulye big in the left foreground",
+   "camera": "medium wide, eye level",
+   "background": "Mecca lane, closed wooden shutters",
+   "palette": "Fire orange #F28C28 / #FFD166 against muted street.",
+   "function": "Consequences of the ban.",
+   "continuity": "Same lane as S008, now closed and empty.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png",
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.6,
+    0.5
+   ],
+   "est_dur": 4.33
+  },
+  {
+   "id": "S014",
+   "kind": "imagegen",
+   "lines": [
+    "L015",
+    "L016"
+   ],
+   "title": "Kahire: Sultan Kansu Gavri",
+   "location": "Cairo palace",
+   "cast": [
+    "kansu_gavri"
+   ],
+   "fasulye_costume": "",
+   "action": "Sultan Qansuh al-Ghawri reclines on cushions in an airy palace room, sipping coffee from a small cup; a servant beside him holds a brass coffee pot; on a low table lies an unrolled letter from Mecca.",
+   "expression": "the sultan amused and relaxed, one eyebrow up while reading",
+   "composition": "sultan centre-left, letter in the lower right",
+   "camera": "medium shot, eye level",
+   "background": "Mamluk palace: striped stone arches (ablaq), lattice window, green-gold textiles",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood. Richer greens and golds for the palace.",
+   "function": "Reveals the boss who will overturn the ban (dramatic irony: he drinks coffee).",
+   "continuity": "New location: Cairo.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.5
+   ],
+   "est_dur": 11.221
+  },
+  {
+   "id": "S015",
+   "kind": "imagegen",
+   "lines": [
+    "L017",
+    "L018"
+   ],
+   "title": "Hayır Bey'in yüzü düşüyor",
+   "location": "Mecca council room",
+   "cast": [
+    "hayir_bey",
+    "fasulye"
+   ],
+   "fasulye_costume": "hicaz",
+   "action": "Hayır Bey reads an unrolled blank scroll with a big wax seal; behind him Fasulye happily sips from a tiny cup again.",
+   "expression": "Hayır Bey: deflated, droopy eyes, sweat drop; Fasulye: smug and relaxed",
+   "composition": "Hayır Bey centre-left, Fasulye small in right background",
+   "camera": "medium shot",
+   "background": "same council room as S011, empty cushions",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "The ban collapses.",
+   "continuity": "Same room as S011; Hayır Bey same costume.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.45
+   ],
+   "est_dur": 9.017
+  },
+  {
+   "id": "S016",
+   "kind": "imagegen",
+   "lines": [
+    "L019"
+   ],
+   "title": "Motif: sorun masaydı",
+   "location": "symbolic",
+   "cast": [
+    "fasulye"
+   ],
+   "fasulye_costume": "modern",
+   "action": "A long empty wooden table with many stools under a single warm hanging lamp; one small coffee cup sits at the near end. Fasulye stands beside the table pointing at the TABLE (not the cup), turned toward the viewer.",
+   "expression": "knowing, slightly raised eyebrows, small smile",
+   "composition": "table runs diagonally from the lower left to the centre right; Fasulye right third",
+   "camera": "medium wide, eye level",
+   "background": "plain warm paper background, a pool of lamp light",
+   "palette": "Base palette, warm lamp light.",
+   "function": "KEY MOTIF of the video: 'the problem was the table'. Reused in S033 and echoed in S060.",
+   "continuity": "Fasulye in his modern look (narrator stepping out of history).",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.45,
+    0.55
+   ],
+   "est_dur": 3.617
+  },
+  {
+   "id": "S017",
+   "kind": "imagegen",
+   "lines": [
+    "L020"
+   ],
+   "title": "İstanbul 1554 kuruluş",
+   "location": "Istanbul harbour",
+   "cast": [
+    "bean_people"
+   ],
+   "fasulye_costume": "",
+   "action": "Establishing view of 16th-century Istanbul from the water: wooden houses climbing hills, the stone Galata Tower silhouette, sailing ships and rowing boats; porters unload sacks of coffee beans on the quay in the foreground. Do not draw mosques or minarets.",
+   "expression": "",
+   "composition": "quay in the lower third, city in the middle band, sky in the upper third",
+   "camera": "extreme wide shot",
+   "background": "morning sky #CFE2E3, calm water with simple ink ripples",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Chapter card background.",
+   "continuity": "Start of chapter 2; new location.",
+   "references": [],
+   "overlay": {
+    "tr": "İSTANBUL · 1554",
+    "de": "ISTANBUL · 1554",
+    "en": "ISTANBUL · 1554"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "est_dur": 2.96
+  },
+  {
+   "id": "S018",
+   "kind": "imagegen",
+   "lines": [
+    "L021"
+   ],
+   "title": "Hakem ve Şems dükkân açıyor",
+   "location": "Tahtakale",
+   "cast": [
+    "hakem_sems",
+    "osmanli_crowd"
+   ],
+   "fasulye_costume": "",
+   "action": "Two merchants open neighbouring wooden shop shutters at the same time: Hakem (left) pushes his shutter up energetically, Şems (right) opens his with an elegant flourish. A brass coffee pot hangs as a sign above (no writing). Curious passers-by.",
+   "expression": "both proud and welcoming",
+   "composition": "two shop fronts side by side, each merchant in his own half",
+   "camera": "medium wide, eye level",
+   "background": "Tahtakale market street: wooden upper floors, hanging lanterns, sacks",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Introduces the first Istanbul coffeehouses.",
+   "continuity": "New location; same city as S017.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 7.009
+  },
+  {
+   "id": "S019",
+   "kind": "imagegen",
+   "lines": [
+    "L022",
+    "L023"
+   ],
+   "title": "Kuyruk ve kalabalık",
+   "location": "Tahtakale coffeehouse door",
+   "cast": [
+    "osmanli_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "A long queue of bean people snakes out of the coffeehouse door into the street; inside it is packed. Fasulye is squeezed in the middle of the queue holding a cup above his head.",
+   "expression": "crowd excited; Fasulye squashed but happy",
+   "composition": "queue as an S-curve from the foreground to the door",
+   "camera": "wide shot, slightly high angle",
+   "background": "same street as S018",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Shows the instant popularity.",
+   "continuity": "Same shop as S018 (Hakem's shutter visible).",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 5.387
+  },
+  {
+   "id": "S020",
+   "kind": "imagegen",
+   "lines": [
+    "L024"
+   ],
+   "title": "Kahvehane içi: kitap, tavla, şiir",
+   "location": "coffeehouse interior",
+   "cast": [
+    "osmanli_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "Interior of a 16th-century Ottoman coffeehouse with raised wooden benches (sedir) along the walls: one man reads a book, two play backgammon, a poet writes on paper, a storyteller with a stick performs on a chair, a server carries a tray. Fasulye listens to the storyteller.",
+   "expression": "lively, everyone absorbed in their activity",
+   "composition": "wide interior, storyteller centre, groups distributed left and right",
+   "camera": "wide shot, eye level",
+   "background": "warm wooden interior, small fountain in the centre, copper pots on shelves, window light",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Shows what people did in coffeehouses.",
+   "continuity": "Same coffeehouse interior is reused in S021, S026 (keep benches, fountain, copper shelf).",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 6.773
+  },
+  {
+   "id": "S021",
+   "kind": "imagegen",
+   "lines": [
+    "L025"
+   ],
+   "title": "Fısıltı: devlet hakkında",
+   "location": "coffeehouse interior (close)",
+   "cast": [
+    "osmanli_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "Three men lean in close over their cups, whispering; one points through the window toward a distant palace silhouette on a hill. Fasulye leans in from the side to listen.",
+   "expression": "conspiratorial, raised eyebrows, side glances",
+   "composition": "tight group in the centre, window with palace silhouette upper right",
+   "camera": "medium close-up",
+   "background": "same coffeehouse interior as S020",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Politics enters the coffeehouse (reason for later bans).",
+   "continuity": "Same interior as S020.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.45,
+    0.5
+   ],
+   "est_dur": 3.317
+  },
+  {
+   "id": "S022",
+   "kind": "imagegen",
+   "lines": [
+    "L026"
+   ],
+   "title": "İtiraz eden âlim",
+   "location": "street outside coffeehouse",
+   "cast": [
+    "scholars"
+   ],
+   "fasulye_costume": "",
+   "action": "An elderly scholar with a long white beard stands on the street, raising one finger in protest toward a busy coffeehouse across the road; next to him an empty stone bench in a quiet courtyard (no religious building).",
+   "expression": "disapproving frown",
+   "composition": "scholar left third, coffeehouse right two thirds",
+   "camera": "medium wide",
+   "background": "street with plane tree, the coffeehouse from S018",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Opposition to coffeehouses.",
+   "continuity": "Coffeehouse façade same as S018.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.3,
+    0.45
+   ],
+   "est_dur": 5.759
+  },
+  {
+   "id": "S023",
+   "kind": "imagegen",
+   "lines": [
+    "L027"
+   ],
+   "title": "Bostanzade yeşil ışık",
+   "location": "scholar's study",
+   "cast": [
+    "bostanzade",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "Bostanzade Mehmed Efendi sits at a low writing desk, holding a small coffee cup approvingly, with a blank scroll and a seal stamp beside him. Fasulye peeks from the side, relieved, wiping his forehead.",
+   "expression": "Bostanzade: warm half-smile; Fasulye: relieved sigh",
+   "composition": "Bostanzade centre, Fasulye small at the right edge",
+   "camera": "medium shot, eye level",
+   "background": "calm study with books and a window",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood. Soft green accent in the robe.",
+   "function": "Coffee gets a powerful defender.",
+   "continuity": "New scene.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.45,
+    0.45
+   ],
+   "est_dur": 6.89
+  },
+  {
+   "id": "S024",
+   "kind": "imagegen",
+   "lines": [
+    "L028"
+   ],
+   "title": "Sahneye IV. Murad",
+   "location": "Topkapı-like hall",
+   "cast": [
+    "murad4"
+   ],
+   "fasulye_costume": "",
+   "action": "Sultan Murad IV strides into a grand hall, kaftan flowing, one hand on his sash; dramatic entrance.",
+   "expression": "stern, intense, jaw set",
+   "composition": "Murad centred, full figure, columns framing him",
+   "camera": "low angle, medium wide (heroic/menacing)",
+   "background": "palace hall with tiled walls (abstract floral tiles, no text) and arched columns",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood. Deep crimson and gold dominate.",
+   "function": "Introduces the main antagonist of the video.",
+   "continuity": "Murad's look (kavuk, plume, crimson kaftan, beard) must stay identical in S025, S028, S030 (disguised).",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "est_dur": 2.781
+  },
+  {
+   "id": "S025",
+   "kind": "imagegen",
+   "lines": [
+    "L029",
+    "L030"
+   ],
+   "title": "Boş taht: Genç Osman'ın anısı",
+   "location": "palace (memory)",
+   "cast": [
+    "janissary"
+   ],
+   "fasulye_costume": "",
+   "action": "A flashback: an empty throne with a small fallen turban on its cushion; in the doorway behind, silhouettes of tall janissary caps (no weapons, no violence shown). Muted, desaturated.",
+   "expression": "",
+   "composition": "throne centre, doorway silhouettes behind it",
+   "camera": "medium shot, straight-on",
+   "background": "dim palace room, dramatic shadow",
+   "palette": "Desaturated flashback: sepia ink #8E8478 with one muted red accent on the fallen turban.",
+   "function": "Explains Murad's fear: his brother was killed by the janissaries.",
+   "continuity": "Flashback style is used only here.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 10.862
+  },
+  {
+   "id": "S026",
+   "kind": "imagegen",
+   "lines": [
+    "L031"
+   ],
+   "title": "Yeniçeriler kahvehanede",
+   "location": "coffeehouse interior",
+   "cast": [
+    "janissary",
+    "fasulye"
+   ],
+   "fasulye_costume": "kahveci",
+   "action": "Off-duty janissaries lounge on the coffeehouse benches, laughing loudly with cups; Fasulye, as the coffee server, carries a tray toward them, sweating nervously.",
+   "expression": "janissaries rowdy and jolly; Fasulye nervous (sweat drops)",
+   "composition": "janissaries left two thirds, Fasulye right",
+   "camera": "medium wide",
+   "background": "same coffeehouse interior as S020",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Answer to 'guess where they met': the coffeehouse.",
+   "continuity": "Same interior as S020.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png",
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.5
+   ],
+   "est_dur": 4.747
+  },
+  {
+   "id": "S027",
+   "kind": "imagegen",
+   "lines": [
+    "L032"
+   ],
+   "title": "1633 büyük yangın",
+   "location": "Istanbul at night",
+   "cast": [
+    "bean_people",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "Night: rows of wooden houses burning against the dark sky; townspeople pass buckets; Fasulye runs past in the foreground holding a bucket.",
+   "expression": "alarm, urgency",
+   "composition": "fire line across the middle band, Fasulye running left to right in the foreground",
+   "camera": "wide shot",
+   "background": "night sky #17233A with orange glow and smoke plumes",
+   "palette": "Night palette with fire #F28C28 / #FFD166.",
+   "function": "The Great Fire of 1633, pretext for the ban.",
+   "continuity": "Same city architecture as S017.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 5.997
+  },
+  {
+   "id": "S028",
+   "kind": "imagegen",
+   "lines": [
+    "L033"
+   ],
+   "title": "Kahvehane kapatılıyor",
+   "location": "Istanbul street, daytime",
+   "cast": [
+    "murad4",
+    "bean_people"
+   ],
+   "fasulye_costume": "",
+   "action": "Guards nail wooden boards across a coffeehouse door; another guard confiscates long tobacco pipes into a basket. Murad IV stands at the side, pointing at the door with a blank decree.",
+   "expression": "Murad commanding; guards dutiful; owner in the doorway sad",
+   "composition": "door centre, Murad left third",
+   "camera": "medium wide",
+   "background": "same coffeehouse façade as S018, soot marks from the fire",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "The ban is executed.",
+   "continuity": "Murad identical to S024; façade identical to S018.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.55,
+    0.5
+   ],
+   "est_dur": 7.784
+  },
+  {
+   "id": "S029",
+   "kind": "imagegen",
+   "lines": [
+    "L034"
+   ],
+   "title": "Gerilim: boş sokak",
+   "location": "Istanbul street",
+   "cast": [
+    "fasulye",
+    "bean_people"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "An empty street with the boarded coffeehouse; one guard with a long staff stands watch. Fasulye walks past stiffly, hiding a small coffee cup behind his back.",
+   "expression": "Fasulye fake-innocent, eyes sideways, sweat drop",
+   "composition": "guard left, Fasulye right, boarded door centre",
+   "camera": "medium wide, eye level",
+   "background": "same street as S028, quiet and grey",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood. More muted, colder.",
+   "function": "Shows the fear and harsh punishments.",
+   "continuity": "Same street and boarded door as S028.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.6,
+    0.5
+   ],
+   "est_dur": 5.224
+  },
+  {
+   "id": "S030",
+   "kind": "imagegen",
+   "lines": [
+    "L035"
+   ],
+   "title": "Kılık değiştirmiş Murad",
+   "location": "Istanbul night street",
+   "cast": [
+    "murad4",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "Night: a hooded figure in a long dark cloak (Murad IV disguised) holds a small lantern in an alley, only his intense eyes and black beard visible; behind a slightly open door light spills out from men drinking coffee. Fasulye peeks around a corner in shock.",
+   "expression": "Murad menacing; Fasulye terrified (shock lines)",
+   "composition": "Murad centre-left, the glowing door right, Fasulye small at the right edge",
+   "camera": "medium shot, low angle",
+   "background": "narrow alley, wooden overhangs, moonlight",
+   "palette": "Night palette #17233A / #2C3B57, warm lantern light.",
+   "function": "The legend of the disguised sultan (marked as legend in the edit).",
+   "continuity": "Murad's beard and eyes match S024.",
+   "references": [
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.45
+   ],
+   "est_dur": 7.366
+  },
+  {
+   "id": "S031",
+   "kind": "derived",
+   "lines": [
+    "L036"
+   ],
+   "title": "Efsane mi? (türev)",
+   "location": "",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "",
+   "expression": "",
+   "composition": "",
+   "camera": "",
+   "background": "",
+   "palette": "",
+   "function": "Engine stamps 'EFSANE?' over S030.",
+   "continuity": "Derived from S030.",
+   "references": [],
+   "overlay": {
+    "stamp": {
+     "tr": "EFSANE?",
+     "de": "LEGENDE?",
+     "en": "LEGEND?"
+    }
+   },
+   "effects": [
+    {
+     "type": "stamp",
+     "text_key": "stamp"
+    }
+   ],
+   "focus": [
+    0.4,
+    0.45
+   ],
+   "source": "S030",
+   "est_dur": 5.939
+  },
+  {
+   "id": "S032",
+   "kind": "imagegen",
+   "lines": [
+    "L037"
+   ],
+   "title": "Ev serbest, kahvehane yasak",
+   "location": "split scene",
+   "cast": [
+    "osmanli_crowd"
+   ],
+   "fasulye_costume": "",
+   "action": "Split composition divided by a vertical wall: LEFT a cosy home interior where a family drinks coffee happily on cushions; RIGHT the boarded-up coffeehouse door from S028 with a guard.",
+   "expression": "family relaxed; guard bored",
+   "composition": "exact 50/50 vertical split",
+   "camera": "medium wide, straight-on",
+   "background": "left warm home, right grey street",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood.",
+   "function": "Clarifies that the ban targeted the coffeehouse, not the drink.",
+   "continuity": "Right half matches S028/S029.",
+   "references": [],
+   "overlay": {},
+   "effects": [
+    {
+     "type": "check_cross",
+     "left": "check",
+     "right": "cross"
+    }
+   ],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 6.059
+  },
+  {
+   "id": "S033",
+   "kind": "derived",
+   "lines": [
+    "L038"
+   ],
+   "title": "Motif tekrar: masa",
+   "location": "symbolic",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "",
+   "expression": "",
+   "composition": "",
+   "camera": "",
+   "background": "",
+   "palette": "",
+   "function": "Reuse of the table motif.",
+   "continuity": "Reuse of S016.",
+   "references": [],
+   "overlay": {},
+   "effects": [
+    {
+     "type": "punch_in",
+     "scale": 1.2
+    }
+   ],
+   "focus": [
+    0.4,
+    0.6
+   ],
+   "source": "S016",
+   "est_dur": 3.14
+  },
+  {
+   "id": "S034",
+   "kind": "imagegen",
+   "lines": [
+    "L039"
+   ],
+   "title": "Kâtip Çelebi ve ıssız kahvehaneler",
+   "location": "scholar's window",
+   "cast": [
+    "katip"
+   ],
+   "fasulye_costume": "",
+   "action": "Kâtip Çelebi writes at a desk by an open window; through the window: a deserted street of shuttered coffeehouses with cobwebs on the doors and dust blowing.",
+   "expression": "melancholic, thoughtful",
+   "composition": "desk and writer left, window view right two thirds",
+   "camera": "medium shot",
+   "background": "study interior + empty street view",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood. Dusty, faded tones in the street view.",
+   "function": "The ban outlived Murad.",
+   "continuity": "Street same as S028 but years later (dustier).",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.6,
+    0.5
+   ],
+   "est_dur": 9.331
+  },
+  {
+   "id": "S035",
+   "kind": "imagegen",
+   "lines": [
+    "L040",
+    "L041"
+   ],
+   "title": "Kahvehaneler yeniden açılıyor",
+   "location": "Istanbul street, dawn",
+   "cast": [
+    "osmanli_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "osmanli",
+   "action": "Dawn: a coffee server pulls the boards off the coffeehouse door; people return smiling; Fasulye and another man carry a long wooden table back inside.",
+   "expression": "joyful, relieved",
+   "composition": "door centre, table carried diagonally in the foreground",
+   "camera": "medium wide",
+   "background": "same street as S028 in fresh morning light, steam from inside",
+   "palette": "Ottoman/Middle-East period palette: terracotta, saffron #E9A33B, indigo #2C3B57, copper, cream, warm wood. Fresh morning light.",
+   "function": "Return of the coffeehouse ('the table came back').",
+   "continuity": "Same door/boards as S028; the table recalls S016.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 8.241
+  },
+  {
+   "id": "S036",
+   "kind": "imagegen",
+   "lines": [
+    "L042"
+   ],
+   "title": "Londra 1675 kuruluş",
+   "location": "London street",
+   "cast": [
+    "london_crowd"
+   ],
+   "fasulye_costume": "",
+   "action": "17th-century London street: timber-framed houses with jettied upper floors, hanging shop signs that are blank or show only simple pictures (a cup, a pot), a busy coffeehouse entrance, grey rain clouds.",
+   "expression": "",
+   "composition": "street receding to the centre",
+   "camera": "wide shot, eye level",
+   "background": "overcast sky, cobblestones",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "Chapter card background.",
+   "continuity": "Start of chapter 3; new location.",
+   "references": [],
+   "overlay": {
+    "tr": "LONDRA · 1675",
+    "de": "LONDON · 1675",
+    "en": "LONDON · 1675"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "est_dur": 4.926
+  },
+  {
+   "id": "S037",
+   "kind": "imagegen",
+   "lines": [
+    "L043"
+   ],
+   "title": "Peni üniversitesi",
+   "location": "London coffeehouse interior",
+   "cast": [
+    "london_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "london",
+   "action": "Inside a London coffeehouse: a long communal table, men in periwigs argue over blank newspapers, one drops a penny on the counter where a woman serves from a pot. Fasulye in a periwig debates passionately, finger raised.",
+   "expression": "animated debate; Fasulye intellectual and smug",
+   "composition": "long table running into depth, counter on the right",
+   "camera": "wide shot, eye level",
+   "background": "dark wood panels, candle light, smoky air",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "Coffeehouses as 'penny universities'.",
+   "continuity": "This interior returns in S040.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.45,
+    0.5
+   ],
+   "est_dur": 7.487
+  },
+  {
+   "id": "S038",
+   "kind": "imagegen",
+   "lines": [
+    "L044"
+   ],
+   "title": "Kral İkinci Charles",
+   "location": "Whitehall palace window",
+   "cast": [
+    "charles2"
+   ],
+   "fasulye_costume": "",
+   "action": "King Charles II stands at a tall palace window with arms crossed, scowling down at the street where the coffeehouse is.",
+   "expression": "sulky, disapproving, nose up",
+   "composition": "Charles centre-left, window right",
+   "camera": "medium shot",
+   "background": "palace interior with velvet curtains",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds. Royal reds.",
+   "function": "Introduces the English antagonist.",
+   "continuity": "Charles' look (curly black wig, crown, red coat) stays the same in S039–S042.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.45
+   ],
+   "est_dur": 2.781
+  },
+  {
+   "id": "S039",
+   "kind": "imagegen",
+   "lines": [
+    "L045"
+   ],
+   "title": "Tellal fermanı okuyor",
+   "location": "London street",
+   "cast": [
+    "london_crowd"
+   ],
+   "fasulye_costume": "",
+   "action": "A town crier with a bell reads aloud from a large unrolled blank proclamation with a big red wax seal; a crowd listens in shock.",
+   "expression": "crier pompous; crowd shocked",
+   "composition": "crier on a step, centre; crowd around in the lower half",
+   "camera": "medium wide",
+   "background": "same London street as S036",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The proclamation is announced.",
+   "continuity": "Street same as S036.",
+   "references": [],
+   "overlay": {
+    "tr": "29 ARALIK 1675",
+    "de": "29. DEZEMBER 1675",
+    "en": "29 DECEMBER 1675"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.4
+   ],
+   "est_dur": 7.723
+  },
+  {
+   "id": "S040",
+   "kind": "imagegen",
+   "lines": [
+    "L046"
+   ],
+   "title": "Dedikodu saraya uçuyor",
+   "location": "London coffeehouse",
+   "cast": [
+    "london_crowd"
+   ],
+   "fasulye_costume": "london",
+   "action": "Close on two men whispering behind their hands at the coffeehouse table; swirling ink 'rumour' lines curl out of their mouths, through the window and drift toward a tiny palace in the distance.",
+   "expression": "gossipy, sly eyes",
+   "composition": "whisperers left half, rumour swirl crossing to the upper right",
+   "camera": "medium close-up",
+   "background": "same interior as S037",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The official reason: idle people and false news.",
+   "continuity": "Same interior as S037.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.5
+   ],
+   "est_dur": 7.486
+  },
+  {
+   "id": "S041",
+   "kind": "imagegen",
+   "lines": [
+    "L047"
+   ],
+   "title": "Londra ayakta",
+   "location": "palace gate",
+   "cast": [
+    "london_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "london",
+   "action": "An indignant crowd of merchants and tradesmen at a palace gate raise their coffee cups in protest; one holds up a long blank petition. Fasulye leads from the front with his cup raised high.",
+   "expression": "determined, indignant",
+   "composition": "crowd fills the lower two thirds, gate at the top",
+   "camera": "wide shot, low angle",
+   "background": "palace gate with iron railings",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "Public backlash.",
+   "continuity": "Fasulye in the same periwig as S037.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.55
+   ],
+   "est_dur": 6.416
+  },
+  {
+   "id": "S042",
+   "kind": "imagegen",
+   "lines": [
+    "L048",
+    "L049"
+   ],
+   "title": "Charles fermanı yırtıyor",
+   "location": "palace interior",
+   "cast": [
+    "charles2"
+   ],
+   "fasulye_costume": "",
+   "action": "Charles II sheepishly tears the blank proclamation in half, avoiding eye contact.",
+   "expression": "embarrassed, sweat drop, awkward smile",
+   "composition": "Charles centred, torn paper halves wide apart",
+   "camera": "medium shot",
+   "background": "same palace room as S038",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The ban is withdrawn after ten days.",
+   "continuity": "Same room as S038.",
+   "references": [
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {
+    "tr": "10 GÜN",
+    "de": "10 TAGE",
+    "en": "10 DAYS"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "est_dur": 7.825
+  },
+  {
+   "id": "S043",
+   "kind": "imagegen",
+   "lines": [
+    "L050"
+   ],
+   "title": "Friedrich para sayıyor",
+   "location": "Prussian palace study",
+   "cast": [
+    "frederick"
+   ],
+   "fasulye_costume": "",
+   "action": "Frederick the Great sits at a desk counting a small pile of silver coins, ledger open, worried; a greyhound sleeps under the desk.",
+   "expression": "worried, calculating frown",
+   "composition": "Frederick centre, coins in the foreground",
+   "camera": "medium shot, eye level",
+   "background": "rococo study with pale walls, tall window",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds. Prussian blue and silver.",
+   "function": "Chapter card + new antagonist.",
+   "continuity": "Frederick's look must stay the same in S044–S045.",
+   "references": [],
+   "overlay": {
+    "tr": "PRUSYA · 1777",
+    "de": "PREUSSEN · 1777",
+    "en": "PRUSSIA · 1777"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 4.151
+  },
+  {
+   "id": "S044",
+   "kind": "imagegen",
+   "lines": [
+    "L051"
+   ],
+   "title": "Paralar uçup gidiyor",
+   "location": "border",
+   "cast": [
+    "frederick"
+   ],
+   "fasulye_costume": "",
+   "action": "At a border gate, coffee sacks roll in on carts while silver coins fly out over the gate like birds; Frederick runs after the coins with his cane.",
+   "expression": "panicked, comical",
+   "composition": "gate centre, coins arcing to the right, Frederick chasing from the left",
+   "camera": "wide shot",
+   "background": "simple countryside border with a striped barrier pole",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The economic motive.",
+   "continuity": "Frederick same as S043.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 6.531
+  },
+  {
+   "id": "S045",
+   "kind": "imagegen",
+   "lines": [
+    "L052",
+    "L053"
+   ],
+   "title": "Bira çorbası önerisi",
+   "location": "town square",
+   "cast": [
+    "frederick",
+    "prussian_crowd"
+   ],
+   "fasulye_costume": "",
+   "action": "Frederick proudly presents a big beer mug and a bowl of beer soup to unimpressed townsfolk who each clutch their coffee cups.",
+   "expression": "Frederick proud; townsfolk deadpan, unimpressed",
+   "composition": "Frederick left, crowd right",
+   "camera": "medium wide",
+   "background": "Prussian town square with gabled houses",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "'Drink beer instead' (comic beat).",
+   "continuity": "Frederick same as S043.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.45,
+    0.5
+   ],
+   "est_dur": 12.174
+  },
+  {
+   "id": "S046",
+   "kind": "imagegen",
+   "lines": [
+    "L054"
+   ],
+   "title": "Devlet kavurma tesisi",
+   "location": "royal roastery",
+   "cast": [
+    "prussian_crowd"
+   ],
+   "fasulye_costume": "",
+   "action": "A large state roasting drum over a fire, guarded by soldiers; a queue of townsfolk with empty cups waits behind a rope.",
+   "expression": "guards stiff; people glum",
+   "composition": "drum centre, queue diagonal",
+   "camera": "wide shot",
+   "background": "brick workshop with chimney",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The state monopoly on roasting.",
+   "continuity": "New location.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 4.924
+  },
+  {
+   "id": "S047",
+   "kind": "imagegen",
+   "lines": [
+    "L055",
+    "L056"
+   ],
+   "title": "Kahve koklayıcı",
+   "location": "Prussian street, window",
+   "cast": [
+    "sniffer",
+    "fasulye",
+    "prussian_crowd"
+   ],
+   "fasulye_costume": "prussia",
+   "action": "A coffee sniffer with a wooden peg leg leans toward a cottage window and sniffs with his huge nose; inside, Fasulye and two women freeze, hiding a coffee pot behind their backs.",
+   "expression": "sniffer intensely focused; people inside frozen, wide-eyed",
+   "composition": "sniffer left outside, window interior right (cut-away view)",
+   "camera": "medium wide",
+   "background": "cosy cottage interior, street outside",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The famous 'coffee sniffers'.",
+   "continuity": "Fasulye in Prussian costume (also S048).",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png",
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.4,
+    0.45
+   ],
+   "est_dur": 11.34
+  },
+  {
+   "id": "S048",
+   "kind": "imagegen",
+   "lines": [
+    "L057"
+   ],
+   "title": "Kurallar gömülüyor",
+   "location": "Prussian street",
+   "cast": [
+    "sniffer",
+    "fasulye",
+    "prussian_crowd"
+   ],
+   "fasulye_costume": "prussia",
+   "action": "Sunny street: townsfolk openly roast coffee in a pan; the former sniffer happily drinks a cup with them; Fasulye toasts with his cup.",
+   "expression": "relieved, cheerful",
+   "composition": "group centre",
+   "camera": "medium wide",
+   "background": "same street as S047, bright",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds. Bright daylight.",
+   "function": "End of the Prussian ban.",
+   "continuity": "Same street as S047.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/03_pozlar.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 7.069
+  },
+  {
+   "id": "S049",
+   "kind": "imagegen",
+   "lines": [
+    "L058",
+    "L059"
+   ],
+   "title": "İsveç: Kral Gustav ve beş yasak",
+   "location": "Stockholm square, snow",
+   "cast": [
+    "gustav3",
+    "swedish_folk"
+   ],
+   "fasulye_costume": "",
+   "action": "Snowy 18th-century Stockholm square with red and ochre wooden and plaster houses; King Gustav III on a step holds up a blank decree theatrically while officials collect coffee cups into a basket.",
+   "expression": "Gustav theatrical; townsfolk grumbling",
+   "composition": "Gustav left third, basket of cups centre",
+   "camera": "wide shot",
+   "background": "snow, grey sky",
+   "palette": "Nordic winter palette: snow white, ochre #D9B27C, falu red #8E3B2E, cold blue sky.",
+   "function": "Chapter card: Sweden, five bans.",
+   "continuity": "Gustav's look stays the same in S052–S053.",
+   "references": [],
+   "overlay": {
+    "tr": "İSVEÇ · 1756–1823",
+    "de": "SCHWEDEN · 1756–1823",
+    "en": "SWEDEN · 1756–1823"
+   },
+   "effects": [
+    {
+     "type": "counter",
+     "from": 1,
+     "to": 5
+    }
+   ],
+   "focus": [
+    0.4,
+    0.5
+   ],
+   "est_dur": 8.84
+  },
+  {
+   "id": "S050",
+   "kind": "imagegen",
+   "lines": [
+    "L060"
+   ],
+   "title": "Masanın altında gizli kahve",
+   "location": "Swedish home",
+   "cast": [
+    "swedish_folk",
+    "fasulye"
+   ],
+   "fasulye_costume": "sweden",
+   "action": "Cosy Swedish kitchen: a family and Fasulye drink coffee under the table, hidden by the tablecloth, while an official's boots pass by the window outside.",
+   "expression": "secretive, giggling",
+   "composition": "table centre, tablecloth lifted to show them underneath",
+   "camera": "medium shot, low angle",
+   "background": "wooden kitchen, tiled stove, candle",
+   "palette": "Nordic winter palette, warm interior.",
+   "function": "People keep drinking secretly.",
+   "continuity": "New location.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.6
+   ],
+   "est_dur": 4.031
+  },
+  {
+   "id": "S051",
+   "kind": "imagegen",
+   "lines": [
+    "L061"
+   ],
+   "title": "Demlik cenazesi",
+   "location": "snowy street",
+   "cast": [
+    "swedish_folk",
+    "fasulye"
+   ],
+   "fasulye_costume": "sweden",
+   "action": "A solemn mock funeral procession in the snow: people in black carry a tiny coffin with a copper coffee pot on top; Fasulye walks behind wiping a big comic tear.",
+   "expression": "solemn faces; Fasulye overly dramatic crying",
+   "composition": "procession across the frame left to right",
+   "camera": "wide shot",
+   "background": "snowy street, bare trees",
+   "palette": "Nordic winter palette with black mourning clothes.",
+   "function": "Protest by mock funeral (comic peak).",
+   "continuity": "Same town as S049.",
+   "references": [
+    "character-references/fasulye/05_komik_tepkiler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 8.139
+  },
+  {
+   "id": "S052",
+   "kind": "imagegen",
+   "lines": [
+    "L062"
+   ],
+   "title": "İkiz deneyi",
+   "location": "prison room",
+   "cast": [
+    "twins",
+    "doctors",
+    "gustav3"
+   ],
+   "fasulye_costume": "",
+   "action": "A plain stone room: the identical twins sit at a table, one with a coffee cup, the other with a tea cup; two doctors take notes; King Gustav watches from the doorway.",
+   "expression": "twins bored; doctors serious; Gustav curious",
+   "composition": "symmetrical: twins centre, doctors left and right",
+   "camera": "medium wide, straight-on",
+   "background": "simple stone walls, barred window with light",
+   "palette": "Muted greys with the two cups as accents (dark brown coffee, amber tea).",
+   "function": "The famous (possibly fictional) twin experiment.",
+   "continuity": "Twins identical in S053.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 9.036
+  },
+  {
+   "id": "S053",
+   "kind": "imagegen",
+   "lines": [
+    "L063"
+   ],
+   "title": "İkizler yaşlanıyor",
+   "location": "same prison room, years later",
+   "cast": [
+    "twins"
+   ],
+   "fasulye_costume": "",
+   "action": "Same room many years later: the twins are now old with long grey beards, still sitting with their cups; in front of them two small blank gravestones (doctors) and a third with a small crown carved on it (no text).",
+   "expression": "twins calm, shrugging",
+   "composition": "same symmetrical framing as S052",
+   "camera": "medium wide",
+   "background": "same room, cobwebs, dust",
+   "palette": "Same muted palette, slightly faded.",
+   "function": "Comic punchline of the legend.",
+   "continuity": "Exact framing of S052.",
+   "references": [],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 6.653
+  },
+  {
+   "id": "S054",
+   "kind": "derived",
+   "lines": [
+    "L064"
+   ],
+   "title": "Efsane olabilir (türev)",
+   "location": "",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "",
+   "expression": "",
+   "composition": "",
+   "camera": "",
+   "background": "",
+   "palette": "",
+   "function": "Engine stamps 'EFSANE?' over S052.",
+   "continuity": "Derived from S052.",
+   "references": [],
+   "overlay": {
+    "stamp": {
+     "tr": "EFSANE?",
+     "de": "LEGENDE?",
+     "en": "LEGEND?"
+    }
+   },
+   "effects": [
+    {
+     "type": "stamp",
+     "text_key": "stamp"
+    }
+   ],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "source": "S052",
+   "est_dur": 5.401
+  },
+  {
+   "id": "S055",
+   "kind": "imagegen",
+   "lines": [
+    "L065"
+   ],
+   "title": "Modern fika",
+   "location": "modern Swedish café",
+   "cast": [
+    "fasulye",
+    "modern_crowd"
+   ],
+   "fasulye_costume": "modern",
+   "action": "A cosy modern Swedish café in winter: Fasulye and friends at a table with many coffee cups and cinnamon buns, candles, snow outside the window.",
+   "expression": "happy, cosy",
+   "composition": "table centre, window right",
+   "camera": "medium shot",
+   "background": "Scandinavian wooden interior, warm light",
+   "palette": "Warm interior + cold blue window.",
+   "function": "Payoff: Sweden today loves coffee.",
+   "continuity": "Fasulye back in modern look.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 8.023
+  },
+  {
+   "id": "S056",
+   "kind": "imagegen",
+   "lines": [
+    "L066",
+    "L067"
+   ],
+   "title": "Kolschitzky efsanesi",
+   "location": "abandoned Ottoman camp, Vienna 1683",
+   "cast": [
+    "kolschitzky"
+   ],
+   "fasulye_costume": "",
+   "action": "Sunrise over an abandoned army camp of empty tents: Kolschitzky heroically opens a sack full of coffee beans, beans spilling, heroic light behind him.",
+   "expression": "heroic, triumphant",
+   "composition": "Kolschitzky centre, tents and Vienna's distant spire silhouette behind",
+   "camera": "low angle, medium wide",
+   "background": "pink-gold sunrise, hills",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds. Golden sunrise.",
+   "function": "The famous (mostly invented) Vienna legend.",
+   "continuity": "New location.",
+   "references": [],
+   "overlay": {
+    "tr": "VİYANA · 1683",
+    "de": "WIEN · 1683",
+    "en": "VIENNA · 1683"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "est_dur": 13.957
+  },
+  {
+   "id": "S057",
+   "kind": "derived",
+   "lines": [
+    "L068"
+   ],
+   "title": "Efsane (türev)",
+   "location": "",
+   "cast": [],
+   "fasulye_costume": "",
+   "action": "",
+   "expression": "",
+   "composition": "",
+   "camera": "",
+   "background": "",
+   "palette": "",
+   "function": "Engine stamps 'EFSANE' over S056.",
+   "continuity": "Derived from S056.",
+   "references": [],
+   "overlay": {
+    "stamp": {
+     "tr": "EFSANE",
+     "de": "LEGENDE",
+     "en": "LEGEND"
+    }
+   },
+   "effects": [
+    {
+     "type": "stamp",
+     "text_key": "stamp"
+    }
+   ],
+   "focus": [
+    0.5,
+    0.45
+   ],
+   "source": "S056",
+   "est_dur": 3.854
+  },
+  {
+   "id": "S058",
+   "kind": "imagegen",
+   "lines": [
+    "L069"
+   ],
+   "title": "Diodato'nun dükkânı",
+   "location": "Vienna Haarmarkt 1685",
+   "cast": [
+    "diodato",
+    "vienna_crowd",
+    "fasulye"
+   ],
+   "fasulye_costume": "vienna",
+   "action": "Johannes Diodato serves coffee from a copper pot at the counter of a small vaulted shop open to the street; Fasulye is his first customer, curiously sniffing the cup; Viennese passers-by look on.",
+   "expression": "Diodato welcoming; Fasulye curious",
+   "composition": "vaulted shop opening centre",
+   "camera": "medium wide",
+   "background": "old Vienna street, stone vault, small window panes",
+   "palette": "European 17th–18th c. palette: brown wood, grey-blue, dark green, candle-warm light, muted reds.",
+   "function": "The documented first Viennese coffee licence.",
+   "continuity": "Vienna setting; Fasulye in Vienna costume.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png",
+    "character-references/fasulye/04_kostum_efekt.png"
+   ],
+   "overlay": {
+    "tr": "1685",
+    "de": "1685",
+    "en": "1685"
+   },
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 7.424
+  },
+  {
+   "id": "S059",
+   "kind": "imagegen",
+   "lines": [
+    "L070",
+    "L071",
+    "L072"
+   ],
+   "title": "Hükümdarlar aynı masada",
+   "location": "symbolic table",
+   "cast": [
+    "fasulye",
+    "hayir_bey",
+    "murad4",
+    "charles2",
+    "frederick",
+    "gustav3"
+   ],
+   "fasulye_costume": "modern",
+   "action": "The long table from S016 under the same lamp: the five rulers (Hayır Bey, Murad IV, Charles II, Frederick, Gustav III) sit awkwardly side by side, each reluctantly holding a coffee cup; Fasulye stands at the head of the table like a host.",
+   "expression": "rulers awkward, avoiding eye contact; Fasulye amused",
+   "composition": "table runs into depth, rulers along both sides, Fasulye at the near end",
+   "camera": "wide shot, slightly high angle",
+   "background": "warm paper background and lamp light (same as S016)",
+   "palette": "Base palette; rulers in their signature colours.",
+   "function": "Summary of the pattern: every ban had a non-coffee reason.",
+   "continuity": "Same table and lamp as S016; rulers identical to their chapter scenes.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 13.528
+  },
+  {
+   "id": "S060",
+   "kind": "imagegen",
+   "lines": [
+    "L073",
+    "L074"
+   ],
+   "title": "Masa: her çağdan insanlar",
+   "location": "symbolic table",
+   "cast": [
+    "fasulye",
+    "bean_people",
+    "janissary",
+    "london_crowd",
+    "swedish_folk"
+   ],
+   "fasulye_costume": "modern",
+   "action": "The same long table, now full of people from every era (a janissary, a London merchant, a Swedish woman, a Meccan server, a modern student) laughing and talking together over steaming cups under the warm lamp.",
+   "expression": "warm, lively, everyone engaged",
+   "composition": "same framing as S059",
+   "camera": "wide shot",
+   "background": "warm lamp glow, steam rising",
+   "palette": "Warmest palette of the video.",
+   "function": "Emotional payoff: coffee's real 'crime' was bringing people together.",
+   "continuity": "Same table as S016/S059.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.5,
+    0.5
+   ],
+   "est_dur": 10.147
+  },
+  {
+   "id": "S061",
+   "kind": "imagegen",
+   "lines": [
+    "L075"
+   ],
+   "title": "Fasulye kadeh kaldırır",
+   "location": "modern café",
+   "cast": [
+    "fasulye",
+    "modern_crowd"
+   ],
+   "fasulye_costume": "modern",
+   "action": "Back in the modern café from S001: at the next table a bean person glares disapprovingly; Fasulye calmly raises his cup toward the viewer in a small toast.",
+   "expression": "Fasulye: confident half-smile, one eyebrow up; the other customer: grumpy",
+   "composition": "Fasulye centre-left (mirrors S001), grumpy customer small in the right background",
+   "camera": "medium shot, eye level",
+   "background": "same café as S001",
+   "palette": "Base palette, warm daylight.",
+   "function": "Closing joke and callback to the opening.",
+   "continuity": "Bookend: exact café, table and cup of S001.",
+   "references": [
+    "character-references/fasulye/01_donus_sayfasi.png",
+    "character-references/fasulye/02_ifadeler.png"
+   ],
+   "overlay": {},
+   "effects": [],
+   "focus": [
+    0.42,
+    0.5
+   ],
+   "est_dur": 9.096
+  }
+ ],
+ "thumbnail": {
+  "id": "T01",
+  "kind": "thumbnail",
+  "lines": [],
+  "title": "Thumbnail",
+  "location": "thumbnail",
+  "cast": [
+   "fasulye",
+   "murad4"
+  ],
+  "fasulye_costume": "modern",
+  "action": "Fasulye clutches a coffee cup protectively against his chest with both hands; behind him on the right, the silhouette of Murad IV (big turban with plume) looms; a big empty red circular wax-seal shape on the upper right for the text.",
+  "expression": "Fasulye: huge eyes, tiny pupils, 'you won't take it' face",
+  "composition": "Fasulye big on the left (3/4 view, chest up), Murad silhouette right, empty top-right area for a large title",
+  "camera": "close-up",
+  "background": "warm paper, strong contrast",
+  "palette": "High contrast: terracotta scarf, red seal #B83A2B, dark silhouette.",
+  "function": "YouTube thumbnail (text added by the engine).",
+  "continuity": "Same Fasulye as all scenes.",
+  "references": [
+   "character-references/fasulye/01_donus_sayfasi.png",
+   "character-references/fasulye/02_ifadeler.png",
+   "character-references/fasulye/05_komik_tepkiler.png"
+  ],
+  "overlay": {
+   "tr": "YASAK!",
+   "de": "VERBOTEN!",
+   "en": "BANNED!"
+  },
+  "effects": [],
+  "focus": [
+   0.35,
+   0.5
+  ]
+ },
+ "timing_source": "estimate",
+ "total_est_sec": 402.82
+}

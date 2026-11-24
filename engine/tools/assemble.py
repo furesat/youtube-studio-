@@ -101,6 +101,8 @@ def base_image(s, found, scenes_by_id, args, narr):
         raise SystemExit(f"Eksik görsel: {sid} (--placeholders ile animatik alınabilir)")
     return placeholder(scenes_by_id[sid], narr)
 
+MAX_ZOOMS = 2  # bir sahnede en çok 2 yakınlaşma (kullanıcı kararı)
+
 def shots_for(s, img, dur, lang, target):
     ov = s["overlay"]; title = ov.get(lang) if isinstance(ov.get(lang), str) else None
     stamp = (ov.get("stamp") or {}).get(lang)
@@ -116,9 +118,9 @@ def shots_for(s, img, dur, lang, target):
         if stamp: fx_stamp(im, stamp)
         overlay_title(im, title)
         return [(im, dur)]
-    n = max(1, round(dur / target)) if s["kind"] == "imagegen" else 1
+    n = min(MAX_ZOOMS + 1, max(1, round(dur / target))) if s["kind"] == "imagegen" else 1
     while n > 1 and dur / n < MIN_SHOT: n -= 1
-    cycle = [1.0, 1.14, 1.28, 1.08]
+    cycle = [1.0, 1.14, 1.28]  # en çok 2 yakınlaşma: geniş → yakın → daha yakın
     out = []
     for i in range(n):
         im = punch(img.copy(), cycle[i % len(cycle)], focus)

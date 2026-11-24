@@ -53,13 +53,13 @@ def fx_red_x(im, focus):
     wobble_line(d, (cx - r, cy - r * .8), (cx + r, cy + r * .8), 34, RED)
     wobble_line(d, (cx + r, cy - r * .8), (cx - r, cy + r * .8), 34, RED)
 
-def fx_stamp(im, text, focus=(0.5, 0.5), angle=-8):
-    f = font(150); tw = int(f.getlength(text)) + 120; th = 230
+def fx_stamp(im, text, focus=(0.5, 0.5), angle=-6):
+    f = font(104); tw = int(f.getlength(text)) + 90; th = 160
     st = Image.new("RGBA", (tw, th), (0, 0, 0, 0)); d = ImageDraw.Draw(st)
-    d.rounded_rectangle((8, 8, tw - 8, th - 8), radius=26, outline=RED + (235,), width=16)
+    d.rounded_rectangle((8, 8, tw - 8, th - 8), radius=20, outline=RED + (235,), width=12)
     d.text((tw // 2, th // 2 + 6), text, font=f, fill=RED + (235,), anchor="mm")
     st = st.rotate(angle, expand=True, resample=Image.BICUBIC)
-    x = int(W * 0.5 - st.width / 2); y = int(H * 0.45 - st.height / 2)
+    x = int(W * 0.5 - st.width / 2); y = int(H * 0.115 - st.height / 2)  # üst sakin bölge: yüzleri kapatmaz
     im.paste(st, (x, y), st)
 
 def fx_check_cross(im):

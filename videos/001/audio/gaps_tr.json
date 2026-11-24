@@ -1,0 +1,1092 @@
+[
+ {
+  "part": "A",
+  "at": 2.78,
+  "dur": 0.37,
+  "line": "L001",
+  "boundary": true,
+  "prev": "varsa dikkatli tut",
+  "next": "tarih boyunca bu",
+  "line_text": "Elinde bir fincan kahve varsa, dikkatli tut."
+ },
+ {
+  "part": "A",
+  "at": 9.65,
+  "dur": 0.43,
+  "line": "L002",
+  "boundary": true,
+  "prev": "krallar fermanlar yazdı",
+  "next": "mekke i stanbul",
+  "line_text": "Tarih boyunca bu içecek yüzünden dükkânlar kapatıldı, çuvallar yakıldı, krallar fermanlar yazdı."
+ },
+ {
+  "part": "A",
+  "at": 13.51,
+  "dur": 0.47,
+  "line": "L003",
+  "boundary": false,
+  "prev": "prussia i sveç",
+  "next": "kahve en az",
+  "line_text": "Mekke, İstanbul, Londra, Prusya, İsveç… Kahve en az beş farklı yerde yasaklandı."
+ },
+ {
+  "part": "A",
+  "at": 16.61,
+  "dur": 0.47,
+  "line": "L003",
+  "boundary": true,
+  "prev": "farklı yerde yasaklandı",
+  "next": "ve her seferinde",
+  "line_text": "Mekke, İstanbul, Londra, Prusya, İsveç… Kahve en az beş farklı yerde yasaklandı."
+ },
+ {
+  "part": "A",
+  "at": 20.15,
+  "dur": 0.63,
+  "line": "L004",
+  "boundary": true,
+  "prev": "yasak viyanı oldu",
+  "next": "ama işin garibi",
+  "line_text": "Ve her seferinde kaybeden taraf yasaklayan oldu."
+ },
+ {
+  "part": "A",
+  "at": 21.87,
+  "dur": 0.41,
+  "line": "L005",
+  "boundary": false,
+  "prev": "işin garibi şu",
+  "next": "bu yasakların neredeyse",
+  "line_text": "Ama işin garibi şu: Bu yasakların neredeyse hiçbiri aslında kahveyle ilgili değildi."
+ },
+ {
+  "part": "A",
+  "at": 26.1,
+  "dur": 0.53,
+  "line": "L005",
+  "boundary": true,
+  "prev": "kahveyle ilgili değildi",
+  "next": "peki neyle ilgiliydi",
+  "line_text": "Ama işin garibi şu: Bu yasakların neredeyse hiçbiri aslında kahveyle ilgili değildi."
+ },
+ {
+  "part": "A",
+  "at": 28.16,
+  "dur": 2.05,
+  "line": "L006",
+  "boundary": false,
+  "prev": "peki neyle ilgiliydi",
+  "next": "yıl 1511 yer",
+  "line_text": "Peki neyle ilgiliydi?"
+ },
+ {
+  "part": "A",
+  "at": 31.63,
+  "dur": 0.36,
+  "line": "L007",
+  "boundary": false,
+  "prev": "ilgiliydi yıl 1511",
+  "next": "yer mekke kahve",
+  "line_text": "Yıl bin beş yüz on bir. Mekke."
+ },
+ {
+  "part": "A",
+  "at": 33.03,
+  "dur": 0.73,
+  "line": "L007",
+  "boundary": true,
+  "prev": "1511 yer mekke",
+  "next": "kahve yemen den",
+  "line_text": "Yıl bin beş yüz on bir. Mekke."
+ },
+ {
+  "part": "A",
+  "at": 35.55,
+  "dur": 0.4,
+  "line": "L008",
+  "boundary": false,
+  "prev": "den yeni gelmiş",
+  "next": "sufiler gece boyunca",
+  "line_text": "Kahve Yemen'den yeni gelmiş. Sufiler gece boyunca uyanık kalmak için içiyor."
+ },
+ {
+  "part": "A",
+  "at": 38.7,
+  "dur": 0.42,
+  "line": "L008",
+  "boundary": true,
+  "prev": "kalmak için içiyor",
+  "next": "kısa sürede şehirde",
+  "line_text": "Kahve Yemen'den yeni gelmiş. Sufiler gece boyunca uyanık kalmak için içiyor."
+ },
+ {
+  "part": "A",
+  "at": 41.62,
+  "dur": 0.31,
+  "line": "L009",
+  "boundary": false,
+  "prev": "şehirde kahvedükkanları açıl",
+  "next": "i nsanlar toplanıyor",
+  "line_text": "Kısa sürede şehirde kahve dükkânları açılıyor. İnsanlar toplanıyor, sohbet ediyor, şarkı söylüyor."
+ },
+ {
+  "part": "A",
+  "at": 45.27,
+  "dur": 0.5,
+  "line": "L009",
+  "boundary": true,
+  "prev": "ediyor şarkı söylüyor",
+  "next": "bunu hiç sevmeyen",
+  "line_text": "Kısa sürede şehirde kahve dükkânları açılıyor. İnsanlar toplanıyor, sohbet ediyor, şarkı söylüyor."
+ },
+ {
+  "part": "A",
+  "at": 47.32,
+  "dur": 0.33,
+  "line": "L010",
+  "boundary": false,
+  "prev": "sevmeyen biri var",
+  "next": "şehrin asayişinden sorumlu",
+  "line_text": "Bunu hiç sevmeyen biri var: Şehrin asayişinden sorumlu Hayır Bey."
+ },
+ {
+  "part": "A",
+  "at": 49.97,
+  "dur": 0.5,
+  "line": "L010",
+  "boundary": true,
+  "prev": "asayişinden sorumlu hayır",
+  "next": "bir akşam kahve",
+  "line_text": "Bunu hiç sevmeyen biri var: Şehrin asayişinden sorumlu Hayır Bey."
+ },
+ {
+  "part": "A",
+  "at": 53.06,
+  "dur": 0.48,
+  "line": "L011",
+  "boundary": false,
+  "prev": "bir grup görüyor",
+  "next": "5 şüphelen hemen",
+  "line_text": "Bir akşam kahve içip neşelenen bir grup görüyor. Ve şüpheleniyor."
+ },
+ {
+  "part": "A",
+  "at": 54.42,
+  "dur": 0.48,
+  "line": "L011",
+  "boundary": true,
+  "prev": "görüyor 5 şüphelen",
+  "next": "hemen alimleri ve",
+  "line_text": "Bir akşam kahve içip neşelenen bir grup görüyor. Ve şüpheleniyor."
+ },
+ {
+  "part": "A",
+  "at": 57.92,
+  "dur": 0.36,
+  "line": "L012",
+  "boundary": false,
+  "prev": "topluyor soru basit",
+  "next": "bu içecek insanı",
+  "line_text": "Hemen âlimleri ve hekimleri topluyor. Soru basit: Bu içecek insanı sarhoş eder mi?"
+ },
+ {
+  "part": "A",
+  "at": 60.24,
+  "dur": 0.56,
+  "line": "L012",
+  "boundary": true,
+  "prev": "sarhoş eder mi",
+  "next": "toplantı tam istediği",
+  "line_text": "Hemen âlimleri ve hekimleri topluyor. Soru basit: Bu içecek insanı sarhoş eder mi?"
+ },
+ {
+  "part": "A",
+  "at": 62.83,
+  "dur": 0.41,
+  "line": "L013",
+  "boundary": false,
+  "prev": "istediği gibi bitiyor",
+  "next": "kahve yasak dükkanlar",
+  "line_text": "Toplantı tam istediği gibi bitiyor. Kahve yasak."
+ },
+ {
+  "part": "A",
+  "at": 63.75,
+  "dur": 0.32,
+  "line": "L013",
+  "boundary": false,
+  "prev": "gibi bitiyor kahve",
+  "next": "yasak dükkanlar kapatılıyor",
+  "line_text": "Toplantı tam istediği gibi bitiyor. Kahve yasak."
+ },
+ {
+  "part": "A",
+  "at": 64.55,
+  "dur": 0.48,
+  "line": "L013",
+  "boundary": true,
+  "prev": "bitiyor kahve yasak",
+  "next": "dükkanlar kapatılıyor kahve",
+  "line_text": "Toplantı tam istediği gibi bitiyor. Kahve yasak."
+ },
+ {
+  "part": "A",
+  "at": 68.3,
+  "dur": 0.46,
+  "line": "L014",
+  "boundary": true,
+  "prev": "çuvalları sokakta yak",
+  "next": "hayır beyin tek",
+  "line_text": "Dükkânlar kapatılıyor, kahve çuvalları sokakta yakılıyor."
+ },
+ {
+  "part": "A",
+  "at": 70.27,
+  "dur": 0.38,
+  "line": "L015",
+  "boundary": false,
+  "prev": "bir sorunu var",
+  "next": "onun da bir",
+  "line_text": "Hayır Bey'in tek bir sorunu var: Onun da bir patronu var."
+ },
+ {
+  "part": "A",
+  "at": 71.8,
+  "dur": 0.5,
+  "line": "L015",
+  "boundary": true,
+  "prev": "bir patronu var",
+  "next": "mekke o dönem",
+  "line_text": "Hayır Bey'in tek bir sorunu var: Onun da bir patronu var."
+ },
+ {
+  "part": "A",
+  "at": 75.33,
+  "dur": 0.35,
+  "line": "L016",
+  "boundary": false,
+  "prev": "memlük sultanına bağlı",
+  "next": "ve söylenene göre",
+  "line_text": "Mekke o dönem Kahire'deki Memlük sultanına bağlı. Ve söylenene göre Sultan Kansu Gavri de… kahve içiyor."
+ },
+ {
+  "part": "A",
+  "at": 79.82,
+  "dur": 0.42,
+  "line": "L016",
+  "boundary": false,
+  "prev": "de kahve içiyor",
+  "next": "kahreden gelen mesaj",
+  "line_text": "Mekke o dönem Kahire'deki Memlük sultanına bağlı. Ve söylenene göre Sultan Kansu Gavri de… kahve içiyor."
+ },
+ {
+  "part": "A",
+  "at": 81.93,
+  "dur": 0.36,
+  "line": "L017",
+  "boundary": false,
+  "prev": "gelen mesaj net",
+  "next": "süperi toplantılarla uğra",
+  "line_text": "Kahire'den gelen mesaj net: Şüpheli toplantılarla uğraş, ama insanların kahvesine dokunma."
+ },
+ {
+  "part": "A",
+  "at": 85.92,
+  "dur": 0.47,
+  "line": "L017",
+  "boundary": true,
+  "prev": "insanların kahvesine dokunma",
+  "next": "yasak birkaç hafta",
+  "line_text": "Kahire'den gelen mesaj net: Şüpheli toplantılarla uğraş, ama insanların kahvesine dokunma."
+ },
+ {
+  "part": "A",
+  "at": 88.42,
+  "dur": 1.09,
+  "line": "L018",
+  "boundary": true,
+  "prev": "hafta içinde çöpüyor",
+  "next": "i lk dersimiz",
+  "line_text": "Yasak birkaç hafta içinde çöküyor."
+ },
+ {
+  "part": "A",
+  "at": 90.38,
+  "dur": 0.34,
+  "line": "L019",
+  "boundary": false,
+  "prev": "i lk dersimiz",
+  "next": "sorun fincan değildi",
+  "line_text": "İlk dersimiz: Sorun fincan değildi. Sorun masaydı."
+ },
+ {
+  "part": "A",
+  "at": 92.11,
+  "dur": 0.39,
+  "line": "L019",
+  "boundary": false,
+  "prev": "sorun fincan değildi",
+  "next": "sorun masaydı",
+  "line_text": "İlk dersimiz: Sorun fincan değildi. Sorun masaydı."
+ },
+ {
+  "part": "B",
+  "at": 2.83,
+  "dur": 0.64,
+  "line": "L020",
+  "boundary": true,
+  "prev": "stanbul a ulaşıyor",
+  "next": "tarihçi keçevi ye",
+  "line_text": "Kırk yıl sonra kahve İstanbul'a ulaşıyor."
+ },
+ {
+  "part": "B",
+  "at": 10.23,
+  "dur": 0.4,
+  "line": "L021",
+  "boundary": true,
+  "prev": "birer dükkan açıyor",
+  "next": "fikir bas kahve",
+  "line_text": "Tarihçi Peçevi'ye göre Halep'ten Hakem, Şam'dan Şems adında iki adam Tahtakale'de birer dükkân açıyor."
+ },
+ {
+  "part": "B",
+  "at": 11.41,
+  "dur": 0.34,
+  "line": "L022",
+  "boundary": false,
+  "prev": "açıyor fikir bas",
+  "next": "kahve sat insanları",
+  "line_text": "Fikir basit: Kahve sat, insanları oturt."
+ },
+ {
+  "part": "B",
+  "at": 13.52,
+  "dur": 0.3,
+  "line": "L022",
+  "boundary": true,
+  "prev": "sat insanları oturt",
+  "next": "sonuç şehir buna",
+  "line_text": "Fikir basit: Kahve sat, insanları oturt."
+ },
+ {
+  "part": "B",
+  "at": 15.84,
+  "dur": 0.41,
+  "line": "L023",
+  "boundary": true,
+  "prev": "şehir buna bayılıyor",
+  "next": "kahvehanelerde 20 30",
+  "line_text": "Sonuç: Şehir buna bayılıyor."
+ },
+ {
+  "part": "B",
+  "at": 19.21,
+  "dur": 0.31,
+  "line": "L024",
+  "boundary": false,
+  "prev": "kişilik gruplar toplanıyor",
+  "next": "kitap okuyan tavla",
+  "line_text": "Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan, tavla oynayan, şiir yazan…"
+ },
+ {
+  "part": "B",
+  "at": 22.06,
+  "dur": 0.36,
+  "line": "L024",
+  "boundary": true,
+  "prev": "oynayan şiir yaz",
+  "next": "ve tabii ki",
+  "line_text": "Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan, tavla oynayan, şiir yazan…"
+ },
+ {
+  "part": "B",
+  "at": 24.96,
+  "dur": 0.4,
+  "line": "L025",
+  "boundary": true,
+  "prev": "devlet hakkında konuşuyor",
+  "next": "bazı alimler itiraz",
+  "line_text": "Ve tabii ki herkes devlet hakkında konuşuyor."
+ },
+ {
+  "part": "B",
+  "at": 27.04,
+  "dur": 0.33,
+  "line": "L026",
+  "boundary": false,
+  "prev": "alimler itiraz ediyor",
+  "next": "i nsanlar ibadeti",
+  "line_text": "Bazı âlimler itiraz ediyor: İnsanlar ibadeti bırakıp kahvehaneye koşuyor."
+ },
+ {
+  "part": "B",
+  "at": 29.9,
+  "dur": 0.39,
+  "line": "L026",
+  "boundary": true,
+  "prev": "bırakıp kahvehaneye koşuyor",
+  "next": "ama kahvenin de",
+  "line_text": "Bazı âlimler itiraz ediyor: İnsanlar ibadeti bırakıp kahvehaneye koşuyor."
+ },
+ {
+  "part": "B",
+  "at": 32.11,
+  "dur": 0.34,
+  "line": "L027",
+  "boundary": false,
+  "prev": "güçlü dostları var",
+  "next": "şehul i slam",
+  "line_text": "Ama kahvenin de güçlü dostları var. Şeyhülislam Bostanzade Mehmed Efendi kahveye yeşil ışık yakıyor."
+ },
+ {
+  "part": "B",
+  "at": 36.51,
+  "dur": 1.45,
+  "line": "L027",
+  "boundary": false,
+  "prev": "yeşil ışık yakıyor",
+  "next": "sonra sahnede 4",
+  "line_text": "Ama kahvenin de güçlü dostları var. Şeyhülislam Bostanzade Mehmed Efendi kahveye yeşil ışık yakıyor."
+ },
+ {
+  "part": "B",
+  "at": 40.54,
+  "dur": 0.91,
+  "line": "L028",
+  "boundary": false,
+  "prev": "4 murat çıkıyor",
+  "next": "muradın kahvehanelere güvenmemek",
+  "line_text": "Sonra sahneye Dördüncü Murad çıkıyor."
+ },
+ {
+  "part": "B",
+  "at": 44.75,
+  "dur": 0.38,
+  "line": "L029",
+  "boundary": true,
+  "prev": "ciddi bir nedeni",
+  "next": "abi genç osman",
+  "line_text": "Murad'ın kahvehanelere güvenmemek için ciddi bir nedeni var."
+ },
+ {
+  "part": "B",
+  "at": 50.4,
+  "dur": 0.4,
+  "line": "L030",
+  "boundary": true,
+  "prev": "çeriler tarafından öldürülmüş",
+  "next": "peki yeni çerilerin",
+  "line_text": "Ağabeyi Genç Osman, bin altı yüz yirmi ikide isyan eden yeniçeriler tarafından öldürülmüş."
+ },
+ {
+  "part": "B",
+  "at": 54.08,
+  "dur": 0.4,
+  "line": "L031",
+  "boundary": false,
+  "prev": "buluşma yeri neresi",
+  "next": "tahmin et 1633",
+  "line_text": "Peki yeniçerilerin en sevdiği buluşma yeri neresi? Tahmin et."
+ },
+ {
+  "part": "B",
+  "at": 55.14,
+  "dur": 1.41,
+  "line": "L031",
+  "boundary": false,
+  "prev": "neresi tahmin et",
+  "next": "1633 te i",
+  "line_text": "Peki yeniçerilerin en sevdiği buluşma yeri neresi? Tahmin et."
+ },
+ {
+  "part": "B",
+  "at": 61.82,
+  "dur": 0.36,
+  "line": "L032",
+  "boundary": false,
+  "prev": "biri kül oluyor",
+  "next": "murat fırsatı kaç",
+  "line_text": "bin altı yüz otuz üçte İstanbul'da büyük bir yangın çıkıyor. Şehrin beşte biri kül oluyor."
+ },
+ {
+  "part": "B",
+  "at": 63.5,
+  "dur": 0.31,
+  "line": "L033",
+  "boundary": false,
+  "prev": "murat fırsatı kaç",
+  "next": "yangın tehlikezi gerekesiyle",
+  "line_text": "Murad fırsatı kaçırmıyor. Yangın tehlikesi gerekçesiyle kahvehaneleri kapattırıyor. Tütünü de yasaklıyor."
+ },
+ {
+  "part": "B",
+  "at": 68.31,
+  "dur": 0.4,
+  "line": "L033",
+  "boundary": true,
+  "prev": "tütünü de yas",
+  "next": "cezalar ağır ya",
+  "line_text": "Murad fırsatı kaçırmıyor. Yangın tehlikesi gerekçesiyle kahvehaneleri kapattırıyor. Tütünü de yasaklıyor."
+ },
+ {
+  "part": "B",
+  "at": 72.92,
+  "dur": 1.09,
+  "line": "L034",
+  "boundary": true,
+  "prev": "ölümle bile cezalandırıl",
+  "next": "anlatılana göre murat",
+  "line_text": "Cezalar ağır. Yasağı çiğneyen, ölümle bile cezalandırılabiliyor."
+ },
+ {
+  "part": "B",
+  "at": 80.18,
+  "dur": 0.48,
+  "line": "L035",
+  "boundary": true,
+  "prev": "suçluları bizzat yakal",
+  "next": "bunun ne kadarı",
+  "line_text": "Anlatılana göre Murad geceleri kılık değiştirip sokaklarda dolaşıyor, suçluları bizzat yakalıyordu."
+ },
+ {
+  "part": "B",
+  "at": 82.83,
+  "dur": 0.37,
+  "line": "L036",
+  "boundary": false,
+  "prev": "kadarı gerçek tartışmalı",
+  "next": "ama korkutmak için",
+  "line_text": "Bunun ne kadarı gerçek, tartışmalı. Ama korkutmak için doğru olması gerekmiyordu."
+ },
+ {
+  "part": "B",
+  "at": 85.65,
+  "dur": 1.05,
+  "line": "L036",
+  "boundary": true,
+  "prev": "doğru olması gerekmiyordu",
+  "next": "i şin ilginç",
+  "line_text": "Bunun ne kadarı gerçek, tartışmalı. Ama korkutmak için doğru olması gerekmiyordu."
+ },
+ {
+  "part": "B",
+  "at": 90.7,
+  "dur": 0.32,
+  "line": "L037",
+  "boundary": false,
+  "prev": "kahvehaneye hedef alıyor",
+  "next": "evde içmek serbest",
+  "line_text": "İşin ilginç yanı: Murad kahveyi değil, kahvehaneyi hedef alıyor. Evde içmek serbest."
+ },
+ {
+  "part": "B",
+  "at": 92.17,
+  "dur": 0.31,
+  "line": "L037",
+  "boundary": true,
+  "prev": "evde içmek serbest",
+  "next": "yani sorun yine",
+  "line_text": "İşin ilginç yanı: Murad kahveyi değil, kahvehaneyi hedef alıyor. Evde içmek serbest."
+ },
+ {
+  "part": "B",
+  "at": 94.23,
+  "dur": 0.3,
+  "line": "L038",
+  "boundary": false,
+  "prev": "yine fincan değil",
+  "next": "yine masa yasak",
+  "line_text": "Yani sorun yine fincan değil. Yine masa."
+ },
+ {
+  "part": "B",
+  "at": 95.19,
+  "dur": 0.96,
+  "line": "L038",
+  "boundary": true,
+  "prev": "değil yine masa",
+  "next": "yasak tutmuş gibi",
+  "line_text": "Yani sorun yine fincan değil. Yine masa."
+ },
+ {
+  "part": "B",
+  "at": 97.6,
+  "dur": 0.32,
+  "line": "L039",
+  "boundary": false,
+  "prev": "tutmuş gibi görünüyor",
+  "next": "murat öldükten 10",
+  "line_text": "Yasak tutmuş gibi görünüyor. Murad öldükten on yıl sonra bile Kâtip Çelebi, kahvehanelerin cahilin gönlü kadar ıssız olduğunu yazıyor."
+ },
+ {
+  "part": "B",
+  "at": 104.56,
+  "dur": 0.33,
+  "line": "L039",
+  "boundary": true,
+  "prev": "ıssız olduğunu yazıyor",
+  "next": "ama 1649 da",
+  "line_text": "Yasak tutmuş gibi görünüyor. Murad öldükten on yıl sonra bile Kâtip Çelebi, kahvehanelerin cahilin gönlü kadar ıssız olduğunu yazıyor."
+ },
+ {
+  "part": "B",
+  "at": 110.6,
+  "dur": 0.33,
+  "line": "L040",
+  "boundary": true,
+  "prev": "birer yeniden açılıyor",
+  "next": "masa geri geldi",
+  "line_text": "Ama bin altı yüz kırk dokuzda tütün yasağı kalkıyor ve kahvehaneler birer birer yeniden açılıyor."
+ },
+ {
+  "part": "C",
+  "at": 4.6,
+  "dur": 0.36,
+  "line": "L042",
+  "boundary": true,
+  "prev": "kahvehane her köşede",
+  "next": "bir peniver kahveni",
+  "line_text": "Bu arada kahve Avrupa'ya ulaşmış. Londra'da kahvehane her köşede."
+ },
+ {
+  "part": "C",
+  "at": 11.73,
+  "dur": 0.41,
+  "line": "L043",
+  "boundary": true,
+  "prev": "penny üniversiteleri deniyor",
+  "next": "kral 2 çaras",
+  "line_text": "Bir peni ver, kahveni al, istediğin kadar otur ve tartış. Bu yüzden onlara peni üniversiteleri deniyor."
+ },
+ {
+  "part": "C",
+  "at": 18.07,
+  "dur": 0.32,
+  "line": "L045",
+  "boundary": false,
+  "prev": "bir ferman yayımlıyor",
+  "next": "kahvehaneler 10 ocaktan",
+  "line_text": "yirmi dokuz Aralık bin altı yüz yetmiş beşte bir ferman yayımlıyor: Kahvehaneler on Ocak'tan itibaren kapatılacak."
+ },
+ {
+  "part": "C",
+  "at": 21.24,
+  "dur": 0.37,
+  "line": "L045",
+  "boundary": true,
+  "prev": "ocaktan itibaren kapatılacak",
+  "next": "gerekçe buralar tembel",
+  "line_text": "yirmi dokuz Aralık bin altı yüz yetmiş beşte bir ferman yayımlıyor: Kahvehaneler on Ocak'tan itibaren kapatılacak."
+ },
+ {
+  "part": "C",
+  "at": 22.22,
+  "dur": 0.31,
+  "line": "L046",
+  "boundary": false,
+  "prev": "itibaren kapatılacak gerekçe",
+  "next": "buralar tembel ve",
+  "line_text": "Gerekçe: Buralar tembel ve hoşnutsuz insanların toplandığı, hükümet hakkında yalan haberlerin yayıldığı yerler."
+ },
+ {
+  "part": "C",
+  "at": 28.39,
+  "dur": 0.31,
+  "line": "L046",
+  "boundary": true,
+  "prev": "haberlerin yayıldığı yerler",
+  "next": "londra ayağa kalkıyor",
+  "line_text": "Gerekçe: Buralar tembel ve hoşnutsuz insanların toplandığı, hükümet hakkında yalan haberlerin yayıldığı yerler."
+ },
+ {
+  "part": "C",
+  "at": 34.25,
+  "dur": 0.37,
+  "line": "L047",
+  "boundary": true,
+  "prev": "bile itiraz ediyor",
+  "next": "ve yasak daha",
+  "line_text": "Londra ayağa kalkıyor. Tüccarlar, esnaf, hatta kralın kendi adamları bile itiraz ediyor."
+ },
+ {
+  "part": "C",
+  "at": 37.91,
+  "dur": 0.41,
+  "line": "L048",
+  "boundary": true,
+  "prev": "ocakta geri çekiliyor",
+  "next": "ferman ile geri",
+  "line_text": "Ve yasak daha başlamadan, sekiz Ocak'ta geri çekiliyor."
+ },
+ {
+  "part": "C",
+  "at": 41.27,
+  "dur": 2.13,
+  "line": "L049",
+  "boundary": false,
+  "prev": "10 gün var",
+  "next": "yüz yıl sonra",
+  "line_text": "Ferman ile geri adım arasında sadece on gün var."
+ },
+ {
+  "part": "C",
+  "at": 47.01,
+  "dur": 0.32,
+  "line": "L050",
+  "boundary": false,
+  "prev": "friedrich indirdi bambaşka",
+  "next": "bana kahve yurt",
+  "line_text": "Yüz yıl sonra Prusya'da Büyük Friedrich'in derdi bambaşka: Para."
+ },
+ {
+  "part": "C",
+  "at": 47.67,
+  "dur": 0.34,
+  "line": "L050",
+  "boundary": true,
+  "prev": "indirdi bambaşka bana",
+  "next": "kahve yurt dışından",
+  "line_text": "Yüz yıl sonra Prusya'da Büyük Friedrich'in derdi bambaşka: Para."
+ },
+ {
+  "part": "C",
+  "at": 54.0,
+  "dur": 0.32,
+  "line": "L051",
+  "boundary": false,
+  "prev": "ülkeden çıkıp gidiyor",
+  "next": "1777 de halkının",
+  "line_text": "Kahve yurt dışından geliyor ve kralın hesabına göre her yıl yüz binlerce taler ülkeden çıkıp gidiyor."
+ },
+ {
+  "part": "C",
+  "at": 59.89,
+  "dur": 0.37,
+  "line": "L052",
+  "boundary": true,
+  "prev": "de hazır birayç",
+  "next": "bir mektubunda şöyle",
+  "line_text": "bin yedi yüz yetmiş yedide halkının kahve tutkusundan şikâyet ediyor. Çözümü de hazır: Bira için."
+ },
+ {
+  "part": "C",
+  "at": 61.47,
+  "dur": 0.34,
+  "line": "L053",
+  "boundary": false,
+  "prev": "mektubunda şöyle diyor",
+  "next": "kral bira çorbası",
+  "line_text": "Bir mektubunda şöyle diyor: Kral bira çorbasıyla büyüdü, halk da büyüyebilir."
+ },
+ {
+  "part": "C",
+  "at": 64.87,
+  "dur": 0.57,
+  "line": "L053",
+  "boundary": true,
+  "prev": "hak da büyüyebilir",
+  "next": "halk ikna olmayınca",
+  "line_text": "Bir mektubunda şöyle diyor: Kral bira çorbasıyla büyüdü, halk da büyüyebilir."
+ },
+ {
+  "part": "C",
+  "at": 69.54,
+  "dur": 0.36,
+  "line": "L054",
+  "boundary": true,
+  "prev": "devlet tekelini alıyor",
+  "next": "ve sokaklara özel",
+  "line_text": "Halk ikna olmayınca Friedrich kahve kavurmayı devlet tekeline alıyor."
+ },
+ {
+  "part": "C",
+  "at": 74.37,
+  "dur": 0.33,
+  "line": "L055",
+  "boundary": false,
+  "prev": "400 savaş gazisi",
+  "next": "görevleri gizlice kavrulan",
+  "line_text": "Ve sokaklara özel bir birlik çıkarıyor: Yaklaşık dört yüz savaş gazisi. Görevleri, gizlice kavrulan kahvenin kokusunu almak."
+ },
+ {
+  "part": "C",
+  "at": 77.98,
+  "dur": 0.31,
+  "line": "L055",
+  "boundary": true,
+  "prev": "kahvenin kokusuna almak",
+  "next": "halk onlara kahve",
+  "line_text": "Ve sokaklara özel bir birlik çıkarıyor: Yaklaşık dört yüz savaş gazisi. Görevleri, gizlice kavrulan kahvenin kokusunu almak."
+ },
+ {
+  "part": "C",
+  "at": 81.13,
+  "dur": 1.05,
+  "line": "L056",
+  "boundary": true,
+  "prev": "kahve koklayıcılar diyor",
+  "next": "friedrich 1786 da",
+  "line_text": "Halk onlara kahve koklayıcılar diyor."
+ },
+ {
+  "part": "C",
+  "at": 84.55,
+  "dur": 0.33,
+  "line": "L057",
+  "boundary": false,
+  "prev": "1786 da ölüyor",
+  "next": "kahve kuralları da",
+  "line_text": "Friedrich bin yedi yüz seksen altıda ölüyor. Kahve kuralları da çok geçmeden onunla birlikte gömülüyor."
+ },
+ {
+  "part": "C",
+  "at": 88.22,
+  "dur": 1.57,
+  "line": "L057",
+  "boundary": false,
+  "prev": "onunla birlikte gömülüyor",
+  "next": "ama inatta birincilik",
+  "line_text": "Friedrich bin yedi yüz seksen altıda ölüyor. Kahve kuralları da çok geçmeden onunla birlikte gömülüyor."
+ },
+ {
+  "part": "C",
+  "at": 91.83,
+  "dur": 0.34,
+  "line": "L058",
+  "boundary": true,
+  "prev": "i sveç in",
+  "next": "önce vergi sonra",
+  "line_text": "Ama inatta birincilik İsveç'in."
+ },
+ {
+  "part": "C",
+  "at": 98.87,
+  "dur": 0.33,
+  "line": "L059",
+  "boundary": true,
+  "prev": "5 kez yasaklıyor",
+  "next": "ve insanlar her",
+  "line_text": "Önce vergi, sonra fincanlara el koyma, sonunda yasak. İsveç kahveyi tam beş kez yasaklıyor."
+ },
+ {
+  "part": "C",
+  "at": 102.48,
+  "dur": 0.41,
+  "line": "L060",
+  "boundary": false,
+  "prev": "içmeye devam ediyor",
+  "next": "1794 teki yasağı",
+  "line_text": "Ve insanlar her seferinde gizlice içmeye devam ediyor."
+ },
+ {
+  "part": "C",
+  "at": 109.45,
+  "dur": 1.16,
+  "line": "L061",
+  "boundary": true,
+  "prev": "öğreni bile düzenliyor",
+  "next": "bir de meşhur",
+  "line_text": "bin yedi yüz doksan dörtteki yasağa tepki olarak bazı İsveçliler kahve demlikleri için cenaze töreni bile düzenliyor."
+ },
+ {
+  "part": "C",
+  "at": 119.46,
+  "dur": 0.3,
+  "line": "L062",
+  "boundary": true,
+  "prev": "diğeri çay içecekmiş",
+  "next": "hikayeye göre önce",
+  "line_text": "Bir de meşhur hikâye var: Kral Üçüncü Gustav, idam mahkûmu ikiz kardeşlerle bir deney yaptırmış. Biri her gün kahve, diğeri çay içecekmiş."
+ },
+ {
+  "part": "C",
+  "at": 124.18,
+  "dur": 0.31,
+  "line": "L063",
+  "boundary": false,
+  "prev": "sonra kral öldü",
+  "next": "i kizler hala",
+  "line_text": "Hikâyeye göre önce deneyi izleyen doktorlar öldü, sonra kral öldü. İkizler hâlâ yaşıyordu."
+ },
+ {
+  "part": "C",
+  "at": 126.59,
+  "dur": 0.84,
+  "line": "L063",
+  "boundary": true,
+  "prev": "kizler hala yaşıyordu",
+  "next": "küçük bir sorun",
+  "line_text": "Hikâyeye göre önce deneyi izleyen doktorlar öldü, sonra kral öldü. İkizler hâlâ yaşıyordu."
+ },
+ {
+  "part": "C",
+  "at": 131.98,
+  "dur": 0.31,
+  "line": "L064",
+  "boundary": true,
+  "prev": "hiç yapılmamış olabilir",
+  "next": "kesin olan şu",
+  "line_text": "Küçük bir sorun var: Bazı tarihçilere göre bu deney hiç yapılmamış olabilir."
+ },
+ {
+  "part": "C",
+  "at": 133.12,
+  "dur": 0.31,
+  "line": "L065",
+  "boundary": false,
+  "prev": "kesin olan şu",
+  "next": "1823 de son",
+  "line_text": "Kesin olan şu: bin sekiz yüz yirmi üçte son yasak kalkıyor. Bugün İsveç, kişi başına en çok kahve içen ülkelerden biri."
+ },
+ {
+  "part": "C",
+  "at": 140.06,
+  "dur": 1.39,
+  "line": "L065",
+  "boundary": false,
+  "prev": "içen ülkelerden biri",
+  "next": "peki kahvehaneleriyle meşhur",
+  "line_text": "Kesin olan şu: bin sekiz yüz yirmi üçte son yasak kalkıyor. Bugün İsveç, kişi başına en çok kahve içen ülkelerden biri."
+ },
+ {
+  "part": "C",
+  "at": 150.5,
+  "dur": 0.54,
+  "line": "L067",
+  "boundary": false,
+  "prev": "çuval kahve bırakıyor",
+  "next": "kahraman casus koşiski",
+  "line_text": "Anlatılan hikâyeye göre Osmanlı ordusu bin altı yüz seksen üçte çekilirken çuval çuval kahve bırakıyor. Kahraman casus Kolschitzky de bunlarla ilk kahvehaneyi açıyor."
+ },
+ {
+  "part": "C",
+  "at": 154.9,
+  "dur": 0.35,
+  "line": "L067",
+  "boundary": true,
+  "prev": "ilk kahvehaneye açıyor",
+  "next": "güzel hikaye ama",
+  "line_text": "Anlatılan hikâyeye göre Osmanlı ordusu bin altı yüz seksen üçte çekilirken çuval çuval kahve bırakıyor. Kahraman casus Kolschitzky de bunlarla ilk kahvehaneyi açıyor."
+ },
+ {
+  "part": "C",
+  "at": 156.25,
+  "dur": 0.53,
+  "line": "L068",
+  "boundary": false,
+  "prev": "açıyor güzel hikaye",
+  "next": "ama büyük kısmı",
+  "line_text": "Güzel hikâye. Ama büyük kısmı yüz yıl sonra yazılmış."
+ },
+ {
+  "part": "C",
+  "at": 158.96,
+  "dur": 0.56,
+  "line": "L068",
+  "boundary": true,
+  "prev": "yıl sonra yazılmış",
+  "next": "kayıtlara göre vienna",
+  "line_text": "Güzel hikâye. Ama büyük kısmı yüz yıl sonra yazılmış."
+ },
+ {
+  "part": "C",
+  "at": 166.35,
+  "dur": 1.08,
+  "line": "L069",
+  "boundary": true,
+  "prev": "diodato ya verildi",
+  "next": "peki bütün bu",
+  "line_text": "Kayıtlara göre Viyana'nın ilk kahve izni bin altı yüz seksen beşte Ermeni tüccar Johannes Diodato'ya verildi."
+ },
+ {
+  "part": "C",
+  "at": 170.15,
+  "dur": 0.53,
+  "line": "L070",
+  "boundary": true,
+  "prev": "ortak noktası ne",
+  "next": "mekke de toplant",
+  "line_text": "Peki bütün bu yasakların ortak noktası ne?"
+ },
+ {
+  "part": "C",
+  "at": 173.72,
+  "dur": 0.36,
+  "line": "L071",
+  "boundary": false,
+  "prev": "da isyan korkusu",
+  "next": "londra da dedik",
+  "line_text": "Mekke'de toplantılar. İstanbul'da isyan korkusu. Londra'da dedikodu. Prusya'da para."
+ },
+ {
+  "part": "C",
+  "at": 175.12,
+  "dur": 0.33,
+  "line": "L071",
+  "boundary": false,
+  "prev": "londra da dedik",
+  "next": "prussia da hiç",
+  "line_text": "Mekke'de toplantılar. İstanbul'da isyan korkusu. Londra'da dedikodu. Prusya'da para."
+ },
+ {
+  "part": "C",
+  "at": 176.28,
+  "dur": 0.49,
+  "line": "L071",
+  "boundary": false,
+  "prev": "dedik prussia da",
+  "next": "hiç biri gerçekten",
+  "line_text": "Mekke'de toplantılar. İstanbul'da isyan korkusu. Londra'da dedikodu. Prusya'da para."
+ },
+ {
+  "part": "C",
+  "at": 180.31,
+  "dur": 0.65,
+  "line": "L072",
+  "boundary": true,
+  "prev": "siyasığıyla ilgili değildi",
+  "next": "kahvenin asıl suçu",
+  "line_text": "Hiçbiri gerçekten fincandaki o siyah sıvıyla ilgili değildi."
+ },
+ {
+  "part": "C",
+  "at": 187.37,
+  "dur": 0.48,
+  "line": "L073",
+  "boundary": true,
+  "prev": "ve uyanık tutmasıydı",
+  "next": "ve bunu yasaklamaya",
+  "line_text": "Kahvenin asıl suçu insanları bir masa etrafında toplaması, konuşturması ve uyanık tutmasıydı."
+ },
+ {
+  "part": "C",
+  "at": 190.47,
+  "dur": 0.61,
+  "line": "L074",
+  "boundary": true,
+  "prev": "çalışan herkes kaybetti",
+  "next": "yani bir dahaki",
+  "line_text": "Ve bunu yasaklamaya çalışan herkes kaybetti."
+ },
+ {
+  "part": "C",
+  "at": 196.41,
+  "dur": 0.4,
+  "line": "L075",
+  "boundary": false,
+  "prev": "sadece şunu söyle",
+  "next": "sultanlar denedi krallar",
+  "line_text": "Yani bir dahaki sefere kahveni içerken biri sana ters ters bakarsa, sadece şunu söyle: Sultanlar denedi. Krallar denedi. Olmadı."
+ },
+ {
+  "part": "C",
+  "at": 197.83,
+  "dur": 0.3,
+  "line": "L075",
+  "boundary": false,
+  "prev": "söyle sultanlar denedi",
+  "next": "krallar denedi olmadı",
+  "line_text": "Yani bir dahaki sefere kahveni içerken biri sana ters ters bakarsa, sadece şunu söyle: Sultanlar denedi. Krallar denedi. Olmadı."
+ }
+]

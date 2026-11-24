@@ -29,6 +29,14 @@ def transcribe(wav, rec):
         if s - prev > 0.2: segs.append((prev, s))
         prev = e
     if total - prev > 0.2: segs.append((prev, total))
+    # Whisper 30 sn'den uzun parçayı keser: uzun parçaları en sessiz noktadan böl
+    def split(s, e):
+        if e - s <= 24: return [(s, e)]
+        lo, hi = int((s + 10) * sr), int((s + 22) * sr); w = int(0.05 * sr)
+        best = min(range(lo, hi, w), key=lambda i: float(np.abs(a[i:i + w]).mean()))
+        c = best / sr
+        return [(s, c)] + split(c, e)
+    segs = [x for s0, e0 in segs for x in split(s0, e0)]
     words = []
     for s, e in segs:
         st = rec.create_stream(); st.accept_waveform(sr, a[int(s * sr):int(e * sr)]); rec.decode_stream(st)

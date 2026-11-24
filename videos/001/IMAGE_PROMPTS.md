@@ -8,7 +8,7 @@ Dosya adı kuralı: `{video}_{Sxxx}_v{K}.png` → `videos/001/images/`
 - **Dosya:** `001_S001_v1.png`
 - **Anlatım (L001):** Elinde bir fincan kahve varsa, dikkatli tut.
 - **Tahmini süre:** 3.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `images/001_S061_vK.png (süreklilik)`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`
 - **Metin katmanı (motor):** —
 
 ```
@@ -87,7 +87,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S004_v1.png`
 - **Anlatım (L004):** Ve her seferinde kaybeden taraf yasaklayan oldu.
 - **Tahmini süre:** 3.5 sn (estimate)
-- **Referanslar:** `character-references/boards/01_genel_bakis.png`, `images/001_S009_vK.png (süreklilik)`, `images/001_S024_vK.png (süreklilik)`, `images/001_S038_vK.png (süreklilik)`, `images/001_S043_vK.png (süreklilik)`, `images/001_S049_vK.png (süreklilik)`
+- **Referanslar:** `character-references/boards/01_genel_bakis.png`
 - **Metin katmanı (motor):** —
 
 ```
@@ -194,7 +194,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S008_v1.png`
 - **Anlatım (L009):** Kısa sürede şehirde kahve dükkânları açılıyor. İnsanlar toplanıyor, sohbet ediyor, şarkı söylüyor.
 - **Tahmini süre:** 7.1 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S006_vK.png (süreklilik)`, `images/001_S015_vK.png (süreklilik)`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S006_vK.png (süreklilik)`
 - **Metin katmanı (motor):** —
 
 ```
@@ -500,7 +500,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S020_v1.png`
 - **Anlatım (L024):** Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan, tavla oynayan, şiir yazan…
 - **Tahmini süre:** 6.8 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S021_vK.png (süreklilik)`, `images/001_S026_vK.png (süreklilik)`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`
 - **Metin katmanı (motor):** —
 
 ```
@@ -614,7 +614,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S024_v1.png`
 - **Anlatım (L028):** Sonra sahneye Dördüncü Murad çıkıyor.
 - **Tahmini süre:** 2.8 sn (estimate)
-- **Referanslar:** `images/001_S025_vK.png (süreklilik)`, `images/001_S028_vK.png (süreklilik)`, `images/001_S030_vK.png (süreklilik)`
+- **Referanslar:** —
 - **Metin katmanı (motor):** —
 
 ```
@@ -919,7 +919,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S037_v1.png`
 - **Anlatım (L043):** Bir peni ver, kahveni al, istediğin kadar otur ve tartış. Bu yüzden onlara peni üniversiteleri deniyor.
 - **Tahmini süre:** 7.5 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `images/001_S040_vK.png (süreklilik)`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`
 - **Metin katmanı (motor):** —
 
 ```
@@ -948,7 +948,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S038_v1.png`
 - **Anlatım (L044):** Kral İkinci Charles bundan pek hoşlanmıyor.
 - **Tahmini süre:** 2.8 sn (estimate)
-- **Referanslar:** `images/001_S039_vK.png (süreklilik)`, `images/001_S042_vK.png (süreklilik)`
+- **Referanslar:** —
 - **Metin katmanı (motor):** —
 
 ```
@@ -1085,7 +1085,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S043_v1.png`
 - **Anlatım (L050):** Yüz yıl sonra Prusya'da Büyük Friedrich'in derdi bambaşka: Para.
 - **Tahmini süre:** 4.2 sn (estimate)
-- **Referanslar:** `images/001_S044_vK.png (süreklilik)`, `images/001_S045_vK.png (süreklilik)`
+- **Referanslar:** —
 - **Metin katmanı (motor):** PRUSYA · 1777
 
 ```
@@ -1194,7 +1194,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S047_v1.png`
 - **Anlatım (L055, L056):** Ve sokaklara özel bir birlik çıkarıyor: Yaklaşık dört yüz savaş gazisi. Görevleri, gizlice kavrulan kahvenin kokusunu almak. Halk onlara kahve koklayıcılar diyor.
 - **Tahmini süre:** 11.3 sn (estimate)
-- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `character-references/fasulye/05_komik_tepkiler.png`, `images/001_S048_vK.png (süreklilik)`
+- **Referanslar:** `character-references/fasulye/01_donus_sayfasi.png`, `character-references/fasulye/02_ifadeler.png`, `character-references/fasulye/04_kostum_efekt.png`, `character-references/fasulye/05_komik_tepkiler.png`
 - **Metin katmanı (motor):** —
 
 ```
@@ -1254,7 +1254,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S049_v1.png`
 - **Anlatım (L058, L059):** Ama inatta birincilik İsveç'in. Önce vergi, sonra fincanlara el koyma, sonunda yasak. İsveç kahveyi tam beş kez yasaklıyor.
 - **Tahmini süre:** 8.8 sn (estimate)
-- **Referanslar:** `images/001_S052_vK.png (süreklilik)`, `images/001_S053_vK.png (süreklilik)`
+- **Referanslar:** —
 - **Metin katmanı (motor):** İSVEÇ · 1756–1823
 
 ```
@@ -1340,7 +1340,7 @@ DO NOT: no text, no letters, no numbers, no captions, no signage writing, no wat
 - **Dosya:** `001_S052_v1.png`
 - **Anlatım (L062):** Bir de meşhur hikâye var: Kral Üçüncü Gustav, idam mahkûmu ikiz kardeşlerle bir deney yaptırmış. Biri her gün kahve, diğeri çay içecekmiş.
 - **Tahmini süre:** 9.0 sn (estimate)
-- **Referanslar:** `images/001_S053_vK.png (süreklilik)`
+- **Referanslar:** —
 - **Metin katmanı (motor):** —
 
 ```

@@ -72,6 +72,7 @@ def main():
         narr = " ".join(script.get(l, "") for l in s["lines"])
         import re as _re
         linked = sorted(set(_re.findall(r"S\d{3}", s["continuity"] + " " + s["background"] + " " + s["action"])) - {s["id"]})
+        linked = [x for x in linked if x < s["id"]]
         cont_refs = [f"images/{image_filename(vid, x).replace('_v1', '_vK')} (süreklilik)" for x in linked]
         L += [f"## {s['id']} — {s['title']}",
               f"- **Dosya:** `{image_filename(vid, s['id'])}`",

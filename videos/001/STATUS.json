@@ -8,7 +8,7 @@
   "scene_plan": "done",
   "image_prompts": "done",
   "images": "waiting",
-  "voice": "not_started",
+  "voice": "test: L001–L019 ElevenLabs 'Yasli adam' (eleven_multilingual_v2), kullanıcı onayı bekleniyor",
   "timing": "estimate",
   "render": "animatic_only",
   "title_thumbnail": "draft",
@@ -160,6 +160,10 @@
  "voice": {
   "timing_source": "estimate",
   "audio_files": 0,
-  "total_sec": 402.8
+  "total_sec": 402.8,
+  "provider": "elevenlabs",
+  "voice_id": "x6MH8NM5Cgf2UNidRBXE",
+  "model_id": "eleven_multilingual_v2",
+  "test_flow": "Vg3T7zjGRrpRmXUt7Vx9"
  }
 }

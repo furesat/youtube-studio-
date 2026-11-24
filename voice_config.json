@@ -1,8 +1,32 @@
 {
  "_not": "Sağlayıcıyı değiştirmek için yalnızca 'provider' alanını değiştir. Kurulu değilse sistem otomatik 'estimate'e düşer.",
  "languages": {
-  "tr": {"provider": "estimate", "voice": {"rate_sps": {"tr": 5.6}, "write_silence": true}},
-  "de": {"provider": "estimate", "voice": {"rate_sps": {"de": 5.0}, "write_silence": true}},
-  "en": {"provider": "estimate", "voice": {"rate_sps": {"en": 4.6}, "write_silence": true}}
+  "tr": {
+   "provider": "elevenlabs",
+   "voice": {
+    "voice_id": "x6MH8NM5Cgf2UNidRBXE",
+    "voice_name": "Yasli adam (klon, tr)",
+    "model_id": "eleven_multilingual_v2"
+   },
+   "fallback": "estimate"
+  },
+  "de": {
+   "provider": "estimate",
+   "voice": {
+    "rate_sps": {
+     "de": 5.0
+    },
+    "write_silence": true
+   }
+  },
+  "en": {
+   "provider": "estimate",
+   "voice": {
+    "rate_sps": {
+     "en": 4.6
+    },
+    "write_silence": true
+   }
+  }
  }
 }

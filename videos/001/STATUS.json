@@ -8,7 +8,7 @@
   "scene_plan": "done",
   "image_prompts": "done",
   "images": "waiting",
-  "voice": "v3 üretildi: 'Yasli adam 2', eleven_v4, aynı duygu/duraklama promptları (A/B/C). Kullanıcı v2 ile karşılaştırıp seçecek",
+  "voice": "QA yapıldı (Yasli Adam 3, A bölümü): promptlar v3'e güncellendi, sıradaki üretim bekliyor",
   "timing": "estimate",
   "render": "animatic_only",
   "title_thumbnail": "draft",
@@ -178,6 +178,11 @@
   "takes": {
    "v2_yasli_adam": "x6MH8NM5Cgf2UNidRBXE",
    "v3_yasli_adam_2": "0lx1MjCizLSqpSJueqVC"
-  }
+  },
+  "voice_id_candidate": "G1RGt5uXOa6xrBl1qxzt",
+  "voice_name_candidate": "Yasli Adam 3",
+  "qa": "VOICE_QA_tr.md",
+  "pauses": "PAUSES_tr.json",
+  "measured_speed_factor": 1.075
  }
 }

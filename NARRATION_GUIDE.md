@@ -29,3 +29,11 @@ Kaynak analiz: `reference-analysis/AUDIO_DNA.md`. Referanstan **teknikler** alı
 ## Çok dillilik
 - DE/EN uyarlama birebir çeviri değildir. Espriler yerelleştirilir, süre ±%10 içinde tutulur.
 - Almanca metin genelde %10–15 uzun çıkar. Sahne süreleri sesten yeniden hesaplanır.
+
+## ElevenLabs v4 ses promptu kuralları (001 testinden, bkz. videos/001/VOICE_QA_tr.md)
+- `[pause, N seconds]` **uygulanmıyor** (ölçülen boşluk en fazla ~0,75 sn). Kesin duraklama `PAUSES_<lang>.json` ile kurguda eklenir. Promptta yalnızca `[pause]` / `[long pause]`.
+- `…` ve `[pause]` az kullanılır (bölüm başına ≤3). Fazlası kesik, robotik ritim yapar. Listeler virgülle akar.
+- `[whispers]` ve `[softly]` ~10 dB kısık çıkıyor. Yerine `[lower voice]` / `[conspiratorial]` kullanılır.
+- Etiket yalnızca duygu değişince yazılır. Her cümleye etiket koymak tonu sıfırlar.
+- Yanlış okunan özel isimler IPA ile yazılır: Prusya `/ˈpɾusja/`, Kolschitzky `/kɔlˈʃɪtski/`.
+- Tek kelimelik cümlelerden kaçınılır ("Mekke."). Bunun yerine "Yer: Mekke." gibi doğal bir cümle kurulur.

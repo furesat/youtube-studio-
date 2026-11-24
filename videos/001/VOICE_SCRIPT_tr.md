@@ -6,7 +6,7 @@
 
 ## Notasyon
 - `[warmly]`, `[mischievously]` … → duygu/ton etiketi. Bir sonraki etikete kadar geçerli.
-- `[pause, 1.5 seconds]` → **açık bekleme süresi.** Tablodaki saniye, kurguda sahne geçişine denk gelir.
+- Bekleme süreleri (saniye) aşağıdaki tabloda ve `PAUSES_tr.json`da. **TTS promptunda saniye yazılmaz** (v4 uygulamıyor); kurguda sessizlik olarak eklenir. Promptta yalnızca `[pause]` / `[long pause]`.
 - `…` kısa düşünme, `—` vurgu öncesi nefes. BÜYÜK HARF = tek kelime vurgu.
 
 ## Duraklama haritası (sahne geçişleriyle)

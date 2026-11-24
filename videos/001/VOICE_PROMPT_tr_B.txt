@@ -1,22 +1,10 @@
-[storytelling] Kırk yıl sonra kahve İstanbul'a ulaşıyor. [pause, 1 second]
-[warmly] Tarihçi Peçevi'ye göre Halep'ten Hakem, Şam'dan Şems adında iki adam Tahtakale'de birer dükkân açıyor.
-[mischievously] Fikir basit: Kahve sat, insanları oturt.
-[amused] Sonuç: [pause, 0.5 seconds] [happy] Şehir buna bayılıyor.
-[lively] Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan, tavla oynayan, şiir yazan…
-[whispers] [mischievously] Ve tabii ki herkes devlet hakkında konuşuyor.
-[serious] Bazı âlimler itiraz ediyor: İnsanlar ibadeti bırakıp kahvehaneye koşuyor.
-[warmly] Ama kahvenin de güçlü dostları var. Şeyhülislam Bostanzade Mehmed Efendi kahveye yeşil ışık yakıyor. [pause, 1.2 seconds]
-[deep voice] [dramatically] Sonra sahneye… Dördüncü Murad çıkıyor. [pause, 1 second]
-[serious] Murad'ın kahvehanelere güvenmemek için ciddi bir nedeni var.
-[sad] [softly] Ağabeyi Genç Osman, bin altı yüz yirmi ikide isyan eden yeniçeriler tarafından öldürülmüş.
-[curious] Peki yeniçerilerin en sevdiği buluşma yeri neresi? [pause, 0.4 seconds] [mischievously] Tahmin et. [pause, 1.2 seconds]
-[serious] Bin altı yüz otuz üçte İstanbul'da büyük bir yangın çıkıyor. Şehrin beşte biri kül oluyor.
-[cold] Murad fırsatı kaçırmıyor. Yangın tehlikesi gerekçesiyle kahvehaneleri kapattırıyor. [pause, 0.3 seconds] Tütünü de yasaklıyor.
-[ominous] Cezalar ağır. Yasağı çiğneyen… ölümle bile cezalandırılabiliyor. [pause, 0.8 seconds]
-[whispers] Anlatılana göre Murad geceleri kılık değiştirip sokaklarda dolaşıyor, suçluları bizzat yakalıyordu.
-[thoughtful] Bunun ne kadarı gerçek, tartışmalı. [dry] Ama korkutmak için doğru olması gerekmiyordu. [pause, 1 second]
-[curious] İşin ilginç yanı: Murad kahveyi değil, kahvehaneyi hedef alıyor. [amused] Evde içmek serbest.
-[warmly] Yani sorun yine fincan değil. [pause, 0.4 seconds] Yine… masa. [pause, 0.8 seconds]
-[melancholic] Yasak tutmuş gibi görünüyor. Murad öldükten on yıl sonra bile Kâtip Çelebi, kahvehanelerin cahilin gönlü kadar ıssız olduğunu yazıyor.
-[hopeful] Ama bin altı yüz kırk dokuzda tütün yasağı kalkıyor ve kahvehaneler birer birer yeniden açılıyor.
-[warmly] [chuckles] Masa geri geldi. [pause, 2 seconds]
+[storytelling] Kırk yıl sonra kahve İstanbul'a ulaşıyor. [pause] Tarihçi Peçevi'ye göre Halep'ten Hakem, Şam'dan Şems adında iki adam Tahtakale'de birer dükkân açıyor. [mischievously] Fikir basit: Kahve sat, insanları oturt. Sonuç: Şehir buna bayılıyor.
+[warmly] Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan, tavla oynayan, şiir yazan. [conspiratorial] Ve tabii ki herkes devlet hakkında konuşuyor.
+[storytelling] Bazı âlimler itiraz ediyor: İnsanlar ibadeti bırakıp kahvehaneye koşuyor. Ama kahvenin de güçlü dostları var. Şeyhülislam Bostanzade Mehmed Efendi kahveye yeşil ışık yakıyor. [long pause]
+[serious] [deep voice] Sonra sahneye Dördüncü Murad çıkıyor. [pause] Murad'ın kahvehanelere güvenmemek için ciddi bir nedeni var. Ağabeyi Genç Osman, bin altı yüz yirmi ikide isyan eden yeniçeriler tarafından öldürülmüş.
+[curious] Peki yeniçerilerin en sevdiği buluşma yeri neresi? [mischievously] Tahmin et. [long pause]
+[serious] Bin altı yüz otuz üçte İstanbul'da büyük bir yangın çıkıyor. Şehrin beşte biri kül oluyor. Murad fırsatı kaçırmıyor. Yangın tehlikesi gerekçesiyle kahvehaneleri kapattırıyor, tütünü de yasaklıyor. Cezalar ağır. Yasağı çiğneyen, ölümle bile cezalandırılabiliyor. [pause]
+[lower voice] Anlatılana göre Murad geceleri kılık değiştirip sokaklarda dolaşıyor, suçluları bizzat yakalıyordu.
+[thoughtful] Bunun ne kadarı gerçek, tartışmalı. [dry] Ama korkutmak için doğru olması gerekmiyordu. [pause]
+[curious] İşin ilginç yanı: Murad kahveyi değil, kahvehaneyi hedef alıyor. Evde içmek serbest. [warmly] Yani sorun yine fincan değil. Yine masa. [pause]
+[storytelling] Yasak tutmuş gibi görünüyor. Murad öldükten on yıl sonra bile Kâtip Çelebi, kahvehanelerin cahilin gönlü kadar ıssız olduğunu yazıyor. [hopeful] Ama bin altı yüz kırk dokuzda tütün yasağı kalkıyor ve kahvehaneler birer birer yeniden açılıyor. [warmly] Masa geri geldi.

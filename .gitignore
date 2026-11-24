@@ -1,0 +1,23 @@
+# Büyük / türetilmiş dosyalar — GitHub'a yüklenmez
+*.mp4
+*.mov
+*.mkv
+*.wav
+*.aiff
+renders/
+out/
+layers/
+**/audio/raw/
+__pycache__/
+*.pyc
+.DS_Store
+# Referans kanalın orijinal videosu ve kareleri asla yüklenmez
+reference-analysis/source/
+reference_frames/
+Your*Ink*Explainer*
+# Gizli bilgiler
+.env
+.env.*
+*.key
+*secret*
+voice_secrets.json

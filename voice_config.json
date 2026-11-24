@@ -1,0 +1,8 @@
+{
+ "_not": "Sağlayıcıyı değiştirmek için yalnızca 'provider' alanını değiştir. Kurulu değilse sistem otomatik 'estimate'e düşer.",
+ "languages": {
+  "tr": {"provider": "estimate", "voice": {"rate_sps": {"tr": 5.6}, "write_silence": true}},
+  "de": {"provider": "estimate", "voice": {"rate_sps": {"de": 5.0}, "write_silence": true}},
+  "en": {"provider": "estimate", "voice": {"rate_sps": {"en": 4.6}, "write_silence": true}}
+ }
+}

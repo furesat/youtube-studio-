@@ -1,0 +1,31 @@
+{
+ "title": {"tr": "Tarladan Önce Tapınak? — Göbeklitepe", "de": "Der Tempel vor dem Feld? — Göbekli Tepe", "en": "A Temple Before Farms? — Göbekli Tepe"},
+ "lines": [
+  {"id":"L01","style":"emphasis","tr":"Dünyanın en eski anıtsal yapılarından birini çiftçiler yapmadı.","de":"Eines der ältesten Monumente der Welt wurde nicht von Bauern gebaut.","en":"One of the oldest monuments in the world wasn't built by farmers."},
+  {"id":"L02","style":"joke","tr":"Çünkü henüz çiftçi yoktu.","de":"Denn es gab noch keine Bauern.","en":"Because there were no farmers yet."},
+  {"id":"L03","style":"neutral","tr":"Milattan önce 9500 civarı. Şanlıurfa yakınlarında bir tepe: Göbeklitepe.","de":"Um 9500 vor Christus. Ein Hügel bei Şanlıurfa: Göbekli Tepe.","en":"Around 9500 BCE. A hill near Şanlıurfa: Göbekli Tepe."},
+  {"id":"L04","style":"neutral","tr":"Avcı-toplayıcılar buraya beş metreyi aşan taş sütunlar dikti.","de":"Jäger und Sammler stellten hier Steinpfeiler von über fünf Metern auf.","en":"Hunter-gatherers raised stone pillars here over five metres tall."},
+  {"id":"L05","style":"emphasis","tr":"Tekerlek yok. Metal yok. Yazı yok.","de":"Kein Rad. Kein Metall. Keine Schrift.","en":"No wheel. No metal. No writing."},
+  {"id":"L06","style":"joke","tr":"Muhtemelen iş güvenliği de yok.","de":"Vermutlich auch kein Arbeitsschutz.","en":"Probably no health and safety either."},
+  {"id":"L07","style":"neutral","tr":"Taşlara tilki, akbaba ve yılan oydular.","de":"In die Steine meißelten sie Füchse, Geier und Schlangen.","en":"They carved foxes, vultures and snakes into the stone."},
+  {"id":"L08","style":"joke","tr":"Ocakta yedi metrelik bir sütun yarım kaldı. Belli ki biri 'yarın bitiririz' dedi.","de":"Im Steinbruch blieb ein sieben Meter langer Pfeiler unfertig. Offenbar sagte jemand: 'Machen wir morgen fertig.'","en":"In the quarry, a seven-metre pillar was left unfinished. Clearly someone said, 'We'll finish it tomorrow.'"},
+  {"id":"L09","style":"emphasis","tr":"Stonehenge'den kabaca altı bin yıl önce.","de":"Rund sechstausend Jahre vor Stonehenge.","en":"Roughly six thousand years before Stonehenge."},
+  {"id":"L10","style":"neutral","tr":"1963'te araştırmacılar buraya baktı; kırık taşları mezar taşı sanıp geçti.","de":"1963 sahen Forscher hierher und hielten die Steine für Grabsteine.","en":"In 1963, researchers looked here and took the broken slabs for gravestones."},
+  {"id":"L11","style":"emphasis","tr":"1994'te Klaus Schmidt, o mezar taşlarının sütun olduğunu fark etti.","de":"1994 erkannte Klaus Schmidt: Diese Grabsteine waren Pfeiler.","en":"In 1994, Klaus Schmidt realised those gravestones were pillars."},
+  {"id":"L12","style":"neutral","tr":"Ona göre burası dünyanın ilk tapınağıydı.","de":"Für ihn war es der erste Tempel der Welt.","en":"To him, this was the world's first temple."},
+  {"id":"L13","style":"neutral","tr":"Yeni kazılar ise evler ve su tesisatları buldu.","de":"Neuere Grabungen fanden jedoch Häuser und Wasseranlagen.","en":"Newer excavations, however, found houses and water systems."},
+  {"id":"L14","style":"joke","tr":"Yani belki bir yerleşimdi. Çok iddialı bir yerleşim.","de":"Vielleicht also eine Siedlung. Eine sehr ambitionierte Siedlung.","en":"So maybe it was a settlement. A very ambitious settlement."},
+  {"id":"L15","style":"neutral","tr":"Üstelik tepenin yüzde beşinden azı kazıldı.","de":"Und bisher wurden weniger als fünf Prozent ausgegraben.","en":"And less than five percent of it has been excavated."},
+  {"id":"L16","style":"warm","tr":"Acelesi yok. On bir bin yıldır bekliyor.","de":"Er hat keine Eile. Er wartet seit elftausend Jahren.","en":"It's in no hurry. It has been waiting for eleven thousand years."}
+ ],
+ "sources": [
+  "DAI Tepe Telegrams – Part 1: A (Re-)Discovery (1994-1996): https://www.dainst.blog/?p=13279",
+  "DAI Tepe Telegrams – ~7 m unfinished pillar in quarry: https://dainst.blog/the-tepe-telegrams/?p=515",
+  "Smithsonian Magazine – Gobekli Tepe: The World's First Temple?: https://www.smithsonianmag.com/history/gobekli-tepe-the-worlds-first-temple-83613665/",
+  "UNESCO World Heritage Committee Decision 42 COM 8B.34 (2018): https://whc.unesco.org/en/decisions/7148",
+  "Wikipedia – Göbekli Tepe (settlement interpretation, <5% excavated as of 2021): https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
+  "Popular Archaeology – earliest structures 9500–9000 BCE: https://popular-archaeology.com/article/echo-from-the-past-how-gobekli-tepe-is-reshaping-our-understanding-of-the-neolithic-2/",
+  "Ancient History Sites – pillars up to ~6 m / 10 t: https://www.ancient-history-sites.com/?p=230114",
+  "ScienceBlog – ~6,000 years before Stonehenge: https://scienceblog.com/?p=594319"
+ ]
+}

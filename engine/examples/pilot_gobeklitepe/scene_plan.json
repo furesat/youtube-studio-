@@ -1,0 +1,1286 @@
+{
+ "title": {
+  "tr": "Tarladan Önce Tapınak? — Göbeklitepe",
+  "de": "Der Tempel vor dem Feld? — Göbekli Tepe",
+  "en": "A Temple Before Farms? — Göbekli Tepe"
+ },
+ "fps": 30,
+ "resolution": [
+  1920,
+  1080
+ ],
+ "timing_note": "GEÇİCİ: voice 'estimate' sağlayıcısı; nihai ses senkronu değildir.",
+ "shots": [
+  {
+   "id": "S01",
+   "line": "L01",
+   "weight": 1.0,
+   "note": "Beyaz kart: kanca başlığı",
+   "art": "layers/art/S01.png",
+   "text": {
+    "tr": "layers/text_tr/S01_txt.png",
+    "de": "layers/text_de/S01_txt.png",
+    "en": "layers/text_en/S01_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_title",
+     "x": 960,
+     "y": 580,
+     "size": 92,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S02",
+   "line": "L01",
+   "weight": 1.0,
+   "note": "Tepe; anlatıcı gösteriyor",
+   "art": "layers/art/S02.png",
+   "text": {
+    "tr": "layers/text_tr/S02_txt.png",
+    "de": "layers/text_de/S02_txt.png",
+    "en": "layers/text_en/S02_txt.png"
+   },
+   "text_items": []
+  },
+  {
+   "id": "S03a",
+   "line": "L02",
+   "weight": 0.5,
+   "note": "Buğday",
+   "art": "layers/art/S03a.png",
+   "text": {
+    "tr": "layers/text_tr/S03a_txt.png",
+    "de": "layers/text_de/S03a_txt.png",
+    "en": "layers/text_en/S03a_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_nofarm",
+     "x": 960,
+     "y": 960,
+     "size": 76,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S03b",
+   "line": "L02",
+   "weight": 0.6,
+   "note": "Buğday + kırmızı X (durum değişimi)",
+   "art": "layers/art/S03b.png",
+   "text": {
+    "tr": "layers/text_tr/S03b_txt.png",
+    "de": "layers/text_de/S03b_txt.png",
+    "en": "layers/text_en/S03b_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_nofarm",
+     "x": 960,
+     "y": 960,
+     "size": 76,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S04",
+   "line": "L03",
+   "weight": 1.0,
+   "note": "Zaman çizgisi",
+   "art": "layers/art/S04.png",
+   "text": {
+    "tr": "layers/text_tr/S04_txt.png",
+    "de": "layers/text_de/S04_txt.png",
+    "en": "layers/text_en/S04_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_bce",
+     "x": 380,
+     "y": 430,
+     "size": 70,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_today",
+     "x": 1640,
+     "y": 720,
+     "size": 48,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S05",
+   "line": "L03",
+   "weight": 1.2,
+   "note": "Mekân etiketi",
+   "art": "layers/art/S05.png",
+   "text": {
+    "tr": "layers/text_tr/S05_txt.png",
+    "de": "layers/text_de/S05_txt.png",
+    "en": "layers/text_en/S05_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_place",
+     "x": 960,
+     "y": 150,
+     "size": 70,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S06",
+   "line": "L04",
+   "weight": 1.2,
+   "note": "Sütunu itiyorlar (komik zorlanma)",
+   "art": "layers/art/S06.png",
+   "text": {
+    "tr": "layers/text_tr/S06_txt.png",
+    "de": "layers/text_de/S06_txt.png",
+    "en": "layers/text_en/S06_txt.png"
+   },
+   "text_items": []
+  },
+  {
+   "id": "S07",
+   "line": "L04",
+   "weight": 1.0,
+   "note": "Ölçek karşılaştırması",
+   "art": "layers/art/S07.png",
+   "text": {
+    "tr": "layers/text_tr/S07_txt.png",
+    "de": "layers/text_de/S07_txt.png",
+    "en": "layers/text_en/S07_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_5m",
+     "x": 1530,
+     "y": 590,
+     "size": 90,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S08a",
+   "line": "L05",
+   "weight": 1.0,
+   "note": "X 1",
+   "art": "layers/art/S08a.png",
+   "text": {
+    "tr": "layers/text_tr/S08a_txt.png",
+    "de": "layers/text_de/S08a_txt.png",
+    "en": "layers/text_en/S08a_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_wheel",
+     "x": 420,
+     "y": 820,
+     "size": 54,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S08b",
+   "line": "L05",
+   "weight": 1.0,
+   "note": "X 2",
+   "art": "layers/art/S08b.png",
+   "text": {
+    "tr": "layers/text_tr/S08b_txt.png",
+    "de": "layers/text_de/S08b_txt.png",
+    "en": "layers/text_en/S08b_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_wheel",
+     "x": 420,
+     "y": 820,
+     "size": 54,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_metal",
+     "x": 960,
+     "y": 820,
+     "size": 54,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S08c",
+   "line": "L05",
+   "weight": 1.1,
+   "note": "X 3",
+   "art": "layers/art/S08c.png",
+   "text": {
+    "tr": "layers/text_tr/S08c_txt.png",
+    "de": "layers/text_de/S08c_txt.png",
+    "en": "layers/text_en/S08c_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_wheel",
+     "x": 420,
+     "y": 820,
+     "size": 54,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_metal",
+     "x": 960,
+     "y": 820,
+     "size": 54,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_write",
+     "x": 1500,
+     "y": 820,
+     "size": 54,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S09",
+   "line": "L06",
+   "weight": 1.0,
+   "note": "Sallanan sütun + baret",
+   "art": "layers/art/S09.png",
+   "text": {
+    "tr": "layers/text_tr/S09_txt.png",
+    "de": "layers/text_de/S09_txt.png",
+    "en": "layers/text_en/S09_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_safety",
+     "x": 960,
+     "y": 140,
+     "size": 72,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S10a",
+   "line": "L07",
+   "weight": 0.9,
+   "note": "Kabartma 1",
+   "art": "layers/art/S10a.png",
+   "text": {
+    "tr": "layers/text_tr/S10a_txt.png",
+    "de": "layers/text_de/S10a_txt.png",
+    "en": "layers/text_en/S10a_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_fox",
+     "x": 520,
+     "y": 760,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S10b",
+   "line": "L07",
+   "weight": 0.9,
+   "note": "Kabartma 2",
+   "art": "layers/art/S10b.png",
+   "text": {
+    "tr": "layers/text_tr/S10b_txt.png",
+    "de": "layers/text_de/S10b_txt.png",
+    "en": "layers/text_en/S10b_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_fox",
+     "x": 520,
+     "y": 760,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_vulture",
+     "x": 1380,
+     "y": 640,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S10c",
+   "line": "L07",
+   "weight": 1.0,
+   "note": "Kabartma 3",
+   "art": "layers/art/S10c.png",
+   "text": {
+    "tr": "layers/text_tr/S10c_txt.png",
+    "de": "layers/text_de/S10c_txt.png",
+    "en": "layers/text_en/S10c_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_fox",
+     "x": 520,
+     "y": 760,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_vulture",
+     "x": 1380,
+     "y": 640,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_snake",
+     "x": 1000,
+     "y": 1010,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S11",
+   "line": "L08",
+   "weight": 1.0,
+   "note": "Ocakta yarım sütun",
+   "art": "layers/art/S11.png",
+   "text": {
+    "tr": "layers/text_tr/S11_txt.png",
+    "de": "layers/text_de/S11_txt.png",
+    "en": "layers/text_en/S11_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_7m",
+     "x": 990,
+     "y": 640,
+     "size": 70,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S12",
+   "line": "L08",
+   "weight": 1.4,
+   "note": "Uyuyan işçi: 'yarın'",
+   "art": "layers/art/S12.png",
+   "text": {
+    "tr": "layers/text_tr/S12_txt.png",
+    "de": "layers/text_de/S12_txt.png",
+    "en": "layers/text_en/S12_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_tomorrow",
+     "x": 960,
+     "y": 1010,
+     "size": 66,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S13",
+   "line": "L09",
+   "weight": 1.0,
+   "note": "Zaman çizgisi: 6.000 yıl",
+   "art": "layers/art/S13.png",
+   "text": {
+    "tr": "layers/text_tr/S13_txt.png",
+    "de": "layers/text_de/S13_txt.png",
+    "en": "layers/text_en/S13_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_gt",
+     "x": 300,
+     "y": 220,
+     "size": 48,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_bce",
+     "x": 300,
+     "y": 720,
+     "size": 42,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_stone",
+     "x": 1060,
+     "y": 410,
+     "size": 42,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_stone_d",
+     "x": 1060,
+     "y": 720,
+     "size": 42,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_today",
+     "x": 1720,
+     "y": 720,
+     "size": 42,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_6000",
+     "x": 680,
+     "y": 870,
+     "size": 64,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S14a",
+   "line": "L10",
+   "weight": 1.4,
+   "note": "1963: mezar taşı sandılar",
+   "art": "layers/art/S14a.png",
+   "text": {
+    "tr": "layers/text_tr/S14a_txt.png",
+    "de": "layers/text_de/S14a_txt.png",
+    "en": "layers/text_en/S14a_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_1963",
+     "x": 160,
+     "y": 150,
+     "size": 80,
+     "col": "#B83A2B",
+     "anchor": "start",
+     "wt": 800
+    },
+    {
+     "key": "t_grave",
+     "x": 1300,
+     "y": 170,
+     "size": 44,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S14b",
+   "line": "L10",
+   "weight": 1.0,
+   "note": "…ve geçip gittiler (arkadan)",
+   "art": "layers/art/S14b.png",
+   "text": {
+    "tr": "layers/text_tr/S14b_txt.png",
+    "de": "layers/text_de/S14b_txt.png",
+    "en": "layers/text_en/S14b_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_1963",
+     "x": 160,
+     "y": 150,
+     "size": 80,
+     "col": "#B83A2B",
+     "anchor": "start",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S15",
+   "line": "L11",
+   "weight": 1.0,
+   "note": "1994: fark ediş",
+   "art": "layers/art/S15.png",
+   "text": {
+    "tr": "layers/text_tr/S15_txt.png",
+    "de": "layers/text_de/S15_txt.png",
+    "en": "layers/text_en/S15_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_1994",
+     "x": 160,
+     "y": 150,
+     "size": 80,
+     "col": "#B83A2B",
+     "anchor": "start",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S16a",
+   "line": "L11",
+   "weight": 0.6,
+   "note": "Mezar taşı",
+   "art": "layers/art/S16a.png",
+   "text": {
+    "tr": "layers/text_tr/S16a_txt.png",
+    "de": "layers/text_de/S16a_txt.png",
+    "en": "layers/text_en/S16a_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_grave",
+     "x": 560,
+     "y": 920,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S16b",
+   "line": "L11",
+   "weight": 0.8,
+   "note": "→ sütun",
+   "art": "layers/art/S16b.png",
+   "text": {
+    "tr": "layers/text_tr/S16b_txt.png",
+    "de": "layers/text_de/S16b_txt.png",
+    "en": "layers/text_en/S16b_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_grave",
+     "x": 560,
+     "y": 920,
+     "size": 60,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_pillar",
+     "x": 1420,
+     "y": 920,
+     "size": 70,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S17",
+   "line": "L12",
+   "weight": 1.0,
+   "note": "Alıntı kartı",
+   "art": "layers/art/S17.png",
+   "text": {
+    "tr": "layers/text_tr/S17_txt.png",
+    "de": "layers/text_de/S17_txt.png",
+    "en": "layers/text_en/S17_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_temple",
+     "x": 960,
+     "y": 640,
+     "size": 80,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_schmidt",
+     "x": 960,
+     "y": 730,
+     "size": 38,
+     "col": "#555",
+     "anchor": "middle",
+     "wt": 500
+    }
+   ]
+  },
+  {
+   "id": "S18a",
+   "line": "L13",
+   "weight": 0.8,
+   "note": "Kazı alanı: yeni açma",
+   "art": "layers/art/S18a.png",
+   "text": {
+    "tr": "layers/text_tr/S18a_txt.png",
+    "de": "layers/text_de/S18a_txt.png",
+    "en": "layers/text_en/S18a_txt.png"
+   },
+   "text_items": []
+  },
+  {
+   "id": "S18b",
+   "line": "L13",
+   "weight": 1.0,
+   "note": "Ev temeli + su kanalı belirir (durum değişimi)",
+   "art": "layers/art/S18b.png",
+   "text": {
+    "tr": "layers/text_tr/S18b_txt.png",
+    "de": "layers/text_de/S18b_txt.png",
+    "en": "layers/text_en/S18b_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_houses",
+     "x": 960,
+     "y": 110,
+     "size": 64,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S19",
+   "line": "L14",
+   "weight": 0.9,
+   "note": "Karşılaştırma",
+   "art": "layers/art/S19.png",
+   "text": {
+    "tr": "layers/text_tr/S19_txt.png",
+    "de": "layers/text_de/S19_txt.png",
+    "en": "layers/text_en/S19_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_q_temple",
+     "x": 480,
+     "y": 160,
+     "size": 76,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    },
+    {
+     "key": "t_q_settle",
+     "x": 1440,
+     "y": 160,
+     "size": 76,
+     "col": "#1D1A17",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S20",
+   "line": "L14",
+   "weight": 1.1,
+   "note": "Gururlu 'yerleşimci'",
+   "art": "layers/art/S20.png",
+   "text": {
+    "tr": "layers/text_tr/S20_txt.png",
+    "de": "layers/text_de/S20_txt.png",
+    "en": "layers/text_en/S20_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_ambitious",
+     "x": 960,
+     "y": 140,
+     "size": 76,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S21",
+   "line": "L15",
+   "weight": 1.0,
+   "note": "Kesit: %5",
+   "art": "layers/art/S21.png",
+   "text": {
+    "tr": "layers/text_tr/S21_txt.png",
+    "de": "layers/text_de/S21_txt.png",
+    "en": "layers/text_en/S21_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_5pct",
+     "x": 960,
+     "y": 140,
+     "size": 80,
+     "col": "#B83A2B",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  },
+  {
+   "id": "S22",
+   "line": "L16",
+   "weight": 1.0,
+   "note": "Gece; bekleyen tepe",
+   "art": "layers/art/S22.png",
+   "text": {
+    "tr": "layers/text_tr/S22_txt.png",
+    "de": "layers/text_de/S22_txt.png",
+    "en": "layers/text_en/S22_txt.png"
+   },
+   "text_items": [
+    {
+     "key": "t_hurry",
+     "x": 960,
+     "y": 990,
+     "size": 70,
+     "col": "#f3ecd2",
+     "anchor": "middle",
+     "wt": 800
+    }
+   ]
+  }
+ ],
+ "languages": {
+  "tr": {
+   "total_s": 60.36,
+   "shots": [
+    {
+     "id": "S01",
+     "t0": 0.0,
+     "dur": 2.322
+    },
+    {
+     "id": "S02",
+     "t0": 2.322,
+     "dur": 2.322
+    },
+    {
+     "id": "S03a",
+     "t0": 4.644,
+     "dur": 0.9
+    },
+    {
+     "id": "S03b",
+     "t0": 5.544,
+     "dur": 0.9
+    },
+    {
+     "id": "S04",
+     "t0": 6.444,
+     "dur": 2.815
+    },
+    {
+     "id": "S05",
+     "t0": 9.259,
+     "dur": 3.378
+    },
+    {
+     "id": "S06",
+     "t0": 12.637,
+     "dur": 2.241
+    },
+    {
+     "id": "S07",
+     "t0": 14.878,
+     "dur": 1.868
+    },
+    {
+     "id": "S08a",
+     "t0": 16.746,
+     "dur": 0.9
+    },
+    {
+     "id": "S08b",
+     "t0": 17.646,
+     "dur": 0.9
+    },
+    {
+     "id": "S08c",
+     "t0": 18.546,
+     "dur": 0.9
+    },
+    {
+     "id": "S09",
+     "t0": 19.446,
+     "dur": 2.051
+    },
+    {
+     "id": "S10a",
+     "t0": 21.497,
+     "dur": 0.9
+    },
+    {
+     "id": "S10b",
+     "t0": 22.397,
+     "dur": 0.9
+    },
+    {
+     "id": "S10c",
+     "t0": 23.297,
+     "dur": 1.0
+    },
+    {
+     "id": "S11",
+     "t0": 24.297,
+     "dur": 2.059
+    },
+    {
+     "id": "S12",
+     "t0": 26.356,
+     "dur": 2.883
+    },
+    {
+     "id": "S13",
+     "t0": 29.239,
+     "dur": 2.897
+    },
+    {
+     "id": "S14a",
+     "t0": 32.136,
+     "dur": 3.508
+    },
+    {
+     "id": "S14b",
+     "t0": 35.644,
+     "dur": 2.506
+    },
+    {
+     "id": "S15",
+     "t0": 38.15,
+     "dur": 2.309
+    },
+    {
+     "id": "S16a",
+     "t0": 40.459,
+     "dur": 1.385
+    },
+    {
+     "id": "S16b",
+     "t0": 41.844,
+     "dur": 1.847
+    },
+    {
+     "id": "S17",
+     "t0": 43.691,
+     "dur": 3.037
+    },
+    {
+     "id": "S18a",
+     "t0": 46.728,
+     "dur": 1.508
+    },
+    {
+     "id": "S18b",
+     "t0": 48.236,
+     "dur": 1.886
+    },
+    {
+     "id": "S19",
+     "t0": 50.122,
+     "dur": 1.458
+    },
+    {
+     "id": "S20",
+     "t0": 51.58,
+     "dur": 1.783
+    },
+    {
+     "id": "S21",
+     "t0": 53.363,
+     "dur": 3.037
+    },
+    {
+     "id": "S22",
+     "t0": 56.4,
+     "dur": 3.959
+    }
+   ]
+  },
+  "de": {
+   "total_s": 58.8,
+   "shots": [
+    {
+     "id": "S01",
+     "t0": 0.0,
+     "dur": 2.155
+    },
+    {
+     "id": "S02",
+     "t0": 2.155,
+     "dur": 2.155
+    },
+    {
+     "id": "S03a",
+     "t0": 4.31,
+     "dur": 0.9
+    },
+    {
+     "id": "S03b",
+     "t0": 5.21,
+     "dur": 0.9
+    },
+    {
+     "id": "S04",
+     "t0": 6.11,
+     "dur": 2.318
+    },
+    {
+     "id": "S05",
+     "t0": 8.428,
+     "dur": 2.782
+    },
+    {
+     "id": "S06",
+     "t0": 11.21,
+     "dur": 2.062
+    },
+    {
+     "id": "S07",
+     "t0": 13.272,
+     "dur": 1.718
+    },
+    {
+     "id": "S08a",
+     "t0": 14.99,
+     "dur": 0.9
+    },
+    {
+     "id": "S08b",
+     "t0": 15.89,
+     "dur": 0.9
+    },
+    {
+     "id": "S08c",
+     "t0": 16.79,
+     "dur": 0.9
+    },
+    {
+     "id": "S09",
+     "t0": 17.69,
+     "dur": 1.704
+    },
+    {
+     "id": "S10a",
+     "t0": 19.394,
+     "dur": 0.996
+    },
+    {
+     "id": "S10b",
+     "t0": 20.39,
+     "dur": 0.996
+    },
+    {
+     "id": "S10c",
+     "t0": 21.386,
+     "dur": 1.107
+    },
+    {
+     "id": "S11",
+     "t0": 22.493,
+     "dur": 2.506
+    },
+    {
+     "id": "S12",
+     "t0": 24.999,
+     "dur": 3.508
+    },
+    {
+     "id": "S13",
+     "t0": 28.507,
+     "dur": 2.571
+    },
+    {
+     "id": "S14a",
+     "t0": 31.078,
+     "dur": 2.905
+    },
+    {
+     "id": "S14b",
+     "t0": 33.983,
+     "dur": 2.075
+    },
+    {
+     "id": "S15",
+     "t0": 36.058,
+     "dur": 2.118
+    },
+    {
+     "id": "S16a",
+     "t0": 38.176,
+     "dur": 1.271
+    },
+    {
+     "id": "S16b",
+     "t0": 39.447,
+     "dur": 1.694
+    },
+    {
+     "id": "S17",
+     "t0": 41.141,
+     "dur": 2.38
+    },
+    {
+     "id": "S18a",
+     "t0": 43.521,
+     "dur": 1.591
+    },
+    {
+     "id": "S18b",
+     "t0": 45.112,
+     "dur": 1.989
+    },
+    {
+     "id": "S19",
+     "t0": 47.101,
+     "dur": 1.624
+    },
+    {
+     "id": "S20",
+     "t0": 48.725,
+     "dur": 1.985
+    },
+    {
+     "id": "S21",
+     "t0": 50.71,
+     "dur": 3.38
+    },
+    {
+     "id": "S22",
+     "t0": 54.09,
+     "dur": 4.713
+    }
+   ]
+  },
+  "en": {
+   "total_s": 62.11,
+   "shots": [
+    {
+     "id": "S01",
+     "t0": 0.0,
+     "dur": 1.98
+    },
+    {
+     "id": "S02",
+     "t0": 1.98,
+     "dur": 1.98
+    },
+    {
+     "id": "S03a",
+     "t0": 3.96,
+     "dur": 0.9
+    },
+    {
+     "id": "S03b",
+     "t0": 4.86,
+     "dur": 1.001
+    },
+    {
+     "id": "S04",
+     "t0": 5.861,
+     "dur": 2.113
+    },
+    {
+     "id": "S05",
+     "t0": 7.974,
+     "dur": 2.535
+    },
+    {
+     "id": "S06",
+     "t0": 10.509,
+     "dur": 2.114
+    },
+    {
+     "id": "S07",
+     "t0": 12.623,
+     "dur": 1.762
+    },
+    {
+     "id": "S08a",
+     "t0": 14.385,
+     "dur": 0.9
+    },
+    {
+     "id": "S08b",
+     "t0": 15.285,
+     "dur": 0.9
+    },
+    {
+     "id": "S08c",
+     "t0": 16.185,
+     "dur": 0.9
+    },
+    {
+     "id": "S09",
+     "t0": 17.085,
+     "dur": 2.457
+    },
+    {
+     "id": "S10a",
+     "t0": 19.542,
+     "dur": 1.145
+    },
+    {
+     "id": "S10b",
+     "t0": 20.687,
+     "dur": 1.145
+    },
+    {
+     "id": "S10c",
+     "t0": 21.832,
+     "dur": 1.272
+    },
+    {
+     "id": "S11",
+     "t0": 23.104,
+     "dur": 2.59
+    },
+    {
+     "id": "S12",
+     "t0": 25.694,
+     "dur": 3.627
+    },
+    {
+     "id": "S13",
+     "t0": 29.321,
+     "dur": 2.779
+    },
+    {
+     "id": "S14a",
+     "t0": 32.1,
+     "dur": 3.472
+    },
+    {
+     "id": "S14b",
+     "t0": 35.572,
+     "dur": 2.48
+    },
+    {
+     "id": "S15",
+     "t0": 38.052,
+     "dur": 2.291
+    },
+    {
+     "id": "S16a",
+     "t0": 40.343,
+     "dur": 1.374
+    },
+    {
+     "id": "S16b",
+     "t0": 41.717,
+     "dur": 1.833
+    },
+    {
+     "id": "S17",
+     "t0": 43.55,
+     "dur": 2.039
+    },
+    {
+     "id": "S18a",
+     "t0": 45.589,
+     "dur": 1.829
+    },
+    {
+     "id": "S18b",
+     "t0": 47.418,
+     "dur": 2.287
+    },
+    {
+     "id": "S19",
+     "t0": 49.705,
+     "dur": 1.665
+    },
+    {
+     "id": "S20",
+     "t0": 51.37,
+     "dur": 2.035
+    },
+    {
+     "id": "S21",
+     "t0": 53.405,
+     "dur": 3.223
+    },
+    {
+     "id": "S22",
+     "t0": 56.628,
+     "dur": 5.486
+    }
+   ]
+  }
+ }
+}

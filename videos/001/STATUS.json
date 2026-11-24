@@ -8,15 +8,16 @@
   "scene_plan": "done",
   "image_prompts": "done",
   "images": "waiting",
-  "voice": "QA yapıldı (Yasli Adam 3, A bölümü): promptlar v3'e güncellendi, sıradaki üretim bekliyor",
+  "voice": "A onaylandı (Yasli Adam 3, prompt v3, 93,96 sn) → audio/tr/part_A.mp3 · B ve C üretilecek",
   "timing": "estimate",
   "render": "animatic_only",
   "title_thumbnail": "draft",
   "published": false
  },
  "next_actions": [
-  "Kullanıcı: 3 parçayı dinle; onaylıysa ElevenLabs'ten indirip videos/001/audio/tr/ içine part_A.mp3, part_B.mp3, part_C.mp3 olarak koy",
-  "Claude: parçaları birleştir, Whisper/ElevenLabs hizalama ile satır sürelerini çıkar → audio/timing_tr.json → prompts.py → assemble.py",
+  "Claude: B ve C'yi aynı ses + prompt v3 ile üret",
+  "Kullanıcı: part_B.mp3, part_C.mp3 indirip yükle",
+  "Claude: hizalama → timing_tr.json, PAUSES_tr.json uygula, L011 'Ve şüpheleniyor' +6 dB",
   "ChatGPT: IMAGE_PROMPTS.md sırasıyla S001'den başlayarak görselleri üret → images/001_Sxxx_v1.png",
   "Claude: görseller geldikçe status.py çalıştır, kalite kontrol, S003 harita iğnelerini ayarla"
  ],
@@ -161,7 +162,7 @@
   "audio_files": 0,
   "total_sec": 402.8,
   "provider": "elevenlabs",
-  "voice_id": "0lx1MjCizLSqpSJueqVC",
+  "voice_id": "G1RGt5uXOa6xrBl1qxzt",
   "model_id": "eleven_v4",
   "test_flow": "Vg3T7zjGRrpRmXUt7Vx9",
   "flow_v2": "rRkyEfbxCFm2CbiTXYi1",
@@ -173,7 +174,7 @@
   "planned_video_sec": 403,
   "target_voice_sec": "420–440",
   "credits_v2": 7617,
-  "voice_name": "Yasli adam 2",
+  "voice_name": "Yasli Adam 3",
   "credits_v3": 7617,
   "takes": {
    "v2_yasli_adam": "x6MH8NM5Cgf2UNidRBXE",
@@ -183,6 +184,13 @@
   "voice_name_candidate": "Yasli Adam 3",
   "qa": "VOICE_QA_tr.md",
   "pauses": "PAUSES_tr.json",
-  "measured_speed_factor": 1.075
+  "measured_speed_factor": 1.075,
+  "approved": {
+   "A": {
+    "file": "audio/tr/part_A.mp3",
+    "sec": 93.96,
+    "prompt": "VOICE_PROMPT_tr_A.txt (v3)"
+   }
+  }
  }
 }

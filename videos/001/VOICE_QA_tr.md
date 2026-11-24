@@ -18,3 +18,9 @@ Doğru çıkanlar: metnin tamamı okunmuş, kelime atlama yok. "Kansu Gavri", "H
 
 ## Kurgu için duraklama haritası
 `PAUSES_tr.json`: satır sonundaki ek sessizlik (sn). `assemble.py` sesi hizaladıktan sonra uygular. TTS'in kendi doğal boşluğu (~0,4 sn) bunun içinde sayılır.
+
+## Take 2 — prompt v3 (ONAYLANDI) · `audio/tr/part_A.mp3` · 93,96 sn
+- `[long pause]` ≈ **2,05 sn** ("neyle ilgiliydi?" sonrası), `[pause]` ≈ 0,4–1,1 sn → etiketler artık çalışıyor.
+- Ritim akıcı: şehir listesi tek nefeste (3,4 sn). "Yer: Mekke" doğal.
+- Seviye: "dikkatli tut" −15,8 dB (düzeldi). **"Ve şüpheleniyor" hâlâ −25 dB** → kurguda +6 dB.
+- Kulakla kontrol: "yasaklayan oldu" (Whisper "yasak viyan" duydu), "çöküyor" ("çöpüyor"), Prusya IPA ile "Prussia"ya kayıyor olabilir.

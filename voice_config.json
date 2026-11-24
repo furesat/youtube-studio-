@@ -4,8 +4,8 @@
   "tr": {
    "provider": "elevenlabs",
    "voice": {
-    "voice_id": "0lx1MjCizLSqpSJueqVC",
-    "voice_name": "Yasli adam 2 (generated, tr)",
+    "voice_id": "G1RGt5uXOa6xrBl1qxzt",
+    "voice_name": "Yasli Adam 3 (klon, tr-istanbul)",
     "model_id": "eleven_v4",
     "note": "Duygu etiketleri ve [pause, N seconds] işaretleri: videos/NNN/VOICE_PROMPT_tr_*.txt"
    },

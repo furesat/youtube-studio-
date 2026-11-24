@@ -1,0 +1,19 @@
+[warmly] [softly] Elinde bir fincan kahve varsa… [mischievously] dikkatli tut. [pause, 0.8 seconds]
+[storytelling] Tarih boyunca bu içecek yüzünden dükkânlar kapatıldı, çuvallar yakıldı, krallar fermanlar yazdı.
+[slowly] Mekke… [pause, 0.3 seconds] İstanbul… [pause, 0.3 seconds] Londra… [pause, 0.3 seconds] Prusya… [pause, 0.3 seconds] İsveç. [confident] Kahve en az BEŞ farklı yerde yasaklandı.
+[dry, amused] Ve her seferinde kaybeden taraf… yasaklayan oldu. [pause, 0.8 seconds]
+[curious] Ama işin garibi şu: Bu yasakların neredeyse hiçbiri aslında kahveyle ilgili değildi.
+[softly] Peki… neyle ilgiliydi? [pause, 1.5 seconds]
+[storytelling] [slowly] Yıl bin beş yüz on bir. [pause, 0.4 seconds] Mekke. [pause, 0.8 seconds]
+[warmly] Kahve Yemen'den yeni gelmiş. Sufiler gece boyunca uyanık kalmak için içiyor.
+[happy] Kısa sürede şehirde kahve dükkânları açılıyor. İnsanlar toplanıyor, sohbet ediyor, şarkı söylüyor.
+[sarcastic] Bunu hiç sevmeyen biri var: [pause, 0.3 seconds] Şehrin asayişinden sorumlu… Hayır Bey.
+[cautiously] Bir akşam kahve içip neşelenen bir grup görüyor. [pause, 0.6 seconds] [whispers] Ve şüpheleniyor.
+[dramatically] Hemen âlimleri ve hekimleri topluyor. [curious] Soru basit: Bu içecek insanı sarhoş eder mi?
+[dry, amused] Toplantı tam istediği gibi bitiyor. [pause, 0.7 seconds] [serious] Kahve… yasak.
+[sad] Dükkânlar kapatılıyor, kahve çuvalları sokakta yakılıyor.
+[mischievously] Hayır Bey'in tek bir sorunu var: Onun da bir patronu var.
+[storytelling] Mekke o dönem Kahire'deki Memlük sultanına bağlı. Ve söylenene göre Sultan Kansu Gavri de… [pause, 0.8 seconds] [chuckles] kahve içiyor.
+[amused] Kahire'den gelen mesaj net: Şüpheli toplantılarla uğraş… ama insanların kahvesine DOKUNMA.
+[dry] Yasak birkaç hafta içinde çöküyor.
+[warmly] [slowly] İlk dersimiz: Sorun fincan değildi. [pause, 0.6 seconds] Sorun… masaydı. [pause, 1.8 seconds]

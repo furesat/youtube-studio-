@@ -1,0 +1,34 @@
+[storytelling] Bu arada kahve Avrupa'ya ulaşmış. Londra'da kahvehane her köşede.
+[lively] Bir peni ver, kahveni al, istediğin kadar otur ve tartış. [amused] Bu yüzden onlara peni üniversiteleri deniyor.
+[sarcastic] Kral İkinci Charles bundan… pek hoşlanmıyor.
+[dramatically] Yirmi dokuz Aralık bin altı yüz yetmiş beşte bir ferman yayımlıyor: Kahvehaneler on Ocak'tan itibaren kapatılacak. [pause, 0.8 seconds]
+[sarcastic] Gerekçe: Buralar tembel ve hoşnutsuz insanların toplandığı, hükümet hakkında yalan haberlerin yayıldığı yerler.
+[excited] Londra ayağa kalkıyor. Tüccarlar, esnaf, hatta kralın kendi adamları bile itiraz ediyor.
+[dry, amused] Ve yasak daha başlamadan, sekiz Ocak'ta geri çekiliyor.
+[chuckles] Ferman ile geri adım arasında sadece… on gün var. [pause, 1.8 seconds]
+[storytelling] Yüz yıl sonra Prusya'da Büyük Friedrich'in derdi bambaşka: [pause, 0.4 seconds] Para.
+[serious] Kahve yurt dışından geliyor ve kralın hesabına göre her yıl yüz binlerce taler ülkeden çıkıp gidiyor.
+[mischievously] Bin yedi yüz yetmiş yedide halkının kahve tutkusundan şikâyet ediyor. Çözümü de hazır: [pause, 0.3 seconds] Bira için.
+[amused] Bir mektubunda şöyle diyor: [pompous] Kral bira çorbasıyla büyüdü, halk da büyüyebilir. [pause, 0.8 seconds]
+[dry] Halk ikna olmayınca Friedrich kahve kavurmayı devlet tekeline alıyor.
+[mischievously] Ve sokaklara özel bir birlik çıkarıyor: Yaklaşık dört yüz savaş gazisi. Görevleri… gizlice kavrulan kahvenin kokusunu almak.
+[laughs softly] Halk onlara kahve koklayıcılar diyor. [pause, 0.8 seconds]
+[softly] Friedrich bin yedi yüz seksen altıda ölüyor. [dry] Kahve kuralları da çok geçmeden onunla birlikte gömülüyor. [pause, 1.8 seconds]
+[amused] Ama inatta birincilik İsveç'in.
+[storytelling] Önce vergi, sonra fincanlara el koyma, sonunda yasak. [surprised] İsveç kahveyi tam BEŞ kez yasaklıyor.
+[mischievously] Ve insanlar her seferinde gizlice içmeye devam ediyor.
+[mock solemn] Bin yedi yüz doksan dörtteki yasağa tepki olarak bazı İsveçliler kahve demlikleri için cenaze töreni bile düzenliyor. [pause, 1 second]
+[curious] Bir de meşhur hikâye var: Kral Üçüncü Gustav, idam mahkûmu ikiz kardeşlerle bir deney yaptırmış. Biri her gün kahve, diğeri çay içecekmiş.
+[storytelling] Hikâyeye göre önce deneyi izleyen doktorlar öldü, sonra kral öldü. [pause, 0.5 seconds] [chuckles] İkizler hâlâ yaşıyordu. [pause, 1 second]
+[dry] Küçük bir sorun var: Bazı tarihçilere göre bu deney hiç yapılmamış olabilir.
+[warmly] Kesin olan şu: Bin sekiz yüz yirmi üçte son yasak kalkıyor. Bugün İsveç, kişi başına en çok kahve içen ülkelerden biri. [pause, 1.8 seconds]
+[curious] Peki kahvehaneleriyle meşhur Viyana?
+[storytelling] [dramatically] Anlatılan hikâyeye göre Osmanlı ordusu bin altı yüz seksen üçte çekilirken çuval çuval kahve bırakıyor. Kahraman casus /kɔlˈʃɪtski/ de bunlarla ilk kahvehaneyi açıyor.
+[dry, amused] Güzel hikâye. [pause, 0.4 seconds] Ama büyük kısmı yüz yıl sonra yazılmış. [pause, 0.8 seconds]
+[matter of fact] Kayıtlara göre Viyana'nın ilk kahve izni bin altı yüz seksen beşte Ermeni tüccar Johannes Diodato'ya verildi. [pause, 2 seconds]
+[thoughtful] [slowly] Peki bütün bu yasakların ortak noktası ne?
+[storytelling] Mekke'de toplantılar. [pause, 0.3 seconds] İstanbul'da isyan korkusu. [pause, 0.3 seconds] Londra'da dedikodu. [pause, 0.3 seconds] Prusya'da para.
+[softly] Hiçbiri gerçekten fincandaki o siyah sıvıyla ilgili değildi. [pause, 1 second]
+[warmly] Kahvenin asıl suçu insanları bir masa etrafında toplaması, konuşturması… ve uyanık tutmasıydı.
+[proud] Ve bunu yasaklamaya çalışan herkes… kaybetti. [pause, 1.2 seconds]
+[mischievously] Yani bir dahaki sefere kahveni içerken biri sana ters ters bakarsa, sadece şunu söyle: [pause, 0.4 seconds] [slowly] Sultanlar denedi. [pause, 0.6 seconds] Krallar denedi. [pause, 0.6 seconds] [chuckles] Olmadı.

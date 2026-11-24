@@ -8,18 +8,17 @@
   "scene_plan": "done",
   "image_prompts": "done",
   "images": "waiting",
-  "voice": "test: L001–L019 ElevenLabs 'Yasli adam' (eleven_multilingual_v2), kullanıcı onayı bekleniyor",
+  "voice": "v2 üretildi (eleven_v4, duygu etiketli, 3 parça A/B/C): kullanıcı dinleyip onaylayacak",
   "timing": "estimate",
   "render": "animatic_only",
   "title_thumbnail": "draft",
   "published": false
  },
  "next_actions": [
-  "Kullanıcı: SCRIPT.md v1'i oku, onayla veya düzeltme iste",
+  "Kullanıcı: 3 parçayı dinle; onaylıysa ElevenLabs'ten indirip videos/001/audio/tr/ içine part_A.mp3, part_B.mp3, part_C.mp3 olarak koy",
+  "Claude: parçaları birleştir, Whisper/ElevenLabs hizalama ile satır sürelerini çıkar → audio/timing_tr.json → prompts.py → assemble.py",
   "ChatGPT: IMAGE_PROMPTS.md sırasıyla S001'den başlayarak görselleri üret → images/001_Sxxx_v1.png",
-  "Claude: görseller geldikçe status.py çalıştır, kalite kontrol, S003 harita iğnelerini ayarla",
-  "Kullanıcı: ses sağlayıcısını seç (ElevenLabs önerilir) → voice_config.json + ELEVENLABS_API_KEY ortam değişkeni",
-  "Claude: voice_render.py → prompts.py (gerçek süreler) → assemble.py → 1080p MP4"
+  "Claude: görseller geldikçe status.py çalıştır, kalite kontrol, S003 harita iğnelerini ayarla"
  ],
  "notes": [
   "Görseller metinsiz; tüm yazılar motorda eklenir.",
@@ -163,7 +162,16 @@
   "total_sec": 402.8,
   "provider": "elevenlabs",
   "voice_id": "x6MH8NM5Cgf2UNidRBXE",
-  "model_id": "eleven_multilingual_v2",
-  "test_flow": "Vg3T7zjGRrpRmXUt7Vx9"
+  "model_id": "eleven_v4",
+  "test_flow": "Vg3T7zjGRrpRmXUt7Vx9",
+  "flow_v2": "rRkyEfbxCFm2CbiTXYi1",
+  "parts": {
+   "A": "L001–L019",
+   "B": "L020–L041",
+   "C": "L042–L075"
+  },
+  "planned_video_sec": 403,
+  "target_voice_sec": "420–440",
+  "credits_v2": 7617
  }
 }

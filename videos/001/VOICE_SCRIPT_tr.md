@@ -1,6 +1,6 @@
 # 001 · Seslendirme senaryosu (duygu + duraklama) · TR v2
 
-**Ses:** ElevenLabs "Yasli adam" (`x6MH8NM5Cgf2UNidRBXE`) · **Model:** `eleven_v4` (köşeli parantez duygu etiketlerini yorumlar)
+**Ses:** ElevenLabs "Yasli adam 2" (`0lx1MjCizLSqpSJueqVC`), önceki deneme "Yasli adam" (`x6MH8NM5Cgf2UNidRBXE`) · **Model:** `eleven_v4`
 **Hedef süre:** görsel plan 403 sn (~6:43). Duraklamalar dahil ses hedefi **~7:00–7:20**. Sahne süreleri gerçek sese göre yeniden hesaplanır.
 **Karakter:** Yaşlı, bilge, kuru esprili bir hikâyeci. Bir kahvehanede, elinde fincan, torunlarına anlatır gibi. Espriyi bastırmaz, gülümseyerek söyler. Ciddi yerlerde sesini alçaltır.
 

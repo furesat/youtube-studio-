@@ -8,7 +8,7 @@
   "scene_plan": "done",
   "image_prompts": "done",
   "images": "waiting",
-  "voice": "v2 üretildi (eleven_v4, duygu etiketli, 3 parça A/B/C): kullanıcı dinleyip onaylayacak",
+  "voice": "v3 üretildi: 'Yasli adam 2', eleven_v4, aynı duygu/duraklama promptları (A/B/C). Kullanıcı v2 ile karşılaştırıp seçecek",
   "timing": "estimate",
   "render": "animatic_only",
   "title_thumbnail": "draft",
@@ -161,7 +161,7 @@
   "audio_files": 0,
   "total_sec": 402.8,
   "provider": "elevenlabs",
-  "voice_id": "x6MH8NM5Cgf2UNidRBXE",
+  "voice_id": "0lx1MjCizLSqpSJueqVC",
   "model_id": "eleven_v4",
   "test_flow": "Vg3T7zjGRrpRmXUt7Vx9",
   "flow_v2": "rRkyEfbxCFm2CbiTXYi1",
@@ -172,6 +172,12 @@
   },
   "planned_video_sec": 403,
   "target_voice_sec": "420–440",
-  "credits_v2": 7617
+  "credits_v2": 7617,
+  "voice_name": "Yasli adam 2",
+  "credits_v3": 7617,
+  "takes": {
+   "v2_yasli_adam": "x6MH8NM5Cgf2UNidRBXE",
+   "v3_yasli_adam_2": "0lx1MjCizLSqpSJueqVC"
+  }
  }
 }

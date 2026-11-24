@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.9">
+<resources>
+<format id="r1" name="FFVideoFormat1080p30" frameDuration="1/30s" width="1920" height="1080" colorSpace="1-1-1 (Rec. 709)"/>
+<asset id="aA" name="New tts node-7.mp3" start="0s" duration="2818/30s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100"><media-rep kind="original-media" src="file:///Users/furkanyonat/Downloads/youtube%20video/New%20tts%20node-7.mp3"/></asset>
+<asset id="aB" name="New tts node-8.mp3" start="0s" duration="3365/30s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100"><media-rep kind="original-media" src="file:///Users/furkanyonat/Downloads/youtube%20video/New%20tts%20node-8.mp3"/></asset>
+<asset id="aC" name="New tts node-9.mp3" start="0s" duration="6017/30s" hasAudio="1" audioSources="1" audioChannels="2" audioRate="44100"><media-rep kind="original-media" src="file:///Users/furkanyonat/Downloads/youtube%20video/New%20tts%20node-9.mp3"/></asset>
+</resources>
+<library>
+<event name="Kahve 001">
+<project name="Kahve 001 TR">
+<sequence format="r1" duration="13659/30s" tcStart="0s" tcFormat="NDF" audioLayout="stereo" audioRate="48k">
+<spine>
+<gap name="S001 Modern kafe: Fasulye ve fincan" offset="0/30s" start="3600s" duration="118/30s">
+<marker start="3600s" duration="1/30s" value="S001 Modern kafe: Fasulye ve fincan"/>
+<asset-clip ref="aA" lane="-1" offset="108000/30s" name="L001" start="0/30s" duration="94/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="108118/30s" name="L002" start="94/30s" duration="208/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="108337/30s" name="L003" start="302/30s" duration="210/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="108558/30s" name="L004" start="513/30s" duration="111/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="108692/30s" name="L005" start="623/30s" duration="176/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="108878/30s" name="L006" start="799/30s" duration="107/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="109031/30s" name="L007" start="906/30s" duration="106/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="109161/30s" name="L008" start="1013/30s" duration="161/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="109333/30s" name="L009" start="1174/30s" duration="200/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="109543/30s" name="L010" start="1373/30s" duration="141/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="109694/30s" name="L011" start="1514/30s" duration="133/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="109838/30s" name="L012" start="1647/30s" duration="177/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110025/30s" name="L013" start="1824/30s" duration="127/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110173/30s" name="L014" start="1951/30s" duration="112/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110295/30s" name="L015" start="2063/30s" duration="106/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110412/30s" name="L016" start="2169/30s" duration="251/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110673/30s" name="L017" start="2420/30s" duration="172/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110856/30s" name="L018" start="2592/30s" duration="93/30s" audioRole="dialogue"/>
+<asset-clip ref="aA" lane="-1" offset="110964/30s" name="L019" start="2685/30s" duration="132/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111151/30s" name="L020" start="0/30s" duration="104/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111285/30s" name="L021" start="104/30s" duration="215/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111510/30s" name="L022" start="319/30s" duration="96/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111616/30s" name="L023" start="415/30s" duration="73/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111700/30s" name="L024" start="487/30s" duration="185/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111895/30s" name="L025" start="672/30s" duration="88/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="111994/30s" name="L026" start="761/30s" duration="148/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="112152/30s" name="L027" start="909/30s" duration="230/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="112419/30s" name="L028" start="1139/30s" duration="119/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="112567/30s" name="L029" start="1258/30s" duration="108/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="112686/30s" name="L030" start="1365/30s" duration="159/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="112855/30s" name="L031" start="1524/30s" duration="194/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="113085/30s" name="L032" start="1719/30s" duration="160/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="113256/30s" name="L033" start="1879/30s" duration="183/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="113449/30s" name="L034" start="2061/30s" duration="159/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="113632/30s" name="L035" start="2220/30s" duration="200/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="113842/30s" name="L036" start="2420/30s" duration="181/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="114053/30s" name="L037" start="2601/30s" duration="173/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="114237/30s" name="L038" start="2774/30s" duration="110/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="114371/30s" name="L039" start="2885/30s" duration="262/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="114644/30s" name="L040" start="3147/30s" duration="181/30s" audioRole="dialogue"/>
+<asset-clip ref="aB" lane="-1" offset="114835/30s" name="L041" start="3328/30s" duration="37/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="114932/30s" name="L042" start="0/30s" duration="149/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="115092/30s" name="L043" start="149/30s" duration="215/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="115318/30s" name="L044" start="364/30s" duration="93/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="115421/30s" name="L045" start="457/30s" duration="191/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="115636/30s" name="L046" start="648/30s" duration="213/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="115859/30s" name="L047" start="861/30s" duration="178/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="116048/30s" name="L048" start="1039/30s" duration="111/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="116169/30s" name="L049" start="1150/30s" duration="152/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="116375/30s" name="L050" start="1302/30s" duration="138/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="116524/30s" name="L051" start="1440/30s" duration="221/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="116755/30s" name="L052" start="1661/30s" duration="147/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="116913/30s" name="L053" start="1808/30s" duration="155/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="117092/30s" name="L054" start="1963/30s" duration="134/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="117236/30s" name="L055" start="2097/30s" duration="252/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="117499/30s" name="L056" start="2349/30s" duration="117/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="117639/30s" name="L057" start="2466/30s" duration="228/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="117922/30s" name="L058" start="2694/30s" duration="71/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="118003/30s" name="L059" start="2765/30s" duration="211/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="118225/30s" name="L060" start="2976/30s" duration="153/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="118388/30s" name="L061" start="3129/30s" duration="190/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="118608/30s" name="L062" start="3318/30s" duration="274/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="118893/30s" name="L063" start="3593/30s" duration="230/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="119153/30s" name="L064" start="3823/30s" duration="146/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="119309/30s" name="L065" start="3969/30s" duration="275/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="119638/30s" name="L066" start="4243/30s" duration="68/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="119716/30s" name="L067" start="4311/30s" duration="346/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="120073/30s" name="L068" start="4657/30s" duration="128/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="120225/30s" name="L069" start="4786/30s" duration="237/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="120522/30s" name="L070" start="5023/30s" duration="98/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="120630/30s" name="L071" start="5120/30s" duration="209/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="120850/30s" name="L072" start="5330/30s" duration="99/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="120979/30s" name="L073" start="5429/30s" duration="207/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="121197/30s" name="L074" start="5636/30s" duration="97/30s" audioRole="dialogue"/>
+<asset-clip ref="aC" lane="-1" offset="121329/30s" name="L075" start="5732/30s" duration="284/30s" audioRole="dialogue"/>
+</gap>
+<gap name="S002 Buharda tarih: taç, ferman, alev" offset="118/30s" start="3600s" duration="219/30s">
+<marker start="3600s" duration="1/30s" value="S002 Buharda tarih: taç, ferman, alev"/>
+</gap>
+<gap name="S003 Harita: beş yasak noktası" offset="337/30s" start="3600s" duration="221/30s">
+<marker start="3600s" duration="1/30s" value="S003 Harita: beş yasak noktası"/>
+</gap>
+<gap name="S004 Yenik hükümdarlar ve muzaffer fincan" offset="558/30s" start="3600s" duration="135/30s">
+<marker start="3600s" duration="1/30s" value="S004 Yenik hükümdarlar ve muzaffer fincan"/>
+</gap>
+<gap name="S005 Dedektif Fasulye" offset="692/30s" start="3600s" duration="339/30s">
+<marker start="3600s" duration="1/30s" value="S005 Dedektif Fasulye"/>
+</gap>
+<gap name="S006 Mekke 1511 kuruluş planı" offset="1031/30s" start="3600s" duration="130/30s">
+<marker start="3600s" duration="1/30s" value="S006 Mekke 1511 kuruluş planı"/>
+</gap>
+<gap name="S007 Gece uyanık kalan sufiler" offset="1161/30s" start="3600s" duration="171/30s">
+<marker start="3600s" duration="1/30s" value="S007 Gece uyanık kalan sufiler"/>
+</gap>
+<gap name="S008 Mekke'de kahve dükkânı" offset="1333/30s" start="3600s" duration="210/30s">
+<marker start="3600s" duration="1/30s" value="S008 Mekke'de kahve dükkânı"/>
+</gap>
+<gap name="S009 Hayır Bey tanıtım" offset="1543/30s" start="3600s" duration="151/30s">
+<marker start="3600s" duration="1/30s" value="S009 Hayır Bey tanıtım"/>
+</gap>
+<gap name="S010 Hayır Bey gözetliyor" offset="1694/30s" start="3600s" duration="144/30s">
+<marker start="3600s" duration="1/30s" value="S010 Hayır Bey gözetliyor"/>
+</gap>
+<gap name="S011 Âlimler ve hekimler meclisi" offset="1838/30s" start="3600s" duration="188/30s">
+<marker start="3600s" duration="1/30s" value="S011 Âlimler ve hekimler meclisi"/>
+</gap>
+<gap name="S012 Karar: yasak (türev)" offset="2025/30s" start="3600s" duration="148/30s">
+<marker start="3600s" duration="1/30s" value="S012 Karar: yasak (türev)"/>
+</gap>
+<gap name="S013 Çuvallar yakılıyor" offset="2173/30s" start="3600s" duration="122/30s">
+<marker start="3600s" duration="1/30s" value="S013 Çuvallar yakılıyor"/>
+</gap>
+<gap name="S014 Kahire: Sultan Kansu Gavri" offset="2295/30s" start="3600s" duration="378/30s">
+<marker start="3600s" duration="1/30s" value="S014 Kahire: Sultan Kansu Gavri"/>
+</gap>
+<gap name="S015 Hayır Bey'in yüzü düşüyor" offset="2673/30s" start="3600s" duration="291/30s">
+<marker start="3600s" duration="1/30s" value="S015 Hayır Bey'in yüzü düşüyor"/>
+</gap>
+<gap name="S016 Motif: sorun masaydı" offset="2964/30s" start="3600s" duration="186/30s">
+<marker start="3600s" duration="1/30s" value="S016 Motif: sorun masaydı"/>
+</gap>
+<gap name="S017 İstanbul 1554 kuruluş" offset="3151/30s" start="3600s" duration="134/30s">
+<marker start="3600s" duration="1/30s" value="S017 İstanbul 1554 kuruluş"/>
+</gap>
+<gap name="S018 Hakem ve Şems dükkân açıyor" offset="3285/30s" start="3600s" duration="226/30s">
+<marker start="3600s" duration="1/30s" value="S018 Hakem ve Şems dükkân açıyor"/>
+</gap>
+<gap name="S019 Kuyruk ve kalabalık" offset="3510/30s" start="3600s" duration="190/30s">
+<marker start="3600s" duration="1/30s" value="S019 Kuyruk ve kalabalık"/>
+</gap>
+<gap name="S020 Kahvehane içi: kitap, tavla, şiir" offset="3700/30s" start="3600s" duration="196/30s">
+<marker start="3600s" duration="1/30s" value="S020 Kahvehane içi: kitap, tavla, şiir"/>
+</gap>
+<gap name="S021 Fısıltı: devlet hakkında" offset="3895/30s" start="3600s" duration="99/30s">
+<marker start="3600s" duration="1/30s" value="S021 Fısıltı: devlet hakkında"/>
+</gap>
+<gap name="S022 İtiraz eden âlim" offset="3994/30s" start="3600s" duration="158/30s">
+<marker start="3600s" duration="1/30s" value="S022 İtiraz eden âlim"/>
+</gap>
+<gap name="S023 Bostanzade yeşil ışık" offset="4152/30s" start="3600s" duration="266/30s">
+<marker start="3600s" duration="1/30s" value="S023 Bostanzade yeşil ışık"/>
+</gap>
+<gap name="S024 Sahneye IV. Murad" offset="4419/30s" start="3600s" duration="149/30s">
+<marker start="3600s" duration="1/30s" value="S024 Sahneye IV. Murad"/>
+</gap>
+<gap name="S025 Boş taht: Genç Osman'ın anısı" offset="4567/30s" start="3600s" duration="288/30s">
+<marker start="3600s" duration="1/30s" value="S025 Boş taht: Genç Osman'ın anısı"/>
+</gap>
+<gap name="S026 Yeniçeriler kahvehanede" offset="4855/30s" start="3600s" duration="230/30s">
+<marker start="3600s" duration="1/30s" value="S026 Yeniçeriler kahvehanede"/>
+</gap>
+<gap name="S027 1633 büyük yangın" offset="5085/30s" start="3600s" duration="171/30s">
+<marker start="3600s" duration="1/30s" value="S027 1633 büyük yangın"/>
+</gap>
+<gap name="S028 Kahvehane kapatılıyor" offset="5256/30s" start="3600s" duration="193/30s">
+<marker start="3600s" duration="1/30s" value="S028 Kahvehane kapatılıyor"/>
+</gap>
+<gap name="S029 Gerilim: boş sokak" offset="5449/30s" start="3600s" duration="183/30s">
+<marker start="3600s" duration="1/30s" value="S029 Gerilim: boş sokak"/>
+</gap>
+<gap name="S030 Kılık değiştirmiş Murad" offset="5632/30s" start="3600s" duration="210/30s">
+<marker start="3600s" duration="1/30s" value="S030 Kılık değiştirmiş Murad"/>
+</gap>
+<gap name="S031 Efsane mi? (türev)" offset="5842/30s" start="3600s" duration="211/30s">
+<marker start="3600s" duration="1/30s" value="S031 Efsane mi? (türev)"/>
+</gap>
+<gap name="S032 Ev serbest, kahvehane yasak" offset="6053/30s" start="3600s" duration="184/30s">
+<marker start="3600s" duration="1/30s" value="S032 Ev serbest, kahvehane yasak"/>
+</gap>
+<gap name="S033 Motif tekrar: masa" offset="6237/30s" start="3600s" duration="134/30s">
+<marker start="3600s" duration="1/30s" value="S033 Motif tekrar: masa"/>
+</gap>
+<gap name="S034 Kâtip Çelebi ve ıssız kahvehaneler" offset="6371/30s" start="3600s" duration="272/30s">
+<marker start="3600s" duration="1/30s" value="S034 Kâtip Çelebi ve ıssız kahvehaneler"/>
+</gap>
+<gap name="S035 Kahvehaneler yeniden açılıyor" offset="6644/30s" start="3600s" duration="289/30s">
+<marker start="3600s" duration="1/30s" value="S035 Kahvehaneler yeniden açılıyor"/>
+</gap>
+<gap name="S036 Londra 1675 kuruluş" offset="6932/30s" start="3600s" duration="159/30s">
+<marker start="3600s" duration="1/30s" value="S036 Londra 1675 kuruluş"/>
+</gap>
+<gap name="S037 Peni üniversitesi" offset="7092/30s" start="3600s" duration="226/30s">
+<marker start="3600s" duration="1/30s" value="S037 Peni üniversitesi"/>
+</gap>
+<gap name="S038 Kral İkinci Charles" offset="7318/30s" start="3600s" duration="103/30s">
+<marker start="3600s" duration="1/30s" value="S038 Kral İkinci Charles"/>
+</gap>
+<gap name="S039 Tellal fermanı okuyor" offset="7421/30s" start="3600s" duration="215/30s">
+<marker start="3600s" duration="1/30s" value="S039 Tellal fermanı okuyor"/>
+</gap>
+<gap name="S040 Dedikodu saraya uçuyor" offset="7636/30s" start="3600s" duration="223/30s">
+<marker start="3600s" duration="1/30s" value="S040 Dedikodu saraya uçuyor"/>
+</gap>
+<gap name="S041 Londra ayakta" offset="7859/30s" start="3600s" duration="188/30s">
+<marker start="3600s" duration="1/30s" value="S041 Londra ayakta"/>
+</gap>
+<gap name="S042 Charles fermanı yırtıyor" offset="8048/30s" start="3600s" duration="328/30s">
+<marker start="3600s" duration="1/30s" value="S042 Charles fermanı yırtıyor"/>
+</gap>
+<gap name="S043 Friedrich para sayıyor" offset="8375/30s" start="3600s" duration="149/30s">
+<marker start="3600s" duration="1/30s" value="S043 Friedrich para sayıyor"/>
+</gap>
+<gap name="S044 Paralar uçup gidiyor" offset="8524/30s" start="3600s" duration="231/30s">
+<marker start="3600s" duration="1/30s" value="S044 Paralar uçup gidiyor"/>
+</gap>
+<gap name="S045 Bira çorbası önerisi" offset="8755/30s" start="3600s" duration="337/30s">
+<marker start="3600s" duration="1/30s" value="S045 Bira çorbası önerisi"/>
+</gap>
+<gap name="S046 Devlet kavurma tesisi" offset="9092/30s" start="3600s" duration="144/30s">
+<marker start="3600s" duration="1/30s" value="S046 Devlet kavurma tesisi"/>
+</gap>
+<gap name="S047 Kahve koklayıcı" offset="9236/30s" start="3600s" duration="403/30s">
+<marker start="3600s" duration="1/30s" value="S047 Kahve koklayıcı"/>
+</gap>
+<gap name="S048 Kurallar gömülüyor" offset="9639/30s" start="3600s" duration="282/30s">
+<marker start="3600s" duration="1/30s" value="S048 Kurallar gömülüyor"/>
+</gap>
+<gap name="S049 İsveç: Kral Gustav ve beş yasak" offset="9922/30s" start="3600s" duration="303/30s">
+<marker start="3600s" duration="1/30s" value="S049 İsveç: Kral Gustav ve beş yasak"/>
+</gap>
+<gap name="S050 Masanın altında gizli kahve" offset="10225/30s" start="3600s" duration="163/30s">
+<marker start="3600s" duration="1/30s" value="S050 Masanın altında gizli kahve"/>
+</gap>
+<gap name="S051 Demlik cenazesi" offset="10388/30s" start="3600s" duration="220/30s">
+<marker start="3600s" duration="1/30s" value="S051 Demlik cenazesi"/>
+</gap>
+<gap name="S052 İkiz deneyi" offset="10608/30s" start="3600s" duration="285/30s">
+<marker start="3600s" duration="1/30s" value="S052 İkiz deneyi"/>
+</gap>
+<gap name="S053 İkizler yaşlanıyor" offset="10893/30s" start="3600s" duration="260/30s">
+<marker start="3600s" duration="1/30s" value="S053 İkizler yaşlanıyor"/>
+</gap>
+<gap name="S054 Efsane olabilir (türev)" offset="11153/30s" start="3600s" duration="156/30s">
+<marker start="3600s" duration="1/30s" value="S054 Efsane olabilir (türev)"/>
+</gap>
+<gap name="S055 Modern fika" offset="11309/30s" start="3600s" duration="329/30s">
+<marker start="3600s" duration="1/30s" value="S055 Modern fika"/>
+</gap>
+<gap name="S056 Kolschitzky efsanesi" offset="11638/30s" start="3600s" duration="435/30s">
+<marker start="3600s" duration="1/30s" value="S056 Kolschitzky efsanesi"/>
+</gap>
+<gap name="S057 Efsane (türev)" offset="12073/30s" start="3600s" duration="152/30s">
+<marker start="3600s" duration="1/30s" value="S057 Efsane (türev)"/>
+</gap>
+<gap name="S058 Diodato'nun dükkânı" offset="12225/30s" start="3600s" duration="297/30s">
+<marker start="3600s" duration="1/30s" value="S058 Diodato'nun dükkânı"/>
+</gap>
+<gap name="S059 Hükümdarlar aynı masada" offset="12522/30s" start="3600s" duration="457/30s">
+<marker start="3600s" duration="1/30s" value="S059 Hükümdarlar aynı masada"/>
+</gap>
+<gap name="S060 Masa: her çağdan insanlar" offset="12979/30s" start="3600s" duration="350/30s">
+<marker start="3600s" duration="1/30s" value="S060 Masa: her çağdan insanlar"/>
+</gap>
+<gap name="S061 Fasulye kadeh kaldırır" offset="13329/30s" start="3600s" duration="329/30s">
+<marker start="3600s" duration="1/30s" value="S061 Fasulye kadeh kaldırır"/>
+</gap>
+</spine>
+</sequence>
+</project>
+</event>
+</library>
+</fcpxml>

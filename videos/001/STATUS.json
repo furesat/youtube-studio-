@@ -8,7 +8,7 @@
   "scene_plan": "done",
   "image_prompts": "done",
   "images": "waiting",
-  "voice": "A onaylandı (Yasli Adam 3, prompt v3, 93,96 sn) → audio/tr/part_A.mp3 · B ve C üretilecek",
+  "voice": "A onaylı; B (node 8hErkFBTgr5cAUEcr9RX) ve C (node qI0DvhGM3XSZgTptweRI) üretildi, indirilmeyi bekliyor",
   "timing": "estimate",
   "render": "animatic_only",
   "title_thumbnail": "draft",
@@ -191,6 +191,11 @@
     "sec": 93.96,
     "prompt": "VOICE_PROMPT_tr_A.txt (v3)"
    }
+  },
+  "final_nodes": {
+   "A": "Km622W5EuAnn6lvx6JHp",
+   "B": "8hErkFBTgr5cAUEcr9RX",
+   "C": "qI0DvhGM3XSZgTptweRI"
   }
  }
 }

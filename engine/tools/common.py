@@ -42,7 +42,7 @@ def load_script_lines(vdir, lang="tr"):
     name = "SCRIPT.md" if lang == "tr" else f"SCRIPT_{lang}.md"
     p = os.path.join(vdir, name)
     if not os.path.exists(p):
-        return {}
+        return load_narration(vdir, lang)   # SCRIPT_<lang>.md yoksa NARRATION_<lang>.txt kullan
     return dict(re.findall(r"\*\*(L\d{3})\*\* (.+)", open(p, encoding="utf-8").read()))
 
 def estimate_line(text, lang="tr"):

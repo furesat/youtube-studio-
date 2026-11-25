@@ -3,604 +3,604 @@
   "L001": {
    "part": "A",
    "start": 0.0,
-   "end": 4.715,
-   "speech": 4.715,
-   "pause": 0.8,
-   "dur": 5.515
+   "end": 3.958,
+   "speech": 3.958,
+   "pause": 0.0,
+   "dur": 3.958
   },
   "L002": {
    "part": "A",
-   "start": 4.715,
-   "end": 10.441,
-   "speech": 5.726,
-   "pause": 0.35,
-   "dur": 6.076
+   "start": 3.958,
+   "end": 10.316,
+   "speech": 6.358,
+   "pause": 0.0,
+   "dur": 6.358
   },
   "L003": {
    "part": "A",
-   "start": 10.441,
-   "end": 14.482,
-   "speech": 4.041,
-   "pause": 0.35,
-   "dur": 4.391
+   "start": 10.316,
+   "end": 16.205,
+   "speech": 5.889,
+   "pause": 0.0,
+   "dur": 5.889
   },
   "L004": {
    "part": "A",
-   "start": 14.482,
-   "end": 17.85,
-   "speech": 3.368,
-   "pause": 0.8,
-   "dur": 4.168
+   "start": 16.205,
+   "end": 19.751,
+   "speech": 3.546,
+   "pause": 0.0,
+   "dur": 3.546
   },
   "L005": {
    "part": "A",
-   "start": 17.85,
-   "end": 22.479,
-   "speech": 4.629,
-   "pause": 0.35,
-   "dur": 4.979
+   "start": 19.751,
+   "end": 24.734,
+   "speech": 4.983,
+   "pause": 0.0,
+   "dur": 4.983
   },
   "L006": {
    "part": "A",
-   "start": 22.479,
-   "end": 23.802,
-   "speech": 1.323,
-   "pause": 1.5,
-   "dur": 2.823
+   "start": 24.734,
+   "end": 27.401,
+   "speech": 2.667,
+   "pause": 0.0,
+   "dur": 2.667
   },
   "L007": {
    "part": "A",
-   "start": 23.802,
-   "end": 25.124,
-   "speech": 1.322,
-   "pause": 0.8,
-   "dur": 2.122
+   "start": 27.401,
+   "end": 30.15,
+   "speech": 2.749,
+   "pause": 0.0,
+   "dur": 2.749
   },
   "L008": {
    "part": "A",
-   "start": 25.124,
-   "end": 30.483,
-   "speech": 5.359,
-   "pause": 0.35,
-   "dur": 5.709
+   "start": 30.15,
+   "end": 35.801,
+   "speech": 5.651,
+   "pause": 0.0,
+   "dur": 5.651
   },
   "L009": {
    "part": "A",
-   "start": 30.483,
-   "end": 34.952,
-   "speech": 4.469,
-   "pause": 0.35,
-   "dur": 4.819
+   "start": 35.801,
+   "end": 41.427,
+   "speech": 5.627,
+   "pause": 0.0,
+   "dur": 5.627
   },
   "L010": {
    "part": "A",
-   "start": 34.952,
-   "end": 40.612,
-   "speech": 5.66,
-   "pause": 0.35,
-   "dur": 6.01
+   "start": 41.427,
+   "end": 46.743,
+   "speech": 5.316,
+   "pause": 0.0,
+   "dur": 5.316
   },
   "L011": {
    "part": "A",
-   "start": 40.612,
-   "end": 44.783,
-   "speech": 4.171,
-   "pause": 0.35,
-   "dur": 4.521
+   "start": 46.743,
+   "end": 52.165,
+   "speech": 5.422,
+   "pause": 0.0,
+   "dur": 5.422
   },
   "L012": {
    "part": "A",
-   "start": 44.783,
-   "end": 49.55,
-   "speech": 4.767,
-   "pause": 0.35,
-   "dur": 5.117
+   "start": 52.165,
+   "end": 58.067,
+   "speech": 5.901,
+   "pause": 0.0,
+   "dur": 5.901
   },
   "L013": {
    "part": "A",
-   "start": 49.55,
-   "end": 53.117,
-   "speech": 3.567,
-   "pause": 0.7,
-   "dur": 4.267
+   "start": 58.067,
+   "end": 62.808,
+   "speech": 4.741,
+   "pause": 0.0,
+   "dur": 4.741
   },
   "L014": {
    "part": "A",
-   "start": 53.117,
-   "end": 57.575,
-   "speech": 4.458,
-   "pause": 0.35,
-   "dur": 4.808
+   "start": 62.808,
+   "end": 67.578,
+   "speech": 4.77,
+   "pause": 0.0,
+   "dur": 4.77
   },
   "L015": {
    "part": "A",
-   "start": 57.575,
-   "end": 60.844,
-   "speech": 3.269,
-   "pause": 0.35,
-   "dur": 3.619
+   "start": 67.578,
+   "end": 71.009,
+   "speech": 3.431,
+   "pause": 0.0,
+   "dur": 3.431
   },
   "L016": {
    "part": "A",
-   "start": 60.844,
-   "end": 65.905,
-   "speech": 5.061,
-   "pause": 0.35,
-   "dur": 5.411
+   "start": 71.009,
+   "end": 78.0,
+   "speech": 6.991,
+   "pause": 0.0,
+   "dur": 6.991
   },
   "L017": {
    "part": "A",
-   "start": 65.905,
-   "end": 71.997,
-   "speech": 6.092,
-   "pause": 0.35,
-   "dur": 6.442
+   "start": 78.0,
+   "end": 84.16,
+   "speech": 6.16,
+   "pause": 0.0,
+   "dur": 6.16
   },
   "L018": {
    "part": "A",
-   "start": 71.997,
-   "end": 74.129,
-   "speech": 2.132,
-   "pause": 0.5,
-   "dur": 2.632
+   "start": 84.16,
+   "end": 87.038,
+   "speech": 2.879,
+   "pause": 0.0,
+   "dur": 2.879
   },
   "L019": {
    "part": "A",
-   "start": 74.129,
-   "end": 78.394,
-   "speech": 4.265,
-   "pause": 1.8,
-   "dur": 6.065
+   "start": 87.038,
+   "end": 92.8,
+   "speech": 5.761,
+   "pause": 0.0,
+   "dur": 5.761
   },
   "L020": {
    "part": "B",
    "start": 0.0,
-   "end": 2.876,
-   "speech": 2.876,
-   "pause": 1.0,
-   "dur": 3.876
+   "end": 3.175,
+   "speech": 3.175,
+   "pause": 0.0,
+   "dur": 3.175
   },
   "L021": {
    "part": "B",
-   "start": 2.876,
-   "end": 10.066,
-   "speech": 7.19,
-   "pause": 0.35,
-   "dur": 7.54
+   "start": 3.175,
+   "end": 11.531,
+   "speech": 8.356,
+   "pause": 0.0,
+   "dur": 8.356
   },
   "L022": {
    "part": "B",
-   "start": 10.066,
-   "end": 12.941,
-   "speech": 2.875,
-   "pause": 0.35,
-   "dur": 3.225
+   "start": 11.531,
+   "end": 15.115,
+   "speech": 3.584,
+   "pause": 0.0,
+   "dur": 3.584
   },
   "L023": {
    "part": "B",
-   "start": 12.941,
-   "end": 15.098,
-   "speech": 2.157,
-   "pause": 0.35,
-   "dur": 2.507
+   "start": 15.115,
+   "end": 17.469,
+   "speech": 2.354,
+   "pause": 0.0,
+   "dur": 2.354
   },
   "L024": {
    "part": "B",
-   "start": 15.098,
-   "end": 20.85,
-   "speech": 5.752,
-   "pause": 0.35,
-   "dur": 6.102
+   "start": 17.469,
+   "end": 24.057,
+   "speech": 6.588,
+   "pause": 0.0,
+   "dur": 6.588
   },
   "L025": {
    "part": "B",
-   "start": 20.85,
-   "end": 23.28,
-   "speech": 2.43,
-   "pause": 0.35,
-   "dur": 2.78
+   "start": 24.057,
+   "end": 26.767,
+   "speech": 2.71,
+   "pause": 0.0,
+   "dur": 2.71
   },
   "L026": {
    "part": "B",
-   "start": 23.28,
-   "end": 28.141,
-   "speech": 4.861,
-   "pause": 0.35,
-   "dur": 5.211
+   "start": 26.767,
+   "end": 31.897,
+   "speech": 5.131,
+   "pause": 0.0,
+   "dur": 5.131
   },
   "L027": {
    "part": "B",
-   "start": 28.141,
-   "end": 34.528,
-   "speech": 6.387,
-   "pause": 1.2,
-   "dur": 7.587
+   "start": 31.897,
+   "end": 40.693,
+   "speech": 8.796,
+   "pause": 0.0,
+   "dur": 8.796
   },
   "L028": {
    "part": "B",
-   "start": 34.528,
-   "end": 37.674,
-   "speech": 3.146,
-   "pause": 1.0,
-   "dur": 4.146
+   "start": 40.693,
+   "end": 44.266,
+   "speech": 3.573,
+   "pause": 0.0,
+   "dur": 3.573
   },
   "L029": {
    "part": "B",
-   "start": 37.674,
-   "end": 40.683,
-   "speech": 3.009,
-   "pause": 0.35,
-   "dur": 3.359
+   "start": 44.266,
+   "end": 47.071,
+   "speech": 2.805,
+   "pause": 0.0,
+   "dur": 2.805
   },
   "L030": {
    "part": "B",
-   "start": 40.683,
-   "end": 45.196,
-   "speech": 4.513,
-   "pause": 0.35,
-   "dur": 4.863
+   "start": 47.071,
+   "end": 53.321,
+   "speech": 6.251,
+   "pause": 0.0,
+   "dur": 6.251
   },
   "L031": {
    "part": "B",
-   "start": 45.196,
-   "end": 48.711,
-   "speech": 3.515,
-   "pause": 1.2,
-   "dur": 4.715
+   "start": 53.321,
+   "end": 58.591,
+   "speech": 5.27,
+   "pause": 0.0,
+   "dur": 5.27
   },
   "L032": {
    "part": "B",
-   "start": 48.711,
-   "end": 53.622,
-   "speech": 4.911,
-   "pause": 0.35,
-   "dur": 5.261
+   "start": 58.591,
+   "end": 64.601,
+   "speech": 6.01,
+   "pause": 0.0,
+   "dur": 6.01
   },
   "L033": {
    "part": "B",
-   "start": 53.622,
-   "end": 60.494,
-   "speech": 6.872,
-   "pause": 0.35,
-   "dur": 7.222
+   "start": 64.601,
+   "end": 71.502,
+   "speech": 6.901,
+   "pause": 0.0,
+   "dur": 6.901
   },
   "L034": {
    "part": "B",
-   "start": 60.494,
-   "end": 65.11,
-   "speech": 4.616,
-   "pause": 0.8,
-   "dur": 5.416
+   "start": 71.502,
+   "end": 76.766,
+   "speech": 5.264,
+   "pause": 0.0,
+   "dur": 5.264
   },
   "L035": {
    "part": "B",
-   "start": 65.11,
-   "end": 70.648,
-   "speech": 5.538,
-   "pause": 0.35,
-   "dur": 5.888
+   "start": 76.766,
+   "end": 83.412,
+   "speech": 6.647,
+   "pause": 0.0,
+   "dur": 6.647
   },
   "L036": {
    "part": "B",
-   "start": 70.648,
-   "end": 75.416,
-   "speech": 4.768,
-   "pause": 1.0,
-   "dur": 5.768
+   "start": 83.412,
+   "end": 89.059,
+   "speech": 5.647,
+   "pause": 0.0,
+   "dur": 5.647
   },
   "L037": {
    "part": "B",
-   "start": 75.416,
-   "end": 81.455,
-   "speech": 6.039,
-   "pause": 0.35,
-   "dur": 6.389
+   "start": 89.059,
+   "end": 96.383,
+   "speech": 7.323,
+   "pause": 0.0,
+   "dur": 7.323
   },
   "L038": {
    "part": "B",
-   "start": 81.455,
-   "end": 85.415,
-   "speech": 3.96,
-   "pause": 0.8,
-   "dur": 4.76
+   "start": 96.383,
+   "end": 100.433,
+   "speech": 4.05,
+   "pause": 0.0,
+   "dur": 4.05
   },
   "L039": {
    "part": "B",
-   "start": 85.415,
-   "end": 93.849,
-   "speech": 8.434,
-   "pause": 0.35,
-   "dur": 8.784
+   "start": 100.433,
+   "end": 109.471,
+   "speech": 9.038,
+   "pause": 0.0,
+   "dur": 9.038
   },
   "L040": {
    "part": "B",
-   "start": 93.849,
-   "end": 98.822,
-   "speech": 4.973,
-   "pause": 0.35,
-   "dur": 5.323
+   "start": 109.471,
+   "end": 115.257,
+   "speech": 5.787,
+   "pause": 0.0,
+   "dur": 5.787
   },
   "L041": {
    "part": "B",
-   "start": 98.822,
-   "end": 100.148,
-   "speech": 1.326,
-   "pause": 2.0,
-   "dur": 3.326
+   "start": 115.257,
+   "end": 117.04,
+   "speech": 1.783,
+   "pause": 0.0,
+   "dur": 1.783
   },
   "L042": {
    "part": "C",
    "start": 0.0,
-   "end": 5.35,
-   "speech": 5.35,
-   "pause": 0.35,
-   "dur": 5.7
+   "end": 5.318,
+   "speech": 5.318,
+   "pause": 0.0,
+   "dur": 5.318
   },
   "L043": {
    "part": "C",
-   "start": 5.35,
-   "end": 12.903,
-   "speech": 7.553,
-   "pause": 0.35,
-   "dur": 7.903
+   "start": 5.318,
+   "end": 13.263,
+   "speech": 7.944,
+   "pause": 0.0,
+   "dur": 7.944
   },
   "L044": {
    "part": "C",
-   "start": 12.903,
-   "end": 15.421,
-   "speech": 2.518,
-   "pause": 0.35,
-   "dur": 2.868
+   "start": 13.263,
+   "end": 15.97,
+   "speech": 2.707,
+   "pause": 0.0,
+   "dur": 2.707
   },
   "L045": {
    "part": "C",
-   "start": 15.421,
-   "end": 21.4,
-   "speech": 5.979,
-   "pause": 0.8,
-   "dur": 6.779
+   "start": 15.97,
+   "end": 23.395,
+   "speech": 7.426,
+   "pause": 0.0,
+   "dur": 7.426
   },
   "L046": {
    "part": "C",
-   "start": 21.4,
-   "end": 27.11,
-   "speech": 5.71,
-   "pause": 0.35,
-   "dur": 6.06
+   "start": 23.395,
+   "end": 29.773,
+   "speech": 6.377,
+   "pause": 0.0,
+   "dur": 6.377
   },
   "L047": {
    "part": "C",
-   "start": 27.11,
-   "end": 31.749,
-   "speech": 4.639,
-   "pause": 0.35,
-   "dur": 4.989
+   "start": 29.773,
+   "end": 35.124,
+   "speech": 5.351,
+   "pause": 0.0,
+   "dur": 5.351
   },
   "L048": {
    "part": "C",
-   "start": 31.749,
-   "end": 36.388,
-   "speech": 4.639,
-   "pause": 0.35,
-   "dur": 4.989
+   "start": 35.124,
+   "end": 39.63,
+   "speech": 4.506,
+   "pause": 0.0,
+   "dur": 4.506
   },
   "L049": {
    "part": "C",
-   "start": 36.388,
-   "end": 39.612,
-   "speech": 3.224,
-   "pause": 1.8,
-   "dur": 5.024
+   "start": 39.63,
+   "end": 44.882,
+   "speech": 5.252,
+   "pause": 0.0,
+   "dur": 5.252
   },
   "L050": {
    "part": "C",
-   "start": 39.612,
-   "end": 44.837,
-   "speech": 5.225,
-   "pause": 0.35,
-   "dur": 5.575
+   "start": 44.882,
+   "end": 49.933,
+   "speech": 5.051,
+   "pause": 0.0,
+   "dur": 5.051
   },
   "L051": {
    "part": "C",
-   "start": 44.837,
-   "end": 51.307,
-   "speech": 6.47,
-   "pause": 0.35,
-   "dur": 6.82
+   "start": 49.933,
+   "end": 56.689,
+   "speech": 6.756,
+   "pause": 0.0,
+   "dur": 6.756
   },
   "L052": {
    "part": "C",
-   "start": 51.307,
-   "end": 55.621,
-   "speech": 4.314,
-   "pause": 0.35,
-   "dur": 4.664
+   "start": 56.689,
+   "end": 63.166,
+   "speech": 6.477,
+   "pause": 0.0,
+   "dur": 6.477
   },
   "L053": {
    "part": "C",
-   "start": 55.621,
-   "end": 60.55,
-   "speech": 4.929,
-   "pause": 0.8,
-   "dur": 5.729
+   "start": 63.166,
+   "end": 68.493,
+   "speech": 5.327,
+   "pause": 0.0,
+   "dur": 5.327
   },
   "L054": {
    "part": "C",
-   "start": 60.55,
-   "end": 65.45,
-   "speech": 4.9,
-   "pause": 0.35,
-   "dur": 5.25
+   "start": 68.493,
+   "end": 73.485,
+   "speech": 4.992,
+   "pause": 0.0,
+   "dur": 4.992
   },
   "L055": {
    "part": "C",
-   "start": 65.45,
-   "end": 72.988,
-   "speech": 7.538,
-   "pause": 0.35,
-   "dur": 7.888
+   "start": 73.485,
+   "end": 82.244,
+   "speech": 8.759,
+   "pause": 0.0,
+   "dur": 8.759
   },
   "L056": {
    "part": "C",
-   "start": 72.988,
-   "end": 75.231,
-   "speech": 2.243,
-   "pause": 0.8,
-   "dur": 3.043
+   "start": 82.244,
+   "end": 85.357,
+   "speech": 3.113,
+   "pause": 0.0,
+   "dur": 3.113
   },
   "L057": {
    "part": "C",
-   "start": 75.231,
-   "end": 79.89,
-   "speech": 4.659,
-   "pause": 1.8,
-   "dur": 6.459
+   "start": 85.357,
+   "end": 91.443,
+   "speech": 6.086,
+   "pause": 0.0,
+   "dur": 6.086
   },
   "L058": {
    "part": "C",
-   "start": 79.89,
-   "end": 82.597,
-   "speech": 2.707,
-   "pause": 0.35,
-   "dur": 3.057
+   "start": 91.443,
+   "end": 94.879,
+   "speech": 3.436,
+   "pause": 0.0,
+   "dur": 3.436
   },
   "L059": {
    "part": "C",
-   "start": 82.597,
-   "end": 89.58,
-   "speech": 6.983,
-   "pause": 0.35,
-   "dur": 7.333
+   "start": 94.879,
+   "end": 101.976,
+   "speech": 7.097,
+   "pause": 0.0,
+   "dur": 7.097
   },
   "L060": {
    "part": "C",
-   "start": 89.58,
-   "end": 92.7,
-   "speech": 3.12,
-   "pause": 0.35,
-   "dur": 3.47
+   "start": 101.976,
+   "end": 104.963,
+   "speech": 2.987,
+   "pause": 0.0,
+   "dur": 2.987
   },
   "L061": {
    "part": "C",
-   "start": 92.7,
-   "end": 98.55,
-   "speech": 5.85,
-   "pause": 1.0,
-   "dur": 6.85
+   "start": 104.963,
+   "end": 112.084,
+   "speech": 7.122,
+   "pause": 0.0,
+   "dur": 7.122
   },
   "L062": {
    "part": "C",
-   "start": 98.55,
-   "end": 108.881,
-   "speech": 10.331,
-   "pause": 0.35,
-   "dur": 10.681
+   "start": 112.084,
+   "end": 123.05,
+   "speech": 10.966,
+   "pause": 0.0,
+   "dur": 10.966
   },
   "L063": {
    "part": "C",
-   "start": 108.881,
-   "end": 115.65,
-   "speech": 6.769,
-   "pause": 1.0,
-   "dur": 7.769
+   "start": 123.05,
+   "end": 131.258,
+   "speech": 8.208,
+   "pause": 0.0,
+   "dur": 8.208
   },
   "L064": {
    "part": "C",
-   "start": 115.65,
-   "end": 120.05,
-   "speech": 4.4,
-   "pause": 0.35,
-   "dur": 4.75
+   "start": 131.258,
+   "end": 137.019,
+   "speech": 5.761,
+   "pause": 0.0,
+   "dur": 5.761
   },
   "L065": {
    "part": "C",
-   "start": 120.05,
-   "end": 127.769,
-   "speech": 7.719,
-   "pause": 1.8,
-   "dur": 9.519
+   "start": 137.019,
+   "end": 145.305,
+   "speech": 8.285,
+   "pause": 0.0,
+   "dur": 8.285
   },
   "L066": {
    "part": "C",
-   "start": 127.769,
-   "end": 130.624,
-   "speech": 2.855,
-   "pause": 0.35,
-   "dur": 3.205
+   "start": 145.305,
+   "end": 148.447,
+   "speech": 3.142,
+   "pause": 0.0,
+   "dur": 3.142
   },
   "L067": {
    "part": "C",
-   "start": 130.624,
-   "end": 138.17,
-   "speech": 7.546,
-   "pause": 0.35,
-   "dur": 7.896
+   "start": 148.447,
+   "end": 157.798,
+   "speech": 9.352,
+   "pause": 0.0,
+   "dur": 9.352
   },
   "L068": {
    "part": "C",
-   "start": 138.17,
-   "end": 143.2,
-   "speech": 5.03,
-   "pause": 0.8,
-   "dur": 5.83
+   "start": 157.798,
+   "end": 162.918,
+   "speech": 5.119,
+   "pause": 0.0,
+   "dur": 5.119
   },
   "L069": {
    "part": "C",
-   "start": 143.2,
-   "end": 148.471,
-   "speech": 5.271,
-   "pause": 2.0,
-   "dur": 7.271
+   "start": 162.918,
+   "end": 170.722,
+   "speech": 7.804,
+   "pause": 0.0,
+   "dur": 7.804
   },
   "L070": {
    "part": "C",
-   "start": 148.471,
-   "end": 151.107,
-   "speech": 2.636,
-   "pause": 0.35,
-   "dur": 2.986
+   "start": 170.722,
+   "end": 173.613,
+   "speech": 2.891,
+   "pause": 0.0,
+   "dur": 2.891
   },
   "L071": {
    "part": "C",
-   "start": 151.107,
-   "end": 156.755,
-   "speech": 5.648,
-   "pause": 0.35,
-   "dur": 5.998
+   "start": 173.613,
+   "end": 180.762,
+   "speech": 7.149,
+   "pause": 0.0,
+   "dur": 7.149
   },
   "L072": {
    "part": "C",
-   "start": 156.755,
-   "end": 161.65,
-   "speech": 4.895,
-   "pause": 1.0,
-   "dur": 5.895
+   "start": 180.762,
+   "end": 184.772,
+   "speech": 4.009,
+   "pause": 0.0,
+   "dur": 4.009
   },
   "L073": {
    "part": "C",
-   "start": 161.65,
-   "end": 167.722,
-   "speech": 6.072,
-   "pause": 0.35,
-   "dur": 6.422
+   "start": 184.772,
+   "end": 191.026,
+   "speech": 6.255,
+   "pause": 0.0,
+   "dur": 6.255
   },
   "L074": {
    "part": "C",
-   "start": 167.722,
-   "end": 170.151,
-   "speech": 2.429,
-   "pause": 1.2,
-   "dur": 3.629
+   "start": 191.026,
+   "end": 193.94,
+   "speech": 2.913,
+   "pause": 0.0,
+   "dur": 2.913
   },
   "L075": {
    "part": "C",
-   "start": 170.151,
-   "end": 177.438,
-   "speech": 7.287,
-   "pause": 1.5,
-   "dur": 8.787
+   "start": 193.94,
+   "end": 203.36,
+   "speech": 9.42,
+   "pause": 0.0,
+   "dur": 9.42
   }
  },
- "total_sec": 404.629,
+ "total_sec": 413.2,
  "note": "dur = konuşma + duraklama"
 }

@@ -17,7 +17,7 @@ def silences(wav, db=-38, d=0.2):
     return [((s + e) / 2) for s, e in zip(st, en)]
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("vdir"); ap.add_argument("--lang", default="tr"); a = ap.parse_args(); v = a.vdir.rstrip("/")
+    ap = argparse.ArgumentParser(); ap.add_argument("vdir"); ap.add_argument("--lang", default="tr"); ap.add_argument("--raw", action="store_true", help="ham ses: duraklama, fade ve oda tonu yok (ElevenLabs çıktısı olduğu gibi)"); a = ap.parse_args(); v = a.vdir.rstrip("/")
     T = json.load(open(f"{v}/audio/timing_{a.lang}.json")); P = json.load(open(f"{v}/PAUSES_{a.lang}.json"))
     L = T["lines"]; ids = sorted(L); pcm = {}; mids = {}
     for k, info in T["parts"].items():
@@ -33,21 +33,22 @@ def main():
         nxt = ids[i + 1] if i + 1 < len(ids) else None
         e = tot if (nxt is None or L[nxt]["part"] != part) else snap(L[nxt]["start"])
         seg = pcm[part][int(s * SR):int(e * SR)]
-        pause = P["after"].get(lid, P["default"])
+        pause = 0.0 if a.raw else P["after"].get(lid, P["default"])
         # her parçanın son satırından sonra doğal bitiş sessizliği zaten var; yine de duraklama ekle
         seg = seg.astype(np.float32); f = int(0.015 * SR)
-        if len(seg) > 2 * f: seg[:f] *= np.linspace(0, 1, f); seg[-f:] *= np.linspace(1, 0, f)
+        if not a.raw and len(seg) > 2 * f: seg[:f] *= np.linspace(0, 1, f); seg[-f:] *= np.linspace(1, 0, f)
         out.append(seg.astype(np.int16)); out.append(np.zeros(int(pause * SR), dtype=np.int16))
         final[lid] = {"part": part, "start": round(s, 3), "end": round(e, 3), "speech": round(e - s, 3), "pause": pause, "dur": round(e - s + pause, 3)}
     audio = np.concatenate(out)
-    # tam dijital sessizlik 'kesinti' gibi duyuluyor: tüm parçanın altına çok kısık oda tonu (-60 dBFS) ekle
-    rng = np.random.default_rng(7); n = rng.normal(0, 1, len(audio)).astype(np.float32)
-    k = np.ones(24, dtype=np.float32) / 24; n = np.convolve(n, k, "same"); n = n / (n.std() + 1e-9) * (32768 * 10 ** (-60 / 20))
-    audio = np.clip(audio.astype(np.float32) + n, -32768, 32767).astype(np.int16)
+    if not a.raw:
+        # tam dijital sessizlik 'kesinti' gibi duyuluyor: tüm parçanın altına çok kısık oda tonu (-60 dBFS) ekle
+        rng = np.random.default_rng(7); n = rng.normal(0, 1, len(audio)).astype(np.float32)
+        k = np.ones(24, dtype=np.float32) / 24; n = np.convolve(n, k, "same"); n = n / (n.std() + 1e-9) * (32768 * 10 ** (-60 / 20))
+        audio = np.clip(audio.astype(np.float32) + n, -32768, 32767).astype(np.int16)
     wavp = f"{v}/audio/full_{a.lang}.wav"
     w = wave.open(wavp, "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes(audio.tobytes()); w.close()
     mp3 = f"{v}/audio/full_{a.lang}.mp3"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", wavp, "-b:a", "192k", mp3], check=True); os.remove(wavp)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", wavp, "-b:a", "320k", mp3], check=True); os.remove(wavp)
     save_json(f"{v}/audio/timing_{a.lang}_final.json", {"lines": final, "total_sec": round(len(audio) / SR, 3), "note": "dur = konuşma + duraklama"})
     print("toplam", round(len(audio) / SR, 2), "sn ->", mp3)
 if __name__ == "__main__": main()

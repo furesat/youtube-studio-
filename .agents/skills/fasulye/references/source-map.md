@@ -1,6 +1,6 @@
 # Depo kaynakları ve paketteki görseller
 
-Kaynak depo `furesat/youtube-studio-`. İlk paket için incelenen temel commit `d3da61579a2bfedba7d511b89c98895af24f1630`. Bir bölümü sürdürürken açık çalışma kopyasının güncel dosyaları o bölümün teknik başvurusudur. **BOONIE** adı kullanıcı tarafından bu paket hazırlanırken verildi. Kaynak görsellerin üzerindeki FASULYE etiketleri arşivdeki özgün halleriyle durur.
+Kaynak depo `furesat/youtube-studio-`. İlk paket için incelenen temel commit `b97e5a6da375fc2001908cfa6b875ebf869df5d4`. Bir bölümü sürdürürken açık çalışma kopyasının güncel dosyaları o bölümün teknik başvurusudur. **BOONIE** adı kullanıcı tarafından bu paket hazırlanırken verildi. Kaynak görsellerin üzerindeki FASULYE etiketleri arşivdeki özgün halleriyle durur.
 
 | İş | Depodaki başvuru |
 |---|---|

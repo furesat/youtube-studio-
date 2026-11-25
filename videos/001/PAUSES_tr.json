@@ -1,17 +1,58 @@
 {
- "_not": "Satır sonu toplam sessizlik hedefi (sn). Kurguda uygulanır; TTS promptunda saniye kullanılmaz (eleven_v4 uygulamıyor, bkz. VOICE_QA_tr.md).",
- "default": 0.35,
+ "_not": "Satır sonu toplam sessizlik hedefi (sn). Kurguda uygulanır; TTS promptunda saniye kullanılmaz (eleven_v4 uygulamıyor, bkz. VOICE_QA_tr.md). v2: kullanıcı geri bildirimi (beklemeler çok uzun) -> değerler ~%45 azaltıldı; ham ses boşlukları da kısaltıldı.",
+ "default": 0.12,
  "after": {
-  "L001": 0.8, "L004": 0.8, "L006": 1.5, "L007": 0.8, "L013": 0.7, "L018": 0.5, "L019": 1.8,
-  "L020": 1.0, "L027": 1.2, "L028": 1.0, "L031": 1.2, "L034": 0.8, "L036": 1.0, "L038": 0.8, "L041": 2.0,
-  "L045": 0.8, "L049": 1.8, "L053": 0.8, "L056": 0.8, "L057": 1.8,
-  "L061": 1.0, "L063": 1.0, "L065": 1.8, "L068": 0.8, "L069": 2.0,
-  "L072": 1.0, "L074": 1.2, "L075": 1.5
+  "L001": 0.36,
+  "L004": 0.36,
+  "L006": 0.68,
+  "L007": 0.36,
+  "L013": 0.32,
+  "L018": 0.23,
+  "L019": 0.8,
+  "L020": 0.45,
+  "L027": 0.54,
+  "L028": 0.45,
+  "L031": 0.54,
+  "L034": 0.36,
+  "L036": 0.45,
+  "L038": 0.36,
+  "L041": 0.8,
+  "L045": 0.36,
+  "L049": 0.8,
+  "L053": 0.36,
+  "L056": 0.36,
+  "L057": 0.8,
+  "L061": 0.45,
+  "L063": 0.45,
+  "L065": 0.8,
+  "L068": 0.36,
+  "L069": 0.8,
+  "L072": 0.45,
+  "L074": 0.54,
+  "L075": 0.68
  },
  "inside": {
-  "L016": {"before": "kahve içiyor", "sec": 0.8},
-  "L019": {"before": "Sorun masaydı", "sec": 0.6},
-  "L031": {"before": "Tahmin et", "sec": 0.4},
-  "L075": [{"before": "Krallar denedi", "sec": 0.6}, {"before": "Olmadı", "sec": 0.6}]
+  "L016": {
+   "before": "kahve içiyor",
+   "sec": 0.32
+  },
+  "L019": {
+   "before": "Sorun masaydı",
+   "sec": 0.24
+  },
+  "L031": {
+   "before": "Tahmin et",
+   "sec": 0.16
+  },
+  "L075": [
+   {
+    "before": "Krallar denedi",
+    "sec": 0.24
+   },
+   {
+    "before": "Olmadı",
+    "sec": 0.24
+   }
+  ]
  }
 }

@@ -1,0 +1,1285 @@
+{
+ "video": "001",
+ "lang": "tr",
+ "note": "v2 çekim listesi: mevcut 61 sahne + ara çekimler. start/dur TR anlatıma göre yaklaşık (karakter oranı).",
+ "shots": [
+  {
+   "shot": "S001",
+   "scene": "S001",
+   "new": false,
+   "start": 0.0,
+   "dur": 2.9,
+   "image": "images/001_S001_vK.png (mevcut)",
+   "narration": "Elinde bir fincan kahve varsa, dikkatli tut."
+  },
+  {
+   "shot": "S002",
+   "scene": "S002",
+   "new": false,
+   "start": 2.9,
+   "dur": 4.97,
+   "image": "images/001_S002_vK.png (mevcut)",
+   "narration": "Tarih boyunca bu içecek yüzünden dükkânlar kapatıldı, çuvallar yakıldı,"
+  },
+  {
+   "shot": "S002b",
+   "scene": "S002",
+   "new": true,
+   "start": 7.88,
+   "dur": 1.66,
+   "image": "images/001_S002b_vK.png",
+   "narration": "krallar fermanlar yazdı."
+  },
+  {
+   "shot": "S003",
+   "scene": "S003",
+   "new": false,
+   "start": 9.53,
+   "dur": 1.48,
+   "image": "images/001_S003_vK.png (mevcut)",
+   "narration": "Mekke, İstanbul,"
+  },
+  {
+   "shot": "S003b",
+   "scene": "S003",
+   "new": true,
+   "start": 11.01,
+   "dur": 2.0,
+   "image": "images/001_S003b_vK.png",
+   "narration": "Londra, Prusya, İsveç…"
+  },
+  {
+   "shot": "S003c",
+   "scene": "S003",
+   "new": true,
+   "start": 13.02,
+   "dur": 3.48,
+   "image": "images/001_S003c_vK.png",
+   "narration": "Kahve en az beş farklı yerde yasaklandı."
+  },
+  {
+   "shot": "S004",
+   "scene": "S004",
+   "new": false,
+   "start": 16.5,
+   "dur": 3.5,
+   "image": "images/001_S004_vK.png (mevcut)",
+   "narration": "Ve her seferinde kaybeden taraf yasaklayan oldu."
+  },
+  {
+   "shot": "S005",
+   "scene": "S005",
+   "new": false,
+   "start": 20.0,
+   "dur": 1.82,
+   "image": "images/001_S005_vK.png (mevcut)",
+   "narration": "Ama işin garibi şu:"
+  },
+  {
+   "shot": "S005b",
+   "scene": "S005",
+   "new": true,
+   "start": 21.82,
+   "dur": 3.65,
+   "image": "images/001_S005b_vK.png",
+   "narration": "Bu yasakların neredeyse hiçbiri aslında"
+  },
+  {
+   "shot": "S005c",
+   "scene": "S005",
+   "new": true,
+   "start": 25.47,
+   "dur": 2.28,
+   "image": "images/001_S005c_vK.png",
+   "narration": "kahveyle ilgili değildi."
+  },
+  {
+   "shot": "S005d",
+   "scene": "S005",
+   "new": true,
+   "start": 27.75,
+   "dur": 1.92,
+   "image": "images/001_S005d_vK.png",
+   "narration": "Peki neyle ilgiliydi?"
+  },
+  {
+   "shot": "S006",
+   "scene": "S006",
+   "new": false,
+   "start": 29.67,
+   "dur": 2.97,
+   "image": "images/001_S006_vK.png (mevcut)",
+   "narration": "Yıl bin beş yüz on bir. Mekke."
+  },
+  {
+   "shot": "S007",
+   "scene": "S007",
+   "new": false,
+   "start": 32.63,
+   "dur": 2.25,
+   "image": "images/001_S007_vK.png (mevcut)",
+   "narration": "Kahve Yemen'den yeni gelmiş."
+  },
+  {
+   "shot": "S007b",
+   "scene": "S007",
+   "new": true,
+   "start": 34.88,
+   "dur": 3.65,
+   "image": "images/001_S007b_vK.png",
+   "narration": "Sufiler gece boyunca uyanık kalmak için içiyor."
+  },
+  {
+   "shot": "S008",
+   "scene": "S008",
+   "new": false,
+   "start": 38.53,
+   "dur": 2.62,
+   "image": "images/001_S008_vK.png (mevcut)",
+   "narration": "Kısa sürede şehirde kahve dükkânları açılıyor."
+  },
+  {
+   "shot": "S008b",
+   "scene": "S008",
+   "new": true,
+   "start": 41.16,
+   "dur": 2.84,
+   "image": "images/001_S008b_vK.png",
+   "narration": "İnsanlar toplanıyor, sohbet ediyor, şarkı söylüyor."
+  },
+  {
+   "shot": "S009",
+   "scene": "S009",
+   "new": false,
+   "start": 44.0,
+   "dur": 1.9,
+   "image": "images/001_S009_vK.png (mevcut)",
+   "narration": "Bunu hiç sevmeyen biri var:"
+  },
+  {
+   "shot": "S009b",
+   "scene": "S009",
+   "new": true,
+   "start": 45.9,
+   "dur": 2.5,
+   "image": "images/001_S009b_vK.png",
+   "narration": "Şehrin asayişinden sorumlu Hayır Bey."
+  },
+  {
+   "shot": "S010",
+   "scene": "S010",
+   "new": false,
+   "start": 48.4,
+   "dur": 3.14,
+   "image": "images/001_S010_vK.png (mevcut)",
+   "narration": "Bir akşam kahve içip neşelenen bir grup görüyor."
+  },
+  {
+   "shot": "S010b",
+   "scene": "S010",
+   "new": true,
+   "start": 51.54,
+   "dur": 1.03,
+   "image": "images/001_S010b_vK.png",
+   "narration": "Ve şüpheleniyor."
+  },
+  {
+   "shot": "S011",
+   "scene": "S011",
+   "new": false,
+   "start": 52.57,
+   "dur": 3.35,
+   "image": "images/001_S011_vK.png (mevcut)",
+   "narration": "Hemen âlimleri ve hekimleri topluyor. Soru basit:"
+  },
+  {
+   "shot": "S011b",
+   "scene": "S011",
+   "new": true,
+   "start": 55.92,
+   "dur": 2.15,
+   "image": "images/001_S011b_vK.png",
+   "narration": "Bu içecek insanı sarhoş eder mi?"
+  },
+  {
+   "shot": "S012",
+   "scene": "S012",
+   "new": false,
+   "start": 58.07,
+   "dur": 4.0,
+   "image": "images/001_S012_vK.png (mevcut)",
+   "narration": "Toplantı tam istediği gibi bitiyor. Kahve yasak."
+  },
+  {
+   "shot": "S013",
+   "scene": "S013",
+   "new": false,
+   "start": 62.07,
+   "dur": 3.53,
+   "image": "images/001_S013_vK.png (mevcut)",
+   "narration": "Dükkânlar kapatılıyor, kahve çuvalları sokakta yakılıyor."
+  },
+  {
+   "shot": "S014b",
+   "scene": "S014",
+   "new": true,
+   "start": 65.6,
+   "dur": 4.25,
+   "image": "images/001_S014b_vK.png",
+   "narration": "Hayır Bey'in tek bir sorunu var: Onun da bir patronu var."
+  },
+  {
+   "shot": "S014c",
+   "scene": "S014",
+   "new": true,
+   "start": 69.85,
+   "dur": 3.66,
+   "image": "images/001_S014c_vK.png",
+   "narration": "Mekke o dönem Kahire'deki Memlük sultanına bağlı."
+  },
+  {
+   "shot": "S014d",
+   "scene": "S014",
+   "new": true,
+   "start": 73.51,
+   "dur": 1.32,
+   "image": "images/001_S014d_vK.png",
+   "narration": "Ve söylenene göre"
+  },
+  {
+   "shot": "S014",
+   "scene": "S014",
+   "new": false,
+   "start": 74.83,
+   "dur": 2.64,
+   "image": "images/001_S014_vK.png (mevcut)",
+   "narration": "Sultan Kansu Gavri de… kahve içiyor."
+  },
+  {
+   "shot": "S015",
+   "scene": "S015",
+   "new": false,
+   "start": 77.47,
+   "dur": 3.56,
+   "image": "images/001_S015_vK.png (mevcut)",
+   "narration": "Kahire'den gelen mesaj net: Şüpheli toplantılarla uğraş,"
+  },
+  {
+   "shot": "S015b",
+   "scene": "S015",
+   "new": true,
+   "start": 81.02,
+   "dur": 2.12,
+   "image": "images/001_S015b_vK.png",
+   "narration": "ama insanların kahvesine dokunma."
+  },
+  {
+   "shot": "S015c",
+   "scene": "S015",
+   "new": true,
+   "start": 83.15,
+   "dur": 2.12,
+   "image": "images/001_S015c_vK.png",
+   "narration": "Yasak birkaç hafta içinde çöküyor."
+  },
+  {
+   "shot": "S016",
+   "scene": "S016",
+   "new": false,
+   "start": 85.27,
+   "dur": 3.29,
+   "image": "images/001_S016_vK.png (mevcut)",
+   "narration": "İlk dersimiz: Sorun fincan değildi."
+  },
+  {
+   "shot": "S016b",
+   "scene": "S016",
+   "new": true,
+   "start": 88.55,
+   "dur": 1.28,
+   "image": "images/001_S016b_vK.png",
+   "narration": "Sorun masaydı."
+  },
+  {
+   "shot": "S017",
+   "scene": "S017",
+   "new": false,
+   "start": 89.83,
+   "dur": 3.03,
+   "image": "images/001_S017_vK.png (mevcut)",
+   "narration": "Kırk yıl sonra kahve İstanbul'a ulaşıyor."
+  },
+  {
+   "shot": "S018b",
+   "scene": "S018",
+   "new": true,
+   "start": 92.87,
+   "dur": 1.66,
+   "image": "images/001_S018b_vK.png",
+   "narration": "Tarihçi Peçevi'ye göre"
+  },
+  {
+   "shot": "S018c",
+   "scene": "S018",
+   "new": true,
+   "start": 94.53,
+   "dur": 3.32,
+   "image": "images/001_S018c_vK.png",
+   "narration": "Halep'ten Hakem, Şam'dan Şems adında iki adam"
+  },
+  {
+   "shot": "S018",
+   "scene": "S018",
+   "new": false,
+   "start": 97.85,
+   "dur": 2.38,
+   "image": "images/001_S018_vK.png (mevcut)",
+   "narration": "Tahtakale'de birer dükkân açıyor."
+  },
+  {
+   "shot": "S019b",
+   "scene": "S019",
+   "new": true,
+   "start": 100.23,
+   "dur": 3.45,
+   "image": "images/001_S019b_vK.png",
+   "narration": "Fikir basit: Kahve sat, insanları oturt."
+  },
+  {
+   "shot": "S019",
+   "scene": "S019",
+   "new": false,
+   "start": 103.68,
+   "dur": 2.35,
+   "image": "images/001_S019_vK.png (mevcut)",
+   "narration": "Sonuç: Şehir buna bayılıyor."
+  },
+  {
+   "shot": "S020",
+   "scene": "S020",
+   "new": false,
+   "start": 106.03,
+   "dur": 4.63,
+   "image": "images/001_S020_vK.png (mevcut)",
+   "narration": "Kahvehanelerde yirmi otuz kişilik gruplar toplanıyor. Kitap okuyan,"
+  },
+  {
+   "shot": "S020b",
+   "scene": "S020",
+   "new": true,
+   "start": 110.66,
+   "dur": 1.77,
+   "image": "images/001_S020b_vK.png",
+   "narration": "tavla oynayan, şiir yazan…"
+  },
+  {
+   "shot": "S021",
+   "scene": "S021",
+   "new": false,
+   "start": 112.43,
+   "dur": 3.37,
+   "image": "images/001_S021_vK.png (mevcut)",
+   "narration": "Ve tabii ki herkes devlet hakkında konuşuyor."
+  },
+  {
+   "shot": "S022",
+   "scene": "S022",
+   "new": false,
+   "start": 115.8,
+   "dur": 1.79,
+   "image": "images/001_S022_vK.png (mevcut)",
+   "narration": "Bazı âlimler itiraz ediyor:"
+  },
+  {
+   "shot": "S022b",
+   "scene": "S022",
+   "new": true,
+   "start": 117.59,
+   "dur": 2.88,
+   "image": "images/001_S022b_vK.png",
+   "narration": "İnsanlar ibadeti bırakıp kahvehaneye koşuyor."
+  },
+  {
+   "shot": "S023b",
+   "scene": "S023",
+   "new": true,
+   "start": 120.47,
+   "dur": 2.8,
+   "image": "images/001_S023b_vK.png",
+   "narration": "Ama kahvenin de güçlü dostları var."
+  },
+  {
+   "shot": "S023",
+   "scene": "S023",
+   "new": false,
+   "start": 123.26,
+   "dur": 2.87,
+   "image": "images/001_S023_vK.png (mevcut)",
+   "narration": "Şeyhülislam Bostanzade Mehmed Efendi"
+  },
+  {
+   "shot": "S023c",
+   "scene": "S023",
+   "new": true,
+   "start": 126.14,
+   "dur": 2.1,
+   "image": "images/001_S023c_vK.png",
+   "narration": "kahveye yeşil ışık yakıyor."
+  },
+  {
+   "shot": "S024",
+   "scene": "S024",
+   "new": false,
+   "start": 128.23,
+   "dur": 3.93,
+   "image": "images/001_S024_vK.png (mevcut)",
+   "narration": "Sonra sahneye Dördüncü Murad çıkıyor."
+  },
+  {
+   "shot": "S025b",
+   "scene": "S025",
+   "new": true,
+   "start": 132.17,
+   "dur": 3.53,
+   "image": "images/001_S025b_vK.png",
+   "narration": "Murad'ın kahvehanelere güvenmemek için ciddi bir nedeni var."
+  },
+  {
+   "shot": "S025c",
+   "scene": "S025",
+   "new": true,
+   "start": 135.69,
+   "dur": 2.6,
+   "image": "images/001_S025c_vK.png",
+   "narration": "Ağabeyi Genç Osman, bin altı yüz yirmi ikide"
+  },
+  {
+   "shot": "S025",
+   "scene": "S025",
+   "new": false,
+   "start": 138.3,
+   "dur": 2.6,
+   "image": "images/001_S025_vK.png (mevcut)",
+   "narration": "isyan eden yeniçeriler tarafından öldürülmüş."
+  },
+  {
+   "shot": "S026",
+   "scene": "S026",
+   "new": false,
+   "start": 140.9,
+   "dur": 5.3,
+   "image": "images/001_S026_vK.png (mevcut)",
+   "narration": "Peki yeniçerilerin en sevdiği buluşma yeri neresi?"
+  },
+  {
+   "shot": "S026b",
+   "scene": "S026",
+   "new": true,
+   "start": 146.2,
+   "dur": 1.04,
+   "image": "images/001_S026b_vK.png",
+   "narration": "Tahmin et."
+  },
+  {
+   "shot": "S027",
+   "scene": "S027",
+   "new": false,
+   "start": 147.23,
+   "dur": 3.64,
+   "image": "images/001_S027_vK.png (mevcut)",
+   "narration": "bin altı yüz otuz üçte İstanbul'da büyük bir yangın çıkıyor."
+  },
+  {
+   "shot": "S027b",
+   "scene": "S027",
+   "new": true,
+   "start": 150.87,
+   "dur": 1.73,
+   "image": "images/001_S027b_vK.png",
+   "narration": "Şehrin beşte biri kül oluyor."
+  },
+  {
+   "shot": "S028",
+   "scene": "S028",
+   "new": false,
+   "start": 152.6,
+   "dur": 4.64,
+   "image": "images/001_S028_vK.png (mevcut)",
+   "narration": "Murad fırsatı kaçırmıyor. Yangın tehlikesi gerekçesiyle kahvehaneleri kapattırıyor."
+  },
+  {
+   "shot": "S028b",
+   "scene": "S028",
+   "new": true,
+   "start": 157.24,
+   "dur": 1.16,
+   "image": "images/001_S028b_vK.png",
+   "narration": "Tütünü de yasaklıyor."
+  },
+  {
+   "shot": "S029b",
+   "scene": "S029",
+   "new": true,
+   "start": 158.4,
+   "dur": 1.04,
+   "image": "images/001_S029b_vK.png",
+   "narration": "Cezalar ağır."
+  },
+  {
+   "shot": "S029",
+   "scene": "S029",
+   "new": false,
+   "start": 159.44,
+   "dur": 3.7,
+   "image": "images/001_S029_vK.png (mevcut)",
+   "narration": "Yasağı çiğneyen, ölümle bile cezalandırılabiliyor."
+  },
+  {
+   "shot": "S030",
+   "scene": "S030",
+   "new": false,
+   "start": 163.13,
+   "dur": 4.67,
+   "image": "images/001_S030_vK.png (mevcut)",
+   "narration": "Anlatılana göre Murad geceleri kılık değiştirip sokaklarda dolaşıyor,"
+  },
+  {
+   "shot": "S030b",
+   "scene": "S030",
+   "new": true,
+   "start": 167.8,
+   "dur": 1.93,
+   "image": "images/001_S030b_vK.png",
+   "narration": "suçluları bizzat yakalıyordu."
+  },
+  {
+   "shot": "S031",
+   "scene": "S031",
+   "new": false,
+   "start": 169.73,
+   "dur": 5.6,
+   "image": "images/001_S031_vK.png (mevcut)",
+   "narration": "Bunun ne kadarı gerçek, tartışmalı. Ama korkutmak için doğru olması gerekmiyordu."
+  },
+  {
+   "shot": "S032b",
+   "scene": "S032",
+   "new": true,
+   "start": 175.33,
+   "dur": 4.57,
+   "image": "images/001_S032b_vK.png",
+   "narration": "İşin ilginç yanı: Murad kahveyi değil, kahvehaneyi hedef alıyor."
+  },
+  {
+   "shot": "S032",
+   "scene": "S032",
+   "new": false,
+   "start": 179.9,
+   "dur": 1.33,
+   "image": "images/001_S032_vK.png (mevcut)",
+   "narration": "Evde içmek serbest."
+  },
+  {
+   "shot": "S033",
+   "scene": "S033",
+   "new": false,
+   "start": 181.23,
+   "dur": 3.27,
+   "image": "images/001_S033_vK.png (mevcut)",
+   "narration": "Yani sorun yine fincan değil. Yine masa."
+  },
+  {
+   "shot": "S034b",
+   "scene": "S034",
+   "new": true,
+   "start": 184.5,
+   "dur": 1.97,
+   "image": "images/001_S034b_vK.png",
+   "narration": "Yasak tutmuş gibi görünüyor."
+  },
+  {
+   "shot": "S034c",
+   "scene": "S034",
+   "new": true,
+   "start": 186.47,
+   "dur": 3.19,
+   "image": "images/001_S034c_vK.png",
+   "narration": "Murad öldükten on yıl sonra bile Kâtip Çelebi,"
+  },
+  {
+   "shot": "S034",
+   "scene": "S034",
+   "new": false,
+   "start": 189.66,
+   "dur": 3.94,
+   "image": "images/001_S034_vK.png (mevcut)",
+   "narration": "kahvehanelerin cahilin gönlü kadar ıssız olduğunu yazıyor."
+  },
+  {
+   "shot": "S035b",
+   "scene": "S035",
+   "new": true,
+   "start": 193.6,
+   "dur": 3.5,
+   "image": "images/001_S035b_vK.png",
+   "narration": "Ama bin altı yüz kırk dokuzda tütün yasağı kalkıyor"
+  },
+  {
+   "shot": "S035",
+   "scene": "S035",
+   "new": false,
+   "start": 197.1,
+   "dur": 3.09,
+   "image": "images/001_S035_vK.png (mevcut)",
+   "narration": "ve kahvehaneler birer birer yeniden açılıyor."
+  },
+  {
+   "shot": "S035c",
+   "scene": "S035",
+   "new": true,
+   "start": 200.19,
+   "dur": 1.08,
+   "image": "images/001_S035c_vK.png",
+   "narration": "Masa geri geldi."
+  },
+  {
+   "shot": "S036b",
+   "scene": "S036",
+   "new": true,
+   "start": 201.27,
+   "dur": 2.62,
+   "image": "images/001_S036b_vK.png",
+   "narration": "Bu arada kahve Avrupa'ya ulaşmış."
+  },
+  {
+   "shot": "S036",
+   "scene": "S036",
+   "new": false,
+   "start": 203.88,
+   "dur": 2.38,
+   "image": "images/001_S036_vK.png (mevcut)",
+   "narration": "Londra'da kahvehane her köşede."
+  },
+  {
+   "shot": "S037b",
+   "scene": "S037",
+   "new": true,
+   "start": 206.27,
+   "dur": 1.74,
+   "image": "images/001_S037b_vK.png",
+   "narration": "Bir peni ver, kahveni al,"
+  },
+  {
+   "shot": "S037",
+   "scene": "S037",
+   "new": false,
+   "start": 208.01,
+   "dur": 2.14,
+   "image": "images/001_S037_vK.png (mevcut)",
+   "narration": "istediğin kadar otur ve tartış."
+  },
+  {
+   "shot": "S037c",
+   "scene": "S037",
+   "new": true,
+   "start": 210.15,
+   "dur": 3.01,
+   "image": "images/001_S037c_vK.png",
+   "narration": "Bu yüzden onlara peni üniversiteleri deniyor."
+  },
+  {
+   "shot": "S038",
+   "scene": "S038",
+   "new": false,
+   "start": 213.17,
+   "dur": 3.43,
+   "image": "images/001_S038_vK.png (mevcut)",
+   "narration": "Kral İkinci Charles bundan pek hoşlanmıyor."
+  },
+  {
+   "shot": "S039b",
+   "scene": "S039",
+   "new": true,
+   "start": 216.6,
+   "dur": 3.7,
+   "image": "images/001_S039b_vK.png",
+   "narration": "yirmi dokuz Aralık bin altı yüz yetmiş beşte bir ferman yayımlıyor:"
+  },
+  {
+   "shot": "S039",
+   "scene": "S039",
+   "new": false,
+   "start": 220.3,
+   "dur": 2.5,
+   "image": "images/001_S039_vK.png (mevcut)",
+   "narration": "Kahvehaneler on Ocak'tan itibaren kapatılacak."
+  },
+  {
+   "shot": "S040b",
+   "scene": "S040",
+   "new": true,
+   "start": 222.8,
+   "dur": 3.84,
+   "image": "images/001_S040b_vK.png",
+   "narration": "Gerekçe: Buralar tembel ve hoşnutsuz insanların toplandığı,"
+  },
+  {
+   "shot": "S040",
+   "scene": "S040",
+   "new": false,
+   "start": 226.64,
+   "dur": 3.26,
+   "image": "images/001_S040_vK.png (mevcut)",
+   "narration": "hükümet hakkında yalan haberlerin yayıldığı yerler."
+  },
+  {
+   "shot": "S041",
+   "scene": "S041",
+   "new": false,
+   "start": 229.9,
+   "dur": 2.73,
+   "image": "images/001_S041_vK.png (mevcut)",
+   "narration": "Londra ayağa kalkıyor. Tüccarlar, esnaf,"
+  },
+  {
+   "shot": "S041b",
+   "scene": "S041",
+   "new": true,
+   "start": 232.63,
+   "dur": 3.13,
+   "image": "images/001_S041b_vK.png",
+   "narration": "hatta kralın kendi adamları bile itiraz ediyor."
+  },
+  {
+   "shot": "S042",
+   "scene": "S042",
+   "new": false,
+   "start": 235.77,
+   "dur": 1.99,
+   "image": "images/001_S042_vK.png (mevcut)",
+   "narration": "Ve yasak daha başlamadan,"
+  },
+  {
+   "shot": "S042b",
+   "scene": "S042",
+   "new": true,
+   "start": 237.76,
+   "dur": 2.3,
+   "image": "images/001_S042b_vK.png",
+   "narration": "sekiz Ocak'ta geri çekiliyor."
+  },
+  {
+   "shot": "S042c",
+   "scene": "S042",
+   "new": true,
+   "start": 240.06,
+   "dur": 3.68,
+   "image": "images/001_S042c_vK.png",
+   "narration": "Ferman ile geri adım arasında sadece on gün var."
+  },
+  {
+   "shot": "S043b",
+   "scene": "S043",
+   "new": true,
+   "start": 243.73,
+   "dur": 1.7,
+   "image": "images/001_S043b_vK.png",
+   "narration": "Yüz yıl sonra Prusya'da"
+  },
+  {
+   "shot": "S043",
+   "scene": "S043",
+   "new": false,
+   "start": 245.43,
+   "dur": 2.83,
+   "image": "images/001_S043_vK.png (mevcut)",
+   "narration": "Büyük Friedrich'in derdi bambaşka: Para."
+  },
+  {
+   "shot": "S044b",
+   "scene": "S044",
+   "new": true,
+   "start": 248.27,
+   "dur": 2.12,
+   "image": "images/001_S044b_vK.png",
+   "narration": "Kahve yurt dışından geliyor"
+  },
+  {
+   "shot": "S044c",
+   "scene": "S044",
+   "new": true,
+   "start": 250.38,
+   "dur": 1.81,
+   "image": "images/001_S044c_vK.png",
+   "narration": "ve kralın hesabına göre"
+  },
+  {
+   "shot": "S044",
+   "scene": "S044",
+   "new": false,
+   "start": 252.2,
+   "dur": 3.7,
+   "image": "images/001_S044_vK.png (mevcut)",
+   "narration": "her yıl yüz binlerce taler ülkeden çıkıp gidiyor."
+  },
+  {
+   "shot": "S045b",
+   "scene": "S045",
+   "new": true,
+   "start": 255.9,
+   "dur": 4.51,
+   "image": "images/001_S045b_vK.png",
+   "narration": "bin yedi yüz yetmiş yedide halkının kahve tutkusundan şikâyet ediyor."
+  },
+  {
+   "shot": "S045",
+   "scene": "S045",
+   "new": false,
+   "start": 260.41,
+   "dur": 1.8,
+   "image": "images/001_S045_vK.png (mevcut)",
+   "narration": "Çözümü de hazır: Bira için."
+  },
+  {
+   "shot": "S045c",
+   "scene": "S045",
+   "new": true,
+   "start": 262.21,
+   "dur": 1.8,
+   "image": "images/001_S045c_vK.png",
+   "narration": "Bir mektubunda şöyle diyor:"
+  },
+  {
+   "shot": "S045d",
+   "scene": "S045",
+   "new": true,
+   "start": 264.01,
+   "dur": 3.15,
+   "image": "images/001_S045d_vK.png",
+   "narration": "Kral bira çorbasıyla büyüdü, halk da büyüyebilir."
+  },
+  {
+   "shot": "S046",
+   "scene": "S046",
+   "new": false,
+   "start": 267.17,
+   "dur": 3.37,
+   "image": "images/001_S046_vK.png (mevcut)",
+   "narration": "Halk ikna olmayınca Friedrich kahve kavurmayı devlet tekeline alıyor."
+  },
+  {
+   "shot": "S047b",
+   "scene": "S047",
+   "new": true,
+   "start": 270.53,
+   "dur": 2.92,
+   "image": "images/001_S047b_vK.png",
+   "narration": "Ve sokaklara özel bir birlik çıkarıyor:"
+  },
+  {
+   "shot": "S047c",
+   "scene": "S047",
+   "new": true,
+   "start": 273.46,
+   "dur": 2.34,
+   "image": "images/001_S047c_vK.png",
+   "narration": "Yaklaşık dört yüz savaş gazisi."
+  },
+  {
+   "shot": "S047",
+   "scene": "S047",
+   "new": false,
+   "start": 275.79,
+   "dur": 3.87,
+   "image": "images/001_S047_vK.png (mevcut)",
+   "narration": "Görevleri, gizlice kavrulan kahvenin kokusunu almak."
+  },
+  {
+   "shot": "S047d",
+   "scene": "S047",
+   "new": true,
+   "start": 279.66,
+   "dur": 2.7,
+   "image": "images/001_S047d_vK.png",
+   "narration": "Halk onlara kahve koklayıcılar diyor."
+  },
+  {
+   "shot": "S048b",
+   "scene": "S048",
+   "new": true,
+   "start": 282.37,
+   "dur": 3.31,
+   "image": "images/001_S048b_vK.png",
+   "narration": "Friedrich bin yedi yüz seksen altıda ölüyor."
+  },
+  {
+   "shot": "S048c",
+   "scene": "S048",
+   "new": true,
+   "start": 285.67,
+   "dur": 2.35,
+   "image": "images/001_S048c_vK.png",
+   "narration": "Kahve kuralları da çok geçmeden"
+  },
+  {
+   "shot": "S048",
+   "scene": "S048",
+   "new": false,
+   "start": 288.02,
+   "dur": 1.91,
+   "image": "images/001_S048_vK.png (mevcut)",
+   "narration": "onunla birlikte gömülüyor."
+  },
+  {
+   "shot": "S049b",
+   "scene": "S049",
+   "new": true,
+   "start": 289.93,
+   "dur": 2.28,
+   "image": "images/001_S049b_vK.png",
+   "narration": "Ama inatta birincilik İsveç'in."
+  },
+  {
+   "shot": "S049",
+   "scene": "S049",
+   "new": false,
+   "start": 292.21,
+   "dur": 3.85,
+   "image": "images/001_S049_vK.png (mevcut)",
+   "narration": "Önce vergi, sonra fincanlara el koyma, sonunda yasak."
+  },
+  {
+   "shot": "S049c",
+   "scene": "S049",
+   "new": true,
+   "start": 296.06,
+   "dur": 2.64,
+   "image": "images/001_S049c_vK.png",
+   "narration": "İsveç kahveyi tam beş kez yasaklıyor."
+  },
+  {
+   "shot": "S050",
+   "scene": "S050",
+   "new": false,
+   "start": 298.7,
+   "dur": 2.5,
+   "image": "images/001_S050_vK.png (mevcut)",
+   "narration": "Ve insanlar her seferinde"
+  },
+  {
+   "shot": "S050b",
+   "scene": "S050",
+   "new": true,
+   "start": 301.2,
+   "dur": 2.7,
+   "image": "images/001_S050b_vK.png",
+   "narration": "gizlice içmeye devam ediyor."
+  },
+  {
+   "shot": "S051b",
+   "scene": "S051",
+   "new": true,
+   "start": 303.9,
+   "dur": 2.33,
+   "image": "images/001_S051b_vK.png",
+   "narration": "bin yedi yüz doksan dörtteki yasağa tepki olarak"
+  },
+  {
+   "shot": "S051",
+   "scene": "S051",
+   "new": false,
+   "start": 306.23,
+   "dur": 3.24,
+   "image": "images/001_S051_vK.png (mevcut)",
+   "narration": "bazı İsveçliler kahve demlikleri için cenaze töreni bile düzenliyor."
+  },
+  {
+   "shot": "S052b",
+   "scene": "S052",
+   "new": true,
+   "start": 309.47,
+   "dur": 1.8,
+   "image": "images/001_S052b_vK.png",
+   "narration": "Bir de meşhur hikâye var:"
+  },
+  {
+   "shot": "S052c",
+   "scene": "S052",
+   "new": true,
+   "start": 311.26,
+   "dur": 1.38,
+   "image": "images/001_S052c_vK.png",
+   "narration": "Kral Üçüncü Gustav,"
+  },
+  {
+   "shot": "S052d",
+   "scene": "S052",
+   "new": true,
+   "start": 312.64,
+   "dur": 3.52,
+   "image": "images/001_S052d_vK.png",
+   "narration": "idam mahkûmu ikiz kardeşlerle bir deney yaptırmış."
+  },
+  {
+   "shot": "S052",
+   "scene": "S052",
+   "new": false,
+   "start": 316.17,
+   "dur": 2.83,
+   "image": "images/001_S052_vK.png (mevcut)",
+   "narration": "Biri her gün kahve, diğeri çay içecekmiş."
+  },
+  {
+   "shot": "S053b",
+   "scene": "S053",
+   "new": true,
+   "start": 319.0,
+   "dur": 4.17,
+   "image": "images/001_S053b_vK.png",
+   "narration": "Hikâyeye göre önce deneyi izleyen doktorlar öldü,"
+  },
+  {
+   "shot": "S053c",
+   "scene": "S053",
+   "new": true,
+   "start": 323.17,
+   "dur": 1.42,
+   "image": "images/001_S053c_vK.png",
+   "narration": "sonra kral öldü."
+  },
+  {
+   "shot": "S053",
+   "scene": "S053",
+   "new": false,
+   "start": 324.58,
+   "dur": 1.92,
+   "image": "images/001_S053_vK.png (mevcut)",
+   "narration": "İkizler hâlâ yaşıyordu."
+  },
+  {
+   "shot": "S054",
+   "scene": "S054",
+   "new": false,
+   "start": 326.5,
+   "dur": 5.07,
+   "image": "images/001_S054_vK.png (mevcut)",
+   "narration": "Küçük bir sorun var: Bazı tarihçilere göre bu deney hiç yapılmamış olabilir."
+  },
+  {
+   "shot": "S055b",
+   "scene": "S055",
+   "new": true,
+   "start": 331.57,
+   "dur": 4.57,
+   "image": "images/001_S055b_vK.png",
+   "narration": "Kesin olan şu: bin sekiz yüz yirmi üçte son yasak kalkıyor."
+  },
+  {
+   "shot": "S055",
+   "scene": "S055",
+   "new": false,
+   "start": 336.14,
+   "dur": 1.9,
+   "image": "images/001_S055_vK.png (mevcut)",
+   "narration": "Bugün İsveç, kişi başına"
+  },
+  {
+   "shot": "S055c",
+   "scene": "S055",
+   "new": true,
+   "start": 338.04,
+   "dur": 2.59,
+   "image": "images/001_S055c_vK.png",
+   "narration": "en çok kahve içen ülkelerden biri."
+  },
+  {
+   "shot": "S056b",
+   "scene": "S056",
+   "new": true,
+   "start": 340.63,
+   "dur": 2.52,
+   "image": "images/001_S056b_vK.png",
+   "narration": "Peki kahvehaneleriyle meşhur Viyana?"
+  },
+  {
+   "shot": "S056c",
+   "scene": "S056",
+   "new": true,
+   "start": 343.15,
+   "dur": 1.63,
+   "image": "images/001_S056c_vK.png",
+   "narration": "Anlatılan hikâyeye göre"
+  },
+  {
+   "shot": "S056d",
+   "scene": "S056",
+   "new": true,
+   "start": 344.78,
+   "dur": 3.47,
+   "image": "images/001_S056d_vK.png",
+   "narration": "Osmanlı ordusu bin altı yüz seksen üçte çekilirken"
+  },
+  {
+   "shot": "S056e",
+   "scene": "S056",
+   "new": true,
+   "start": 348.25,
+   "dur": 1.97,
+   "image": "images/001_S056e_vK.png",
+   "narration": "çuval çuval kahve bırakıyor."
+  },
+  {
+   "shot": "S056",
+   "scene": "S056",
+   "new": false,
+   "start": 350.22,
+   "dur": 4.21,
+   "image": "images/001_S056_vK.png (mevcut)",
+   "narration": "Kahraman casus Kolschitzky de bunlarla ilk kahvehaneyi açıyor."
+  },
+  {
+   "shot": "S057",
+   "scene": "S057",
+   "new": false,
+   "start": 354.43,
+   "dur": 4.27,
+   "image": "images/001_S057_vK.png (mevcut)",
+   "narration": "Güzel hikâye. Ama büyük kısmı yüz yıl sonra yazılmış."
+  },
+  {
+   "shot": "S058b",
+   "scene": "S058",
+   "new": true,
+   "start": 358.7,
+   "dur": 5.47,
+   "image": "images/001_S058b_vK.png",
+   "narration": "Kayıtlara göre Viyana'nın ilk kahve izni bin altı yüz seksen beşte"
+  },
+  {
+   "shot": "S058",
+   "scene": "S058",
+   "new": false,
+   "start": 364.17,
+   "dur": 3.43,
+   "image": "images/001_S058_vK.png (mevcut)",
+   "narration": "Ermeni tüccar Johannes Diodato'ya verildi."
+  },
+  {
+   "shot": "S059",
+   "scene": "S059",
+   "new": false,
+   "start": 367.6,
+   "dur": 3.54,
+   "image": "images/001_S059_vK.png (mevcut)",
+   "narration": "Peki bütün bu yasakların ortak noktası ne?"
+  },
+  {
+   "shot": "S059b",
+   "scene": "S059",
+   "new": true,
+   "start": 371.14,
+   "dur": 1.81,
+   "image": "images/001_S059b_vK.png",
+   "narration": "Mekke'de toplantılar."
+  },
+  {
+   "shot": "S059c",
+   "scene": "S059",
+   "new": true,
+   "start": 372.95,
+   "dur": 2.22,
+   "image": "images/001_S059c_vK.png",
+   "narration": "İstanbul'da isyan korkusu."
+  },
+  {
+   "shot": "S059d",
+   "scene": "S059",
+   "new": true,
+   "start": 375.17,
+   "dur": 1.65,
+   "image": "images/001_S059d_vK.png",
+   "narration": "Londra'da dedikodu."
+  },
+  {
+   "shot": "S059e",
+   "scene": "S059",
+   "new": true,
+   "start": 376.81,
+   "dur": 1.32,
+   "image": "images/001_S059e_vK.png",
+   "narration": "Prusya'da para."
+  },
+  {
+   "shot": "S059f",
+   "scene": "S059",
+   "new": true,
+   "start": 378.13,
+   "dur": 4.94,
+   "image": "images/001_S059f_vK.png",
+   "narration": "Hiçbiri gerçekten fincandaki o siyah sıvıyla ilgili değildi."
+  },
+  {
+   "shot": "S060",
+   "scene": "S060",
+   "new": false,
+   "start": 383.07,
+   "dur": 4.26,
+   "image": "images/001_S060_vK.png (mevcut)",
+   "narration": "Kahvenin asıl suçu insanları bir masa etrafında toplaması,"
+  },
+  {
+   "shot": "S060c",
+   "scene": "S060",
+   "new": true,
+   "start": 387.33,
+   "dur": 2.53,
+   "image": "images/001_S060c_vK.png",
+   "narration": "konuşturması ve uyanık tutmasıydı."
+  },
+  {
+   "shot": "S060d",
+   "scene": "S060",
+   "new": true,
+   "start": 389.86,
+   "dur": 3.18,
+   "image": "images/001_S060d_vK.png",
+   "narration": "Ve bunu yasaklamaya çalışan herkes kaybetti."
+  },
+  {
+   "shot": "S061b",
+   "scene": "S061",
+   "new": true,
+   "start": 393.03,
+   "dur": 3.0,
+   "image": "images/001_S061b_vK.png",
+   "narration": "Yani bir dahaki sefere kahveni içerken"
+  },
+  {
+   "shot": "S061c",
+   "scene": "S061",
+   "new": true,
+   "start": 396.03,
+   "dur": 2.23,
+   "image": "images/001_S061c_vK.png",
+   "narration": "biri sana ters ters bakarsa,"
+  },
+  {
+   "shot": "S061d",
+   "scene": "S061",
+   "new": true,
+   "start": 398.26,
+   "dur": 2.84,
+   "image": "images/001_S061d_vK.png",
+   "narration": "sadece şunu söyle: Sultanlar denedi."
+  },
+  {
+   "shot": "S061",
+   "scene": "S061",
+   "new": false,
+   "start": 401.1,
+   "dur": 1.77,
+   "image": "images/001_S061_vK.png (mevcut)",
+   "narration": "Krallar denedi. Olmadı."
+  }
+ ]
+}

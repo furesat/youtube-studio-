@@ -3,628 +3,628 @@
   "L001": {
    "part": "A",
    "start": 0.0,
-   "end": 4.953,
-   "dur": 4.953,
-   "speech_end": 4.953,
+   "end": 4.777,
+   "dur": 4.777,
+   "speech_end": 4.777,
    "abs_start": 0.0
   },
   "L002": {
    "part": "A",
-   "start": 4.953,
-   "end": 10.967,
-   "dur": 6.014,
-   "speech_end": 10.613,
-   "abs_start": 4.953
+   "start": 4.777,
+   "end": 10.578,
+   "dur": 5.801,
+   "speech_end": 10.237,
+   "abs_start": 4.777
   },
   "L003": {
    "part": "A",
-   "start": 10.967,
-   "end": 15.212,
-   "dur": 4.245,
-   "speech_end": 15.212,
-   "abs_start": 10.967
+   "start": 10.578,
+   "end": 14.673,
+   "dur": 4.095,
+   "speech_end": 14.673,
+   "abs_start": 10.578
   },
   "L004": {
    "part": "A",
-   "start": 15.212,
-   "end": 18.75,
-   "dur": 3.538,
-   "speech_end": 18.75,
-   "abs_start": 15.212
+   "start": 14.673,
+   "end": 18.085,
+   "dur": 3.412,
+   "speech_end": 18.085,
+   "abs_start": 14.673
   },
   "L005": {
    "part": "A",
-   "start": 18.75,
-   "end": 22.98,
-   "dur": 4.23,
-   "speech_end": 22.98,
-   "abs_start": 18.75
+   "start": 18.085,
+   "end": 22.664,
+   "dur": 4.579,
+   "speech_end": 22.664,
+   "abs_start": 18.085
   },
   "L006": {
    "part": "A",
-   "start": 22.98,
-   "end": 24.611,
-   "dur": 1.631,
-   "speech_end": 24.189,
-   "abs_start": 22.98
+   "start": 22.664,
+   "end": 23.95,
+   "dur": 1.286,
+   "speech_end": 23.95,
+   "abs_start": 22.664
   },
   "L007": {
    "part": "A",
-   "start": 24.611,
-   "end": 26.028,
-   "dur": 1.417,
-   "speech_end": 25.319,
-   "abs_start": 24.611
+   "start": 23.95,
+   "end": 25.236,
+   "dur": 1.286,
+   "speech_end": 24.593,
+   "abs_start": 23.95
   },
   "L008": {
    "part": "A",
-   "start": 26.028,
-   "end": 32.049,
-   "dur": 6.021,
-   "speech_end": 32.049,
-   "abs_start": 26.028
+   "start": 25.236,
+   "end": 30.7,
+   "dur": 5.464,
+   "speech_end": 30.7,
+   "abs_start": 25.236
   },
   "L009": {
    "part": "A",
-   "start": 32.049,
-   "end": 37.361,
-   "dur": 5.312,
-   "speech_end": 37.361,
-   "abs_start": 32.049
+   "start": 30.7,
+   "end": 35.017,
+   "dur": 4.317,
+   "speech_end": 35.017,
+   "abs_start": 30.7
   },
   "L010": {
    "part": "A",
-   "start": 37.361,
-   "end": 43.406,
-   "dur": 6.045,
-   "speech_end": 43.406,
-   "abs_start": 37.361
+   "start": 35.017,
+   "end": 40.484,
+   "dur": 5.468,
+   "speech_end": 40.484,
+   "abs_start": 35.017
   },
   "L011": {
    "part": "A",
-   "start": 43.406,
-   "end": 47.861,
-   "dur": 4.454,
-   "speech_end": 47.861,
-   "abs_start": 43.406
+   "start": 40.484,
+   "end": 44.585,
+   "dur": 4.1,
+   "speech_end": 44.585,
+   "abs_start": 40.484
   },
   "L012": {
    "part": "A",
-   "start": 47.861,
-   "end": 52.951,
-   "dur": 5.091,
-   "speech_end": 52.951,
-   "abs_start": 47.861
+   "start": 44.585,
+   "end": 49.571,
+   "dur": 4.986,
+   "speech_end": 49.571,
+   "abs_start": 44.585
   },
   "L013": {
    "part": "A",
-   "start": 52.951,
-   "end": 56.392,
-   "dur": 3.44,
-   "speech_end": 56.133,
-   "abs_start": 52.951
+   "start": 49.571,
+   "end": 53.31,
+   "dur": 3.739,
+   "speech_end": 53.31,
+   "abs_start": 49.571
   },
   "L014": {
    "part": "A",
-   "start": 56.392,
-   "end": 61.565,
-   "dur": 5.173,
-   "speech_end": 61.22,
-   "abs_start": 56.392
+   "start": 53.31,
+   "end": 57.984,
+   "dur": 4.674,
+   "speech_end": 57.672,
+   "abs_start": 53.31
   },
   "L015": {
    "part": "A",
-   "start": 61.565,
-   "end": 65.359,
-   "dur": 3.794,
-   "speech_end": 65.014,
-   "abs_start": 61.565
+   "start": 57.984,
+   "end": 61.429,
+   "dur": 3.445,
+   "speech_end": 61.1,
+   "abs_start": 57.984
   },
   "L016": {
    "part": "A",
-   "start": 65.359,
-   "end": 71.222,
-   "dur": 5.863,
-   "speech_end": 71.222,
-   "abs_start": 65.359
+   "start": 61.429,
+   "end": 67.022,
+   "dur": 5.593,
+   "speech_end": 67.022,
+   "abs_start": 61.429
   },
   "L017": {
    "part": "A",
-   "start": 71.222,
-   "end": 77.931,
-   "dur": 6.709,
-   "speech_end": 77.931,
-   "abs_start": 71.222
+   "start": 67.022,
+   "end": 73.601,
+   "dur": 6.58,
+   "speech_end": 73.601,
+   "abs_start": 67.022
   },
   "L018": {
    "part": "A",
-   "start": 77.931,
-   "end": 80.251,
-   "dur": 2.32,
-   "speech_end": 80.251,
-   "abs_start": 77.931
+   "start": 73.601,
+   "end": 75.904,
+   "dur": 2.303,
+   "speech_end": 75.904,
+   "abs_start": 73.601
   },
   "L019": {
    "part": "A",
-   "start": 80.251,
-   "end": 84.89,
-   "dur": 4.639,
-   "speech_end": 84.89,
-   "abs_start": 80.251
+   "start": 75.904,
+   "end": 80.51,
+   "dur": 4.606,
+   "speech_end": 80.51,
+   "abs_start": 75.904
   },
   "L020": {
    "part": "B",
    "start": 0.0,
-   "end": 3.105,
-   "dur": 3.105,
-   "speech_end": 3.105,
-   "abs_start": 84.89
+   "end": 2.95,
+   "dur": 2.95,
+   "speech_end": 2.95,
+   "abs_start": 80.51
   },
   "L021": {
    "part": "B",
-   "start": 3.105,
-   "end": 10.867,
-   "dur": 7.762,
-   "speech_end": 10.867,
-   "abs_start": 87.995
+   "start": 2.95,
+   "end": 10.325,
+   "dur": 7.375,
+   "speech_end": 10.325,
+   "abs_start": 83.46
   },
   "L022": {
    "part": "B",
-   "start": 10.867,
-   "end": 13.971,
-   "dur": 3.105,
-   "speech_end": 13.971,
-   "abs_start": 95.757
+   "start": 10.325,
+   "end": 12.913,
+   "dur": 2.588,
+   "speech_end": 12.913,
+   "abs_start": 90.835
   },
   "L023": {
    "part": "B",
-   "start": 13.971,
-   "end": 16.3,
-   "dur": 2.329,
-   "speech_end": 16.3,
-   "abs_start": 98.861
+   "start": 12.913,
+   "end": 15.138,
+   "dur": 2.225,
+   "speech_end": 15.138,
+   "abs_start": 93.423
   },
   "L024": {
    "part": "B",
-   "start": 16.3,
-   "end": 22.376,
-   "dur": 6.076,
-   "speech_end": 22.376,
-   "abs_start": 101.19
+   "start": 15.138,
+   "end": 21.072,
+   "dur": 5.934,
+   "speech_end": 21.072,
+   "abs_start": 95.648
   },
   "L025": {
    "part": "B",
-   "start": 22.376,
-   "end": 25.034,
-   "dur": 2.658,
-   "speech_end": 25.034,
-   "abs_start": 107.266
+   "start": 21.072,
+   "end": 23.669,
+   "dur": 2.596,
+   "speech_end": 23.669,
+   "abs_start": 101.582
   },
   "L026": {
    "part": "B",
-   "start": 25.034,
-   "end": 29.971,
-   "dur": 4.937,
-   "speech_end": 29.591,
-   "abs_start": 109.924
+   "start": 23.669,
+   "end": 28.49,
+   "dur": 4.822,
+   "speech_end": 28.49,
+   "abs_start": 104.179
   },
   "L027": {
    "part": "B",
-   "start": 29.971,
-   "end": 37.293,
-   "dur": 7.322,
-   "speech_end": 36.806,
-   "abs_start": 114.861
+   "start": 28.49,
+   "end": 35.453,
+   "dur": 6.963,
+   "speech_end": 35.166,
+   "abs_start": 109.0
   },
   "L028": {
    "part": "B",
-   "start": 37.293,
-   "end": 40.482,
-   "dur": 3.188,
-   "speech_end": 39.618,
-   "abs_start": 122.183
+   "start": 35.453,
+   "end": 38.425,
+   "dur": 2.972,
+   "speech_end": 37.778,
+   "abs_start": 115.963
   },
   "L029": {
    "part": "B",
-   "start": 40.482,
-   "end": 43.76,
-   "dur": 3.278,
-   "speech_end": 43.76,
-   "abs_start": 125.372
+   "start": 38.425,
+   "end": 41.574,
+   "dur": 3.148,
+   "speech_end": 41.574,
+   "abs_start": 118.935
   },
   "L030": {
    "part": "B",
-   "start": 43.76,
-   "end": 48.267,
-   "dur": 4.507,
-   "speech_end": 48.267,
-   "abs_start": 128.65
+   "start": 41.574,
+   "end": 45.903,
+   "dur": 4.329,
+   "speech_end": 45.903,
+   "abs_start": 122.084
   },
   "L031": {
    "part": "B",
-   "start": 48.267,
-   "end": 52.743,
-   "dur": 4.475,
-   "speech_end": 51.955,
-   "abs_start": 133.157
+   "start": 45.903,
+   "end": 50.021,
+   "dur": 4.118,
+   "speech_end": 49.445,
+   "abs_start": 126.413
   },
   "L032": {
    "part": "B",
-   "start": 52.743,
-   "end": 57.478,
-   "dur": 4.735,
-   "speech_end": 57.162,
-   "abs_start": 137.633
+   "start": 50.021,
+   "end": 54.59,
+   "dur": 4.569,
+   "speech_end": 54.286,
+   "abs_start": 130.531
   },
   "L033": {
    "part": "B",
-   "start": 57.478,
-   "end": 64.739,
-   "dur": 7.261,
-   "speech_end": 64.739,
-   "abs_start": 142.368
+   "start": 54.59,
+   "end": 61.596,
+   "dur": 7.006,
+   "speech_end": 61.596,
+   "abs_start": 135.1
   },
   "L034": {
    "part": "B",
-   "start": 64.739,
-   "end": 69.954,
-   "dur": 5.215,
-   "speech_end": 69.475,
-   "abs_start": 149.629
+   "start": 61.596,
+   "end": 66.444,
+   "dur": 4.849,
+   "speech_end": 66.165,
+   "abs_start": 142.106
   },
   "L035": {
    "part": "B",
-   "start": 69.954,
-   "end": 75.649,
-   "dur": 5.695,
-   "speech_end": 75.649,
-   "abs_start": 154.844
+   "start": 66.444,
+   "end": 72.001,
+   "dur": 5.557,
+   "speech_end": 72.001,
+   "abs_start": 146.954
   },
   "L036": {
    "part": "B",
-   "start": 75.649,
-   "end": 81.135,
-   "dur": 5.486,
-   "speech_end": 80.674,
-   "abs_start": 160.539
+   "start": 72.001,
+   "end": 77.165,
+   "dur": 5.164,
+   "speech_end": 76.904,
+   "abs_start": 152.511
   },
   "L037": {
    "part": "B",
-   "start": 81.135,
-   "end": 87.228,
-   "dur": 6.092,
-   "speech_end": 87.228,
-   "abs_start": 166.025
+   "start": 77.165,
+   "end": 83.012,
+   "dur": 5.847,
+   "speech_end": 83.012,
+   "abs_start": 157.675
   },
   "L038": {
    "part": "B",
-   "start": 87.228,
-   "end": 91.579,
-   "dur": 4.351,
-   "speech_end": 91.075,
-   "abs_start": 172.118
+   "start": 83.012,
+   "end": 87.009,
+   "dur": 3.996,
+   "speech_end": 86.705,
+   "abs_start": 163.522
   },
   "L039": {
    "part": "B",
-   "start": 91.579,
-   "end": 100.204,
-   "dur": 8.626,
-   "speech_end": 100.204,
-   "abs_start": 176.469
+   "start": 87.009,
+   "end": 95.333,
+   "dur": 8.325,
+   "speech_end": 95.333,
+   "abs_start": 167.519
   },
   "L040": {
    "part": "B",
-   "start": 100.204,
-   "end": 105.38,
-   "dur": 5.175,
-   "speech_end": 105.38,
-   "abs_start": 185.094
+   "start": 95.333,
+   "end": 100.328,
+   "dur": 4.995,
+   "speech_end": 100.328,
+   "abs_start": 175.843
   },
   "L041": {
    "part": "B",
-   "start": 105.38,
-   "end": 106.76,
-   "dur": 1.38,
-   "speech_end": 106.76,
-   "abs_start": 190.27
+   "start": 100.328,
+   "end": 101.66,
+   "dur": 1.332,
+   "speech_end": 101.66,
+   "abs_start": 180.838
   },
   "L042": {
    "part": "C",
    "start": 0.0,
-   "end": 4.875,
-   "dur": 4.875,
-   "speech_end": 4.875,
-   "abs_start": 191.65
+   "end": 4.967,
+   "dur": 4.967,
+   "speech_end": 4.967,
+   "abs_start": 182.17
   },
   "L043": {
    "part": "C",
-   "start": 4.875,
-   "end": 12.895,
-   "dur": 8.02,
-   "speech_end": 12.895,
-   "abs_start": 196.525
+   "start": 4.967,
+   "end": 12.417,
+   "dur": 7.45,
+   "speech_end": 12.417,
+   "abs_start": 187.137
   },
   "L044": {
    "part": "C",
-   "start": 12.895,
-   "end": 15.855,
-   "dur": 2.96,
-   "speech_end": 15.855,
-   "abs_start": 204.545
+   "start": 12.417,
+   "end": 14.9,
+   "dur": 2.483,
+   "speech_end": 14.9,
+   "abs_start": 194.587
   },
   "L045": {
    "part": "C",
-   "start": 15.855,
-   "end": 22.885,
-   "dur": 7.03,
-   "speech_end": 22.885,
-   "abs_start": 207.505
+   "start": 14.9,
+   "end": 21.849,
+   "dur": 6.949,
+   "speech_end": 21.849,
+   "abs_start": 197.07
   },
   "L046": {
    "part": "C",
-   "start": 22.885,
-   "end": 28.805,
-   "dur": 5.92,
-   "speech_end": 28.805,
-   "abs_start": 214.535
+   "start": 21.849,
+   "end": 27.7,
+   "dur": 5.851,
+   "speech_end": 27.7,
+   "abs_start": 204.019
   },
   "L047": {
    "part": "C",
-   "start": 28.805,
-   "end": 33.601,
-   "dur": 4.796,
-   "speech_end": 33.601,
-   "abs_start": 220.455
+   "start": 27.7,
+   "end": 32.417,
+   "dur": 4.717,
+   "speech_end": 32.417,
+   "abs_start": 209.87
   },
   "L048": {
    "part": "C",
-   "start": 33.601,
-   "end": 38.397,
-   "dur": 4.796,
-   "speech_end": 38.397,
-   "abs_start": 225.251
+   "start": 32.417,
+   "end": 37.134,
+   "dur": 4.717,
+   "speech_end": 37.134,
+   "abs_start": 214.587
   },
   "L049": {
    "part": "C",
-   "start": 38.397,
-   "end": 42.488,
-   "dur": 4.091,
-   "speech_end": 41.717,
-   "abs_start": 230.047
+   "start": 37.134,
+   "end": 40.715,
+   "dur": 3.58,
+   "speech_end": 40.4,
+   "abs_start": 219.304
   },
   "L050": {
    "part": "C",
-   "start": 42.488,
-   "end": 47.699,
-   "dur": 5.211,
-   "speech_end": 47.699,
-   "abs_start": 234.138
+   "start": 40.715,
+   "end": 45.75,
+   "dur": 5.035,
+   "speech_end": 45.75,
+   "abs_start": 222.885
   },
   "L051": {
    "part": "C",
-   "start": 47.699,
-   "end": 54.538,
-   "dur": 6.839,
-   "speech_end": 54.212,
-   "abs_start": 239.349
+   "start": 45.75,
+   "end": 52.359,
+   "dur": 6.609,
+   "speech_end": 52.044,
+   "abs_start": 227.92
   },
   "L052": {
    "part": "C",
-   "start": 54.538,
-   "end": 59.097,
-   "dur": 4.559,
-   "speech_end": 59.097,
-   "abs_start": 246.188
+   "start": 52.359,
+   "end": 56.765,
+   "dur": 4.406,
+   "speech_end": 56.765,
+   "abs_start": 234.529
   },
   "L053": {
    "part": "C",
-   "start": 59.097,
-   "end": 64.685,
-   "dur": 5.587,
-   "speech_end": 64.308,
-   "abs_start": 250.747
+   "start": 56.765,
+   "end": 61.8,
+   "dur": 5.035,
+   "speech_end": 61.8,
+   "abs_start": 238.935
   },
   "L054": {
    "part": "C",
-   "start": 64.685,
-   "end": 69.767,
-   "dur": 5.082,
-   "speech_end": 69.376,
-   "abs_start": 256.335
+   "start": 61.8,
+   "end": 66.743,
+   "dur": 4.943,
+   "speech_end": 66.363,
+   "abs_start": 243.97
   },
   "L055": {
    "part": "C",
-   "start": 69.767,
-   "end": 77.585,
-   "dur": 7.818,
-   "speech_end": 77.585,
-   "abs_start": 261.417
+   "start": 66.743,
+   "end": 74.349,
+   "dur": 7.605,
+   "speech_end": 74.349,
+   "abs_start": 248.913
   },
   "L056": {
    "part": "C",
-   "start": 77.585,
-   "end": 80.39,
-   "dur": 2.805,
-   "speech_end": 79.93,
-   "abs_start": 269.235
+   "start": 74.349,
+   "end": 76.89,
+   "dur": 2.541,
+   "speech_end": 76.63,
+   "abs_start": 256.519
   },
   "L057": {
    "part": "C",
-   "start": 80.39,
-   "end": 85.309,
-   "dur": 4.919,
-   "speech_end": 85.309,
-   "abs_start": 272.04
+   "start": 76.89,
+   "end": 81.553,
+   "dur": 4.664,
+   "speech_end": 81.553,
+   "abs_start": 259.06
   },
   "L058": {
    "part": "C",
-   "start": 85.309,
-   "end": 88.179,
-   "dur": 2.87,
-   "speech_end": 88.179,
-   "abs_start": 276.959
+   "start": 81.553,
+   "end": 84.274,
+   "dur": 2.72,
+   "speech_end": 84.274,
+   "abs_start": 263.723
   },
   "L059": {
    "part": "C",
-   "start": 88.179,
-   "end": 95.731,
-   "dur": 7.553,
-   "speech_end": 94.934,
-   "abs_start": 279.829
+   "start": 84.274,
+   "end": 90.881,
+   "dur": 6.607,
+   "speech_end": 90.881,
+   "abs_start": 266.444
   },
   "L060": {
    "part": "C",
-   "start": 95.731,
-   "end": 98.919,
-   "dur": 3.187,
-   "speech_end": 98.919,
-   "abs_start": 287.381
+   "start": 90.881,
+   "end": 93.99,
+   "dur": 3.109,
+   "speech_end": 93.99,
+   "abs_start": 273.051
   },
   "L061": {
    "part": "C",
-   "start": 98.919,
-   "end": 105.328,
-   "dur": 6.409,
-   "speech_end": 104.497,
-   "abs_start": 290.569
+   "start": 93.99,
+   "end": 99.632,
+   "dur": 5.642,
+   "speech_end": 99.256,
+   "abs_start": 276.16
   },
   "L062": {
    "part": "C",
-   "start": 105.328,
-   "end": 116.233,
-   "dur": 10.905,
-   "speech_end": 116.233,
-   "abs_start": 296.978
+   "start": 99.632,
+   "end": 110.54,
+   "dur": 10.908,
+   "speech_end": 110.54,
+   "abs_start": 281.802
   },
   "L063": {
    "part": "C",
-   "start": 116.233,
-   "end": 123.378,
-   "dur": 7.145,
-   "speech_end": 123.378,
-   "abs_start": 307.883
+   "start": 110.54,
+   "end": 117.793,
+   "dur": 7.253,
+   "speech_end": 117.793,
+   "abs_start": 292.71
   },
   "L064": {
    "part": "C",
-   "start": 123.378,
-   "end": 128.014,
-   "dur": 4.636,
-   "speech_end": 128.014,
-   "abs_start": 315.028
+   "start": 117.793,
+   "end": 122.373,
+   "dur": 4.581,
+   "speech_end": 122.373,
+   "abs_start": 299.963
   },
   "L065": {
    "part": "C",
-   "start": 128.014,
-   "end": 136.561,
-   "dur": 8.547,
-   "speech_end": 136.128,
-   "abs_start": 319.664
+   "start": 122.373,
+   "end": 130.39,
+   "dur": 8.016,
+   "speech_end": 130.39,
+   "abs_start": 304.543
   },
   "L066": {
    "part": "C",
-   "start": 136.561,
-   "end": 139.73,
-   "dur": 3.169,
-   "speech_end": 139.73,
-   "abs_start": 328.211
+   "start": 130.39,
+   "end": 133.329,
+   "dur": 2.94,
+   "speech_end": 133.329,
+   "abs_start": 312.56
   },
   "L067": {
    "part": "C",
-   "start": 139.73,
-   "end": 148.048,
-   "dur": 8.318,
-   "speech_end": 148.048,
-   "abs_start": 331.38
+   "start": 133.329,
+   "end": 141.046,
+   "dur": 7.716,
+   "speech_end": 141.046,
+   "abs_start": 315.499
   },
   "L068": {
    "part": "C",
-   "start": 148.048,
-   "end": 153.593,
-   "dur": 5.545,
-   "speech_end": 153.593,
-   "abs_start": 339.698
+   "start": 141.046,
+   "end": 146.19,
+   "dur": 5.144,
+   "speech_end": 146.19,
+   "abs_start": 323.216
   },
   "L069": {
    "part": "C",
-   "start": 153.593,
-   "end": 160.374,
-   "dur": 6.781,
-   "speech_end": 159.931,
-   "abs_start": 345.243
+   "start": 146.19,
+   "end": 151.734,
+   "dur": 5.545,
+   "speech_end": 151.734,
+   "abs_start": 328.36
   },
   "L070": {
    "part": "C",
-   "start": 160.374,
-   "end": 162.894,
-   "dur": 2.52,
-   "speech_end": 162.894,
-   "abs_start": 352.024
+   "start": 151.734,
+   "end": 154.322,
+   "dur": 2.588,
+   "speech_end": 154.322,
+   "abs_start": 333.904
   },
   "L071": {
    "part": "C",
-   "start": 162.894,
-   "end": 168.294,
-   "dur": 5.4,
-   "speech_end": 168.294,
-   "abs_start": 354.544
+   "start": 154.322,
+   "end": 159.867,
+   "dur": 5.545,
+   "speech_end": 159.867,
+   "abs_start": 336.492
   },
   "L072": {
    "part": "C",
-   "start": 168.294,
-   "end": 172.974,
-   "dur": 4.68,
-   "speech_end": 172.974,
-   "abs_start": 359.944
+   "start": 159.867,
+   "end": 164.672,
+   "dur": 4.805,
+   "speech_end": 164.672,
+   "abs_start": 342.037
   },
   "L073": {
    "part": "C",
-   "start": 172.974,
-   "end": 178.818,
-   "dur": 5.844,
-   "speech_end": 178.818,
-   "abs_start": 364.624
+   "start": 164.672,
+   "end": 171.339,
+   "dur": 6.667,
+   "speech_end": 171.339,
+   "abs_start": 346.842
   },
   "L074": {
    "part": "C",
-   "start": 178.818,
-   "end": 181.279,
-   "dur": 2.461,
-   "speech_end": 181.279,
-   "abs_start": 370.468
+   "start": 171.339,
+   "end": 173.882,
+   "dur": 2.543,
+   "speech_end": 173.882,
+   "abs_start": 353.509
   },
   "L075": {
    "part": "C",
-   "start": 181.279,
-   "end": 190.41,
-   "dur": 9.131,
-   "speech_end": 190.41,
-   "abs_start": 372.929
+   "start": 173.882,
+   "end": 181.51,
+   "dur": 7.628,
+   "speech_end": 181.51,
+   "abs_start": 356.052
   }
  },
  "parts": {
   "A": {
    "file": "audio/de/part_A.mp3",
-   "duration": 84.89,
+   "duration": 80.51,
    "lines": "L001-L019",
    "matched_lines": "19/19",
-   "match_ratio": 0.942
+   "match_ratio": 0.935
   },
   "B": {
    "file": "audio/de/part_B.mp3",
-   "duration": 106.76,
+   "duration": 101.66,
    "lines": "L020-L041",
    "matched_lines": "22/22",
-   "match_ratio": 0.886
+   "match_ratio": 0.881
   },
   "C": {
    "file": "audio/de/part_C.mp3",
-   "duration": 190.41,
+   "duration": 181.51,
    "lines": "L042-L075",
    "matched_lines": "34/34",
-   "match_ratio": 0.92
+   "match_ratio": 0.927
   }
  },
  "provider": "elevenlabs",
  "method": "whisper+difflib",
- "total_raw_sec": 382.06
+ "total_raw_sec": 363.68
 }

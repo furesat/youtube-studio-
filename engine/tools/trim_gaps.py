@@ -17,8 +17,8 @@ for k in "ABC":
         j = i
         while j < n and sil[j]: j += 1
         dur = (j-i)*0.01
-        if dur >= 0.3 and i > 5 and j < n-5:
-            keep = 0.2 if dur < 0.8 else 0.5
+        if dur >= 0.15 and i > 5 and j < n-5:
+            keep = 0.1 if dur < 0.8 else 0.3
             kw = int(keep/0.01); seg = x[i*w:j*w]; half = kw//2
             out.append(np.concatenate([seg[:half*w], seg[-(kw-half)*w:]])); cut += dur-keep
         else: out.append(x[i*w:j*w])

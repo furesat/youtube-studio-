@@ -1,530 +1,530 @@
 {
- "total_sec": 430.706,
+ "total_sec": 461.851,
  "lines": {
   "L001": {
    "part": "A",
    "src_start": 0.0,
-   "src_end": 4.953,
+   "src_end": 4.128,
    "tl_start": 0.0,
-   "tl_end": 5.753
+   "tl_end": 4.928
   },
   "L002": {
    "part": "A",
-   "src_start": 4.953,
-   "src_end": 10.967,
-   "tl_start": 5.753,
-   "tl_end": 12.117
+   "src_start": 4.128,
+   "src_end": 10.316,
+   "tl_start": 4.928,
+   "tl_end": 11.465
   },
   "L003": {
    "part": "A",
-   "src_start": 10.967,
-   "src_end": 15.212,
-   "tl_start": 12.117,
-   "tl_end": 16.712
+   "src_start": 10.316,
+   "src_end": 16.372,
+   "tl_start": 11.465,
+   "tl_end": 17.872
   },
   "L004": {
    "part": "A",
-   "src_start": 15.212,
-   "src_end": 18.75,
-   "tl_start": 16.712,
-   "tl_end": 21.05
+   "src_start": 16.372,
+   "src_end": 20.035,
+   "tl_start": 17.872,
+   "tl_end": 22.334
   },
   "L005": {
    "part": "A",
-   "src_start": 18.75,
-   "src_end": 22.98,
-   "tl_start": 21.05,
-   "tl_end": 25.63
+   "src_start": 20.035,
+   "src_end": 24.991,
+   "tl_start": 22.334,
+   "tl_end": 27.641
   },
   "L006": {
    "part": "A",
-   "src_start": 22.98,
-   "src_end": 24.611,
-   "tl_start": 25.63,
-   "tl_end": 28.761
+   "src_start": 24.991,
+   "src_end": 27.401,
+   "tl_start": 27.641,
+   "tl_end": 31.551
   },
   "L007": {
    "part": "A",
-   "src_start": 24.611,
-   "src_end": 26.028,
-   "tl_start": 28.761,
-   "tl_end": 30.978
+   "src_start": 27.401,
+   "src_end": 30.416,
+   "tl_start": 31.551,
+   "tl_end": 35.365
   },
   "L008": {
    "part": "A",
-   "src_start": 26.028,
-   "src_end": 32.049,
-   "tl_start": 30.978,
-   "tl_end": 37.349
+   "src_start": 30.416,
+   "src_end": 35.995,
+   "tl_start": 35.365,
+   "tl_end": 41.295
   },
   "L009": {
    "part": "A",
-   "src_start": 32.049,
-   "src_end": 37.361,
-   "tl_start": 37.349,
-   "tl_end": 43.011
+   "src_start": 35.995,
+   "src_end": 41.606,
+   "tl_start": 41.295,
+   "tl_end": 47.256
   },
   "L010": {
    "part": "A",
-   "src_start": 37.361,
-   "src_end": 43.406,
-   "tl_start": 43.011,
-   "tl_end": 49.406
+   "src_start": 41.606,
+   "src_end": 46.934,
+   "tl_start": 47.256,
+   "tl_end": 52.934
   },
   "L011": {
    "part": "A",
-   "src_start": 43.406,
-   "src_end": 47.861,
-   "tl_start": 49.406,
-   "tl_end": 54.21
+   "src_start": 46.934,
+   "src_end": 52.313,
+   "tl_start": 52.934,
+   "tl_end": 58.663
   },
   "L012": {
    "part": "A",
-   "src_start": 47.861,
-   "src_end": 52.951,
-   "tl_start": 54.21,
-   "tl_end": 59.651
+   "src_start": 52.313,
+   "src_end": 58.295,
+   "tl_start": 58.663,
+   "tl_end": 64.995
   },
   "L013": {
    "part": "A",
-   "src_start": 52.951,
-   "src_end": 56.392,
-   "tl_start": 59.651,
-   "tl_end": 63.791
+   "src_start": 58.295,
+   "src_end": 62.973,
+   "tl_start": 64.995,
+   "tl_end": 70.373
   },
   "L014": {
    "part": "A",
-   "src_start": 56.392,
-   "src_end": 61.565,
-   "tl_start": 63.791,
-   "tl_end": 69.314
+   "src_start": 62.973,
+   "src_end": 67.578,
+   "tl_start": 70.373,
+   "tl_end": 75.328
   },
   "L015": {
    "part": "A",
-   "src_start": 61.565,
-   "src_end": 65.359,
-   "tl_start": 69.314,
-   "tl_end": 73.458
+   "src_start": 67.578,
+   "src_end": 71.009,
+   "tl_start": 75.328,
+   "tl_end": 79.109
   },
   "L016": {
    "part": "A",
-   "src_start": 65.359,
-   "src_end": 71.222,
-   "tl_start": 73.458,
-   "tl_end": 79.671
+   "src_start": 71.009,
+   "src_end": 78.171,
+   "tl_start": 79.109,
+   "tl_end": 86.621
   },
   "L017": {
    "part": "A",
-   "src_start": 71.222,
-   "src_end": 77.931,
-   "tl_start": 79.671,
-   "tl_end": 86.73
+   "src_start": 78.171,
+   "src_end": 84.318,
+   "tl_start": 86.621,
+   "tl_end": 93.118
   },
   "L018": {
    "part": "A",
-   "src_start": 77.931,
-   "src_end": 80.251,
-   "tl_start": 86.73,
-   "tl_end": 89.55
+   "src_start": 84.318,
+   "src_end": 87.343,
+   "tl_start": 93.118,
+   "tl_end": 96.642
   },
   "L019": {
    "part": "A",
-   "src_start": 80.251,
-   "src_end": 84.89,
-   "tl_start": 89.55,
-   "tl_end": 95.989
+   "src_start": 87.343,
+   "src_end": 92.8,
+   "tl_start": 96.642,
+   "tl_end": 103.899
   },
   "L020": {
    "part": "B",
    "src_start": 0.0,
-   "src_end": 3.105,
-   "tl_start": 95.989,
-   "tl_end": 100.094
+   "src_end": 3.409,
+   "tl_start": 103.899,
+   "tl_end": 108.308
   },
   "L021": {
    "part": "B",
-   "src_start": 3.105,
-   "src_end": 10.867,
-   "tl_start": 100.094,
-   "tl_end": 108.206
+   "src_start": 3.409,
+   "src_end": 11.709,
+   "tl_start": 108.308,
+   "tl_end": 116.958
   },
   "L022": {
    "part": "B",
-   "src_start": 10.867,
-   "src_end": 13.971,
-   "tl_start": 108.206,
-   "tl_end": 111.661
+   "src_start": 11.709,
+   "src_end": 15.286,
+   "tl_start": 116.958,
+   "tl_end": 120.885
   },
   "L023": {
    "part": "B",
-   "src_start": 13.971,
-   "src_end": 16.3,
-   "tl_start": 111.661,
-   "tl_end": 114.34
+   "src_start": 15.286,
+   "src_end": 17.63,
+   "tl_start": 120.885,
+   "tl_end": 123.579
   },
   "L024": {
    "part": "B",
-   "src_start": 16.3,
-   "src_end": 22.376,
-   "tl_start": 114.34,
-   "tl_end": 120.766
+   "src_start": 17.63,
+   "src_end": 24.256,
+   "tl_start": 123.579,
+   "tl_end": 130.556
   },
   "L025": {
    "part": "B",
-   "src_start": 22.376,
-   "src_end": 25.034,
-   "tl_start": 120.766,
-   "tl_end": 123.774
+   "src_start": 24.256,
+   "src_end": 26.92,
+   "tl_start": 130.556,
+   "tl_end": 133.569
   },
   "L026": {
    "part": "B",
-   "src_start": 25.034,
-   "src_end": 29.971,
-   "tl_start": 123.774,
-   "tl_end": 129.061
+   "src_start": 26.92,
+   "src_end": 32.049,
+   "tl_start": 133.569,
+   "tl_end": 139.048
   },
   "L027": {
    "part": "B",
-   "src_start": 29.971,
-   "src_end": 37.293,
-   "tl_start": 129.061,
-   "tl_end": 137.583
+   "src_start": 32.049,
+   "src_end": 40.693,
+   "tl_start": 139.048,
+   "tl_end": 148.893
   },
   "L028": {
    "part": "B",
-   "src_start": 37.293,
-   "src_end": 40.482,
-   "tl_start": 137.583,
-   "tl_end": 141.771
+   "src_start": 40.693,
+   "src_end": 44.266,
+   "tl_start": 148.893,
+   "tl_end": 153.466
   },
   "L029": {
    "part": "B",
-   "src_start": 40.482,
-   "src_end": 43.76,
-   "tl_start": 141.771,
-   "tl_end": 145.399
+   "src_start": 44.266,
+   "src_end": 47.282,
+   "tl_start": 153.466,
+   "tl_end": 156.833
   },
   "L030": {
    "part": "B",
-   "src_start": 43.76,
-   "src_end": 48.267,
-   "tl_start": 145.399,
-   "tl_end": 150.256
+   "src_start": 47.282,
+   "src_end": 53.497,
+   "tl_start": 156.833,
+   "tl_end": 163.398
   },
   "L031": {
    "part": "B",
-   "src_start": 48.267,
-   "src_end": 52.743,
-   "tl_start": 150.256,
-   "tl_end": 155.931
+   "src_start": 53.497,
+   "src_end": 58.591,
+   "tl_start": 163.398,
+   "tl_end": 169.692
   },
   "L032": {
    "part": "B",
-   "src_start": 52.743,
-   "src_end": 57.478,
-   "tl_start": 155.931,
-   "tl_end": 161.016
+   "src_start": 58.591,
+   "src_end": 64.601,
+   "tl_start": 169.692,
+   "tl_end": 176.052
   },
   "L033": {
    "part": "B",
-   "src_start": 57.478,
-   "src_end": 64.739,
-   "tl_start": 161.016,
-   "tl_end": 168.627
+   "src_start": 64.601,
+   "src_end": 71.649,
+   "tl_start": 176.052,
+   "tl_end": 183.45
   },
   "L034": {
    "part": "B",
-   "src_start": 64.739,
-   "src_end": 69.954,
-   "tl_start": 168.627,
-   "tl_end": 174.642
+   "src_start": 71.649,
+   "src_end": 77.244,
+   "tl_start": 183.45,
+   "tl_end": 189.846
   },
   "L035": {
    "part": "B",
-   "src_start": 69.954,
-   "src_end": 75.649,
-   "tl_start": 174.642,
-   "tl_end": 180.687
+   "src_start": 77.244,
+   "src_end": 83.69,
+   "tl_start": 189.846,
+   "tl_end": 196.642
   },
   "L036": {
    "part": "B",
-   "src_start": 75.649,
-   "src_end": 81.135,
-   "tl_start": 180.687,
-   "tl_end": 187.173
+   "src_start": 83.69,
+   "src_end": 89.515,
+   "tl_start": 196.642,
+   "tl_end": 203.467
   },
   "L037": {
    "part": "B",
-   "src_start": 81.135,
-   "src_end": 87.228,
-   "tl_start": 187.173,
-   "tl_end": 193.615
+   "src_start": 89.515,
+   "src_end": 96.541,
+   "tl_start": 203.467,
+   "tl_end": 210.843
   },
   "L038": {
    "part": "B",
-   "src_start": 87.228,
-   "src_end": 91.579,
-   "tl_start": 193.615,
-   "tl_end": 198.766
+   "src_start": 96.541,
+   "src_end": 100.868,
+   "tl_start": 210.843,
+   "tl_end": 215.97
   },
   "L039": {
    "part": "B",
-   "src_start": 91.579,
-   "src_end": 100.204,
-   "tl_start": 198.766,
-   "tl_end": 207.742
+   "src_start": 100.868,
+   "src_end": 109.683,
+   "tl_start": 215.97,
+   "tl_end": 225.135
   },
   "L040": {
    "part": "B",
-   "src_start": 100.204,
-   "src_end": 105.38,
-   "tl_start": 207.742,
-   "tl_end": 213.267
+   "src_start": 109.683,
+   "src_end": 115.451,
+   "tl_start": 225.135,
+   "tl_end": 231.253
   },
   "L041": {
    "part": "B",
-   "src_start": 105.38,
-   "src_end": 106.76,
-   "tl_start": 213.267,
-   "tl_end": 216.647
+   "src_start": 115.451,
+   "src_end": 117.04,
+   "tl_start": 231.253,
+   "tl_end": 234.842
   },
   "L042": {
    "part": "C",
    "src_start": 0.0,
-   "src_end": 4.875,
-   "tl_start": 216.647,
-   "tl_end": 221.872
+   "src_end": 5.46,
+   "tl_start": 234.842,
+   "tl_end": 240.652
   },
   "L043": {
    "part": "C",
-   "src_start": 4.875,
-   "src_end": 12.895,
-   "tl_start": 221.872,
-   "tl_end": 230.242
+   "src_start": 5.46,
+   "src_end": 13.43,
+   "tl_start": 240.652,
+   "tl_end": 248.972
   },
   "L044": {
    "part": "C",
-   "src_start": 12.895,
-   "src_end": 15.855,
-   "tl_start": 230.242,
-   "tl_end": 233.552
+   "src_start": 13.43,
+   "src_end": 16.108,
+   "tl_start": 248.972,
+   "tl_end": 252.001
   },
   "L045": {
    "part": "C",
-   "src_start": 15.855,
-   "src_end": 22.885,
-   "tl_start": 233.552,
-   "tl_end": 241.382
+   "src_start": 16.108,
+   "src_end": 23.62,
+   "tl_start": 252.001,
+   "tl_end": 260.313
   },
   "L046": {
    "part": "C",
-   "src_start": 22.885,
-   "src_end": 28.805,
-   "tl_start": 241.382,
-   "tl_end": 247.652
+   "src_start": 23.62,
+   "src_end": 29.908,
+   "tl_start": 260.313,
+   "tl_end": 266.951
   },
   "L047": {
    "part": "C",
-   "src_start": 28.805,
-   "src_end": 33.601,
-   "tl_start": 247.652,
-   "tl_end": 252.798
+   "src_start": 29.908,
+   "src_end": 35.285,
+   "tl_start": 266.951,
+   "tl_end": 272.678
   },
   "L048": {
    "part": "C",
-   "src_start": 33.601,
-   "src_end": 38.397,
-   "tl_start": 252.798,
-   "tl_end": 257.944
+   "src_start": 35.285,
+   "src_end": 39.78,
+   "tl_start": 272.678,
+   "tl_end": 277.522
   },
   "L049": {
    "part": "C",
-   "src_start": 38.397,
-   "src_end": 42.488,
-   "tl_start": 257.944,
-   "tl_end": 263.835
+   "src_start": 39.78,
+   "src_end": 44.882,
+   "tl_start": 277.522,
+   "tl_end": 284.424
   },
   "L050": {
    "part": "C",
-   "src_start": 42.488,
-   "src_end": 47.699,
-   "tl_start": 263.835,
-   "tl_end": 269.396
+   "src_start": 44.882,
+   "src_end": 50.137,
+   "tl_start": 284.424,
+   "tl_end": 290.029
   },
   "L051": {
    "part": "C",
-   "src_start": 47.699,
-   "src_end": 54.538,
-   "tl_start": 269.396,
-   "tl_end": 276.585
+   "src_start": 50.137,
+   "src_end": 56.689,
+   "tl_start": 290.029,
+   "tl_end": 296.93
   },
   "L052": {
    "part": "C",
-   "src_start": 54.538,
-   "src_end": 59.097,
-   "tl_start": 276.585,
-   "tl_end": 281.494
+   "src_start": 56.689,
+   "src_end": 63.34,
+   "tl_start": 296.93,
+   "tl_end": 303.931
   },
   "L053": {
    "part": "C",
-   "src_start": 59.097,
-   "src_end": 64.685,
-   "tl_start": 281.494,
-   "tl_end": 287.881
+   "src_start": 63.34,
+   "src_end": 68.865,
+   "tl_start": 303.931,
+   "tl_end": 310.256
   },
   "L054": {
    "part": "C",
-   "src_start": 64.685,
-   "src_end": 69.767,
-   "tl_start": 287.881,
-   "tl_end": 293.313
+   "src_start": 68.865,
+   "src_end": 73.652,
+   "tl_start": 310.256,
+   "tl_end": 315.393
   },
   "L055": {
    "part": "C",
-   "src_start": 69.767,
-   "src_end": 77.585,
-   "tl_start": 293.313,
-   "tl_end": 301.481
+   "src_start": 73.652,
+   "src_end": 82.432,
+   "tl_start": 315.393,
+   "tl_end": 324.523
   },
   "L056": {
    "part": "C",
-   "src_start": 77.585,
-   "src_end": 80.39,
-   "tl_start": 301.481,
-   "tl_end": 305.086
+   "src_start": 82.432,
+   "src_end": 85.82,
+   "tl_start": 324.523,
+   "tl_end": 328.711
   },
   "L057": {
    "part": "C",
-   "src_start": 80.39,
-   "src_end": 85.309,
-   "tl_start": 305.086,
-   "tl_end": 311.805
+   "src_start": 85.82,
+   "src_end": 91.784,
+   "tl_start": 328.711,
+   "tl_end": 336.475
   },
   "L058": {
    "part": "C",
-   "src_start": 85.309,
-   "src_end": 88.179,
-   "tl_start": 311.805,
-   "tl_end": 315.025
+   "src_start": 91.784,
+   "src_end": 95.077,
+   "tl_start": 336.475,
+   "tl_end": 340.118
   },
   "L059": {
    "part": "C",
-   "src_start": 88.179,
-   "src_end": 95.731,
-   "tl_start": 315.025,
-   "tl_end": 322.928
+   "src_start": 95.077,
+   "src_end": 102.154,
+   "tl_start": 340.118,
+   "tl_end": 347.545
   },
   "L060": {
    "part": "C",
-   "src_start": 95.731,
-   "src_end": 98.919,
-   "tl_start": 322.928,
-   "tl_end": 326.465
+   "src_start": 102.154,
+   "src_end": 105.125,
+   "tl_start": 347.545,
+   "tl_end": 350.866
   },
   "L061": {
    "part": "C",
-   "src_start": 98.919,
-   "src_end": 105.328,
-   "tl_start": 326.465,
-   "tl_end": 333.874
+   "src_start": 105.125,
+   "src_end": 112.518,
+   "tl_start": 350.866,
+   "tl_end": 359.259
   },
   "L062": {
    "part": "C",
-   "src_start": 105.328,
-   "src_end": 116.233,
-   "tl_start": 333.874,
-   "tl_end": 345.129
+   "src_start": 112.518,
+   "src_end": 123.203,
+   "tl_start": 359.259,
+   "tl_end": 370.294
   },
   "L063": {
    "part": "C",
-   "src_start": 116.233,
-   "src_end": 123.378,
-   "tl_start": 345.129,
-   "tl_end": 353.274
+   "src_start": 123.203,
+   "src_end": 131.619,
+   "tl_start": 370.294,
+   "tl_end": 379.71
   },
   "L064": {
    "part": "C",
-   "src_start": 123.378,
-   "src_end": 128.014,
-   "tl_start": 353.274,
-   "tl_end": 358.26
+   "src_start": 131.619,
+   "src_end": 137.223,
+   "tl_start": 379.71,
+   "tl_end": 385.664
   },
   "L065": {
    "part": "C",
-   "src_start": 128.014,
-   "src_end": 136.561,
-   "tl_start": 358.26,
-   "tl_end": 368.607
+   "src_start": 137.223,
+   "src_end": 145.781,
+   "tl_start": 385.664,
+   "tl_end": 396.022
   },
   "L066": {
    "part": "C",
-   "src_start": 136.561,
-   "src_end": 139.73,
-   "tl_start": 368.607,
-   "tl_end": 372.126
+   "src_start": 145.781,
+   "src_end": 148.648,
+   "tl_start": 396.022,
+   "tl_end": 399.239
   },
   "L067": {
    "part": "C",
-   "src_start": 139.73,
-   "src_end": 148.048,
-   "tl_start": 372.126,
-   "tl_end": 380.794
+   "src_start": 148.648,
+   "src_end": 157.961,
+   "tl_start": 399.239,
+   "tl_end": 408.902
   },
   "L068": {
    "part": "C",
-   "src_start": 148.048,
-   "src_end": 153.593,
-   "tl_start": 380.794,
-   "tl_end": 387.139
+   "src_start": 157.961,
+   "src_end": 163.217,
+   "tl_start": 408.902,
+   "tl_end": 414.958
   },
   "L069": {
    "part": "C",
-   "src_start": 153.593,
-   "src_end": 160.374,
-   "tl_start": 387.139,
-   "tl_end": 395.92
+   "src_start": 163.217,
+   "src_end": 171.133,
+   "tl_start": 414.958,
+   "tl_end": 424.874
   },
   "L070": {
    "part": "C",
-   "src_start": 160.374,
-   "src_end": 162.894,
-   "tl_start": 395.92,
-   "tl_end": 398.79
+   "src_start": 171.133,
+   "src_end": 173.846,
+   "tl_start": 424.874,
+   "tl_end": 427.937
   },
   "L071": {
    "part": "C",
-   "src_start": 162.894,
-   "src_end": 168.294,
-   "tl_start": 398.79,
-   "tl_end": 404.54
+   "src_start": 173.846,
+   "src_end": 180.922,
+   "tl_start": 427.937,
+   "tl_end": 435.363
   },
   "L072": {
    "part": "C",
-   "src_start": 168.294,
-   "src_end": 172.974,
-   "tl_start": 404.54,
-   "tl_end": 410.22
+   "src_start": 180.922,
+   "src_end": 185.125,
+   "tl_start": 435.363,
+   "tl_end": 440.566
   },
   "L073": {
    "part": "C",
-   "src_start": 172.974,
-   "src_end": 178.818,
-   "tl_start": 410.22,
-   "tl_end": 416.414
+   "src_start": 185.125,
+   "src_end": 191.178,
+   "tl_start": 440.566,
+   "tl_end": 446.969
   },
   "L074": {
    "part": "C",
-   "src_start": 178.818,
-   "src_end": 181.279,
-   "tl_start": 416.414,
-   "tl_end": 420.075
+   "src_start": 191.178,
+   "src_end": 194.253,
+   "tl_start": 446.969,
+   "tl_end": 451.244
   },
   "L075": {
    "part": "C",
-   "src_start": 181.279,
-   "src_end": 190.41,
-   "tl_start": 420.075,
-   "tl_end": 430.706
+   "src_start": 194.253,
+   "src_end": 203.36,
+   "tl_start": 451.244,
+   "tl_end": 461.851
   }
  },
  "scenes": [
@@ -533,427 +533,427 @@
    "title": "Modern kafe: Fasulye ve fincan",
    "kind": "imagegen",
    "start": 0.0,
-   "dur": 5.753
+   "dur": 4.928
   },
   {
    "id": "S002",
    "title": "Buharda tarih: taç, ferman, alev",
    "kind": "imagegen",
-   "start": 5.753,
-   "dur": 6.364
+   "start": 4.928,
+   "dur": 6.537
   },
   {
    "id": "S003",
    "title": "Harita: beş yasak noktası",
    "kind": "imagegen",
-   "start": 12.117,
-   "dur": 4.595
+   "start": 11.465,
+   "dur": 6.407
   },
   {
    "id": "S004",
    "title": "Yenik hükümdarlar ve muzaffer fincan",
    "kind": "imagegen",
-   "start": 16.712,
-   "dur": 4.338
+   "start": 17.872,
+   "dur": 4.462
   },
   {
    "id": "S005",
    "title": "Dedektif Fasulye",
    "kind": "imagegen",
-   "start": 21.05,
-   "dur": 7.711
+   "start": 22.334,
+   "dur": 9.217
   },
   {
    "id": "S006",
    "title": "Mekke 1511 kuruluş planı",
    "kind": "imagegen",
-   "start": 28.761,
-   "dur": 2.217
+   "start": 31.551,
+   "dur": 3.814
   },
   {
    "id": "S007",
    "title": "Gece uyanık kalan sufiler",
    "kind": "imagegen",
-   "start": 30.978,
-   "dur": 6.371
+   "start": 35.365,
+   "dur": 5.93
   },
   {
    "id": "S008",
    "title": "Mekke'de kahve dükkânı",
    "kind": "imagegen",
-   "start": 37.349,
-   "dur": 5.662
+   "start": 41.295,
+   "dur": 5.961
   },
   {
    "id": "S009",
    "title": "Hayır Bey tanıtım",
    "kind": "imagegen",
-   "start": 43.011,
-   "dur": 6.395
+   "start": 47.256,
+   "dur": 5.678
   },
   {
    "id": "S010",
    "title": "Hayır Bey gözetliyor",
    "kind": "imagegen",
-   "start": 49.406,
-   "dur": 4.804
+   "start": 52.934,
+   "dur": 5.729
   },
   {
    "id": "S011",
    "title": "Âlimler ve hekimler meclisi",
    "kind": "imagegen",
-   "start": 54.21,
-   "dur": 5.441
+   "start": 58.663,
+   "dur": 6.332
   },
   {
    "id": "S012",
    "title": "Karar: yasak (türev)",
    "kind": "derived",
-   "start": 59.651,
-   "dur": 4.14
+   "start": 64.995,
+   "dur": 5.378
   },
   {
    "id": "S013",
    "title": "Çuvallar yakılıyor",
    "kind": "imagegen",
-   "start": 63.791,
-   "dur": 5.523
+   "start": 70.373,
+   "dur": 4.955
   },
   {
    "id": "S014",
    "title": "Kahire: Sultan Kansu Gavri",
    "kind": "imagegen",
-   "start": 69.314,
-   "dur": 10.357
+   "start": 75.328,
+   "dur": 11.293
   },
   {
    "id": "S015",
    "title": "Hayır Bey'in yüzü düşüyor",
    "kind": "imagegen",
-   "start": 79.671,
-   "dur": 9.879
+   "start": 86.621,
+   "dur": 10.021
   },
   {
    "id": "S016",
    "title": "Motif: sorun masaydı",
    "kind": "imagegen",
-   "start": 89.55,
-   "dur": 6.439
+   "start": 96.642,
+   "dur": 7.257
   },
   {
    "id": "S017",
    "title": "İstanbul 1554 kuruluş",
    "kind": "imagegen",
-   "start": 95.989,
-   "dur": 4.105
+   "start": 103.899,
+   "dur": 4.409
   },
   {
    "id": "S018",
    "title": "Hakem ve Şems dükkân açıyor",
    "kind": "imagegen",
-   "start": 100.094,
-   "dur": 8.112
+   "start": 108.308,
+   "dur": 8.65
   },
   {
    "id": "S019",
    "title": "Kuyruk ve kalabalık",
    "kind": "imagegen",
-   "start": 108.206,
-   "dur": 6.134
+   "start": 116.958,
+   "dur": 6.621
   },
   {
    "id": "S020",
    "title": "Kahvehane içi: kitap, tavla, şiir",
    "kind": "imagegen",
-   "start": 114.34,
-   "dur": 6.426
+   "start": 123.579,
+   "dur": 6.977
   },
   {
    "id": "S021",
    "title": "Fısıltı: devlet hakkında",
    "kind": "imagegen",
-   "start": 120.766,
-   "dur": 3.008
+   "start": 130.556,
+   "dur": 3.013
   },
   {
    "id": "S022",
    "title": "İtiraz eden âlim",
    "kind": "imagegen",
-   "start": 123.774,
-   "dur": 5.287
+   "start": 133.569,
+   "dur": 5.479
   },
   {
    "id": "S023",
    "title": "Bostanzade yeşil ışık",
    "kind": "imagegen",
-   "start": 129.061,
-   "dur": 8.522
+   "start": 139.048,
+   "dur": 9.845
   },
   {
    "id": "S024",
    "title": "Sahneye IV. Murad",
    "kind": "imagegen",
-   "start": 137.583,
-   "dur": 4.188
+   "start": 148.893,
+   "dur": 4.573
   },
   {
    "id": "S025",
    "title": "Boş taht: Genç Osman'ın anısı",
    "kind": "imagegen",
-   "start": 141.771,
-   "dur": 8.485
+   "start": 153.466,
+   "dur": 9.932
   },
   {
    "id": "S026",
    "title": "Yeniçeriler kahvehanede",
    "kind": "imagegen",
-   "start": 150.256,
-   "dur": 5.675
+   "start": 163.398,
+   "dur": 6.294
   },
   {
    "id": "S027",
    "title": "1633 büyük yangın",
    "kind": "imagegen",
-   "start": 155.931,
-   "dur": 5.085
+   "start": 169.692,
+   "dur": 6.36
   },
   {
    "id": "S028",
    "title": "Kahvehane kapatılıyor",
    "kind": "imagegen",
-   "start": 161.016,
-   "dur": 7.611
+   "start": 176.052,
+   "dur": 7.398
   },
   {
    "id": "S029",
    "title": "Gerilim: boş sokak",
    "kind": "imagegen",
-   "start": 168.627,
-   "dur": 6.015
+   "start": 183.45,
+   "dur": 6.396
   },
   {
    "id": "S030",
    "title": "Kılık değiştirmiş Murad",
    "kind": "imagegen",
-   "start": 174.642,
-   "dur": 6.045
+   "start": 189.846,
+   "dur": 6.796
   },
   {
    "id": "S031",
    "title": "Efsane mi? (türev)",
    "kind": "derived",
-   "start": 180.687,
-   "dur": 6.486
+   "start": 196.642,
+   "dur": 6.825
   },
   {
    "id": "S032",
    "title": "Ev serbest, kahvehane yasak",
    "kind": "imagegen",
-   "start": 187.173,
-   "dur": 6.442
+   "start": 203.467,
+   "dur": 7.376
   },
   {
    "id": "S033",
    "title": "Motif tekrar: masa",
    "kind": "derived",
-   "start": 193.615,
-   "dur": 5.151
+   "start": 210.843,
+   "dur": 5.127
   },
   {
    "id": "S034",
    "title": "Kâtip Çelebi ve ıssız kahvehaneler",
    "kind": "imagegen",
-   "start": 198.766,
-   "dur": 8.976
+   "start": 215.97,
+   "dur": 9.165
   },
   {
    "id": "S035",
    "title": "Kahvehaneler yeniden açılıyor",
    "kind": "imagegen",
-   "start": 207.742,
-   "dur": 8.905
+   "start": 225.135,
+   "dur": 9.707
   },
   {
    "id": "S036",
    "title": "Londra 1675 kuruluş",
    "kind": "imagegen",
-   "start": 216.647,
-   "dur": 5.225
+   "start": 234.842,
+   "dur": 5.81
   },
   {
    "id": "S037",
    "title": "Peni üniversitesi",
    "kind": "imagegen",
-   "start": 221.872,
-   "dur": 8.37
+   "start": 240.652,
+   "dur": 8.32
   },
   {
    "id": "S038",
    "title": "Kral İkinci Charles",
    "kind": "imagegen",
-   "start": 230.242,
-   "dur": 3.31
+   "start": 248.972,
+   "dur": 3.029
   },
   {
    "id": "S039",
    "title": "Tellal fermanı okuyor",
    "kind": "imagegen",
-   "start": 233.552,
-   "dur": 7.83
+   "start": 252.001,
+   "dur": 8.312
   },
   {
    "id": "S040",
    "title": "Dedikodu saraya uçuyor",
    "kind": "imagegen",
-   "start": 241.382,
-   "dur": 6.27
+   "start": 260.313,
+   "dur": 6.638
   },
   {
    "id": "S041",
    "title": "Londra ayakta",
    "kind": "imagegen",
-   "start": 247.652,
-   "dur": 5.146
+   "start": 266.951,
+   "dur": 5.727
   },
   {
    "id": "S042",
    "title": "Charles fermanı yırtıyor",
    "kind": "imagegen",
-   "start": 252.798,
-   "dur": 11.037
+   "start": 272.678,
+   "dur": 11.746
   },
   {
    "id": "S043",
    "title": "Friedrich para sayıyor",
    "kind": "imagegen",
-   "start": 263.835,
-   "dur": 5.561
+   "start": 284.424,
+   "dur": 5.605
   },
   {
    "id": "S044",
    "title": "Paralar uçup gidiyor",
    "kind": "imagegen",
-   "start": 269.396,
-   "dur": 7.189
+   "start": 290.029,
+   "dur": 6.901
   },
   {
    "id": "S045",
    "title": "Bira çorbası önerisi",
    "kind": "imagegen",
-   "start": 276.585,
-   "dur": 11.296
+   "start": 296.93,
+   "dur": 13.326
   },
   {
    "id": "S046",
    "title": "Devlet kavurma tesisi",
    "kind": "imagegen",
-   "start": 287.881,
-   "dur": 5.432
+   "start": 310.256,
+   "dur": 5.137
   },
   {
    "id": "S047",
    "title": "Kahve koklayıcı",
    "kind": "imagegen",
-   "start": 293.313,
-   "dur": 11.773
+   "start": 315.393,
+   "dur": 13.318
   },
   {
    "id": "S048",
    "title": "Kurallar gömülüyor",
    "kind": "imagegen",
-   "start": 305.086,
-   "dur": 6.719
+   "start": 328.711,
+   "dur": 7.764
   },
   {
    "id": "S049",
    "title": "İsveç: Kral Gustav ve beş yasak",
    "kind": "imagegen",
-   "start": 311.805,
-   "dur": 11.123
+   "start": 336.475,
+   "dur": 11.07
   },
   {
    "id": "S050",
    "title": "Masanın altında gizli kahve",
    "kind": "imagegen",
-   "start": 322.928,
-   "dur": 3.537
+   "start": 347.545,
+   "dur": 3.321
   },
   {
    "id": "S051",
    "title": "Demlik cenazesi",
    "kind": "imagegen",
-   "start": 326.465,
-   "dur": 7.409
+   "start": 350.866,
+   "dur": 8.393
   },
   {
    "id": "S052",
    "title": "İkiz deneyi",
    "kind": "imagegen",
-   "start": 333.874,
-   "dur": 11.255
+   "start": 359.259,
+   "dur": 11.035
   },
   {
    "id": "S053",
    "title": "İkizler yaşlanıyor",
    "kind": "imagegen",
-   "start": 345.129,
-   "dur": 8.145
+   "start": 370.294,
+   "dur": 9.416
   },
   {
    "id": "S054",
    "title": "Efsane olabilir (türev)",
    "kind": "derived",
-   "start": 353.274,
-   "dur": 4.986
+   "start": 379.71,
+   "dur": 5.954
   },
   {
    "id": "S055",
    "title": "Modern fika",
    "kind": "imagegen",
-   "start": 358.26,
-   "dur": 10.347
+   "start": 385.664,
+   "dur": 10.358
   },
   {
    "id": "S056",
    "title": "Kolschitzky efsanesi",
    "kind": "imagegen",
-   "start": 368.607,
-   "dur": 12.187
+   "start": 396.022,
+   "dur": 12.88
   },
   {
    "id": "S057",
    "title": "Efsane (türev)",
    "kind": "derived",
-   "start": 380.794,
-   "dur": 6.345
+   "start": 408.902,
+   "dur": 6.056
   },
   {
    "id": "S058",
    "title": "Diodato'nun dükkânı",
    "kind": "imagegen",
-   "start": 387.139,
-   "dur": 8.781
+   "start": 414.958,
+   "dur": 9.916
   },
   {
    "id": "S059",
    "title": "Hükümdarlar aynı masada",
    "kind": "imagegen",
-   "start": 395.92,
-   "dur": 14.3
+   "start": 424.874,
+   "dur": 15.692
   },
   {
    "id": "S060",
    "title": "Masa: her çağdan insanlar",
    "kind": "imagegen",
-   "start": 410.22,
-   "dur": 9.855
+   "start": 440.566,
+   "dur": 10.678
   },
   {
    "id": "S061",
    "title": "Fasulye kadeh kaldırır",
    "kind": "imagegen",
-   "start": 420.075,
-   "dur": 10.631
+   "start": 451.244,
+   "dur": 10.607
   }
  ]
 }

@@ -101,7 +101,8 @@ def base_image(s, found, scenes_by_id, args, narr):
         raise SystemExit(f"Eksik görsel: {sid} (--placeholders ile animatik alınabilir)")
     return placeholder(scenes_by_id[sid], narr)
 
-MAX_ZOOMS = 2  # bir sahnede en çok 2 yakınlaşma (kullanıcı kararı)
+MAX_ZOOMS = 2
+SMOOTH = True   # sahne başına tek çekim + yavaş, sürekli yakınlaşma (ani kesmeli yakınlaşma yok)  # bir sahnede en çok 2 yakınlaşma (kullanıcı kararı)
 
 def shots_for(s, img, dur, lang, target):
     ov = s["overlay"]; title = ov.get(lang) if isinstance(ov.get(lang), str) else None
@@ -118,7 +119,7 @@ def shots_for(s, img, dur, lang, target):
         if stamp: fx_stamp(im, stamp)
         overlay_title(im, title)
         return [(im, dur)]
-    n = min(MAX_ZOOMS + 1, max(1, round(dur / target))) if s["kind"] == "imagegen" else 1
+    n = 1 if SMOOTH else (min(MAX_ZOOMS + 1, max(1, round(dur / target))) if s["kind"] == "imagegen" else 1)
     while n > 1 and dur / n < MIN_SHOT: n -= 1
     cycle = [1.0, 1.14, 1.28]  # en çok 2 yakınlaşma: geniş → yakın → daha yakın
     out = []
@@ -127,6 +128,19 @@ def shots_for(s, img, dur, lang, target):
         if i == 0: overlay_title(im, title)
         out.append((im, dur / n))
     return out
+
+_CACHE = {}
+def render_frame(task):
+    """Alt-piksel doğruluklu, çok yavaş sürekli yakınlaşma (zoom in/out dönüşümlü)."""
+    fp, nfr, focus, zmax, zoom_in, i = task
+    im = _CACHE.get(fp)
+    if im is None:
+        _CACHE.clear(); im = _CACHE[fp] = Image.open(fp).convert("RGB")
+    W, H = im.size; u = i / max(1, nfr - 1)
+    z = 1 + zmax * (u if zoom_in else 1 - u)
+    fx, fy = focus
+    c = (1 / z, 0, W * fx * (1 - 1 / z), 0, 1 / z, H * fy * (1 - 1 / z))
+    return im.transform((W, H), Image.AFFINE, c, resample=Image.BICUBIC).tobytes()
 
 def find_audio(vdir, lang):
     for ext in ("wav", "mp3", "m4a"):
@@ -142,7 +156,7 @@ def srt_time(t):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("vdir"); ap.add_argument("--lang", default="tr")
-    ap.add_argument("--placeholders", action="store_true"); ap.add_argument("--only", help="S001-S016 gibi aralık")
+    ap.add_argument("--placeholders", action="store_true"); ap.add_argument("--no-mix", action="store_true"); ap.add_argument("--only", help="S001-S016 gibi aralık")
     args = ap.parse_args(); vdir = args.vdir.rstrip("/")
     data = load_scenes(vdir); scenes = data["scenes"]; by = {s["id"]: s for s in scenes}
     if args.only:
@@ -159,27 +173,36 @@ def main():
         img = base_image(s, found, by, args, narr)
         for im, d in shots_for(s, img, dur, args.lang, data.get("target_shot_sec", 2.2)):
             n += 1; fp = os.path.join(shots_dir, f"{n:04d}_{s['id']}.jpg")
-            im.save(fp, quality=92); concat.append((fp, d))
+            im.save(fp, quality=92); concat.append((fp, d, s.get('focus', [0.5, 0.5]), s['id'], 'map_pins' in {e['type'] for e in s.get('effects', [])}))
         for l in s["lines"]:
             srt.append((t, t + timings.get(l, 0), script.get(l, ""))); t += timings.get(l, 0)
     with open(os.path.join(out, "concat.txt"), "w") as f:
-        for fp, d in concat: f.write(f"file '{os.path.abspath(fp)}'\nduration {d:.3f}\n")
+        for fp, d, *_ in concat: f.write(f"file '{os.path.abspath(fp)}'\nduration {d:.3f}\n")
         f.write(f"file '{os.path.abspath(concat[-1][0])}'\n")
     with open(os.path.join(out, f"{data['video']}_{args.lang}.srt"), "w", encoding="utf-8") as f:
         for i, (a, b, txt) in enumerate(srt, 1): f.write(f"{i}\n{srt_time(a)} --> {srt_time(b)}\n{txt}\n\n")
     mp4 = os.path.join(out, f"{data['video']}_{args.lang}.mp4")
-    cmd = ["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", os.path.join(out, "concat.txt")]
     audio = find_audio(vdir, args.lang)
-    if isinstance(audio, list):
-        lst = os.path.join(out, "audio_concat.txt")
-        with open(lst, "w") as f:
-            for p in audio: f.write(f"file '{os.path.abspath(p)}'\n")
-        cmd += ["-f", "concat", "-safe", "0", "-i", lst]
-    elif audio:
-        cmd += ["-i", audio]
-    cmd += ["-vf", f"fps={data.get('fps',30)},format=yuv420p", "-c:v", "libx264", "-preset", "veryfast", "-crf", "20"]
-    cmd += (["-c:a", "aac", "-b:a", "192k", "-shortest"] if audio else [])
-    subprocess.run(cmd + [mp4], check=True)
+    mix = os.path.join(vdir, "audio", f"mix_{args.lang}.wav")
+    if os.path.exists(mix) and not args.no_mix: audio = mix
+    fps = data.get("fps", 30)
+    from multiprocessing import Pool
+    # kare sınırları kümülatif süreden hesaplanır: toplam süre ses ile birebir eşleşir
+    tasks, cum = [], 0.0
+    for idx, (fp, d, focus, sid, is_map) in enumerate(concat):
+        f0 = round(cum * fps); cum += d; f1 = round(cum * fps)
+        zin = 0.04 if is_map else max(0.03, min(0.10, 0.011 * d))
+        tasks.append((fp, f1 - f0, focus, zin, idx % 2 == 0))
+    ff = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", "1920x1080", "-r", str(fps), "-i", "-"]
+    if audio: ff += ["-i", audio]
+    ff += ["-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p"]
+    if audio: ff += ["-c:a", "aac", "-b:a", "192k", "-shortest"]
+    proc = subprocess.Popen(ff + [mp4], stdin=subprocess.PIPE)
+    with Pool(2) as pool:
+        for task in tasks:
+            for buf in pool.imap(render_frame, [task + (i,) for i in range(task[1])], chunksize=8):
+                proc.stdin.write(buf)
+    proc.stdin.close(); proc.wait()
     rep = {"mp4": os.path.relpath(mp4, vdir), "shots": n, "duration_sec": round(t, 2), "timing_source": src,
            "audio": bool(audio), "placeholders": sum(1 for s in scenes if (s.get("source") or s["id"]) not in found and s["kind"] != "engine_card")}
     save_json(os.path.join(out, "render_report.json"), rep)

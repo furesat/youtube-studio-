@@ -1,0 +1,38 @@
+{
+  "music_lufs": -32,
+  "duck": 0.35,
+  "sfx_master_db": -4,
+  "music": [
+    {"file": "M01",  "from": "S001", "to": "S005"},
+    {"file": "M02",  "from": "S006", "to": "S016"},
+    {"file": "M03a", "from": "S017", "to": "S023"},
+    {"file": "M03b", "from": "S024", "to": "S035"},
+    {"file": "M04",  "from": "S036", "to": "S042"},
+    {"file": "M05",  "from": "S043", "to": "S048"},
+    {"file": "M06",  "from": "S049", "to": "S055"},
+    {"file": "M07",  "from": "S056", "to": "S058"},
+    {"file": "M08",  "from": "S059", "to": "S061"}
+  ],
+  "sfx": [
+    {"file": "X01", "scene": "S001", "at": 0.4, "gain": -6},
+    {"file": "X02", "scenes": ["S006","S017","S036","S043","S049","S056","S059"], "at": -0.15, "gain": -6},
+    {"file": "X03", "scene": "S003", "at": 0.8, "times": 5, "gap": 1.2, "gain": -4},
+    {"file": "X04", "scene": "S012", "at": 0.3, "gain": -4},
+    {"file": "X05", "scenes": ["S012","S031","S054","S057"], "at": 0.6, "gain": 0},
+    {"file": "X06", "scene": "S013", "at": 0.0, "gain": -10},
+    {"file": "X07", "scene": "S027", "at": 0.0, "gain": -12},
+    {"file": "X08", "scenes": ["S008","S019","S020","S037"], "at": 0.0, "loop_to_scene": true, "gain": -16},
+    {"file": "X09", "scene": "S021", "at": 0.3, "gain": -10},
+    {"file": "X10", "scene": "S028", "at": 0.5, "gain": -4},
+    {"file": "X11", "scene": "S029", "at": 0.0, "gain": -12},
+    {"file": "X12", "scene": "S039", "at": 0.3, "gain": -8},
+    {"file": "X13", "scene": "S042", "at": 0.8, "gain": -4},
+    {"file": "X14", "scene": "S043", "at": 0.4, "gain": -8},
+    {"file": "X15", "scene": "S044", "at": 0.6, "gain": -8},
+    {"file": "X16", "scene": "S047", "at": 1.5, "gain": -6},
+    {"file": "X04", "scene": "S032", "at": 0.4, "gain": -8},
+    {"file": "X17", "scene": "S049", "at": 0.9, "times": 5, "gap": 1.3, "gain": -6},
+    {"file": "X18", "scene": "S051", "at": 0.3, "gain": -10},
+    {"file": "X19", "scene": "S061", "at": 3.0, "gain": -6}
+  ]
+}

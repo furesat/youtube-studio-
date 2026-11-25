@@ -35,9 +35,16 @@ def main():
         seg = pcm[part][int(s * SR):int(e * SR)]
         pause = P["after"].get(lid, P["default"])
         # her parçanın son satırından sonra doğal bitiş sessizliği zaten var; yine de duraklama ekle
-        out.append(seg); out.append(np.zeros(int(pause * SR), dtype=np.int16))
+        seg = seg.astype(np.float32); f = int(0.015 * SR)
+        if len(seg) > 2 * f: seg[:f] *= np.linspace(0, 1, f); seg[-f:] *= np.linspace(1, 0, f)
+        out.append(seg.astype(np.int16)); out.append(np.zeros(int(pause * SR), dtype=np.int16))
         final[lid] = {"part": part, "start": round(s, 3), "end": round(e, 3), "speech": round(e - s, 3), "pause": pause, "dur": round(e - s + pause, 3)}
-    audio = np.concatenate(out); wavp = f"{v}/audio/full_{a.lang}.wav"
+    audio = np.concatenate(out)
+    # tam dijital sessizlik 'kesinti' gibi duyuluyor: tüm parçanın altına çok kısık oda tonu (-60 dBFS) ekle
+    rng = np.random.default_rng(7); n = rng.normal(0, 1, len(audio)).astype(np.float32)
+    k = np.ones(24, dtype=np.float32) / 24; n = np.convolve(n, k, "same"); n = n / (n.std() + 1e-9) * (32768 * 10 ** (-60 / 20))
+    audio = np.clip(audio.astype(np.float32) + n, -32768, 32767).astype(np.int16)
+    wavp = f"{v}/audio/full_{a.lang}.wav"
     w = wave.open(wavp, "wb"); w.setnchannels(1); w.setsampwidth(2); w.setframerate(SR); w.writeframes(audio.tobytes()); w.close()
     mp3 = f"{v}/audio/full_{a.lang}.mp3"
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", wavp, "-b:a", "192k", mp3], check=True); os.remove(wavp)

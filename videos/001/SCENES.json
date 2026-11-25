@@ -171,7 +171,23 @@
               0.464,
               0.245
             ]
-          ]
+          ],
+          "names": {
+            "de": {
+              "Mekke": "Mekka",
+              "İstanbul": "Istanbul",
+              "Londra": "London",
+              "Prusya": "Preußen",
+              "İsveç": "Schweden"
+            },
+            "en": {
+              "Mekke": "Mecca",
+              "İstanbul": "Istanbul",
+              "Londra": "London",
+              "Prusya": "Prussia",
+              "İsveç": "Sweden"
+            }
+          }
         }
       ],
       "focus": [

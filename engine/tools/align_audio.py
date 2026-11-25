@@ -77,6 +77,19 @@ def main():
         for i, lid in enumerate(ids):
             st = first.get(lid, bounds[-1][1] if bounds else 0.0)
             bounds.append([lid, st])
+        # eşleşmeyen satırlar: önceki ve sonraki eşleşen satır arasında harf sayısına göre dağıt
+        i = 0
+        while i < len(ids):
+            if ids[i] in first: i += 1; continue
+            j = i
+            while j < len(ids) and ids[j] not in first: j += 1
+            t_a = bounds[i - 1][1] if i else 0.0
+            t_b = bounds[j][1] if j < len(ids) else total
+            w = [len(narr[ids[k]]) for k in range(i, j)]; tot = sum(w) + (len(narr[ids[i - 1]]) if i else 0)
+            acc = len(narr[ids[i - 1]]) if i else 0
+            for k in range(i, j):
+                bounds[k][1] = t_a + (t_b - t_a) * acc / tot; acc += w[k - i]
+            i = j
         out = []
         for i, (lid, st) in enumerate(bounds):
             en = bounds[i + 1][1] if i + 1 < len(bounds) else total

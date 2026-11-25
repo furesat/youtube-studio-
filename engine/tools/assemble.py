@@ -109,7 +109,7 @@ def shots_for(s, img, dur, lang, target):
     effects = {e["type"]: e for e in s.get("effects", [])}
     focus = s.get("focus", [0.5, 0.5])
     if "map_pins" in effects:
-        im = img.copy(); overlay_title(im, title); fx_pins(im, effects["map_pins"]["pins"])
+        im = img.copy(); overlay_title(im, title); fx_pins(im, [[(effects["map_pins"].get("names", {}).get(lang, {}).get(n, n)), x, y] for n, x, y in effects["map_pins"]["pins"]])
         return [(im, dur)]
     if s["kind"] == "derived" or effects.keys() & {"red_x", "stamp", "check_cross"}:
         im = punch(img.copy(), effects.get("punch_in", {}).get("scale", 1.0), focus)

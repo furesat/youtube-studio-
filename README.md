@@ -3,6 +3,8 @@
 **Fasulye** · *Sıradan şeyler. Sıra dışı hikâyeler.* · Yüz göstermeyen, çizimli, Türkçe tarih/bilim anlatım kanalı (DE/EN uyarlamalı).
 **Yeni bir AI oturumu `AGENTS.md`'den başlar.**
 
+- `shorts/` — bağımsız Shorts serileri (Fasulye Mahkemesi), rakip taraması
+
 ## Durum (2026-11-26)
 - **Video 001 "Kahve Neden Defalarca Yasaklandı?"**: yayına hazır, YouTube'a yüklendi (TR ses + TR/DE altyazı + DE başlık/açıklama). Almanca dublaj izi hazır; kanalda "Ses" özelliği açılınca eklenecek.
 - Kanal kimliği tamam: ad, slogan, açıklama, banner, avatar → `channel/`

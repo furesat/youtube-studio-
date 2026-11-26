@@ -38,6 +38,7 @@ Not: ATOMI derin bilim konularına odaklanırsa Fasulye gündelik merak + insan 
 | 007 | Lale çılgınlığı + Lale Devri (ters köşe: çılgınlık abartılmış olabilir) | LALE! | plan — Kasketli Tarih'ten farklı açı |
 | ... | Tuvalet kâğıdı öncesi, Şeker "beyaz altın", Göbeklitepe (en sona; rakip çok) | | havuz |
 
+Bağımsız Shorts: `shorts/` klasörü (seri: **Fasulye Mahkemesi**, bölüm listesi `shorts/fasulye-mahkemesi/BOLUMLER.md`).
 Shorts ile test kuyruğu: psikoloji (duşta fikirler), bilim (kendi sesimiz), ekonomi (market/süt), toplum (tokalaşma). Tarihsel iddialar senaryo aşamasında doğrulanır.
 
 ## 001'den öğrenilenler (sonraki videolara kural)

@@ -80,3 +80,10 @@ Not: DE dublaj miksini TR seviyesine eşitlemek için `ffmpeg -af "volume=+XdB,a
 ## Dil uyarlaması (DE / EN)
 `SCRIPT.md` TR asıldır. Uyarlama: `NARRATION_de.txt`; `SCENES.json` içinde `overlay.de`. Görseller ortaktır (metinsiz).
 İki yol: (1) aynı videoya **dublaj izi** (YouTube "Ses" özelliği — kanalda açık olmalı), (2) ayrı DE video (DE zamanlamasıyla ayrı render).
+
+## Bölüm klasör standardı (2026-11-27)
+- Her video kendi `videos/NNN/` dizininde yaşar. Numara sabit kalır; başlık değişse de klasör adı değişmez.
+- `README.md` bölüm dizini, `STATUS.json` makinece okunabilir durum, `RESEARCH.md` tek araştırma kaynağıdır. Kaynakça, iddia kontrolü, tarihî tanıklık/kurmaca ayrımı, mizah fikirleri ve Shorts adayları aynı RESEARCH.md içinde başlıklarla tutulur. Ayrı geçici araştırma dosyaları repo köküne açılmaz.
+- Senaryo, anlatım, sahne planı, promptlar ve storyboard mevcut araçlarla uyumlu olarak aynı bölüm dizininde kalır; ilgili alt klasörler `images_ref/`, `youtube/`, `shorts/` vb. sadece gerektiğinde oluşturulur. Ağır dosyalar yerelde kalır.
+- Kaynağa erişilemediyse araştırmada belirt; görüş, espri ve varsayımları doğrulanmış olaylarla karıştırma. Kaynak kodlarını senaryoda izlenebilir tut.
+- Mevcut 001 dosyaları yerinden taşınmaz; eski araç yolları korunur. Yeni bölümler bu standardı izler.

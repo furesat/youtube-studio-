@@ -1,0 +1,32 @@
+{
+  "video": "002",
+  "title": "Çatal kullanmak gerçekten günah mıydı?",
+  "updated": "2026-11-27",
+  "stages": {
+    "research": "draft_v1_sources_reviewed",
+    "script": "not_started",
+    "narration_text": "not_started",
+    "scene_plan": "not_started",
+    "image_prompts": "not_started",
+    "images": "not_started",
+    "voice": "not_started",
+    "render": "not_started",
+    "published": false
+  },
+  "research": {
+    "file": "RESEARCH.md",
+    "version": 1,
+    "source_count": 14,
+    "limitations": [
+      "Damiani'nin anlattığı kadının kimliği kesin değil",
+      "Baron de Tott anekdotu akademik aktarım üzerinden",
+      "PDF sayfa görüntüleri erişim hatası verdi",
+      "Genel kilise yasağı doğrulanmadı"
+    ]
+  },
+  "next_actions": [
+    "RESEARCH.md içindeki F02/F05/F07 kaynak pasajlarını senaryo öncesi doğrula",
+    "Kullanıcıyla araştırma açısını ve mizahı değerlendir",
+    "SCRIPT.md taslağını kaynak kodlarıyla yaz; kullanıcı onayı bekle"
+  ]
+}

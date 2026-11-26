@@ -6,6 +6,20 @@
 - **Vaat:** "Bildiğini sandığın şeyin arkasındaki gerçek hikâye; 7 dakikada, gülümseterek, kaynağıyla."
 - **Ayırt edici:** Fasulye karakteri ("iki dünya" şakası: aynı kişi, farklı çağ), sıcak kâğıt dokulu çizimler, her videoda efsane ile gerçeği ayıran dürüstlük.
 
+## Kanal adı ve kimlik (karar: 2026-11-26)
+- **Kanal adı: Fasulye** (maskotla aynı; TR/DE/EN kanallarda aynı isim). Slogan önerisi: *"Bildiğin hikâyenin bilmediğin tarafı."*
+- Kanal görselleri: `channel/kanal_gorsel_promptlari.txt` (banner 2560×1440, güvenli alan 1546×423 ortada; avatar 800×800). Yazılar motorla eklenir.
+
+## İçerik sütunları (karar: 2026-11-26)
+1. **Yasaklar ve tuhaf kurallar** (kahve, tütün, çatal, dans, kahkaha…)
+2. **Gündelik şeylerin gizli tarihi** (tuz, şeker, saat, takvim, çatal)
+3. **Efsane mi gerçek mi?** (Orta Çağ'da yıkanma, Napolyon'un boyu…)
+4. **Türkiye bağlantılı dünya hikâyeleri** (Lale Devri / lale çılgınlığı, Osmanlı'da saat, Göbeklitepe)
+Ritim: haftada 1 uzun video (6–9 dk) + aynı görsellerden 2–3 Shorts.
+
+### Sıradaki konular
+002 Lale çılgınlığı gerçekten ekonomiyi çökertti mi? · 003 Takvimden 11 gün nasıl silindi? · 004 Orta Çağ'da insanlar yıkanmıyor muydu? · 005 Çatal neden "günah" sayıldı? · 006 Göbeklitepe: tarımdan önce tapınak mı?
+
 ## Format
 - **Süre:** 6–9 dk (ilk videolar ~7 dk). Kısa versiyonlar: 45–60 sn dikey kesitler (aynı görseller, yeniden kadrajlanmış).
 - **Yapı:** kanca (0–30 sn) → 3–5 bölüm (kontrol noktaları) → ters köşe/ders → kapanış geri çağırması.

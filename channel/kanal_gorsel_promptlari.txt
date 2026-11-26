@@ -1,0 +1,25 @@
+KANAL GÖRSELLERİ — "Fasulye"
+ChatGPT'ye her promptla şunları ekle: character-references/fasulye/01_donus_sayfasi.png, 02_ifadeler.png, 04_kostum_efekt.png (repoda var).
+Görseller YAZISIZ gelsin; "Fasulye" yazısını ve sloganı biz ekleyeceğiz.
+
+====================================================================
+1) KANAL KAPAĞI (BANNER) → dosya adı: kanal_banner_v1.png
+====================================================================
+Create a very wide YouTube channel banner in exactly the hand-drawn style of the attached reference images: warm, slightly wobbly ink lines, flat muted colours (warm paper #F7F1E5, ink #1D1A17, terracotta #E4572E, teal #2A7F7A, sand #D9B27C, stone #B9AFA2), light diagonal ink hatching, subtle warm paper grain. Use the widest landscape format you can (16:9 or wider).
+
+IMPORTANT LAYOUT: everything important must sit in a horizontal band through the vertical middle of the image (the middle ~30% of the height, centred). The top and bottom thirds are only calm continuation of the background (plain paper, soft clouds) because YouTube crops them on phones.
+
+SCENE: a long, cosy wooden table runs horizontally across the middle band under three warm hanging lamps — a "table through history". In the exact centre stands Fasulye, the off-white bean-shaped mascot from the reference (one curly question-mark hair tuft, knotted terracotta scarf, big round eyes, no nose, thin ink arms), modern look with only his scarf, raising a white coffee cup in a small friendly toast toward the viewer, calm dry smile. Keep his design exactly.
+Leave a clear empty paper-coloured space directly to the LEFT of Fasulye (about 30% of the width) for the channel name, and a smaller empty space to the RIGHT for a slogan.
+At the far left and far right ends of the table sit small bean-shaped figures from different eras, chatting over cups: an Ottoman townsman in a red fez, a London man in a curly periwig, a Prussian veteran in a tricorn hat, a Swedish woman in a wool cap, a prehistoric person with a stone tool next to a small carved T-shaped pillar, a medieval scribe with a quill. On the table: cups, an hourglass, a rolled blank map, a small tulip in a vase, a salt cellar, a candle.
+
+All people are bean-shaped with big round eyes and no noses. No text, letters, numbers, logos or watermark anywhere.
+
+====================================================================
+2) PROFİL RESMİ (AVATAR) → dosya adı: kanal_avatar_v1.png
+====================================================================
+Create a square channel avatar in exactly the hand-drawn style of the attached reference images: warm, slightly wobbly ink lines, flat colours, light hatching, paper grain. Square 1:1.
+
+Fasulye, the off-white bean-shaped mascot from the reference (one curly question-mark hair tuft, knotted terracotta scarf #E4572E, big round eyes, no nose), head-and-chest close-up, centred, looking straight at the viewer with one eyebrow slightly raised and a small curious smile, holding a tiny white coffee cup near his chin. Plain solid warm terracotta-to-sand background (#E9C9A3), nothing else. Big simple shapes so it reads at very small size inside a circle: keep everything important inside the central circle, nothing touching the edges.
+
+Keep his design exactly. No text, letters, numbers, logos or watermark.

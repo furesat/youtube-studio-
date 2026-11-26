@@ -43,13 +43,13 @@ tb = 0.0; end = 0.0; rep = []
 for s in sc:
     t = sum(TB[l]["dur"] for l in s["lines"])
     a0 = TL[s["lines"][0]]["start"]; a1 = TL[s["lines"][-1]]["start"] + TL[s["lines"][-1]]["dur"]
-    seg = voice[int(a0 * SR):int(a1 * SR)]; d = len(seg) / SR
+    seg = voice[int(a0 * SR):int(a1 * SR)]; d = len(seg) / SR; d0 = d
     st = max(tb - EARLY if s is not sc[0] else 0.0, end); avail = min(tb + t + LAG, total) - st
     if avail > 0 and d > avail: seg = squeeze(seg, d - avail); d = len(seg) / SR
     f = min(CAP, max(1.0, d / avail)) if avail > 0 else CAP
     seg = tempo(seg, f); i = int(st * SR); seg = seg[:max(0, len(out) - i)]
     out[i:i + len(seg)] += seg; end = st + len(seg) / SR
-    rep.append({"scene": s["id"], "lag": round(st - tb, 2), "speed": round(f, 3)}); tb += t
+    rep.append({"scene": s["id"], "lag": round(st - tb, 2), "speed": round(f, 3), "src_start": a0, "src_dur": d0, "dst_start": st, "dst_dur": len(seg) / SR}); tb += t
 out = out[:int(total * SR)]
 o = f"{v}/audio/dub_{a.lang}_on_{a.base}.wav"
 import wave; w = wave.open(o, "wb"); w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes((np.clip(out, -1, 1) * 32767).astype(np.int16).tobytes()); w.close()

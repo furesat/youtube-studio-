@@ -30,7 +30,7 @@ Not: ATOMI derin bilim konularına odaklanırsa Fasulye gündelik merak + insan 
 | No | Konu | Kapak yazısı | Durum |
 |---|---|---|---|
 | 001 | Kahve neden defalarca yasaklandı? | YASAK! | **Yüklendi** (TR); DE ses izi bekliyor |
-| 002 | Çatal kullanmak gerçekten günah mıydı? (Avrupa ↔ Osmanlı sofrası) | GÜNAH! | sıradaki — araştırma |
+| 002 | Çatal kullanmak gerçekten günah mıydı? (Avrupa ↔ Osmanlı sofrası) | GÜNAH! | araştırma v1 hazır — senaryo bekliyor |
 | 003 | İnsanlar bir gecede 11 günü nasıl kaybetti? | 11 GÜN! | plan |
 | 004 | Kolomb'dan önce dünyada olmayan yiyecekler (Fatih menemen yiyemezdi) | DOMATES YOK! | plan |
 | 005 | İnsanlar neden eskiden iki kez uyuyordu? | İKİ UYKU! | plan |
@@ -55,5 +55,6 @@ Shorts ile test kuyruğu: psikoloji (duşta fikirler), bilim (kendi sesimiz), ek
 - [ ] Telefon/kimlik doğrulaması (özel kapak, uzun video, çok dilli ses)
 - [ ] ElevenLabs planının ticari kullanım hakkını kontrol et
 - [ ] Anlatıcı sesinin kaynağını netleştir (klon mu, kütüphane sesi mi) → YouTube "yapay içerik" beyanı
-- [ ] 002 (çatal) araştırması
+- [x] 002 (çatal) araştırma v1 (`videos/002/RESEARCH.md`; kaynak sınırları içeride)
+- [ ] 002: kaynak pasajı son kontrolü ve senaryo onayı
 - [ ] Shorts test kuyruğu: İsveç · IV. Murad · Londra · Mekke (001) + yeni kategorilerden 2–3'er Short

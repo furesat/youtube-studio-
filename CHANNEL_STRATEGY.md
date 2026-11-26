@@ -53,3 +53,11 @@ Başlangıç: haftada 1 video. Her 4 videoda bir: format, izlenme ve tutma oran�
 - Lale çılgınlığı gerçekten ekonomiyi çökertti mi?
 - Orta Çağ'da insanlar gerçekten yıkanmıyor muydu?
 - Takvimden 11 gün nasıl silindi? (Rumi / Gregoryen takvim)
+- Çatal neden "günah" sayıldı? (**002**)
+- Kolomb'dan önce olmayan yiyecekler (domates/biber/patates; Fatih menemen yiyemezdi)
+- İnsanlar neden iki kez uyuyordu? (bölünmüş uyku)
+- Duşta neden güzel fikirler gelir? (Short testi; bilimsel kısım kesin değil, dikkatli anlat)
+- Kendi sesimiz bize neden garip gelir? (Short testi)
+- Marketler sütü neden en arkaya koyar? (Short testi; satış + soğutma lojistiği)
+- İnsanlar neden tokalaşır? (Short testi)
+- Avustralya'nın emu savaşı (Türkçe'de var mı kontrol et)

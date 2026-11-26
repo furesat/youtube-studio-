@@ -10,15 +10,19 @@
 - **Kanal adı: Fasulye** (maskotla aynı; TR/DE/EN kanallarda aynı isim). Slogan önerisi: *"Bildiğin hikâyenin bilmediğin tarafı."*
 - Kanal görselleri: `channel/kanal_gorsel_promptlari.txt` (banner 2560×1440, güvenli alan 1546×423 ortada; avatar 800×800). Yazılar motorla eklenir.
 
-## İçerik sütunları (karar: 2026-11-26)
-1. **Yasaklar ve tuhaf kurallar** (kahve, tütün, çatal, dans, kahkaha…)
-2. **Gündelik şeylerin gizli tarihi** (tuz, şeker, saat, takvim, çatal)
+## Konumlandırma ve içerik sütunları (karar: 2026-11-26, güncellendi)
+**Merkez tarih değil merak.** Kimlik = anlatım (Fasulye, kuru mizah, çizim stili, şaşırtıcı gerçekler); konu serbest. Kalıp: *herkesin bildiği bir şey + bilmediği bir hikâye.*
+Kategori tablosu, ilk 10 video dağılımı (%60 gündelik tarih), Shorts ile test kuralı ve Kasketli Tarih rakip notu: **ROADMAP.md**.
+
+Tarih içi alt sütunlar:
+1. **Yasaklar ve tuhaf kurallar** (kahve, çatal, tütün…)
+2. **Gündelik şeylerin gizli tarihi** (takvim, saat, uyku, tuvalet, şeker)
 3. **Efsane mi gerçek mi?** (Orta Çağ'da yıkanma, Napolyon'un boyu…)
-4. **Türkiye bağlantılı dünya hikâyeleri** (Lale Devri / lale çılgınlığı, Osmanlı'da saat, Göbeklitepe)
+4. **Türkiye bağlantılı dünya hikâyeleri** (Lale Devri, Osmanlı'da saat)
 Ritim: haftada 1 uzun video (6–9 dk) + aynı görsellerden 2–3 Shorts.
 
 ### Sıradaki konular
-002 Lale çılgınlığı gerçekten ekonomiyi çökertti mi? · 003 Takvimden 11 gün nasıl silindi? · 004 Orta Çağ'da insanlar yıkanmıyor muydu? · 005 Çatal neden "günah" sayıldı? · 006 Göbeklitepe: tarımdan önce tapınak mı?
+002 Çatal · 003 11 gün · 004 Kolomb'dan önce olmayan yiyecekler · 005 İki uyku · 006 Orta Çağ/hamam · 007 Lale (farklı açı). Göbeklitepe en sona.
 
 ## Format
 - **Süre:** 6–9 dk (ilk videolar ~7 dk). Kısa versiyonlar: 45–60 sn dikey kesitler (aynı görseller, yeniden kadrajlanmış).

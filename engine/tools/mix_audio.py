@@ -20,7 +20,7 @@ def put(buf, clip, t, fade_in=0.0, fade_out=0.0):
     if fo: k = min(fo, len(clip)); clip[-k:] *= np.linspace(1, 0, k)[:, None]
     buf[a:b] += clip
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument("vdir"); ap.add_argument("--lang", default="tr"); a = ap.parse_args(); v = a.vdir.rstrip("/")
+    ap = argparse.ArgumentParser(); ap.add_argument("vdir"); ap.add_argument("--lang", default="tr"); ap.add_argument("--no-music", action="store_true"); a = ap.parse_args(); v = a.vdir.rstrip("/")
     plan = json.load(open(f"{v}/SOUND_PLAN.json")); scenes = json.load(open(f"{v}/SCENES.json"))["scenes"]
     T = json.load(open(f"{v}/audio/timing_{a.lang}_final.json"))["lines"]
     start, dur, t = {}, {}, 0.0
@@ -31,7 +31,7 @@ def main():
     voice_buf = np.zeros((N, 2), np.float32); voice_buf[:len(voice)] = voice
     # --- müzik ---
     music = np.zeros((N, 2), np.float32); X = 1.5
-    for m in plan["music"]:
+    for m in ([] if a.no_music else plan["music"]):
         t0 = start[m["from"]]; t1 = start[m["to"]] + dur[m["to"]]
         clip = load(f"{v}/audio/music/{m['file']}.mp3"); clip *= lufs_gain(clip, plan["music_lufs"])
         last = m is plan["music"][-1]
@@ -58,7 +58,7 @@ def main():
     mix = voice_buf + music + sfx
     peak = np.abs(mix).max(); 
     if peak > 0.97: mix *= 0.97 / peak
-    out = f"{v}/audio/mix_{a.lang}.wav"
+    out = f"{v}/audio/mix_{a.lang}" + ("_muziksiz" if a.no_music else "") + ".wav"
     pcm = (np.clip(mix, -1, 1) * 32767).astype(np.int16)
     import wave; w = wave.open(out, "wb"); w.setnchannels(2); w.setsampwidth(2); w.setframerate(SR); w.writeframes(pcm.tobytes()); w.close()
     print("mix", round(len(mix) / SR, 1), "sn, tepe", round(float(peak), 2), "->", out)

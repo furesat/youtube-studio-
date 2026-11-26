@@ -16,8 +16,7 @@
   "assemble": "ilk tam kurgu: renders/tr/001_tr.mp4 (455.3 sn), Resolve için kahve_001_tr_gorselli.fcpxml"
  },
  "next_actions": [
-  "v2 ara çekimler: IMAGE_PROMPTS_v2.md'deki 81 görseli ChatGPT ile üret → images/001_SxxxX_v1.png (görüntü ~2,8 sn'de bir değişecek)",
-  "v2 görseller gelince SHOTS_v2.json sırasıyla yeniden kurgu (Kdenlive projesinde ara klipler) ve render",
+  "v2 TR render (142 çekim, müziksiz) izlenip onaylanacak → Mac: youtube video/Kahve_001_TR_v2_muziksiz.mp4",
   "Videoyu izle: telaffuz/duraklama notları (satır no ile)",
   "Türetilmiş sahnelerde EFSANE? damgası yüzleri kapatıyor: konum ayarla",
   "Resolve köprüsü açılamadı (opsiyonel); FCPXML ile içe aktarma çalışıyor",
@@ -27,9 +26,10 @@
  "notes": [
   "Görseller metinsiz; tüm yazılar motorda eklenir.",
   "Efsane işaretli sahneler: S030/S031 (Murad kılık), S052–S054 (İsveç ikizleri), S056–S057 (Kolschitzky).",
-  "2026-11-25: v2 çekim planı (SHOTS_v2.json, 142 çekim, ort 2,84 sn) + 81 ara çekim promptu. Düzenlenebilir Kdenlive TR projesi Mac'te: Downloads/youtube video/kahve_001_kdenlive/Kahve_001_TR.kdenlive"
+  "2026-11-25: v2 çekim planı (SHOTS_v2.json, 142 çekim, ort 2,84 sn) + 81 ara çekim promptu. Düzenlenebilir Kdenlive TR projesi Mac'te: Downloads/youtube video/kahve_001_kdenlive/Kahve_001_TR.kdenlive",
+  "2026-11-26: 81 ara çekim görseli geldi; render_v2.py ile 1080p müziksiz (anlatım+efekt) TR render alındı."
  ],
- "updated": "2026-11-25",
+ "updated": "2026-11-26",
  "images": {
   "needed": 56,
   "found": 0,

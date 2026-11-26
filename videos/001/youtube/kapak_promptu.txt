@@ -1,0 +1,16 @@
+KAPAK (THUMBNAIL) PROMPTU — ChatGPT'ye bunu ver. Ekle: character-references/fasulye/01_donus_sayfasi.png, 02_ifadeler.png ve videos/001/images_ref/001_S024_ref.jpg (IV. Murad), 001_S001_ref.jpg (stil)
+
+Create a YouTube thumbnail in exactly the hand-drawn style of the attached reference images: warm, slightly wobbly ink lines, flat colours, light diagonal ink hatching, subtle warm paper grain. 16:9 landscape, 1280x720 composition. It must read instantly on a small phone screen: big shapes, strong contrast, very little detail.
+
+LEFT HALF: Fasulye, the off-white bean-shaped mascot from the reference (one curly question-mark hair tuft, knotted terracotta scarf #E4572E, big round eyes, no nose, thin ink arms) — keep his design exactly. Chest-up close-up, 3/4 view, filling the left 45% of the frame. He clutches a white coffee cup with a curl of steam tightly against his chest with both hands, protecting it. Expression: huge round eyes with tiny pupils, eyebrows pulled up, small determined mouth — a funny "you won't take this from me" look. One small sweat drop.
+
+RIGHT HALF: behind him, Sultan Murad IV looms as a large, dark, mostly silhouetted figure (very large white Ottoman turban with a jewelled aigrette and feather plume, short black beard, crimson kaftan), leaning in and pointing at the cup with a stern glare. Only his eyes catch a little light.
+
+TOP RIGHT: leave a large calm empty area of plain warm paper colour (about 40% of the width, top 45% of the height) for a big title that will be added later. A big red wax seal (#B83A2B), completely blank, sits at the lower edge of that empty area.
+
+BACKGROUND: simple warm paper tone #F2DCC2 with a soft dark vignette at the edges. No busy background.
+COLOURS: high contrast — off-white Fasulye and terracotta scarf in front, dark crimson silhouette behind, red seal.
+
+DO NOT: no text, no letters, no numbers, no logos, no watermark; no realistic faces; bean people have no noses; do not change Fasulye's design; no weapons.
+
+(Yazıyı "YASAK!" sonradan biz ekleyeceğiz. Görseli 001_T01_v1.png adıyla kaydet.)

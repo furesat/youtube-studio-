@@ -3,7 +3,7 @@ Durum: aday → araştırma → senaryo → görsel → montaj → yayın. "Ger�
 
 | # | Dava (efsane) | Ön bilgi (gerçek) | Öncelik | Durum |
 |---|---|---|---|---|
-| 01 | Tokalaşma "silahsızım" demek için icat edildi | Kanıt yok; en eski tasvir (M.Ö. 9. yy, III. Salmanassar) iki kralın ittifakı | ★★★ | araştırma |
+| 01 | Tokalaşma "silahsızım" demek için icat edildi | Kanıt yok; en eski tasvir (M.Ö. 9. yy, III. Salmanassar) iki kralın ittifakı | ★★★ | **senaryo + görsel promptları hazır** |
 | 02 | Ispanakta çok demir var (virgül hatası yüzünden) | Çifte ters köşe: "virgül hatası" hikâyesi de uydurma | ★★★ | aday |
 | 03 | Napolyon çok kısaydı | ~1,69 m, dönemine göre ortalama; İngiliz karikatürü + Fransız/İngiliz inç farkı | ★★★ | aday |
 | 04 | Vikinglerin miğferi boynuzluydu | 1870'ler Wagner operası kostümü | ★★★ | aday |

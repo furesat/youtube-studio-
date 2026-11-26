@@ -7,3 +7,9 @@ Durum: araştırma (ön kaynaklar)
 - Selamlaşma olarak tokalaşmanın yaygınlaşması çok daha geç (Quaker'lar anlatısı; Lundmark, *Tales of Hi and Bye*).
 - Yapılacak: birincil/akademik kaynak (Nimrud kazıları, Elsner – Classical Antiquity), TR'deki iddiaların örnek başlıkları (isim vermeden).
 Ön karar: **ŞÜPHELİ / SUÇLU** (kanıt yok; belgelenen anlam: antlaşma ve bağlılık).
+
+## Ek (2026-11-27)
+- Kabartma tarihi: ~M.Ö. 846; Nimrud'da bulundu, Bağdat Irak Müzesi'nde. Sahne: Salmanassar'ın, kardeşinin isyanına karşı Babil kralını desteklemesi.
+- Uyarı: kabartma tokalaşmanın o insanlar için bir anlamı olduğunu gösterir, ilk tokalaşmanın neden yapıldığını göstermez → karar "ŞÜPHELİ" (SUÇLU değil: boş el gösterme yorumu imkânsız değil, sadece kanıtsız).
+- Yunan dexiōsis: figürlü mezar taşlarında en eski örnekler ~M.Ö. 420'ler (Elsner, Classical Antiquity; JSTOR Daily); evlilikten şehirler arası barışa kadar anlamlar.
+- Selamlaşma olarak tokalaşma: geç yaygınlaşma; Quaker'lara atfedilen "geleneksel" anlatı (Mental Floss / Lundmark) → metinde iddia edilmedi.

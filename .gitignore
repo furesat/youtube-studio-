@@ -25,3 +25,7 @@ voice_secrets.json
 # büyük üretim dosyaları (yerelde kalır)
 videos/*/images/
 videos/*/audio/full_*
+
+# eski ses denemeleri ve büyük ara dosyalar
+videos/*/audio/tr/orig_v1/
+videos/*/audio/dub_*.wav

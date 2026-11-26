@@ -39,3 +39,20 @@ Biri bozuksa aynı promptu "keep everything, fix: …" diye düzeltme notuyla te
 ```
 STYLE: hand-drawn editorial cartoon illustration, warm ink line art with variable line weight (thin tapered ends, slightly wobbly, not vector-perfect), flat colors with light diagonal ink hatching on shadow sides, subtle warm paper grain texture over the whole image, muted warm palette (paper #F7F1E5, ink #1D1A17, terracotta #E4572E, teal #2A7F7A, sand #D9B27C, stone #B9AFA2), no gradients, no 3D render, no anime, no photorealism, no text, no letters, no numbers, no watermark. 16:9 landscape.
 ```
+
+
+## 5. Ara çekimler (v2) — 30'arlı partiler
+Ara çekim promptları: `videos/NNN/IMAGE_PROMPTS_v2.md` (kısa alternatif: `IMAGE_PROMPTS_v2_kisa.md`). Ana sahne görselleri repoda yoktur; küçük kopyaları `videos/NNN/images_ref/NNN_Sxxx_ref.jpg`.
+ChatGPT'ye her parti için (yeni sohbette) verilecek metin:
+```
+GitHub'daki furesat/youtube-studio- reposunu kullanacaksın.
+Önce oku: AGENTS.md, IMAGE_GENERATION_GUIDE.md, CHARACTER_BIBLE.md, videos/NNN/IMAGE_PROMPTS_v2.md
+GÖREV: IMAGE_PROMPTS_v2.md'deki şu ara çekimleri üret: <30 kod>
+KURALLAR:
+- Her görsel için o başlığın altındaki kod bloğunu EKSİKSİZ prompt olarak kullan.
+- Ana sahne referansını videos/NNN/images_ref/NNN_Sxxx_ref.jpg dosyasından al (örn. S005b → 001_S005_ref.jpg): aynı yer, ışık, renk, kostüm; kadraj belirgin farklı.
+- Fasulye varsa character-references/fasulye/01_donus_sayfasi.png ve 02_ifadeler.png referans.
+- Görselde hiçbir yazı/harf/rakam/logo yok. 16:9, üst/alt kenar sakin. Aynı çizim stili.
+- Her görselden sonra dosya adını yaz: NNN_SxxxB_v1.png. Ana sahneyle neredeyse aynı çıkarsa veya yazı varsa yeniden üret.
+```
+Kapak ve kanal görselleri: `videos/NNN/youtube/kapak_promptu.txt`, `channel/kanal_gorsel_promptlari.txt` (görseller yazısız; yazıyı motor ekler).

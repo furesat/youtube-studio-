@@ -1,0 +1,551 @@
+[
+{
+"scene": "S001",
+"lag": 0.0,
+"speed": 1.068,
+"src_start": 0.0,
+"src_dur": 3.958,
+"dst_start": 0.0,
+"dst_dur": 3.718583333333333
+},
+{
+"scene": "S002",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 3.958,
+"src_dur": 6.3579791666666665,
+"dst_start": 3.718583333333333,
+"dst_dur": 6.3579791666666665
+},
+{
+"scene": "S003",
+"lag": 0.56,
+"speed": 1.0,
+"src_start": 10.316,
+"src_dur": 5.889,
+"dst_start": 10.0765625,
+"dst_dur": 5.889
+},
+{
+"scene": "S004",
+"lag": -0.55,
+"speed": 1.0,
+"src_start": 16.205,
+"src_dur": 3.546,
+"dst_start": 15.9655625,
+"dst_dur": 3.546
+},
+{
+"scene": "S005",
+"lag": -0.5,
+"speed": 1.0,
+"src_start": 19.751,
+"src_dur": 7.65,
+"dst_start": 19.5115625,
+"dst_dur": 7.65
+},
+{
+"scene": "S006",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 27.401,
+"src_dur": 2.749,
+"dst_start": 29.067,
+"dst_dur": 2.749
+},
+{
+"scene": "S007",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 30.15,
+"src_dur": 5.651,
+"dst_start": 32.049,
+"dst_dur": 5.651
+},
+{
+"scene": "S008",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 35.801,
+"src_dur": 5.627,
+"dst_start": 37.945,
+"dst_dur": 5.627
+},
+{
+"scene": "S009",
+"lag": -0.42,
+"speed": 1.0,
+"src_start": 41.427,
+"src_dur": 5.316,
+"dst_start": 43.572,
+"dst_dur": 5.316
+},
+{
+"scene": "S010",
+"lag": 0.48,
+"speed": 1.15,
+"src_start": 46.743,
+"src_dur": 5.422,
+"dst_start": 48.888000000000005,
+"dst_dur": 4.635291666666666
+},
+{
+"scene": "S011",
+"lag": 0.96,
+"speed": 1.072,
+"src_start": 52.165,
+"src_dur": 5.901,
+"dst_start": 53.52329166666667,
+"dst_dur": 5.3621875
+},
+{
+"scene": "S012",
+"lag": 0.81,
+"speed": 1.15,
+"src_start": 58.067,
+"src_dur": 4.741,
+"dst_start": 58.88547916666667,
+"dst_dur": 4.033458333333333
+},
+{
+"scene": "S013",
+"lag": 0.84,
+"speed": 1.15,
+"src_start": 62.808,
+"src_dur": 4.77,
+"dst_start": 62.918937500000006,
+"dst_dur": 4.066395833333333
+},
+{
+"scene": "S014",
+"lag": 1.39,
+"speed": 1.0,
+"src_start": 67.578,
+"src_dur": 10.422,
+"dst_start": 66.98533333333334,
+"dst_dur": 10.422
+},
+{
+"scene": "S015",
+"lag": -0.06,
+"speed": 1.033,
+"src_start": 78.0,
+"src_dur": 9.039,
+"dst_start": 77.40733333333334,
+"dst_dur": 8.662208333333334
+},
+{
+"scene": "S016",
+"lag": 0.81,
+"speed": 1.15,
+"src_start": 87.038,
+"src_dur": 5.761,
+"dst_start": 86.06954166666668,
+"dst_dur": 4.781916666666667
+},
+{
+"scene": "S017",
+"lag": 1.01,
+"speed": 1.132,
+"src_start": 0.0,
+"src_dur": 3.175,
+"dst_start": 90.85145833333334,
+"dst_dur": 2.8135
+},
+{
+"scene": "S018",
+"lag": 0.81,
+"speed": 1.106,
+"src_start": 3.175,
+"src_dur": 8.356,
+"dst_start": 93.66495833333335,
+"dst_dur": 7.382645833333333
+},
+{
+"scene": "S019",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 11.531,
+"src_dur": 5.938,
+"dst_start": 101.04760416666667,
+"dst_dur": 5.770416666666667
+},
+{
+"scene": "S020",
+"lag": 0.8,
+"speed": 1.0,
+"src_start": 17.469,
+"src_dur": 6.588,
+"dst_start": 106.81802083333334,
+"dst_dur": 6.418
+},
+{
+"scene": "S021",
+"lag": 0.8,
+"speed": 1.0,
+"src_start": 24.057,
+"src_dur": 2.71,
+"dst_start": 113.23602083333334,
+"dst_dur": 2.71
+},
+{
+"scene": "S022",
+"lag": 0.16,
+"speed": 1.0,
+"src_start": 26.767,
+"src_dur": 5.131,
+"dst_start": 115.94602083333334,
+"dst_dur": 5.131
+},
+{
+"scene": "S023",
+"lag": 0.6,
+"speed": 1.062,
+"src_start": 31.897,
+"src_dur": 8.796,
+"dst_start": 121.07702083333334,
+"dst_dur": 7.94975
+},
+{
+"scene": "S024",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 40.693,
+"src_dur": 3.573,
+"dst_start": 129.02677083333333,
+"dst_dur": 3.573
+},
+{
+"scene": "S025",
+"lag": 0.42,
+"speed": 1.0,
+"src_start": 44.266,
+"src_dur": 9.056,
+"dst_start": 132.59977083333334,
+"dst_dur": 9.056
+},
+{
+"scene": "S026",
+"lag": 0.77,
+"speed": 1.0,
+"src_start": 53.321,
+"src_dur": 5.269979166666666,
+"dst_start": 141.65577083333335,
+"dst_dur": 5.269979166666666
+},
+{
+"scene": "S027",
+"lag": -0.31,
+"speed": 1.0,
+"src_start": 58.591,
+"src_dur": 6.01,
+"dst_start": 146.92575000000002,
+"dst_dur": 6.01
+},
+{
+"scene": "S028",
+"lag": 0.33,
+"speed": 1.056,
+"src_start": 64.601,
+"src_dur": 6.901,
+"dst_start": 152.93575,
+"dst_dur": 6.2726875
+},
+{
+"scene": "S029",
+"lag": 0.8,
+"speed": 1.096,
+"src_start": 71.502,
+"src_dur": 5.263979166666667,
+"dst_start": 159.2084375,
+"dst_dur": 4.719666666666667
+},
+{
+"scene": "S030",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 76.766,
+"src_dur": 6.647,
+"dst_start": 163.92810416666666,
+"dst_dur": 6.616916666666667
+},
+{
+"scene": "S031",
+"lag": 0.8,
+"speed": 1.0,
+"src_start": 83.412,
+"src_dur": 5.647,
+"dst_start": 170.54502083333333,
+"dst_dur": 5.575
+},
+{
+"scene": "S032",
+"lag": 0.8,
+"speed": 1.15,
+"src_start": 89.059,
+"src_dur": 7.323,
+"dst_start": 176.1200208333333,
+"dst_dur": 6.022166666666666
+},
+{
+"scene": "S033",
+"lag": 0.92,
+"speed": 1.15,
+"src_start": 96.383,
+"src_dur": 4.05,
+"dst_start": 182.14218749999998,
+"dst_dur": 3.5298958333333332
+},
+{
+"scene": "S034",
+"lag": 1.16,
+"speed": 1.007,
+"src_start": 100.433,
+"src_dur": 9.038,
+"dst_start": 185.67208333333332,
+"dst_dur": 8.711791666666667
+},
+{
+"scene": "S035",
+"lag": 0.79,
+"speed": 1.0,
+"src_start": 109.471,
+"src_dur": 7.569,
+"dst_start": 194.383875,
+"dst_dur": 7.569
+},
+{
+"scene": "S036",
+"lag": 0.67,
+"speed": 1.027,
+"src_start": 0.0,
+"src_dur": 5.3179791666666665,
+"dst_start": 201.95287499999998,
+"dst_dur": 5.126104166666667
+},
+{
+"scene": "S037",
+"lag": 0.8,
+"speed": 1.134,
+"src_start": 5.318,
+"src_dur": 7.944020833333333,
+"dst_start": 207.07897916666664,
+"dst_dur": 6.911708333333333
+},
+{
+"scene": "S038",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 13.263,
+"src_dur": 2.707,
+"dst_start": 213.99068749999998,
+"dst_dur": 2.707
+},
+{
+"scene": "S039",
+"lag": 0.09,
+"speed": 1.02,
+"src_start": 15.97,
+"src_dur": 7.426,
+"dst_start": 216.69768749999997,
+"dst_dur": 6.891208333333333
+},
+{
+"scene": "S040",
+"lag": 0.8,
+"speed": 1.0,
+"src_start": 23.395,
+"src_dur": 6.377,
+"dst_start": 223.5888958333333,
+"dst_dur": 6.377
+},
+{
+"scene": "S041",
+"lag": 0.05,
+"speed": 1.0,
+"src_start": 29.773,
+"src_dur": 5.351,
+"dst_start": 229.96589583333332,
+"dst_dur": 5.351
+},
+{
+"scene": "S042",
+"lag": -0.45,
+"speed": 1.031,
+"src_start": 35.124,
+"src_dur": 9.758,
+"dst_start": 235.31689583333332,
+"dst_dur": 9.2205625
+},
+{
+"scene": "S043",
+"lag": 0.81,
+"speed": 1.094,
+"src_start": 44.882,
+"src_dur": 5.051,
+"dst_start": 244.53745833333332,
+"dst_dur": 4.542416666666667
+},
+{
+"scene": "S044",
+"lag": 0.82,
+"speed": 1.0,
+"src_start": 49.933,
+"src_dur": 6.756,
+"dst_start": 249.079875,
+"dst_dur": 6.756
+},
+{
+"scene": "S045",
+"lag": -0.08,
+"speed": 1.0,
+"src_start": 56.689,
+"src_dur": 11.803979166666666,
+"dst_start": 255.835875,
+"dst_dur": 11.803979166666666
+},
+{
+"scene": "S046",
+"lag": 0.49,
+"speed": 1.15,
+"src_start": 68.493,
+"src_dur": 4.992020833333333,
+"dst_start": 267.6398541666667,
+"dst_dur": 4.21025
+},
+{
+"scene": "S047",
+"lag": 1.3,
+"speed": 1.032,
+"src_start": 73.485,
+"src_dur": 11.872,
+"dst_start": 271.85010416666665,
+"dst_dur": 11.3335
+},
+{
+"scene": "S048",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 85.357,
+"src_dur": 6.086,
+"dst_start": 283.18360416666667,
+"dst_dur": 6.086
+},
+{
+"scene": "S049",
+"lag": -0.6,
+"speed": 1.012,
+"src_start": 91.443,
+"src_dur": 10.533,
+"dst_start": 289.34400000000005,
+"dst_dur": 10.179958333333333
+},
+{
+"scene": "S050",
+"lag": 0.81,
+"speed": 1.0,
+"src_start": 101.976,
+"src_dur": 2.987,
+"dst_start": 299.5239583333334,
+"dst_dur": 2.987
+},
+{
+"scene": "S051",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 104.963,
+"src_dur": 7.122,
+"dst_start": 303.285,
+"dst_dur": 6.981020833333333
+},
+{
+"scene": "S052",
+"lag": 0.8,
+"speed": 1.109,
+"src_start": 112.084,
+"src_dur": 10.966,
+"dst_start": 310.26602083333336,
+"dst_dur": 9.539708333333333
+},
+{
+"scene": "S053",
+"lag": 0.81,
+"speed": 1.075,
+"src_start": 123.05,
+"src_dur": 8.208,
+"dst_start": 319.8057291666667,
+"dst_dur": 7.488666666666667
+},
+{
+"scene": "S054",
+"lag": 0.8,
+"speed": 1.0,
+"src_start": 131.258,
+"src_dur": 5.761,
+"dst_start": 327.2943958333334,
+"dst_dur": 5.071625
+},
+{
+"scene": "S055",
+"lag": 0.8,
+"speed": 1.0,
+"src_start": 137.019,
+"src_dur": 8.285,
+"dst_start": 332.3660208333334,
+"dst_dur": 8.285
+},
+{
+"scene": "S056",
+"lag": 0.01,
+"speed": 1.0,
+"src_start": 145.305,
+"src_dur": 12.494,
+"dst_start": 340.6510208333334,
+"dst_dur": 12.494
+},
+{
+"scene": "S057",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 157.798,
+"src_dur": 5.119,
+"dst_start": 353.82700000000006,
+"dst_dur": 5.119
+},
+{
+"scene": "S058",
+"lag": 0.26,
+"speed": 1.0,
+"src_start": 162.918,
+"src_dur": 7.804,
+"dst_start": 358.946,
+"dst_dur": 7.804
+},
+{
+"scene": "S059",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 170.722,
+"src_dur": 14.049,
+"dst_start": 367.00800000000004,
+"dst_dur": 14.049
+},
+{
+"scene": "S060",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 184.772,
+"src_dur": 9.167,
+"dst_start": 382.473,
+"dst_dur": 9.167
+},
+{
+"scene": "S061",
+"lag": -0.6,
+"speed": 1.0,
+"src_start": 193.94,
+"src_dur": 9.42,
+"dst_start": 392.42,
+"dst_dur": 9.42
+}
+]

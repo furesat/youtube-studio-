@@ -23,7 +23,8 @@ Ritim: haftada 1 uzun video (6–9 dk) + aynı görsellerden 2–3 Shorts.
 ## Format
 - **Süre:** 6–9 dk (ilk videolar ~7 dk). Kısa versiyonlar: 45–60 sn dikey kesitler (aynı görseller, yeniden kadrajlanmış).
 - **Yapı:** kanca (0–30 sn) → 3–5 bölüm (kontrol noktaları) → ters köşe/ders → kapanış geri çağırması.
-- **Ritim:** görsel değişim ortalama ~2 sn (referans analizi). Anlatım gerektirdiğinde yavaşlar.
+- **Ritim:** görsel değişim ortalama 2–3 sn (referans ~2 sn; 001 v2 = 2,8 sn). Anlatım gerektirdiğinde yavaşlar.
+- **Ses:** ham anlatım + seyrek efekt, varsayılan **müziksiz** (001 kararı).
 
 ## Üretim ekonomisi (manuel ImageGen ile sürdürülebilirlik)
 7 dakikalık bir video ~200 görsel değişimi demek. Hepsini ImageGen'le üretmek sürdürülemez. Bu yüzden **hibrit model**:

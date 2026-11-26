@@ -13,21 +13,21 @@
   "render": "animatic_only",
   "title_thumbnail": "draft",
   "published": false,
-  "assemble": "ilk tam kurgu: renders/tr/001_tr.mp4 (455.3 sn), Resolve için kahve_001_tr_gorselli.fcpxml"
+  "assemble": "ilk tam kurgu: renders/tr/001_tr.mp4 (455.3 sn), Resolve için kahve_001_tr_gorselli.fcpxml",
+  "publish": "uploaded"
  },
  "next_actions": [
-  "v2 TR render (142 çekim, müziksiz) izlenip onaylanacak → Mac: youtube video/Kahve_001_TR_v2_muziksiz.mp4",
-  "Videoyu izle: telaffuz/duraklama notları (satır no ile)",
-  "Türetilmiş sahnelerde EFSANE? damgası yüzleri kapatıyor: konum ayarla",
-  "Resolve köprüsü açılamadı (opsiyonel); FCPXML ile içe aktarma çalışıyor",
-  "Thumbnail T01 ImageGen",
-  "Senaryo SCRIPT.md v1 onayı"
+  "YouTube'da 'Ses' sütunu açılınca Kahve_001_DE_dublaj.mp3 yükle (Altyazı ve ses → Almanca)",
+  "Shorts: 2–3 dikey kesit (kahve koklayıcılar, Murad'ın gece devriyesi, İsveç ikizleri)",
+  "Yayından sonra 1. hafta: izlenme, tutma oranı, kapak tıklama oranı notu",
+  "(isteğe bağlı) Kdenlive projesini 142 çekimle güncelle"
  ],
  "notes": [
   "Görseller metinsiz; tüm yazılar motorda eklenir.",
   "Efsane işaretli sahneler: S030/S031 (Murad kılık), S052–S054 (İsveç ikizleri), S056–S057 (Kolschitzky).",
   "2026-11-25: v2 çekim planı (SHOTS_v2.json, 142 çekim, ort 2,84 sn) + 81 ara çekim promptu. Düzenlenebilir Kdenlive TR projesi Mac'te: Downloads/youtube video/kahve_001_kdenlive/Kahve_001_TR.kdenlive",
-  "2026-11-26: 81 ara çekim görseli geldi; render_v2.py ile 1080p müziksiz (anlatım+efekt) TR render alındı."
+  "2026-11-26: 81 ara çekim görseli geldi; render_v2.py ile 1080p müziksiz (anlatım+efekt) TR render alındı.",
+  "2026-11-26: YouTube'a yüklendi (TR; DE altyazı + başlık/açıklama). Kapak youtube/Kahve_001_TR_kapak.jpg. DE dublaj izi hazır (fit_dub.py); kanalda Ses özelliği henüz yok."
  ],
  "updated": "2026-11-26",
  "images": {

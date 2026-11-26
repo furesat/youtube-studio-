@@ -71,6 +71,9 @@ def main():
         for c in cs:
             a0 = st + sp * acc / tot; acc += len(c); a1 = st + sp * acc / tot
             if a1 > t0: caps.append((max(a0, t0) - t0, a1 - t0, c))
+    # altyazı, görsel kesmeden hemen önce bitiyorsa kesmeyle birlikte bitsin (eski cümlenin kuyruğu yeni sahnede kalmasın)
+    cuts = [x["start"] - t0 for x in sel[1:]]
+    caps = [(a0, next((b for b in cuts if a0 + 0.15 < b < a1 and a1 - b < 0.6), a1), c) for a0, a1, c in caps]
     # YouTube'a ayrıca yüklenecek SRT (cümle düzeyinde, Short'un başına göre)
     def ts(t):
         ms = int(round(max(0, t) * 1000)); h, ms = divmod(ms, 3600000); m, ms = divmod(ms, 60000); s_, ms = divmod(ms, 1000)
@@ -124,9 +127,10 @@ def main():
         n = round(e * FPS) - fi
         zin = k % 2 == 0
         for j in range(n):
-            u = j / max(1, n - 1); z = 1 + 0.06 * (u if zin else 1 - u)
+            u = j / max(1, n - 1); z = 1 + 0.08 * (u if zin else 1 - u)
             t = (fi + j) / FPS; cap = next((c for a0, a1, c in caps if a0 <= t < a1), None)
-            last = frame(img, z, foc[0], foc[1], cap); p.stdin.write(last.tobytes())
+            px = foc[0] + 0.04 * (u - 0.5) * (1 if k % 3 == 0 else -1 if k % 3 == 1 else 0)   # hafif yatay kayma
+            last = frame(img, z, px, foc[1], cap); p.stdin.write(last.tobytes())
         fi += n
     # kapanış kartı
     endf = last.copy(); dd = ImageDraw.Draw(endf)

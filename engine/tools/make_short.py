@@ -51,16 +51,36 @@ def main():
     T = json.load(open(f"{v}/audio/timing_{a.lang}_final.json"))["lines"]
     acc0 = 0.0; ABS = {}
     for l in sorted(T): ABS[l] = acc0; acc0 += T[l]["dur"]   # 'start' parça içinde; mutlak başlangıç = önceki cümlelerin toplamı
-    nar = {l.split("|")[0]: l.split("|", 1)[1].strip() for l in open(f"{v}/NARRATION.txt", encoding="utf-8") if l.startswith("L")}
+    from common import load_script_lines
+    nar = load_script_lines(v, a.lang)   # ekranda rakamlı yazılı hâl (SCRIPT.md)
+    def trim(l):
+        """Short cümlenin ortasında başlıyorsa, t0'dan önce okunan kelimeleri at (karakter oranıyla)."""
+        st, sp, txt = ABS[l], T[l]["speech"], nar[l]
+        if st >= t0: return st, txt
+        ws = txt.split(); tot = len(txt); acc = 0
+        for k, w in enumerate(ws):
+            if st + sp * acc / tot >= t0 - 0.05: return t0, " ".join(ws[k:])
+            acc += len(w) + 1
+        return t0, ""
     lines = [l for s in sel for l in scenes[s["scene"]]["lines"]]; lines = list(dict.fromkeys(lines))
     caps = []
     for l in lines:
-        st, sp = ABS[l], T[l]["speech"]
-        if st + sp <= t0 or st >= t1: continue
-        cs = chunks(nar[l]); tot = sum(len(c) for c in cs); acc = 0
+        if ABS[l] + T[l]["speech"] <= t0 or ABS[l] >= t1: continue
+        st, txt = trim(l); sp = ABS[l] + T[l]["speech"] - st
+        cs = chunks(txt); tot = max(1, sum(len(c) for c in cs)); acc = 0
         for c in cs:
             a0 = st + sp * acc / tot; acc += len(c); a1 = st + sp * acc / tot
             if a1 > t0: caps.append((max(a0, t0) - t0, a1 - t0, c))
+    # YouTube'a ayrıca yüklenecek SRT (cümle düzeyinde, Short'un başına göre)
+    def ts(t):
+        ms = int(round(max(0, t) * 1000)); h, ms = divmod(ms, 3600000); m, ms = divmod(ms, 60000); s_, ms = divmod(ms, 1000)
+        return f"{h:02d}:{m:02d}:{s_:02d},{ms:03d}"
+    srt, n = [], 0
+    for l in lines:
+        if ABS[l] + T[l]["speech"] <= t0 or ABS[l] >= t1: continue
+        st, txt = trim(l); e = min(ABS[l] + T[l]["speech"], t1)
+        n += 1; srt.append(f"{n}\n{ts(st - t0)} --> {ts(e - t0)}\n{txt}\n")
+    open(os.path.splitext(f"{v}/{a.out}")[0] + ".srt", "w", encoding="utf-8").write("\n".join(srt))
     # sabit katman: kâğıt + başlık
     base = Image.new("RGB", (W, H), PAPER); d = ImageDraw.Draw(base)
     tf = font(92); y = 170

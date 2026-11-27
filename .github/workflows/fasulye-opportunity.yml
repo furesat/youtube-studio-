@@ -1,0 +1,69 @@
+name: Fasulye Opportunity Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      topics:
+        description: "Konu kimlikleri (virgülle ayır, boşsa tümü)"
+        type: string
+        required: false
+      markets:
+        description: "Pazar kimlikleri (virgülle ayır, boşsa tümü)"
+        type: string
+        required: false
+
+      query:
+        description: "Manuel sorgu (boşsa hazır konular çalışır)"
+        type: string
+        required: false
+      region:
+        description: "Manuel sorgu için ülke kodu"
+        type: string
+        default: "TR"
+      language:
+        description: "Manuel sorgu için dil kodu"
+        type: string
+        default: "tr"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fasulye-opportunity-youtube-quota
+
+jobs:
+  research:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          sparse-checkout: |
+            engine/tools/opportunity_engine
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.12"
+      - name: Test
+        run: python -m unittest discover -s engine/tools/opportunity_engine/tests -v
+      - name: YouTube araştırması
+        id: research
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          FASULYE_TOPICS: ${{ inputs.topics }}
+          FASULYE_MARKETS: ${{ inputs.markets }}
+          FASULYE_QUERY: ${{ inputs.query }}
+          FASULYE_REGION: ${{ inputs.region }}
+          FASULYE_LANGUAGE: ${{ inputs.language }}
+        run: |
+          python -m engine.tools.opportunity_engine \
+            --topics="$FASULYE_TOPICS" --markets="$FASULYE_MARKETS" \
+            --query="$FASULYE_QUERY" --region="$FASULYE_REGION" --language="$FASULYE_LANGUAGE"
+      - name: Araştırma raporlarını yükle
+        if: ${{ !cancelled() && (steps.research.outcome == 'success' || steps.research.outcome == 'failure') }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: fasulye-opportunity-report
+          path: opportunity-reports/
+          retention-days: 14
+          if-no-files-found: ignore

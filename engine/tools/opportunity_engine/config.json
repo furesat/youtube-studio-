@@ -1,0 +1,46 @@
+{
+  "search": {
+    "lookback_days": 365,
+    "results_per_page": 25,
+    "pages_per_query": 1,
+    "max_search_calls": 30,
+    "max_detail_units": 200
+  },
+  "markets": [
+    {"id": "tr", "label": "Türkiye", "region": "TR", "language": "tr"},
+    {"id": "de", "label": "Almanya", "region": "DE", "language": "de"},
+    {"id": "en", "label": "ABD", "region": "US", "language": "en"}
+  ],
+  "topics": [
+    {"id": "fork", "label": "Çatal kullanmak günah mıydı?", "queries": {
+      "tr": ["çatal kullanmak günah mıydı çatalın tarihi"],
+      "de": ["Geschichte der Gabel warum war die Gabel verpönt"],
+      "en": ["history of the fork why was it considered sinful"]
+    }},
+    {"id": "calendar", "label": "Takvimden silinen 11 gün", "queries": {
+      "tr": ["takvimden silinen 11 gün Gregoryen takvim"],
+      "de": ["Gregorianischer Kalender 1752 elf Tage gestrichen"],
+      "en": ["why Britain lost 11 days in 1752 Gregorian calendar"]
+    }},
+    {"id": "sleep", "label": "İnsanlar eskiden neden iki kez uyuyordu?", "queries": {
+      "tr": ["eskiden iki kez uyumak bölünmüş uyku tarihi"],
+      "de": ["zweiphasiger Schlaf früher erster und zweiter Schlaf Geschichte"],
+      "en": ["history of segmented sleep first and second sleep"]
+    }},
+    {"id": "tulip", "label": "Lale çılgınlığı ekonomiyi çökertti mi?", "queries": {
+      "tr": ["Hollanda lale çılgınlığı lale balonu çöktü mü"],
+      "de": ["Tulpenmanie Niederlande Tulpenblase Mythos Wirtschaftskrise"],
+      "en": ["Dutch tulip mania did the tulip bubble crash the economy"]
+    }}
+  ],
+  "scoring": {
+    "weights": {"demand": 0.40, "competition": 0.35, "channel_fit": 0.25},
+    "min_coverage": 0.75
+  },
+  "reviews": {},
+  "revenue": {
+    "currency": "USD",
+    "view_targets": {"long_form": [100000, 1000000], "shorts": [1000000]},
+    "rpm_by_market": {}
+  }
+}

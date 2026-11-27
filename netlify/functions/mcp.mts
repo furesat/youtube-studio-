@@ -7,6 +7,8 @@ import {
   startResearch, startSchema, trustedOrigin,
 } from "../lib/research.mjs";
 
+import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch } from "../lib/batch.mjs";
+
 function tool(name: string, fn: () => Promise<unknown> | unknown) {
   return Promise.resolve().then(async () => {
     console.info("Fasulye MCP tool:", name);
@@ -21,7 +23,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "1.0.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "2.0.0" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -76,6 +78,20 @@ function buildServer() {
       throw error;
     }
   }));
+  server.registerTool("list_discovery_catalog", {
+    description:"23 dil, ülke-dil pazarları ve doğal keşif sorguları.",annotations:{readOnlyHint:true,openWorldHint:false},
+  },()=>tool("list_discovery_catalog",()=>discoveryCatalog));
+  server.registerTool("preview_batch", {
+    description:"Kota kullanmadan görev sayısını ve eksik yerelleştirmeleri gösterir.",inputSchema:batchSchema,annotations:{readOnlyHint:true,openWorldHint:false},
+  },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing};}));
+  server.registerTool("enqueue_research_batch", {
+    description:"Pazar keşfi veya toplu araştırmayı kuyruğa ekler. Bulk modunda her konu için hedef dilde doğal sorgular sağla. Çalışan motor zamanlanmış şekilde kotaya göre işler.",inputSchema:batchSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:false,openWorldHint:true},
+  },input=>tool("enqueue_research_batch",()=>enqueueBatch(input)));
+  server.registerTool("get_batch_status", {
+    description:"Grup ilerlemesini ve rapor çalıştırma kimliklerini getirir.",inputSchema:{id:z.string().uuid()},annotations:{readOnlyHint:true},
+  },({id})=>tool("get_batch_status",()=>batchStatus(id)));
+  server.registerTool("list_research_batches", {description:"Son 50 araştırma grubunu listeler.",annotations:{readOnlyHint:true}},()=>tool("list_research_batches",()=>listBatches()));
+  server.registerTool("get_queue_budget", {description:"Uygulamanın yerel günlük arama rezervasyonlarını gösterir; Google toplam kotası değildir.",annotations:{readOnlyHint:true}},()=>tool("get_queue_budget",()=>queueBudget()));
   return server;
 }
 

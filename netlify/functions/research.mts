@@ -5,6 +5,7 @@ import {
 
 import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
+import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
 export default async (request: Request) => {
@@ -15,9 +16,12 @@ export default async (request: Request) => {
   if (!env("FASULYE_ACCESS_TOKEN")) {
     return json({ error: "Panel erişimi Netlify'da yapılandırılmalı." }, 503);
   }
-  if (!acceptsToken(readBearer(request))) {
+  const bearer=acceptsToken(readBearer(request));
+  const session=sessionFor(request);
+  if (!bearer && !session) {
     return json({ error: "Panel erişim anahtarı geçersiz." }, 401, { "WWW-Authenticate": "Bearer" });
   }
+  if (!bearer && request.method !== "GET" && !sameOriginMutation(request)) return json({error:"İstek kaynağına izin verilmedi."},403);
   try {
     if (url.pathname === "/api/evidence") {
       if (request.method === "GET") { const id=url.searchParams.get("id"); return json(id?await getTrend(id):await getEvidence()); }

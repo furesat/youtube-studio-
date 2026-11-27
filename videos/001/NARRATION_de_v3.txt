@@ -1,0 +1,79 @@
+# 001 · NARRATION (de) v3 · Bohne erzählt · Sprecher: Yasli adam (x6MH8NM5Cgf2UNidRBXE)
+E001|Preußen, siebzehnhunderteinundachtzig.
+E002|Ein alter Soldat bleibt vor einem offenen Fenster stehen. Und schnuppert.
+E003|Er sucht keinen Dieb. Er sucht Kaffee.
+E004|Privat gerösteter Kaffee ist in Preußen nämlich verboten. Und der König hat rund vierhundert solcher Männer auf die Straße geschickt.
+E005|Der Volksmund nennt sie: die Kaffeeriecher.
+E006|Heute ist Kaffee das Lieblingsgetränk der Deutschen.
+E007|Noch vor Wasser. Und noch vor Bier.
+E008|Preußen war damit übrigens nicht allein. Mekka, Istanbul, London, Schweden. Kaffee wurde immer wieder verboten.
+E009|Das Merkwürdige daran: Um den Kaffee selbst ging es dabei fast nie. Gehen wir der Sache nach.
+E010|Mekka, fünfzehnhundertelf.
+E011|Sufis trinken das neue Getränk aus dem Jemen, um nachts beim Gebet wach zu bleiben.
+E012|Bald entstehen Kaffeehäuser. Man sitzt zusammen. Man redet.
+E013|Das missfällt Khair Beg, dem Aufseher über Sitte und Ordnung.
+E014|Er bestellt Gelehrte und Ärzte ein. Die Frage: Macht dieses Getränk betrunken?
+E015|Das Ergebnis steht vorher fest. Verboten.
+E016|Kaffeesäcke brennen auf offener Straße.
+E017|Nur untersteht Mekka dem Sultan in Kairo. Und der trinkt, wie man hört, selbst gern Kaffee.
+E018|Nach wenigen Wochen ist das Verbot vom Tisch.
+E019|Merken wir uns: Das Problem war nie die Tasse. Es war der Tisch.
+E020|Istanbul, fünfzehnhundertvierundfünfzig.
+E021|Zwei Händler aus Syrien eröffnen die ersten Kaffeehäuser der Stadt.
+E022|Man liest, spielt Backgammon, trägt Gedichte vor.
+E023|Und man redet über die Regierung.
+E024|Das gefällt nicht jedem Sultan. Murad dem Vierten schon gar nicht.
+E025|Sein Bruder Osman war von meuternden Janitscharen ermordet worden.
+E026|Und die Janitscharen trafen sich am liebsten: im Kaffeehaus.
+E027|Sechzehnhundertdreiunddreißig brennt ein großer Teil der Stadt.
+E028|Murad hat seinen Vorwand. Wegen Brandgefahr werden die Kaffeehäuser geschlossen, der Tabak gleich mit. Wer erwischt wird, riskiert den Tod.
+E029|Es heißt, er sei nachts verkleidet durch die Gassen gegangen, um Sünder selbst zu ertappen.
+E030|Belegt ist das nicht. Gewirkt hat es trotzdem.
+E031|Auffällig: Zu Hause durfte man weiter Kaffee trinken. Verboten war nur der gemeinsame Tisch.
+E032|Nach Murads Tod öffnen die Kaffeehäuser wieder.
+E033|London, sechzehnhundertfünfundsiebzig.
+E034|Für einen Penny gibt es Kaffee und Diskussion, so lange man will. Man nennt die Kaffeehäuser Penny-Universitäten.
+E035|König Karl der Zweite nennt sie anders: Brutstätten von Lügen über die Regierung.
+E036|Kurz vor Neujahr verbietet er sie.
+E037|London protestiert. Händler, Kaufleute, sogar Leute vom Hof.
+E038|Nach zehn Tagen nimmt der König das Verbot zurück. Noch bevor es überhaupt gilt.
+E039|Und damit zurück nach Preußen. Kaffee ist hier längst Alltag. Schon Friedrichs Vater hatte ihn zum Luxusgut erklärt, was ihn natürlich nur noch begehrter machte.
+E040|Im benachbarten Leipzig führt Bach um siebzehnhundertvierunddreißig im Kaffeehaus eine Kantate auf. Ihr Thema: ein Kaffeeverbot.
+E041|Ein Vater namens Schlendrian will seiner Tochter Lieschen den Kaffee verbieten. Er droht mit allem: keine neuen Kleider, keine Spaziergänge, kein Fenster zur Straße.
+E042|Lieschen bleibt gelassen. Ohne ihre drei Schalen Kaffee am Tag, singt sie, würde sie vertrocknen wie ein Ziegenbraten.
+E043|Erst als der Vater ihr einen Ehemann verspricht, gibt sie nach. Heimlich aber lässt sie ausrichten: Heiraten wird sie nur einen Mann, der ihr den Kaffee erlaubt.
+E044|Ein Kaffeeverbot, das schon im Lied scheitert.
+E045|Nach dem Siebenjährigen Krieg ist die Staatskasse leer. Und Friedrich der Große sieht vor allem eines: Geld, das ins Ausland fließt.
+E046|Nach seiner Rechnung: Hunderttausende Taler im Jahr.
+E047|Siebzehnhundertsiebenundsiebzig empfiehlt er seinen Untertanen: Trinkt Bier. Er selbst sei schließlich mit Biersuppe groß geworden.
+E048|Die Untertanen sehen das anders.
+E049|Bier wird schließlich im eigenen Land gebraut. Und bringt Steuern.
+E050|Siebzehnhunderteinundachtzig wird das Rösten Staatssache. Gebrannt werden darf nur noch in königlichen Röstereien. Wer privat röstet, macht sich strafbar.
+E051|Jetzt schlägt die Stunde der Kaffeeriecher. Ausgediente Soldaten ziehen durch die Gassen. Wer beim heimlichen Kaffeeklatsch erwischt wird, zahlt eine saftige Strafe.
+E052|Die Kanne verschwindet dann eben unter dem Tisch.
+E053|Preußen war damit nicht einmal allein. Auch in Hessen-Kassel gingen Kaffeeriecher auf Streife.
+E054|Und viele steigen um: auf geröstete Zichorienwurzel. Man nennt das Getränk Preußenkaffee. Oder, wegen der blauen Blüten der Wegwarte, Blümchenkaffee.
+E055|In Braunschweig entsteht schon siebzehnhundertsiebzig eine der ersten Zichorienfabriken. Bald folgen viele weitere. Später findet der Volksmund ein eigenes Wort dafür: Muckefuck.
+E056|Siebzehnhundertsechsundachtzig stirbt Friedrich. Seine Kaffeeriecher überleben ihn nicht lange.
+E057|Den Rekord hält Schweden. Fünf Verbote in knapp siebzig Jahren.
+E058|Manche Schweden trugen ihre Kaffeekannen sogar zu Grabe.
+E059|Und dann ist da König Gustav der Dritte. Er soll zwei verurteilte Zwillinge verschont haben, unter einer Bedingung. Der eine trinkt täglich Kaffee, der andere Tee.
+E060|Zuerst sterben die Ärzte. Dann der König. Die Zwillinge leben weiter.
+E061|Ob es dieses Experiment je gab, ist sehr fraglich.
+E062|Heute gehört Schweden zu den größten Kaffeetrinkern der Welt.
+E063|Und Wien?
+E064|Die Geschichte kennt hier jeder. Die Osmanen ziehen ab, lassen Säcke voller Bohnen zurück, und der Kundschafter Kolschitzky eröffnet das erste Kaffeehaus.
+E065|Aufgeschrieben wurde das allerdings erst rund hundert Jahre später.
+E066|Die erste belegte Erlaubnis bekommt sechzehnhundertfünfundachtzig der armenische Händler Johannes Diodato.
+E067|Heute ist die Wiener Kaffeehauskultur immaterielles Kulturerbe. Ein Verbot hätte da wenig Chancen.
+E068|Und wer glaubt, das alles sei lange her: Neunzehnhundertsiebenundsiebzig, DDR. Der Weltmarktpreis für Kaffee explodiert, und dem Staat fehlen die Devisen.
+E069|Die Lösung des Politbüros heißt Kaffee-Mix. Nur einundfünfzig Prozent Kaffee. Der Rest: geröstete Erbsen, Roggen, Gerste, Zichorie und Zuckerrübe.
+E070|Der Volksmund tauft ihn: Erichs Krönung.
+E071|Tausende Beschwerdebriefe gehen ein. Und vor allem: Die Leute kaufen das Zeug einfach nicht.
+E072|Die Regierung hatte ohnehin gehofft, dass viele ihren Kaffee aus dem Westpaket bekommen.
+E073|Anfang neunzehnhundertachtundsiebzig wird die Produktion eingestellt. Wieder hat der Tisch gewonnen.
+E074|Mekka, Istanbul, London, Preußen, die DDR. Es ging um Versammlungen, um Aufstände, um Gerede, um Geld. Und um Devisen.
+E075|Um das Getränk ging es so gut wie nie.
+E076|Kaffee hat Menschen an einen Tisch gebracht, sie reden lassen und wach gehalten. Das war sein eigentliches Vergehen.
+E077|Friedrich wollte übrigens, dass seine Untertanen Bier trinken. Heute trinkt Deutschland mehr Kaffee als Bier.
+E078|Hat also nicht ganz geklappt.

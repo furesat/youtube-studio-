@@ -1,33 +1,38 @@
 # 001 Kahve · Almanca kanal kurgusu v3 ("Bohne erzählt")
 
-Türkçe versiyonun çevirisi değil. Aynı görsel havuzundan **ayrı bir kurgu**: farklı açılış, farklı sıra, farklı tempo, farklı ses ve görsel dokusu.
+Türkçe versiyonun çevirisi değil: aynı görsel havuzundan + 14 yeni görselle **ayrı bir kurgu**. Farklı açılış, farklı sıra, farklı tempo, farklı ses ve görsel dokusu.
+
+**Hedef uzunluk:** 7:30–8:30 · 940 kelime · 78 çekim
 
 ## 1. Kurgu ve tempo farkı
 | | Türkçe (Fasulye) | Almanca (Bohne erzählt) |
 |---|---|---|
 | Açılış | Modern kafe + "fincanı sıkı tut" | **Soğuk açılış: Prusya 1781, Kaffeeriecher pencerede kokluyor** |
-| Sıra | Kronolojik: Mekke → İstanbul → Londra → Prusya → İsveç → Viyana | Prusya önden ipucu, sonra kronoloji; **Prusya geri dönüş**, **Viyana final** |
-| Çekim sayısı | 142 çekim, ort. ~2,8 sn | **63 çekim, ort. ~4.9 sn** |
-| Geçiş | Sert kesme, her cümlede yeni kare | Bölüm içi 0,5 sn çapraz geçiş, bölümler arası 1 sn kâğıda karartma |
-| Uzunluk | 6:43 | ~5:20–5:50 (sesle kesinleşir) |
-| Atılan sahneler | – | S002, S004, S010, S019, S022, S023, S029, S033, S034, S040, S050 + birçok ara çekim |
+| Sıra | Mekke → İstanbul → Londra → Prusya → İsveç → Viyana | Prusya ipucu → kronoloji → **Prusya ana bölüm (Bach, baskın, Zichorie)** → İsveç → Viyana → **DDR 1977** → kapanış |
+| Çekim | 142 çekim, ort. ~2,8 sn | **78 çekim, ort. ~5.1 sn** |
+| Geçiş | Sert kesme | Bölüm içi 0,5 sn çapraz geçiş, bölümler arası 1 sn kâğıda kararma |
+| Uzunluk | 6:43 | ~7:30–8:30 (sesle kesinleşir) |
+| Atılan | – | S002, S004, S010, S019, S022, S023, S029, S033, S034, S040, S050 + ara çekimler |
+
+**Bölüm süreleri (hedef, sessiz):** A Kaltstart 24 sn · B Heute 23 sn · C Mekka 46 sn · D Istanbul 60 sn · E London 28 sn · F Preussen 100 sn · G Schweden 30 sn · H Wien 26 sn · H2 DDR 34 sn · I Schluss 27 sn
 
 ## 2. Metin ve açılış farkı
-- Ton: **sakin, kuru, ince ironi** (Almanca belgesel geleneği). Ünlem ve "rate mal" tarzı sorular yok, espri alt söylemde.
-- Kültürel vurgular: Kaffeeriecher (açılış + geri dönüş), "Bier statt Kaffee" ve Biersuppe, Bach Kahve Kantatı (Leipzig), Viyana: Kolschitzky efsanesi, Diodato, kahvehane kültürü kültürel miras.
+- Ton: **sakin, kuru, ince ironi**. Ünlem ve "rate mal" tarzı sorular yok.
+- Almanca izleyiciye özgü bölümler: Kaffeeriecher (açılış + baskın), Friedrich Wilhelm I. lüks malı, Yedi Yıl Savaşı sonrası boş hazine, "Trinkt Bier" ve Biersuppe, **Bach Kahve Kantatı: baba kızına kahveyi yasaklıyor ve kaybediyor**, Hessen-Kassel, **Zichorie / Preußenkaffee / Blümchenkaffee / Muckefuck**, Viyana (Kolschitzky efsanesi, Diodato, kültürel miras), **DDR 1977 Kaffee-Mix / "Erichs Krönung"**.
 - Türk okuyucuya özgü adlar çıkarıldı (Peçevi, Hakem/Şems, Bostanzade, Kâtip Çelebi, Kansu Gavri).
 - Kapanış girişe bağlanıyor: Friedrich bira istedi, bugün Almanya biradan çok kahve içiyor. "Hat also nicht ganz geklappt."
 
 ## 3. Ses ve görsel doku farkı
 | | Türkçe | Almanca |
 |---|---|---|
-| Ses | Yaşlı Adam 3 (klon) | **David – Slow & Charming** (ana dili Almanca, deadpan, uzun duraklar) `LTo9oDjTW1FdEgMfiXWQ` |
-| Müzik | 9 parça, her bölüme bir | **Müzik yok.** Sadece ses + ortam sesleri |
-| Efekt | 19 efekt, damga sesleri | Sadece ortam: koklama, ateş çıtırtısı, sokak; bölüm geçişinde kâğıt hışırtısı. Damga sesi yok |
-| Hareket | Dönüşümlü yakınlaşma | **Yatay kaydırma** ağırlıklı, nadiren yaklaşma; hafif çizgi titremesi (render_v3) |
-| Kadraj | Tam kare | %6–8 daha sıkı kırpma, odak üçte bir çizgide → aynı görsel farklı kadraj |
-| Renk | Sıcak sepya | **Daha serin parşömen**: doygunluk −%12, gölgede hafif mavi-yeşil, kâğıt dokusu + yumuşak vinyet |
-| Ekran yazısı | Kırmızı yuvarlak etiket | **Mürekkep siyahı yazı, krem kâğıt şerit**; kırmızı sadece LEGENDE damgasında |
+| Ses | Yaşlı Adam 3 | **Yaşlı Adam 1** ("Yasli adam", `x6MH8NM5Cgf2UNidRBXE`), daha yavaş okuma, espri sonrası 0,6 sn durak |
+| Müzik | 9 parça | **Müzik yok** |
+| Efekt | 19 efekt, damga sesleri | Sadece ortam: koklama, ateş çıtırtısı, sokak, kâğıt hışırtısı (bölüm geçişi). Damga sesi yok |
+| Hareket | Dönüşümlü yakınlaşma | **Yatay kaydırma** ağırlıklı; hafif çizgi titremesi |
+| Kadraj | Tam kare | %6–8 daha sıkı kırpma, odak üçte bir çizgide |
+| Renk | Sıcak sepya | **Serin parşömen**: doygunluk −%12, kâğıt dokusu + yumuşak vinyet; DDR bölümü daha gri |
+| Ekran yazısı | Kırmızı yuvarlak etiket | Krem kâğıt şerit üstünde mürekkep siyahı; kırmızı sadece LEGENDE damgasında |
+| Görseller | 142 çekim | 49 mevcut + **14 yeni (D01–D14)**, aynı karede farklı kadraj |
 
 ## Çekim listesi (EDL_de_v3.json)
 Süreler hedef; ses gelince her çekim kendi cümlesine oturtulur.
@@ -72,36 +77,59 @@ Süreler hedef; ses gelince her çekim kendi cümlesine oturtulur.
 | 36 | E London | S039 | 3.5 | sabit + çizgi titremesi | Kurz vor Neujahr verbietet er sie. |
 | 37 | E London | S041b | 4.5 | yatay kaydırma → | London protestiert. Händler, Kaufleute, sogar Leute vom Hof. |
 | 38 | E London | S042 | 5.0 | sabit + çizgi titremesi | Nach zehn Tagen nimmt der König das Verbot zurück. Noch bevor es überhaupt gilt. |
-| 39 | F Preussen | S043 | 4.5 | yavaş yaklaşma | Und damit zurück nach Preußen. Kaffee ist hier längst Alltag. |
-| 40 | F Preussen | D03 **(yeni)** | 4.5 | yatay kaydırma ← | Im benachbarten Leipzig hat Bach sogar eine Kantate darüber geschrieben. |
-| 41 | F Preussen | S044b | 5.0 | yatay kaydırma → | Friedrich der Große aber sieht vor allem eines: Geld, das ins Ausland fließt. |
-| 42 | F Preussen | S044 | 4.5 | yavaş yaklaşma | Nach seiner Rechnung: Hunderttausende Taler im Jahr. |
-| 43 | F Preussen | S045b | 6.5 | yatay kaydırma ← | Siebzehnhundertsiebenundsiebzig empfiehlt er seinen Untertanen: Trinkt Bier. Er selbst sei schließlich mit Biersuppe groß geworden. |
-| 44 | F Preussen | S045 | 3.0 | sabit + çizgi titremesi | Die Untertanen sehen das anders. |
-| 45 | F Preussen | S045d | 4.5 | yatay kaydırma → | Bier wird schließlich im eigenen Land gebraut. Und bringt Steuern. |
-| 46 | F Preussen | S046 | 5.5 | yatay kaydırma → | Also wird das Rösten Staatssache. Wer privat röstet, macht sich strafbar. Und dann kommen die Kaffeeriecher. |
-| 47 | F Preussen | S048b | 5.5 | yavaş yaklaşma | Siebzehnhundertsechsundachtzig stirbt Friedrich. Seine Kaffeeriecher überleben ihn nicht lange. |
-| 48 | G Schweden | S049 | 5.0 | yatay kaydırma ← | Den Rekord hält Schweden. Fünf Verbote in knapp siebzig Jahren. |
-| 49 | G Schweden | S051 | 4.5 | yavaş yaklaşma | Manche Schweden trugen ihre Kaffeekannen sogar zu Grabe. |
-| 50 | G Schweden | S052d | 7.5 | yatay kaydırma → | Und dann ist da König Gustav der Dritte. Er soll zwei verurteilte Zwillinge verschont haben, unter einer Bedingung. Der eine trinkt täglich Kaffee, der andere Tee. |
-| 51 | G Schweden | S053b | 5.0 | yatay kaydırma ← | Zuerst sterben die Ärzte. Dann der König. Die Zwillinge leben weiter. |
-| 52 | G Schweden | S054 | 3.5 | sabit + çizgi titremesi | Ob es dieses Experiment je gab, ist sehr fraglich. |
-| 53 | G Schweden | S055b | 4.5 | yavaş yaklaşma | Heute gehört Schweden zu den größten Kaffeetrinkern der Welt. |
-| 54 | H Wien | S056 | 3.0 | sabit + çizgi titremesi | Und Wien? |
-| 55 | H Wien | S056d | 7.5 | yatay kaydırma → | Die Geschichte kennt hier jeder. Die Osmanen ziehen ab, lassen Säcke voller Bohnen zurück, und der Kundschafter Kolschitzky eröffnet das erste Kaffeehaus. |
-| 56 | H Wien | S057 | 4.0 | sabit + çizgi titremesi | Aufgeschrieben wurde das allerdings erst rund hundert Jahre später. |
-| 57 | H Wien | S058 | 5.5 | yavaş yaklaşma | Die erste belegte Erlaubnis bekommt sechzehnhundertfünfundachtzig der armenische Händler Johannes Diodato. |
-| 58 | H Wien | D04 **(yeni)** | 5.5 | yatay kaydırma ← | Heute ist die Wiener Kaffeehauskultur immaterielles Kulturerbe. Ein Verbot hätte da wenig Chancen. |
-| 59 | I Schluss | S059 | 6.0 | yatay kaydırma → | Mekka, Istanbul, London, Preußen. Es ging um Versammlungen, um Aufstände, um Gerede und um Geld. |
-| 60 | I Schluss | S059f | 4.0 | yavaş yaklaşma | Um das Getränk ging es so gut wie nie. |
-| 61 | I Schluss | S060 | 6.0 | yatay kaydırma ← | Kaffee hat Menschen an einen Tisch gebracht, sie reden lassen und wach gehalten. Das war sein eigentliches Vergehen. |
-| 62 | I Schluss | S061 | 6.0 | yavaş yaklaşma | Friedrich wollte übrigens, dass seine Untertanen Bier trinken. Heute trinkt Deutschland mehr Kaffee als Bier. |
-| 63 | I Schluss | S061d | 4.0 | sabit + çizgi titremesi | Hat also nicht ganz geklappt. |
+| 39 | F Preussen | S043 | 7.5 | yavaş yaklaşma | Und damit zurück nach Preußen. Kaffee ist hier längst Alltag. Schon Friedrichs Vater hatte ihn zum Luxusgut erklärt, was ihn natürlich nur noch begehrter machte. |
+| 40 | F Preussen | D03 **(yeni)** | 5.0 | yatay kaydırma ← | Im benachbarten Leipzig führt Bach um siebzehnhundertvierunddreißig im Kaffeehaus eine Kantate auf. Ihr Thema: ein Kaffeeverbot. |
+| 41 | F Preussen | D07 **(yeni)** | 6.5 | yavaş yaklaşma | Ein Vater namens Schlendrian will seiner Tochter Lieschen den Kaffee verbieten. Er droht mit allem: keine neuen Kleider, keine Spaziergänge, kein Fenster zur Straße. |
+| 42 | F Preussen | D07 **(yeni)** | 5.5 | sabit + çizgi titremesi | Lieschen bleibt gelassen. Ohne ihre drei Schalen Kaffee am Tag, singt sie, würde sie vertrocknen wie ein Ziegenbraten. |
+| 43 | F Preussen | D08 **(yeni)** | 6.5 | yatay kaydırma → | Erst als der Vater ihr einen Ehemann verspricht, gibt sie nach. Heimlich aber lässt sie ausrichten: Heiraten wird sie nur einen Mann, der ihr den Kaffee erlaubt. |
+| 44 | F Preussen | D08 **(yeni)** | 4.0 | yavaş yaklaşma | Ein Kaffeeverbot, das schon im Lied scheitert. |
+| 45 | F Preussen | S044b | 6.5 | yatay kaydırma → | Nach dem Siebenjährigen Krieg ist die Staatskasse leer. Und Friedrich der Große sieht vor allem eines: Geld, das ins Ausland fließt. |
+| 46 | F Preussen | S044 | 4.5 | yavaş yaklaşma | Nach seiner Rechnung: Hunderttausende Taler im Jahr. |
+| 47 | F Preussen | S045b | 6.5 | yatay kaydırma ← | Siebzehnhundertsiebenundsiebzig empfiehlt er seinen Untertanen: Trinkt Bier. Er selbst sei schließlich mit Biersuppe groß geworden. |
+| 48 | F Preussen | S045 | 3.0 | sabit + çizgi titremesi | Die Untertanen sehen das anders. |
+| 49 | F Preussen | S045d | 4.5 | yatay kaydırma → | Bier wird schließlich im eigenen Land gebraut. Und bringt Steuern. |
+| 50 | F Preussen | S046 | 6.0 | yatay kaydırma → | Siebzehnhunderteinundachtzig wird das Rösten Staatssache. Gebrannt werden darf nur noch in königlichen Röstereien. Wer privat röstet, macht sich strafbar. |
+| 51 | F Preussen | D06 **(yeni)** | 7.0 | yatay kaydırma ← | Jetzt schlägt die Stunde der Kaffeeriecher. Ausgediente Soldaten ziehen durch die Gassen. Wer beim heimlichen Kaffeeklatsch erwischt wird, zahlt eine saftige Strafe. |
+| 52 | F Preussen | D06 **(yeni)** | 4.5 | yavaş yaklaşma | Die Kanne verschwindet dann eben unter dem Tisch. |
+| 53 | F Preussen | S003 | 5.0 | sabit + çizgi titremesi | Preußen war damit nicht einmal allein. Auch in Hessen-Kassel gingen Kaffeeriecher auf Streife. |
+| 54 | F Preussen | D09 **(yeni)** | 6.5 | yatay kaydırma → | Und viele steigen um: auf geröstete Zichorienwurzel. Man nennt das Getränk Preußenkaffee. Oder, wegen der blauen Blüten der Wegwarte, Blümchenkaffee. |
+| 55 | F Preussen | D10 **(yeni)** | 6.0 | yatay kaydırma ← | In Braunschweig entsteht schon siebzehnhundertsiebzig eine der ersten Zichorienfabriken. Bald folgen viele weitere. Später findet der Volksmund ein eigenes Wort dafür: Muckefuck. |
+| 56 | F Preussen | S048b | 5.5 | yavaş yaklaşma | Siebzehnhundertsechsundachtzig stirbt Friedrich. Seine Kaffeeriecher überleben ihn nicht lange. |
+| 57 | G Schweden | S049 | 5.0 | yatay kaydırma ← | Den Rekord hält Schweden. Fünf Verbote in knapp siebzig Jahren. |
+| 58 | G Schweden | S051 | 4.5 | yavaş yaklaşma | Manche Schweden trugen ihre Kaffeekannen sogar zu Grabe. |
+| 59 | G Schweden | S052d | 7.5 | yatay kaydırma → | Und dann ist da König Gustav der Dritte. Er soll zwei verurteilte Zwillinge verschont haben, unter einer Bedingung. Der eine trinkt täglich Kaffee, der andere Tee. |
+| 60 | G Schweden | S053b | 5.0 | yatay kaydırma ← | Zuerst sterben die Ärzte. Dann der König. Die Zwillinge leben weiter. |
+| 61 | G Schweden | S054 | 3.5 | sabit + çizgi titremesi | Ob es dieses Experiment je gab, ist sehr fraglich. |
+| 62 | G Schweden | S055b | 4.5 | yavaş yaklaşma | Heute gehört Schweden zu den größten Kaffeetrinkern der Welt. |
+| 63 | H Wien | S056 | 3.0 | sabit + çizgi titremesi | Und Wien? |
+| 64 | H Wien | S056d | 7.5 | yatay kaydırma → | Die Geschichte kennt hier jeder. Die Osmanen ziehen ab, lassen Säcke voller Bohnen zurück, und der Kundschafter Kolschitzky eröffnet das erste Kaffeehaus. |
+| 65 | H Wien | S057 | 4.0 | sabit + çizgi titremesi | Aufgeschrieben wurde das allerdings erst rund hundert Jahre später. |
+| 66 | H Wien | S058 | 5.5 | yavaş yaklaşma | Die erste belegte Erlaubnis bekommt sechzehnhundertfünfundachtzig der armenische Händler Johannes Diodato. |
+| 67 | H Wien | D04 **(yeni)** | 5.5 | yatay kaydırma ← | Heute ist die Wiener Kaffeehauskultur immaterielles Kulturerbe. Ein Verbot hätte da wenig Chancen. |
+| 68 | H2 DDR | D11 **(yeni)** | 6.5 | yatay kaydırma → | Und wer glaubt, das alles sei lange her: Neunzehnhundertsiebenundsiebzig, DDR. Der Weltmarktpreis für Kaffee explodiert, und dem Staat fehlen die Devisen. |
+| 69 | H2 DDR | D12 **(yeni)** | 7.0 | yavaş yaklaşma | Die Lösung des Politbüros heißt Kaffee-Mix. Nur einundfünfzig Prozent Kaffee. Der Rest: geröstete Erbsen, Roggen, Gerste, Zichorie und Zuckerrübe. |
+| 70 | H2 DDR | D11 **(yeni)** | 4.0 | sabit + çizgi titremesi | Der Volksmund tauft ihn: Erichs Krönung. |
+| 71 | H2 DDR | D13 **(yeni)** | 6.0 | yatay kaydırma ← | Tausende Beschwerdebriefe gehen ein. Und vor allem: Die Leute kaufen das Zeug einfach nicht. |
+| 72 | H2 DDR | D14 **(yeni)** | 5.5 | yatay kaydırma → | Die Regierung hatte ohnehin gehofft, dass viele ihren Kaffee aus dem Westpaket bekommen. |
+| 73 | H2 DDR | D13 **(yeni)** | 5.5 | yavaş yaklaşma | Anfang neunzehnhundertachtundsiebzig wird die Produktion eingestellt. Wieder hat der Tisch gewonnen. |
+| 74 | I Schluss | S059 | 7.0 | yatay kaydırma → | Mekka, Istanbul, London, Preußen, die DDR. Es ging um Versammlungen, um Aufstände, um Gerede, um Geld. Und um Devisen. |
+| 75 | I Schluss | S059f | 4.0 | yavaş yaklaşma | Um das Getränk ging es so gut wie nie. |
+| 76 | I Schluss | S060 | 6.0 | yatay kaydırma ← | Kaffee hat Menschen an einen Tisch gebracht, sie reden lassen und wach gehalten. Das war sein eigentliches Vergehen. |
+| 77 | I Schluss | S061 | 6.0 | yavaş yaklaşma | Friedrich wollte übrigens, dass seine Untertanen Bier trinken. Heute trinkt Deutschland mehr Kaffee als Bier. |
+| 78 | I Schluss | S061d | 4.0 | sabit + çizgi titremesi | Hat also nicht ganz geklappt. |
 
 ## Başlık / kapak
 - **Titel:** Der König, der Kaffee-Schnüffler auf die Straße schickte
 - Alternatif: Warum wurde Kaffee immer wieder verboten?
-- **Kapak:** D05 (Kaffeeriecher burnu) + "VERBOTEN?" – Türkçe kapaktan farklı görsel.
+- **Kapak:** D05 (Kaffeeriecher burnu) + "VERBOTEN?"
 
-## Ek görseller (sadece Almanca)
-`IMAGE_PROMPTS_de_v3.md`: D01 Preußen sabah sokağı, D02 Kaffee vs. Bier terazisi, D03 Leipzig kahvehane konseri, D04 Viyana kahvehanesi bugün, D05 kapak.
+## Yeni görseller
+`IMAGE_PROMPTS_de_v3.md`: D01 Preußen sabah sokağı · D02 Kaffee/Bier terazisi · D03 Leipzig kahvehane konseri · D04 Viyana kahvehanesi bugün · D05 kapak · D06 Kaffeeklatsch baskını · D07 Schlendrian & Lieschen · D08 Lieschen'in gizli şartı · D09 Zichorie tarlası · D10 Braunschweig Zichorie fabrikası · D11 DDR dükkânı 1977 · D12 Kaffee-Mix içindekiler · D13 şikâyet mektupları · D14 Westpaket
+
+## Kaynaklar (yeni bilgiler)
+- Kaffeeverbrauch: Deutscher Kaffeeverband (tageskarte.io)
+- Kaffeeriecher, Hessen-Kassel, Luxusgut, Steuer: en.wikipedia "Coffee sniffers"; germanhistorydocs.org
+- Bach BWV 211 Handlung: Wikipedia BWV 211, bachtrack.com
+- Zichorie/Preußenkaffee/Blümchenkaffee: Uni Potsdam Botanischer Garten; Braunschweig 1770: museum.de
+- DDR Kaffeekrise: Bundesarchiv; DDR Museum; Wikipedia "East German coffee crisis"
+- Wiener Kaffeehauskultur: unesco.at, wien.info

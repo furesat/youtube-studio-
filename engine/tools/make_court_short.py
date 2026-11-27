@@ -30,7 +30,7 @@ def silences(audio):
     st = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", r)]; en = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", r)]
     return [((a + b) / 2) for a, b in zip(st, en)]
 
-def snap(t, sil, tol=0.45):
+def snap(t, sil, tol=0.8):
     c = [s for s in sil if abs(s - t) <= tol]
     return min(c, key=lambda s: abs(s - t)) if c else t
 
@@ -43,12 +43,12 @@ def cover(img, z, fx=0.5, fy=0.5):
 def stamp(f, word, u):
     # damga: büyük kırmızı, hafif döndürülmüş, içe doğru 'çarpma' animasyonu
     s = 1.0 + 0.9 * max(0, 1 - u / 0.18) ** 2
-    ft = font(int(150 * s)); tmp = Image.new("RGBA", (W + 400, 400), (0, 0, 0, 0)); d = ImageDraw.Draw(tmp)
+    ft = font(int(135 * s)); tmp = Image.new("RGBA", (W + 400, 400), (0, 0, 0, 0)); d = ImageDraw.Draw(tmp)
     d.text((tmp.width // 2, 200), word, font=ft, fill=RED + (235,), anchor="mm", stroke_width=6, stroke_fill=(243, 233, 214, 255))
     bb = d.textbbox((tmp.width // 2, 200), word, font=ft, anchor="mm")
     d.rectangle((bb[0] - 28, bb[1] - 22, bb[2] + 28, bb[3] + 22), outline=RED + (235,), width=12)
     tmp = tmp.rotate(8, resample=Image.BICUBIC, expand=True)
-    f.paste(tmp, ((W - tmp.width) // 2, 1020 - tmp.height // 2), tmp)
+    f.paste(tmp, ((W - tmp.width) // 2, 1330 - tmp.height // 2), tmp)
 
 def main():
     cfg = json.load(open(sys.argv[1], encoding="utf-8")); base = os.path.dirname(os.path.abspath(sys.argv[1]))
@@ -80,7 +80,7 @@ def main():
     os.makedirs(os.path.dirname(out), exist_ok=True)
     ff = ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{W}x{H}", "-r", str(FPS), "-i", "-",
           "-i", audio, "-filter_complex", f"[1:a]adelay={int(lead*1000)}|{int(lead*1000)},afade=t=in:d=0.08,apad=pad_dur={tail}[a]",
-          "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
+          "-map", "0:v", "-map", "[a]", "-c:v", "libx264", "-preset", "medium", "-crf", "24", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
           "-t", f"{total:.3f}", "-movflags", "+faststart", out]
     p = subprocess.Popen(ff, stdin=subprocess.PIPE); nfr = round(total * FPS)
     for fi in range(nfr):

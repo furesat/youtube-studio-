@@ -569,5 +569,139 @@
     100000,
     1000000,
     10000000
+  ],
+  "topics": [
+    {
+      "id": "fork",
+      "label": "Çatal kullanmak günah mıydı?",
+      "aliases": [
+        "çatal",
+        "çatalın tarihi"
+      ],
+      "queries": {
+        "tr": "çatal kullanmak günah mıydı çatalın tarihi",
+        "de": "Geschichte der Gabel warum war die Gabel verpönt",
+        "en": "history of the fork why was it considered sinful",
+        "nl": "geschiedenis van de vork waarom was de vork verboden",
+        "pl": "historia widelca dlaczego uważano go za grzeszny",
+        "cs": "historie vidličky proč byla považována za hříšnou",
+        "ro": "istoria furculiței de ce era considerată un păcat",
+        "sv": "gaffelns historia varför ansågs gaffeln syndig",
+        "no": "gaffelens historie hvorfor ble gaffelen sett på som syndig",
+        "da": "gaflens historie hvorfor blev den anset for syndig",
+        "fi": "haarukan historia miksi haarukkaa pidettiin syntisenä",
+        "fr": "histoire de la fourchette pourquoi était-elle mal vue",
+        "it": "storia della forchetta perché era considerata peccaminosa",
+        "es": "historia del tenedor por qué se consideraba pecado",
+        "pt": "história do garfo por que era considerado pecado",
+        "ja": "フォークの歴史 なぜ罪だと考えられたのか",
+        "ko": "포크의 역사 왜 죄악으로 여겨졌을까",
+        "hi": "कांटे से खाना खाने का इतिहास इसे पाप क्यों समझा जाता था",
+        "bn": "কাঁটাচামচের ইতিহাস কেন একে পাপ মনে করা হতো",
+        "id": "sejarah garpu mengapa dulu dianggap berdosa",
+        "vi": "lịch sử chiếc nĩa vì sao từng bị coi là tội lỗi",
+        "ar": "تاريخ شوكة الطعام ولماذا اعتبر استخدامها خطيئة",
+        "hu": "a villa története miért tartották bűnösnek a használatát"
+      }
+    },
+    {
+      "id": "calendar",
+      "label": "Takvimden silinen 11 gün",
+      "aliases": [
+        "takvim",
+        "11 gün"
+      ],
+      "queries": {
+        "tr": "takvimden silinen 11 gün Gregoryen takvim",
+        "de": "Gregorianischer Kalender 1752 elf Tage gestrichen",
+        "en": "why Britain lost 11 days in 1752 Gregorian calendar",
+        "nl": "waarom verdwenen elf dagen in 1752 gregoriaanse kalender",
+        "pl": "dlaczego z kalendarza zniknęło 11 dni w 1752 roku",
+        "cs": "proč v roce 1752 zmizelo z kalendáře jedenáct dní",
+        "ro": "de ce au dispărut 11 zile din calendar în 1752",
+        "sv": "varför försvann elva dagar ur kalendern 1752",
+        "no": "hvorfor forsvant elleve dager fra kalenderen i 1752",
+        "da": "hvorfor forsvandt elleve dage fra kalenderen i 1752",
+        "fi": "miksi kalenterista katosi 11 päivää vuonna 1752",
+        "fr": "pourquoi onze jours ont disparu du calendrier en 1752",
+        "it": "perché nel 1752 sparirono undici giorni dal calendario",
+        "es": "por qué desaparecieron once días del calendario en 1752",
+        "pt": "por que onze dias desapareceram do calendário em 1752",
+        "ja": "1752年に暦から11日が消えた理由",
+        "ko": "1752년 달력에서 11일이 사라진 이유",
+        "hi": "1752 में कैलेंडर से 11 दिन क्यों गायब हुए",
+        "bn": "১৭৫২ সালে ক্যালেন্ডার থেকে ১১ দিন কেন হারিয়ে গেল",
+        "id": "kenapa 11 hari hilang dari kalender pada tahun 1752",
+        "vi": "vì sao 11 ngày biến mất khỏi lịch năm 1752",
+        "ar": "لماذا اختفى أحد عشر يوما من التقويم عام 1752",
+        "hu": "miért tűnt el tizenegy nap a naptárból 1752-ben"
+      }
+    },
+    {
+      "id": "sleep",
+      "label": "İnsanlar eskiden neden iki kez uyuyordu?",
+      "aliases": [
+        "uyku",
+        "bölünmüş uyku"
+      ],
+      "queries": {
+        "tr": "eskiden iki kez uyumak bölünmüş uyku tarihi",
+        "de": "zweiphasiger Schlaf früher erster und zweiter Schlaf Geschichte",
+        "en": "history of segmented sleep first and second sleep",
+        "nl": "vroeger twee keer slapen eerste en tweede slaap",
+        "pl": "historia snu dwufazowego pierwszy i drugi sen",
+        "cs": "historie dvoufázového spánku první a druhý spánek",
+        "ro": "istoria somnului bifazic primul și al doilea somn",
+        "sv": "förr sov människor i två omgångar första och andra sömnen",
+        "no": "før sov folk i to omganger første og andre søvn",
+        "da": "første og anden søvn hvordan sov folk før i tiden",
+        "fi": "kaksivaiheisen unen historia ensimmäinen ja toinen uni",
+        "fr": "histoire du sommeil biphasique premier et second sommeil",
+        "it": "storia del sonno bifasico primo e secondo sonno",
+        "es": "historia del sueño bifásico primer y segundo sueño",
+        "pt": "história do sono bifásico primeiro e segundo sono",
+        "ja": "昔の人はなぜ二回に分けて眠っていたのか 分割睡眠",
+        "ko": "옛날 사람들은 왜 잠을 두 번 나누어 잤을까",
+        "hi": "पुराने समय में लोग दो बार क्यों सोते थे",
+        "bn": "আগেকার মানুষ কেন দুই ভাগে ঘুমাত",
+        "id": "sejarah tidur dua kali dalam semalam",
+        "vi": "vì sao người xưa ngủ hai giấc mỗi đêm",
+        "ar": "لماذا كان الناس قديما ينامون على مرحلتين",
+        "hu": "a két szakaszban történő alvás története"
+      }
+    },
+    {
+      "id": "tulip",
+      "label": "Lale çılgınlığı ekonomiyi çökertti mi?",
+      "aliases": [
+        "lale çılgınlığı",
+        "lale balonu"
+      ],
+      "queries": {
+        "tr": "Hollanda lale çılgınlığı lale balonu çöktü mü",
+        "de": "Tulpenmanie Niederlande Tulpenblase Mythos Wirtschaftskrise",
+        "en": "Dutch tulip mania did the tulip bubble crash the economy",
+        "nl": "tulpenmanie was de tulpenbubbel echt een economische crisis",
+        "pl": "tulipomania czy bańka tulipanowa zniszczyła gospodarkę",
+        "cs": "tulipánová mánie skutečně způsobila hospodářskou krizi",
+        "ro": "mania lalelelor a provocat o criză economică",
+        "sv": "tulpanmanin orsakade den verkligen en ekonomisk kris",
+        "no": "tulipanmanien førte den egentlig til økonomisk krise",
+        "da": "tulipanmanien førte tulipanboblen til økonomisk krise",
+        "fi": "tulppaanimania aiheuttiko tulppaanikupla talouskriisin",
+        "fr": "tulipomanie la bulle des tulipes a-t-elle ruiné l'économie",
+        "it": "tulipomania la bolla dei tulipani causò davvero una crisi economica",
+        "es": "tulipomanía la burbuja de los tulipanes provocó una crisis económica",
+        "pt": "tulipomania a bolha das tulipas causou uma crise econômica",
+        "ja": "チューリップバブルは本当に経済を崩壊させたのか",
+        "ko": "튤립 파동은 정말 경제를 무너뜨렸을까",
+        "hi": "ट्यूलिप मैनिया क्या फूलों के बुलबुले ने अर्थव्यवस्था गिरा दी",
+        "bn": "টিউলিপ ম্যানিয়া কি সত্যিই অর্থনীতি ধ্বংস করেছিল",
+        "id": "tulip mania benarkah gelembung tulip menghancurkan ekonomi",
+        "vi": "cơn sốt hoa tulip có thực sự làm sụp đổ nền kinh tế",
+        "ar": "هوس التوليب هل دمرت فقاعة التوليب الاقتصاد حقا",
+        "hu": "a tulipánmánia valóban gazdasági válságot okozott"
+      }
+    }
   ]
 }

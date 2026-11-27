@@ -444,7 +444,7 @@ function renderEvidence(){
   }
   if(!el("rpm-comparison").children.length)addRow("rpm-comparison",["Kaynaklı RPM girdisi yok."]);
   for(const row of [...evidenceData.reviews].sort((a,b)=>(b.score??-1)-(a.score??-1))){
-    addRow("review-comparison",[row.topic,marketLabel(row.market_id),fmt(row.score),percentages.format(row.coverage),{high:"Yüksek",medium:"Orta",low:"Düşük"}[row.confidence],row.source]);
+    addRow("review-comparison",[row.topic,marketLabel(row.market_id),fmt(row.score),percentages.format(row.coverage),{high:"Yüksek",medium:"Orta",low:"Düşük"}[row.coverage_band]??"Bilinmiyor",row.source]);
   }
   if(!evidenceData.reviews.length)addRow("review-comparison",["Henüz bağımsız değerlendirme yok."]);
 }

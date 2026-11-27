@@ -73,3 +73,6 @@ Panel and worker CI passed; optional server-side session registry and revocation
 
 ### V4 checkpoint 9
 Optional shared detail-budget ledger and request validation. Existing search ceiling unchanged. Isolated tests pending CI.
+
+### V4 checkpoint 10
+Evidence quality evaluator and independent break-even math; coverage is not statistical confidence. No competitor revenue estimates.

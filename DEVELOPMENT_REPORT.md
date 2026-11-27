@@ -67,3 +67,6 @@ Isolated SQL migration/concurrency CI succeeded (45928051692: 18 Python, 36 Node
 
 ### V4 checkpoint 7
 Controlled research, queue actions, cached-source provenance and real system telemetry surfaced in existing dashboard. No deployment.
+
+### V4 checkpoint 8
+Panel and worker CI passed; optional server-side session registry and revocation implemented. Scoped main-history security review documented; not a complete all-ref scan. No deployment.

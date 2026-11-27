@@ -20,7 +20,7 @@ def sql(source):
 if sql("select current_database()") != "fasulye_test" or sql("select to_regclass('public.fasulye_runs') is null") != "t":
     raise SystemExit("Test database is not fresh; refusing to run")
 sql("create role anon; create role authenticated; create role service_role bypassrls; grant usage on schema public to service_role;")
-for name in ("schema.sql","queue.sql","queue_idempotency.sql","query_profiles.sql","shared_budget.sql","batch_status.sql","evidence.sql","market_evidence.sql","controlled_campaigns.sql","atomic_queue.sql","wikimedia_evidence.sql","queue_controls.sql"):
+for name in ("schema.sql","queue.sql","queue_idempotency.sql","query_profiles.sql","shared_budget.sql","batch_status.sql","evidence.sql","market_evidence.sql","controlled_campaigns.sql","atomic_queue.sql","wikimedia_evidence.sql","queue_controls.sql","session_revocation.sql"):
     source = (ROOT / name).read_text()
     if name == "schema.sql":
         # The fixture has no pg_cron extension. Retention scheduling itself is NOT tested here.
@@ -45,3 +45,8 @@ assert sql("set role service_role; select count(*) from public.fasulye_claim('30
 assert sql("select count(*) from public.fasulye_tasks where status='running'") == "0"
 assert sql("select count(*) from public.fasulye_tasks where status='queued'") == "40"
 print("Concurrent claims: 30 unique reservations; manual cap and crash recovery passed", flush=True)
+
+assert sql("select has_table_privilege('anon','public.fasulye_sessions','SELECT')") == "f"
+assert sql("select has_table_privilege('authenticated','public.fasulye_sessions','UPDATE')") == "f"
+assert sql("select relrowsecurity from pg_class where oid='public.fasulye_sessions'::regclass") == "t"
+print("Session registry grants and RLS passed", flush=True)

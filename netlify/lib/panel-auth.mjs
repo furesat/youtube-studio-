@@ -45,8 +45,22 @@ function deviceInfo(ua){
   return {browser,platform};
 }
 export function auditConfigured(){return (env("SUPABASE_SECRET_KEY")??"").startsWith("sb_secret_");}
-export function sessionStatus(request){
-  return {authenticated:!!sessionFor(request),admin:adminFor(request),admin_configured:!!secret("admin"),audit_configured:auditConfigured()};
+function revocationEnabled(){return env("FASULYE_SESSION_REVOCATION")==="1";}
+export async function activeSession(request,fetcher=fetch,now=Date.now()){
+  const session=sessionFor(request,now);
+  if(!session||!revocationEnabled())return session;
+  const rows=await db("fasulye_sessions?"+new URLSearchParams({select:"sid",sid:"eq."+session.sid,revoked_at:"is.null",expires_at:"gt."+new Date(now).toISOString(),limit:"1"}),{fetcher});
+  if(!Array.isArray(rows))throw new ResearchError(502,"Oturum doğrulanamadı.");
+  return rows.length===1&&rows[0].sid===session.sid?session:null;
+}
+export async function sessionStatus(request,fetcher=fetch){
+  const active=await activeSession(request,fetcher);
+  return {authenticated:!!active,admin:!!active&&adminFor(request),admin_configured:!!secret("admin"),audit_configured:auditConfigured()};
+}
+export async function revokeSession(request,fetcher=fetch){
+  const session=sessionFor(request);
+  if(!session||!revocationEnabled())return;
+  await db("fasulye_sessions?"+new URLSearchParams({sid:"eq."+session.sid,revoked_at:"is.null"}),{method:"PATCH",body:{revoked_at:new Date().toISOString()},prefer:"return=minimal",fetcher});
 }
 export async function login(request,{password,remember=true,label=""},fetcher=fetch){
   if(typeof password!=="string"||password.length>4096||!acceptsToken(password))throw new ResearchError(401,"Parola yanlış.");
@@ -56,6 +70,10 @@ export async function login(request,{password,remember=true,label=""},fetcher=fe
   if(!uuid.test(device))device=randomUUID();
   const sid=randomUUID(), exp=Math.floor(Date.now()/1000)+age;
   const value=sign({kind:"session",sid,device,exp},"session");
+  if(revocationEnabled()){
+    const rows=await db("fasulye_sessions",{method:"POST",body:{sid,expires_at:new Date(exp*1000).toISOString()},prefer:"return=representation",fetcher});
+    if(!Array.isArray(rows)||rows.length!==1||rows[0].sid!==sid)throw new ResearchError(502,"Oturum kaydedilemedi.");
+  }
   let audit="unavailable";
   if(auditConfigured()){
     try{

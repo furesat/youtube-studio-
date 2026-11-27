@@ -7,7 +7,7 @@ import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, 
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 import {featureFlags,controlQueue,queueHealth} from "../lib/queue-control.mjs";
-import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
+import { activeSession, sameOriginMutation } from "../lib/panel-auth.mjs";
 import { editorialRequest } from "../lib/editorial.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
@@ -20,12 +20,12 @@ export default async (request: Request) => {
     return json({ error: "Panel erişimi Netlify'da yapılandırılmalı." }, 503);
   }
   const bearer=acceptsToken(readBearer(request));
-  const session=sessionFor(request);
+  try {
+  const session=bearer?null:await activeSession(request);
   if (!bearer && !session) {
     return json({ error: "Panel erişim anahtarı geçersiz." }, 401, { "WWW-Authenticate": "Bearer" });
   }
   if (!bearer && request.method !== "GET" && !sameOriginMutation(request)) return json({error:"İstek kaynağına izin verilmedi."},403);
-  try {
     if (url.pathname === "/api/editorial" && ["GET", "POST", "PUT"].includes(request.method)) {
       const result = await editorialRequest(request, url);
       return json(result.body, result.status);

@@ -147,7 +147,7 @@ export async function getArtifact(id, fetcher = fetch) {
   if (!response.ok) throw new ResearchError(502, "GitHub rapor listesi okunamadı.");
   const { artifacts } = await response.json();
   const artifact = artifacts.find(item => item.name === artifactName && !item.expired);
-  if (!artifact) throw new ResearchError(404, "Rapor üretilmemiş veya arşivin süresi dolmuş.");
+  if (!artifact) throw new ResearchError(404, "İndirilebilir rapor arşivi bulunamadı. Arşiv yüklenememiş veya saklama süresi dolmuş olabilir.");
   if (artifact.size_in_bytes > maxBytes) {
     throw new ResearchError(413, "Rapor büyük. Tam arşivi GitHub Actions üzerinden indirin.");
   }

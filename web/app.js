@@ -99,7 +99,7 @@ async function watch(id, signal) {
       query.set("result", "report");
       try {
         const data = await request("/api/research?" + query, { signal });
-        displayReport(data);
+        displayReport(data, id);
         showStatus(run.conclusion === "success"
           ? "Araştırma tamamlandı."
           : "Çalıştırma eksik sona erdi. Kaydedilen raporu görüntülüyorsun.", run.conclusion !== "success");
@@ -203,8 +203,9 @@ function filterOptions(target, entries) {
   }
 }
 
-function displayReport(data) {
+function displayReport(data, id) {
   report = data;
+  el("download").dataset.runId = id;
   const markets = new Map(data.opportunities.map(row => [row.market_id, row.market]));
   const topics = new Map(data.opportunities.map(row => [row.topic_id, row.topic]));
   el("results").hidden = false;
@@ -251,7 +252,7 @@ for (const id of ["topic-filter", "market-filter"]) el(id).addEventListener("cha
 el("download").addEventListener("click", async () => {
   el("download").disabled = true;
   try {
-    const id = el("run-id").value;
+    const id = el("download").dataset.runId;
     const blob = await request("/api/research?" + new URLSearchParams({ id, result: "zip" }), { binary: true });
     const url = URL.createObjectURL(blob);
     const link = node("a");

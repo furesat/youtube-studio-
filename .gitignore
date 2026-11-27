@@ -44,3 +44,6 @@ shorts/**/*.wav
 
 # yerel pip indirmeleri
 *.whl
+
+videos/001/audio/de_v3/
+videos/001/images/001_D*_v1.png

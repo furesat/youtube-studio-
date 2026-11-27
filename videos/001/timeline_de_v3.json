@@ -1,0 +1,712 @@
+{
+ "parts": [
+  "videos/001/audio/de_v3/teil1_t.wav",
+  "videos/001/audio/de_v3/teil2_t.wav"
+ ],
+ "gap": 1.2,
+ "total": 428.59,
+ "shots": [
+  {
+   "n": 1,
+   "akt": "A Kaltstart",
+   "shot": "D01",
+   "dur": 3.034,
+   "move": "pan_r",
+   "text": "Preußen, siebzehnhunderteinundachtzig.",
+   "start": 0.0
+  },
+  {
+   "n": 2,
+   "akt": "A Kaltstart",
+   "shot": "S047",
+   "dur": 4.866,
+   "move": "pan_l",
+   "text": "Ein alter Soldat bleibt vor einem offenen Fenster stehen. Und schnuppert.",
+   "start": 3.034
+  },
+  {
+   "n": 3,
+   "akt": "A Kaltstart",
+   "shot": "S047d",
+   "dur": 2.83,
+   "move": "push",
+   "text": "Er sucht keinen Dieb. Er sucht Kaffee.",
+   "start": 7.9
+  },
+  {
+   "n": 4,
+   "akt": "A Kaltstart",
+   "shot": "S047b",
+   "dur": 9.226,
+   "move": "pan_r",
+   "text": "Privat gerösteter Kaffee ist in Preußen nämlich verboten. Und der König hat rund vierhundert solcher Männer auf die Straße geschickt.",
+   "start": 10.73
+  },
+  {
+   "n": 5,
+   "akt": "A Kaltstart",
+   "shot": "S047c",
+   "dur": 1.612,
+   "move": "hold",
+   "text": "Der Volksmund nennt sie: die Kaffeeriecher.",
+   "start": 19.956
+  },
+  {
+   "n": 6,
+   "akt": "B Heute",
+   "shot": "S001",
+   "dur": 4.2,
+   "move": "push",
+   "text": "Heute ist Kaffee das Lieblingsgetränk der Deutschen.",
+   "start": 21.568
+  },
+  {
+   "n": 7,
+   "akt": "B Heute",
+   "shot": "D02",
+   "dur": 1.438,
+   "move": "push",
+   "text": "Noch vor Wasser. Und noch vor Bier.",
+   "start": 25.768
+  },
+  {
+   "n": 8,
+   "akt": "B Heute",
+   "shot": "S003",
+   "dur": 8.128,
+   "move": "pan_r",
+   "text": "Preußen war damit übrigens nicht allein. Mekka, Istanbul, London, Schweden. Kaffee wurde immer wieder verboten.",
+   "start": 27.207
+  },
+  {
+   "n": 9,
+   "akt": "B Heute",
+   "shot": "S005b",
+   "dur": 6.389,
+   "move": "pan_l",
+   "text": "Das Merkwürdige daran: Um den Kaffee selbst ging es dabei fast nie. Gehen wir der Sache nach.",
+   "start": 35.335
+  },
+  {
+   "n": 10,
+   "akt": "C Mekka",
+   "shot": "S006",
+   "dur": 2.432,
+   "move": "hold",
+   "text": "Mekka, fünfzehnhundertelf.",
+   "start": 41.724
+  },
+  {
+   "n": 11,
+   "akt": "C Mekka",
+   "shot": "S007b",
+   "dur": 5.381,
+   "move": "pan_r",
+   "text": "Sufis trinken das neue Getränk aus dem Jemen, um nachts beim Gebet wach zu bleiben.",
+   "start": 44.155
+  },
+  {
+   "n": 12,
+   "akt": "C Mekka",
+   "shot": "S008",
+   "dur": 3.292,
+   "move": "pan_l",
+   "text": "Bald entstehen Kaffeehäuser. Man sitzt zusammen. Man redet.",
+   "start": 49.537
+  },
+  {
+   "n": 13,
+   "akt": "C Mekka",
+   "shot": "S009b",
+   "dur": 5.186,
+   "move": "push",
+   "text": "Das missfällt Khair Beg, dem Aufseher über Sitte und Ordnung.",
+   "start": 52.829
+  },
+  {
+   "n": 14,
+   "akt": "C Mekka",
+   "shot": "S011",
+   "dur": 3.416,
+   "move": "pan_r",
+   "text": "Er bestellt Gelehrte und Ärzte ein. Die Frage: Macht dieses Getränk betrunken?",
+   "start": 58.014
+  },
+  {
+   "n": 15,
+   "akt": "C Mekka",
+   "shot": "S012",
+   "dur": 4.442,
+   "move": "hold",
+   "text": "Das Ergebnis steht vorher fest. Verboten.",
+   "start": 61.43
+  },
+  {
+   "n": 16,
+   "akt": "C Mekka",
+   "shot": "S013",
+   "dur": 1.2,
+   "move": "push",
+   "text": "Kaffeesäcke brennen auf offener Straße.",
+   "start": 65.872
+  },
+  {
+   "n": 17,
+   "akt": "C Mekka",
+   "shot": "S014b",
+   "dur": 5.495,
+   "move": "pan_l",
+   "text": "Nur untersteht Mekka dem Sultan in Kairo. Und der trinkt, wie man hört, selbst gern Kaffee.",
+   "start": 67.072
+  },
+  {
+   "n": 18,
+   "akt": "C Mekka",
+   "shot": "S015",
+   "dur": 3.158,
+   "move": "hold",
+   "text": "Nach wenigen Wochen ist das Verbot vom Tisch.",
+   "start": 72.568
+  },
+  {
+   "n": 19,
+   "akt": "C Mekka",
+   "shot": "S016",
+   "dur": 6.053,
+   "move": "push",
+   "text": "Merken wir uns: Das Problem war nie die Tasse. Es war der Tisch.",
+   "start": 75.726
+  },
+  {
+   "n": 20,
+   "akt": "D Istanbul",
+   "shot": "S017",
+   "dur": 1.438,
+   "move": "hold",
+   "text": "Istanbul, fünfzehnhundertvierundfünfzig.",
+   "start": 81.779
+  },
+  {
+   "n": 21,
+   "akt": "D Istanbul",
+   "shot": "S018c",
+   "dur": 7.265,
+   "move": "pan_r",
+   "text": "Zwei Händler aus Syrien eröffnen die ersten Kaffeehäuser der Stadt.",
+   "start": 83.217
+  },
+  {
+   "n": 22,
+   "akt": "D Istanbul",
+   "shot": "S020",
+   "dur": 1.2,
+   "move": "pan_l",
+   "text": "Man liest, spielt Backgammon, trägt Gedichte vor.",
+   "start": 90.483
+  },
+  {
+   "n": 23,
+   "akt": "D Istanbul",
+   "shot": "S021",
+   "dur": 2.253,
+   "move": "push",
+   "text": "Und man redet über die Regierung.",
+   "start": 91.683
+  },
+  {
+   "n": 24,
+   "akt": "D Istanbul",
+   "shot": "S024",
+   "dur": 4.305,
+   "move": "hold",
+   "text": "Das gefällt nicht jedem Sultan. Murad dem Vierten schon gar nicht.",
+   "start": 93.935
+  },
+  {
+   "n": 25,
+   "akt": "D Istanbul",
+   "shot": "S025b",
+   "dur": 6.244,
+   "move": "pan_r",
+   "text": "Sein Bruder Osman war von meuternden Janitscharen ermordet worden.",
+   "start": 98.24
+  },
+  {
+   "n": 26,
+   "akt": "D Istanbul",
+   "shot": "S026",
+   "dur": 2.584,
+   "move": "pan_l",
+   "text": "Und die Janitscharen trafen sich am liebsten: im Kaffeehaus.",
+   "start": 104.484
+  },
+  {
+   "n": 27,
+   "akt": "D Istanbul",
+   "shot": "S027",
+   "dur": 5.169,
+   "move": "push",
+   "text": "Sechzehnhundertdreiunddreißig brennt ein großer Teil der Stadt.",
+   "start": 107.069
+  },
+  {
+   "n": 28,
+   "akt": "D Istanbul",
+   "shot": "S028",
+   "dur": 8.928,
+   "move": "pan_r",
+   "text": "Murad hat seinen Vorwand. Wegen Brandgefahr werden die Kaffeehäuser geschlossen, der Tabak gleich mit. Wer erwischt wird, riskiert den Tod.",
+   "start": 112.238
+  },
+  {
+   "n": 29,
+   "akt": "D Istanbul",
+   "shot": "S030",
+   "dur": 5.402,
+   "move": "pan_l",
+   "text": "Es heißt, er sei nachts verkleidet durch die Gassen gegangen, um Sünder selbst zu ertappen.",
+   "start": 121.166
+  },
+  {
+   "n": 30,
+   "akt": "D Istanbul",
+   "shot": "S031",
+   "dur": 3.516,
+   "move": "hold",
+   "text": "Belegt ist das nicht. Gewirkt hat es trotzdem.",
+   "start": 126.568
+  },
+  {
+   "n": 31,
+   "akt": "D Istanbul",
+   "shot": "S032b",
+   "dur": 6.284,
+   "move": "pan_r",
+   "text": "Auffällig: Zu Hause durfte man weiter Kaffee trinken. Verboten war nur der gemeinsame Tisch.",
+   "start": 130.084
+  },
+  {
+   "n": 32,
+   "akt": "D Istanbul",
+   "shot": "S035b",
+   "dur": 3.267,
+   "move": "push",
+   "text": "Nach Murads Tod öffnen die Kaffeehäuser wieder.",
+   "start": 136.368
+  },
+  {
+   "n": 33,
+   "akt": "E London",
+   "shot": "S036",
+   "dur": 2.851,
+   "move": "hold",
+   "text": "London, sechzehnhundertfünfundsiebzig.",
+   "start": 139.634
+  },
+  {
+   "n": 34,
+   "akt": "E London",
+   "shot": "S037c",
+   "dur": 7.127,
+   "move": "pan_l",
+   "text": "Für einen Penny gibt es Kaffee und Diskussion, so lange man will. Man nennt die Kaffeehäuser Penny-Universitäten.",
+   "start": 142.485
+  },
+  {
+   "n": 35,
+   "akt": "E London",
+   "shot": "S038",
+   "dur": 5.242,
+   "move": "push",
+   "text": "König Karl der Zweite nennt sie anders: Brutstätten von Lügen über die Regierung.",
+   "start": 149.613
+  },
+  {
+   "n": 36,
+   "akt": "E London",
+   "shot": "S039",
+   "dur": 2.2,
+   "move": "hold",
+   "text": "Kurz vor Neujahr verbietet er sie.",
+   "start": 154.855
+  },
+  {
+   "n": 37,
+   "akt": "E London",
+   "shot": "S041b",
+   "dur": 4.802,
+   "move": "pan_r",
+   "text": "London protestiert. Händler, Kaufleute, sogar Leute vom Hof.",
+   "start": 157.054
+  },
+  {
+   "n": 38,
+   "akt": "E London",
+   "shot": "S042",
+   "dur": 6.302,
+   "move": "hold",
+   "text": "Nach zehn Tagen nimmt der König das Verbot zurück. Noch bevor es überhaupt gilt.",
+   "start": 161.856
+  },
+  {
+   "n": 39,
+   "akt": "F Preussen",
+   "shot": "S043",
+   "dur": 10.233,
+   "move": "push",
+   "text": "Und damit zurück nach Preußen. Kaffee ist hier längst Alltag. Schon Friedrichs Vater hatte ihn zum Luxusgut erklärt, was ihn natürlich nur noch begehrter machte.",
+   "start": 168.158
+  },
+  {
+   "n": 40,
+   "akt": "F Preussen",
+   "shot": "D03",
+   "dur": 8.702,
+   "move": "pan_l",
+   "text": "Im benachbarten Leipzig führt Bach um siebzehnhundertvierunddreißig im Kaffeehaus eine Kantate auf. Ihr Thema: ein Kaffeeverbot.",
+   "start": 178.391
+  },
+  {
+   "n": 41,
+   "akt": "F Preussen",
+   "shot": "D07",
+   "dur": 10.415,
+   "move": "push",
+   "text": "Ein Vater namens Schlendrian will seiner Tochter Lieschen den Kaffee verbieten. Er droht mit allem: keine neuen Kleider, keine Spaziergänge, kein Fenster zur Straße.",
+   "start": 187.093
+  },
+  {
+   "n": 42,
+   "akt": "F Preussen",
+   "shot": "D07",
+   "dur": 7.858,
+   "move": "hold",
+   "text": "Lieschen bleibt gelassen. Ohne ihre drei Schalen Kaffee am Tag, singt sie, würde sie vertrocknen wie ein Ziegenbraten.",
+   "start": 197.507
+  },
+  {
+   "n": 43,
+   "akt": "F Preussen",
+   "shot": "D08",
+   "dur": 9.811,
+   "move": "pan_r",
+   "text": "Erst als der Vater ihr einen Ehemann verspricht, gibt sie nach. Heimlich aber lässt sie ausrichten: Heiraten wird sie nur einen Mann, der ihr den Kaffee erlaubt.",
+   "start": 205.366
+  },
+  {
+   "n": 44,
+   "akt": "F Preussen",
+   "shot": "D08",
+   "dur": 3.229,
+   "move": "push",
+   "text": "Ein Kaffeeverbot, das schon im Lied scheitert.",
+   "start": 215.176
+  },
+  {
+   "n": 45,
+   "akt": "F Preussen",
+   "shot": "S044b",
+   "dur": 8.401,
+   "move": "pan_r",
+   "text": "Nach dem Siebenjährigen Krieg ist die Staatskasse leer. Und Friedrich der Große sieht vor allem eines: Geld, das ins Ausland fließt.",
+   "start": 218.405
+  },
+  {
+   "n": 46,
+   "akt": "F Preussen",
+   "shot": "S044",
+   "dur": 3.481,
+   "move": "push",
+   "text": "Nach seiner Rechnung: Hunderttausende Taler im Jahr.",
+   "start": 226.806
+  },
+  {
+   "n": 47,
+   "akt": "F Preussen",
+   "shot": "S045b",
+   "dur": 8.034,
+   "move": "pan_l",
+   "text": "Siebzehnhundertsiebenundsiebzig empfiehlt er seinen Untertanen: Trinkt Bier. Er selbst sei schließlich mit Biersuppe groß geworden.",
+   "start": 230.288
+  },
+  {
+   "n": 48,
+   "akt": "F Preussen",
+   "shot": "S045",
+   "dur": 2.426,
+   "move": "hold",
+   "text": "Die Untertanen sehen das anders.",
+   "start": 238.322
+  },
+  {
+   "n": 49,
+   "akt": "F Preussen",
+   "shot": "S045d",
+   "dur": 4.1,
+   "move": "pan_r",
+   "text": "Bier wird schließlich im eigenen Land gebraut. Und bringt Steuern.",
+   "start": 240.748
+  },
+  {
+   "n": 50,
+   "akt": "F Preussen",
+   "shot": "S046",
+   "dur": 9.846,
+   "move": "pan_r",
+   "text": "Siebzehnhunderteinundachtzig wird das Rösten Staatssache. Gebrannt werden darf nur noch in königlichen Röstereien. Wer privat röstet, macht sich strafbar.",
+   "start": 244.848
+  },
+  {
+   "n": 51,
+   "akt": "F Preussen",
+   "shot": "D06",
+   "dur": 12.967,
+   "move": "pan_l",
+   "text": "Jetzt schlägt die Stunde der Kaffeeriecher. Ausgediente Soldaten ziehen durch die Gassen. Wer beim heimlichen Kaffeeklatsch erwischt wird, zahlt eine saftige Strafe.",
+   "start": 254.695
+  },
+  {
+   "n": 52,
+   "akt": "F Preussen",
+   "shot": "D06",
+   "dur": 1.2,
+   "move": "push",
+   "text": "Die Kanne verschwindet dann eben unter dem Tisch.",
+   "start": 267.661
+  },
+  {
+   "n": 53,
+   "akt": "F Preussen",
+   "shot": "S003",
+   "dur": 8.657,
+   "move": "hold",
+   "text": "Preußen war damit nicht einmal allein. Auch in Hessen-Kassel gingen Kaffeeriecher auf Streife.",
+   "start": 268.861
+  },
+  {
+   "n": 54,
+   "akt": "F Preussen",
+   "shot": "D09",
+   "dur": 6.717,
+   "move": "pan_r",
+   "text": "Und viele steigen um: auf geröstete Zichorienwurzel. Man nennt das Getränk Preußenkaffee. Oder, wegen der blauen Blüten der Wegwarte, Blümchenkaffee.",
+   "start": 277.518
+  },
+  {
+   "n": 55,
+   "akt": "F Preussen",
+   "shot": "D10",
+   "dur": 11.984,
+   "move": "pan_l",
+   "text": "In Braunschweig entsteht schon siebzehnhundertsiebzig eine der ersten Zichorienfabriken. Bald folgen viele weitere. Später findet der Volksmund ein eigenes Wort dafür: Muckefuck.",
+   "start": 284.235
+  },
+  {
+   "n": 56,
+   "akt": "F Preussen",
+   "shot": "S048b",
+   "dur": 5.998,
+   "move": "push",
+   "text": "Siebzehnhundertsechsundachtzig stirbt Friedrich. Seine Kaffeeriecher überleben ihn nicht lange.",
+   "start": 296.219
+  },
+  {
+   "n": 57,
+   "akt": "G Schweden",
+   "shot": "S049",
+   "dur": 4.619,
+   "move": "pan_l",
+   "text": "Den Rekord hält Schweden. Fünf Verbote in knapp siebzig Jahren.",
+   "start": 302.217
+  },
+  {
+   "n": 58,
+   "akt": "G Schweden",
+   "shot": "S051",
+   "dur": 3.368,
+   "move": "push",
+   "text": "Manche Schweden trugen ihre Kaffeekannen sogar zu Grabe.",
+   "start": 306.836
+  },
+  {
+   "n": 59,
+   "akt": "G Schweden",
+   "shot": "S052d",
+   "dur": 11.115,
+   "move": "pan_r",
+   "text": "Und dann ist da König Gustav der Dritte. Er soll zwei verurteilte Zwillinge verschont haben, unter einer Bedingung. Der eine trinkt täglich Kaffee, der andere Tee.",
+   "start": 310.204
+  },
+  {
+   "n": 60,
+   "akt": "G Schweden",
+   "shot": "S053b",
+   "dur": 4.917,
+   "move": "pan_l",
+   "text": "Zuerst sterben die Ärzte. Dann der König. Die Zwillinge leben weiter.",
+   "start": 321.318
+  },
+  {
+   "n": 61,
+   "akt": "G Schweden",
+   "shot": "S054",
+   "dur": 3.058,
+   "move": "hold",
+   "text": "Ob es dieses Experiment je gab, ist sehr fraglich.",
+   "start": 326.236
+  },
+  {
+   "n": 62,
+   "akt": "G Schweden",
+   "shot": "S055b",
+   "dur": 4.471,
+   "move": "push",
+   "text": "Heute gehört Schweden zu den größten Kaffeetrinkern der Welt.",
+   "start": 329.294
+  },
+  {
+   "n": 63,
+   "akt": "H Wien",
+   "shot": "S056",
+   "dur": 1.2,
+   "move": "hold",
+   "text": "Und Wien?",
+   "start": 333.764
+  },
+  {
+   "n": 64,
+   "akt": "H Wien",
+   "shot": "S056d",
+   "dur": 9.044,
+   "move": "pan_r",
+   "text": "Die Geschichte kennt hier jeder. Die Osmanen ziehen ab, lassen Säcke voller Bohnen zurück, und der Kundschafter Kolschitzky eröffnet das erste Kaffeehaus.",
+   "start": 334.964
+  },
+  {
+   "n": 65,
+   "akt": "H Wien",
+   "shot": "S057",
+   "dur": 3.695,
+   "move": "hold",
+   "text": "Aufgeschrieben wurde das allerdings erst rund hundert Jahre später.",
+   "start": 344.008
+  },
+  {
+   "n": 66,
+   "akt": "H Wien",
+   "shot": "S058",
+   "dur": 6.27,
+   "move": "push",
+   "text": "Die erste belegte Erlaubnis bekommt sechzehnhundertfünfundachtzig der armenische Händler Johannes Diodato.",
+   "start": 347.703
+  },
+  {
+   "n": 67,
+   "akt": "H Wien",
+   "shot": "D04",
+   "dur": 6.428,
+   "move": "pan_l",
+   "text": "Heute ist die Wiener Kaffeehauskultur immaterielles Kulturerbe. Ein Verbot hätte da wenig Chancen.",
+   "start": 353.973
+  },
+  {
+   "n": 68,
+   "akt": "H2 DDR",
+   "shot": "D11",
+   "dur": 9.645,
+   "move": "pan_r",
+   "text": "Und wer glaubt, das alles sei lange her: Neunzehnhundertsiebenundsiebzig, DDR. Der Weltmarktpreis für Kaffee explodiert, und dem Staat fehlen die Devisen.",
+   "start": 360.401
+  },
+  {
+   "n": 69,
+   "akt": "H2 DDR",
+   "shot": "D12",
+   "dur": 10.871,
+   "move": "push",
+   "text": "Die Lösung des Politbüros heißt Kaffee-Mix. Nur einundfünfzig Prozent Kaffee. Der Rest: geröstete Erbsen, Roggen, Gerste, Zichorie und Zuckerrübe.",
+   "start": 370.046
+  },
+  {
+   "n": 70,
+   "akt": "H2 DDR",
+   "shot": "D11",
+   "dur": 3.173,
+   "move": "hold",
+   "text": "Der Volksmund tauft ihn: Erichs Krönung.",
+   "start": 380.917
+  },
+  {
+   "n": 71,
+   "akt": "H2 DDR",
+   "shot": "D13",
+   "dur": 5.48,
+   "move": "pan_l",
+   "text": "Tausende Beschwerdebriefe gehen ein. Und vor allem: Die Leute kaufen das Zeug einfach nicht.",
+   "start": 384.09
+  },
+  {
+   "n": 72,
+   "akt": "H2 DDR",
+   "shot": "D14",
+   "dur": 4.778,
+   "move": "pan_r",
+   "text": "Die Regierung hatte ohnehin gehofft, dass viele ihren Kaffee aus dem Westpaket bekommen.",
+   "start": 389.57
+  },
+  {
+   "n": 73,
+   "akt": "H2 DDR",
+   "shot": "D13",
+   "dur": 5.988,
+   "move": "push",
+   "text": "Anfang neunzehnhundertachtundsiebzig wird die Produktion eingestellt. Wieder hat der Tisch gewonnen.",
+   "start": 394.347
+  },
+  {
+   "n": 74,
+   "akt": "I Schluss",
+   "shot": "S059",
+   "dur": 8.885,
+   "move": "pan_r",
+   "text": "Mekka, Istanbul, London, Preußen, die DDR. Es ging um Versammlungen, um Aufstände, um Gerede, um Geld. Und um Devisen.",
+   "start": 400.335
+  },
+  {
+   "n": 75,
+   "akt": "I Schluss",
+   "shot": "S059f",
+   "dur": 1.566,
+   "move": "push",
+   "text": "Um das Getränk ging es so gut wie nie.",
+   "start": 409.22
+  },
+  {
+   "n": 76,
+   "akt": "I Schluss",
+   "shot": "S060",
+   "dur": 9.474,
+   "move": "pan_l",
+   "text": "Kaffee hat Menschen an einen Tisch gebracht, sie reden lassen und wach gehalten. Das war sein eigentliches Vergehen.",
+   "start": 410.786
+  },
+  {
+   "n": 77,
+   "akt": "I Schluss",
+   "shot": "S061",
+   "dur": 6.507,
+   "move": "push",
+   "text": "Friedrich wollte übrigens, dass seine Untertanen Bier trinken. Heute trinkt Deutschland mehr Kaffee als Bier.",
+   "start": 420.26
+  },
+  {
+   "n": 78,
+   "akt": "I Schluss",
+   "shot": "S061d",
+   "dur": 3.02,
+   "move": "hold",
+   "text": "Hat also nicht ganz geklappt.",
+   "start": 426.767
+  }
+ ]
+}

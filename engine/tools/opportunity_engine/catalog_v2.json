@@ -1,0 +1,573 @@
+{
+  "version": 2,
+  "languages": {
+    "tr": "Türkçe",
+    "de": "Almanca",
+    "en": "İngilizce",
+    "nl": "Hollandaca",
+    "pl": "Lehçe",
+    "cs": "Çekçe",
+    "ro": "Romence",
+    "sv": "İsveççe",
+    "no": "Norveççe",
+    "da": "Danca",
+    "fi": "Fince",
+    "fr": "Fransızca",
+    "it": "İtalyanca",
+    "es": "İspanyolca",
+    "pt": "Portekizce",
+    "ja": "Japonca",
+    "ko": "Korece",
+    "hi": "Hintçe",
+    "bn": "Bengalce",
+    "id": "Endonezce",
+    "vi": "Vietnamca",
+    "ar": "Arapça",
+    "hu": "Macarca"
+  },
+  "markets": [
+    {
+      "id": "tr",
+      "region": "TR",
+      "language": "tr",
+      "label": "Türkiye (Türkçe)"
+    },
+    {
+      "id": "de",
+      "region": "DE",
+      "language": "de",
+      "label": "Almanya (Almanca)"
+    },
+    {
+      "id": "en",
+      "region": "US",
+      "language": "en",
+      "label": "ABD (İngilizce)"
+    },
+    {
+      "id": "at-de",
+      "region": "AT",
+      "language": "de",
+      "label": "Avusturya (Almanca)"
+    },
+    {
+      "id": "ch-de",
+      "region": "CH",
+      "language": "de",
+      "label": "İsviçre (Almanca)"
+    },
+    {
+      "id": "gb-en",
+      "region": "GB",
+      "language": "en",
+      "label": "Birleşik Krallık (İngilizce)"
+    },
+    {
+      "id": "ca-en",
+      "region": "CA",
+      "language": "en",
+      "label": "Kanada (İngilizce)"
+    },
+    {
+      "id": "au-en",
+      "region": "AU",
+      "language": "en",
+      "label": "Avustralya (İngilizce)"
+    },
+    {
+      "id": "nl",
+      "region": "NL",
+      "language": "nl",
+      "label": "Hollanda (Hollandaca)"
+    },
+    {
+      "id": "be-nl",
+      "region": "BE",
+      "language": "nl",
+      "label": "Belçika (Hollandaca)"
+    },
+    {
+      "id": "pl",
+      "region": "PL",
+      "language": "pl",
+      "label": "Polonya (Lehçe)"
+    },
+    {
+      "id": "cs",
+      "region": "CZ",
+      "language": "cs",
+      "label": "Çekya (Çekçe)"
+    },
+    {
+      "id": "ro",
+      "region": "RO",
+      "language": "ro",
+      "label": "Romanya (Romence)"
+    },
+    {
+      "id": "sv",
+      "region": "SE",
+      "language": "sv",
+      "label": "İsveç (İsveççe)"
+    },
+    {
+      "id": "no",
+      "region": "NO",
+      "language": "no",
+      "label": "Norveç (Norveççe)"
+    },
+    {
+      "id": "da",
+      "region": "DK",
+      "language": "da",
+      "label": "Danimarka (Danca)"
+    },
+    {
+      "id": "fi",
+      "region": "FI",
+      "language": "fi",
+      "label": "Finlandiya (Fince)"
+    },
+    {
+      "id": "fr",
+      "region": "FR",
+      "language": "fr",
+      "label": "Fransa (Fransızca)"
+    },
+    {
+      "id": "ca-fr",
+      "region": "CA",
+      "language": "fr",
+      "label": "Kanada (Fransızca)"
+    },
+    {
+      "id": "it",
+      "region": "IT",
+      "language": "it",
+      "label": "İtalya (İtalyanca)"
+    },
+    {
+      "id": "es",
+      "region": "ES",
+      "language": "es",
+      "label": "İspanya (İspanyolca)"
+    },
+    {
+      "id": "mx-es",
+      "region": "MX",
+      "language": "es",
+      "label": "Meksika (İspanyolca)"
+    },
+    {
+      "id": "ar-es",
+      "region": "AR",
+      "language": "es",
+      "label": "Arjantin (İspanyolca)"
+    },
+    {
+      "id": "pt",
+      "region": "PT",
+      "language": "pt",
+      "label": "Portekiz (Portekizce)"
+    },
+    {
+      "id": "br-pt",
+      "region": "BR",
+      "language": "pt",
+      "label": "Brezilya (Portekizce)"
+    },
+    {
+      "id": "ja",
+      "region": "JP",
+      "language": "ja",
+      "label": "Japonya (Japonca)"
+    },
+    {
+      "id": "ko",
+      "region": "KR",
+      "language": "ko",
+      "label": "Güney Kore (Korece)"
+    },
+    {
+      "id": "hi",
+      "region": "IN",
+      "language": "hi",
+      "label": "Hindistan (Hintçe)"
+    },
+    {
+      "id": "bn",
+      "region": "BD",
+      "language": "bn",
+      "label": "Bangladeş (Bengalce)"
+    },
+    {
+      "id": "in-bn",
+      "region": "IN",
+      "language": "bn",
+      "label": "Hindistan (Bengalce)"
+    },
+    {
+      "id": "id",
+      "region": "ID",
+      "language": "id",
+      "label": "Endonezya (Endonezce)"
+    },
+    {
+      "id": "vi",
+      "region": "VN",
+      "language": "vi",
+      "label": "Vietnam (Vietnamca)"
+    },
+    {
+      "id": "ar",
+      "region": "SA",
+      "language": "ar",
+      "label": "Suudi Arabistan (Arapça)"
+    },
+    {
+      "id": "eg-ar",
+      "region": "EG",
+      "language": "ar",
+      "label": "Mısır (Arapça)"
+    },
+    {
+      "id": "ae-ar",
+      "region": "AE",
+      "language": "ar",
+      "label": "BAE (Arapça)"
+    },
+    {
+      "id": "hu",
+      "region": "HU",
+      "language": "hu",
+      "label": "Macaristan (Macarca)"
+    }
+  ],
+  "categories": [
+    {
+      "id": "history",
+      "label": "Tuhaf tarih",
+      "queries": {
+        "tr": "tarihin en tuhaf olayları",
+        "de": "kuriose Ereignisse der Geschichte",
+        "en": "strange true stories from history",
+        "nl": "vreemde gebeurtenissen uit de geschiedenis",
+        "pl": "najdziwniejsze wydarzenia w historii",
+        "cs": "podivné události z historie",
+        "ro": "întâmplări ciudate din istorie",
+        "sv": "märkliga händelser i historien",
+        "no": "merkelige hendelser i historien",
+        "da": "mærkelige begivenheder i historien",
+        "fi": "historian oudoimmat tapahtumat",
+        "fr": "événements insolites de l'histoire",
+        "it": "eventi strani della storia",
+        "es": "sucesos extraños de la historia",
+        "pt": "acontecimentos estranhos da história",
+        "ja": "歴史上の奇妙な出来事",
+        "ko": "역사 속 기묘한 사건",
+        "hi": "इतिहास की अजीब घटनाएं",
+        "bn": "ইতিহাসের অদ্ভুত ঘটনা",
+        "id": "peristiwa aneh dalam sejarah",
+        "vi": "những sự kiện kỳ lạ trong lịch sử",
+        "ar": "أغرب أحداث التاريخ",
+        "hu": "a történelem legfurcsább eseményei"
+      }
+    },
+    {
+      "id": "psychology",
+      "label": "Psikoloji",
+      "queries": {
+        "tr": "insan psikolojisi neden böyle davranıyoruz",
+        "de": "warum Menschen sich so verhalten Psychologie",
+        "en": "psychology behind everyday behavior",
+        "nl": "waarom mensen zich zo gedragen psychologie",
+        "pl": "psychologia codziennych zachowań",
+        "cs": "psychologie lidského chování",
+        "ro": "psihologia comportamentului uman",
+        "sv": "psykologi bakom människors beteende",
+        "no": "psykologi bak menneskelig atferd",
+        "da": "psykologi bag menneskers adfærd",
+        "fi": "ihmisen käyttäytymisen psykologia",
+        "fr": "psychologie du comportement humain",
+        "it": "psicologia del comportamento umano",
+        "es": "psicología del comportamiento humano",
+        "pt": "psicologia do comportamento humano",
+        "ja": "人間の行動の心理学",
+        "ko": "인간 행동의 심리학",
+        "hi": "इंसानी व्यवहार का मनोविज्ञान",
+        "bn": "মানুষের আচরণের মনোবিজ্ঞান",
+        "id": "psikologi perilaku manusia",
+        "vi": "tâm lý học hành vi con người",
+        "ar": "علم نفس السلوك البشري",
+        "hu": "az emberi viselkedés pszichológiája"
+      }
+    },
+    {
+      "id": "science",
+      "label": "Bilim",
+      "queries": {
+        "tr": "şaşırtıcı bilimsel keşifler",
+        "de": "verblüffende wissenschaftliche Entdeckungen",
+        "en": "surprising scientific discoveries explained",
+        "nl": "bijzondere wetenschappelijke ontdekkingen",
+        "pl": "zaskakujące odkrycia naukowe",
+        "cs": "překvapivé vědecké objevy",
+        "ro": "descoperiri științifice uimitoare",
+        "sv": "överraskande vetenskapliga upptäckter",
+        "no": "overraskende vitenskapelige oppdagelser",
+        "da": "overraskende videnskabelige opdagelser",
+        "fi": "yllättävät tieteelliset löydöt",
+        "fr": "découvertes scientifiques étonnantes",
+        "it": "scoperte scientifiche sorprendenti",
+        "es": "descubrimientos científicos sorprendentes",
+        "pt": "descobertas científicas surpreendentes",
+        "ja": "驚きの科学的発見",
+        "ko": "놀라운 과학적 발견",
+        "hi": "हैरान करने वाली वैज्ञानिक खोजें",
+        "bn": "অবাক করা বৈজ্ঞানিক আবিষ্কার",
+        "id": "penemuan ilmiah yang mengejutkan",
+        "vi": "những khám phá khoa học bất ngờ",
+        "ar": "اكتشافات علمية مذهلة",
+        "hu": "meglepő tudományos felfedezések"
+      }
+    },
+    {
+      "id": "events",
+      "label": "Gerçek olaylar",
+      "queries": {
+        "tr": "gerçekten yaşanmış ilginç olaylar",
+        "de": "unglaubliche wahre Geschichten",
+        "en": "incredible true events you never heard of",
+        "nl": "ongelooflijke waargebeurde verhalen",
+        "pl": "niezwykłe prawdziwe historie",
+        "cs": "neuvěřitelné skutečné příběhy",
+        "ro": "povești adevărate incredibile",
+        "sv": "otroliga sanna berättelser",
+        "no": "utrolige sanne historier",
+        "da": "utrolige sande historier",
+        "fi": "uskomattomia tositarinoita",
+        "fr": "histoires vraies incroyables",
+        "it": "storie vere incredibili",
+        "es": "historias reales increíbles",
+        "pt": "histórias reais incríveis",
+        "ja": "実際に起きた不思議な事件",
+        "ko": "실제로 일어난 신기한 이야기",
+        "hi": "अविश्वसनीय सच्ची घटनाएं",
+        "bn": "অবিশ্বাস্য সত্য ঘটনা",
+        "id": "kisah nyata yang luar biasa",
+        "vi": "những câu chuyện có thật khó tin",
+        "ar": "قصص حقيقية لا تصدق",
+        "hu": "hihetetlen igaz történetek"
+      }
+    },
+    {
+      "id": "inventions",
+      "label": "İcatlar",
+      "queries": {
+        "tr": "dünyayı değiştiren icatların hikayesi",
+        "de": "die Geschichte bahnbrechender Erfindungen",
+        "en": "the stories behind world changing inventions",
+        "nl": "het verhaal achter beroemde uitvindingen",
+        "pl": "historia przełomowych wynalazków",
+        "cs": "příběhy slavných vynálezů",
+        "ro": "povestea marilor invenții",
+        "sv": "historien bakom stora uppfinningar",
+        "no": "historien bak store oppfinnelser",
+        "da": "historien bag store opfindelser",
+        "fi": "suurten keksintöjen historia",
+        "fr": "l'histoire des grandes inventions",
+        "it": "la storia delle grandi invenzioni",
+        "es": "la historia de los grandes inventos",
+        "pt": "a história das grandes invenções",
+        "ja": "世界を変えた発明の歴史",
+        "ko": "세상을 바꾼 발명 이야기",
+        "hi": "दुनिया बदलने वाले आविष्कारों की कहानी",
+        "bn": "দুনিয়া বদলে দেওয়া আবিষ্কারের ইতিহাস",
+        "id": "sejarah penemuan yang mengubah dunia",
+        "vi": "lịch sử các phát minh thay đổi thế giới",
+        "ar": "قصة اختراعات غيرت العالم",
+        "hu": "világot megváltoztató találmányok története"
+      }
+    },
+    {
+      "id": "everyday",
+      "label": "Gündelik hayat",
+      "queries": {
+        "tr": "gündelik eşyaların bilinmeyen tarihi",
+        "de": "Geschichte alltäglicher Gegenstände",
+        "en": "hidden history of everyday objects",
+        "nl": "geschiedenis van alledaagse voorwerpen",
+        "pl": "historia codziennych przedmiotów",
+        "cs": "historie každodenních předmětů",
+        "ro": "istoria obiectelor de zi cu zi",
+        "sv": "vardagsföremålens historia",
+        "no": "hverdagstingens historie",
+        "da": "historien bag hverdagsting",
+        "fi": "arkisten esineiden historia",
+        "fr": "histoire des objets du quotidien",
+        "it": "storia degli oggetti quotidiani",
+        "es": "historia de los objetos cotidianos",
+        "pt": "história dos objetos do dia a dia",
+        "ja": "身近な物の意外な歴史",
+        "ko": "일상용품의 숨겨진 역사",
+        "hi": "रोजमर्रा की चीजों का इतिहास",
+        "bn": "দৈনন্দিন জিনিসের অজানা ইতিহাস",
+        "id": "sejarah benda sehari hari",
+        "vi": "lịch sử những đồ vật hằng ngày",
+        "ar": "تاريخ الأشياء التي نستخدمها يوميا",
+        "hu": "hétköznapi tárgyak története"
+      }
+    },
+    {
+      "id": "culture",
+      "label": "Kültür ve gelenekler",
+      "queries": {
+        "tr": "dünyanın ilginç gelenekleri",
+        "de": "ungewöhnliche Bräuche weltweit",
+        "en": "unusual traditions around the world",
+        "nl": "bijzondere tradities wereldwijd",
+        "pl": "niezwykłe tradycje świata",
+        "cs": "neobvyklé tradice světa",
+        "ro": "tradiții neobișnuite din lume",
+        "sv": "ovanliga traditioner i världen",
+        "no": "uvanlige tradisjoner i verden",
+        "da": "usædvanlige traditioner i verden",
+        "fi": "maailman erikoiset perinteet",
+        "fr": "traditions insolites dans le monde",
+        "it": "tradizioni insolite nel mondo",
+        "es": "tradiciones curiosas del mundo",
+        "pt": "tradições curiosas pelo mundo",
+        "ja": "世界の珍しい風習",
+        "ko": "세계의 독특한 풍습",
+        "hi": "दुनिया की अनोखी परंपराएं",
+        "bn": "বিশ্বের অদ্ভুত রীতিনীতি",
+        "id": "tradisi unik di dunia",
+        "vi": "phong tục độc đáo trên thế giới",
+        "ar": "عادات وتقاليد غريبة حول العالم",
+        "hu": "különleges hagyományok a világban"
+      }
+    },
+    {
+      "id": "mystery",
+      "label": "Gizemler",
+      "queries": {
+        "tr": "çözülememiş tarihi gizemler",
+        "de": "ungelöste historische Rätsel",
+        "en": "unsolved historical mysteries explained",
+        "nl": "onopgeloste historische mysteries",
+        "pl": "nierozwiązane zagadki historii",
+        "cs": "nevyřešené záhady historie",
+        "ro": "mistere istorice nerezolvate",
+        "sv": "olösta historiska mysterier",
+        "no": "uløste historiske mysterier",
+        "da": "uløste historiske mysterier",
+        "fi": "ratkaisemattomat historialliset mysteerit",
+        "fr": "mystères historiques non résolus",
+        "it": "misteri storici irrisolti",
+        "es": "misterios históricos sin resolver",
+        "pt": "mistérios históricos sem solução",
+        "ja": "未解決の歴史ミステリー",
+        "ko": "풀리지 않은 역사 미스터리",
+        "hi": "इतिहास के अनसुलझे रहस्य",
+        "bn": "ইতিহাসের অমীমাংসিত রহস্য",
+        "id": "misteri sejarah yang belum terpecahkan",
+        "vi": "bí ẩn lịch sử chưa có lời giải",
+        "ar": "ألغاز تاريخية لم تحل",
+        "hu": "megoldatlan történelmi rejtélyek"
+      }
+    },
+    {
+      "id": "technology",
+      "label": "Teknoloji",
+      "queries": {
+        "tr": "teknoloji nasıl çalışır",
+        "de": "wie funktioniert moderne Technik",
+        "en": "how everyday technology works",
+        "nl": "hoe technologie werkt",
+        "pl": "jak działa technologia",
+        "cs": "jak funguje technologie",
+        "ro": "cum funcționează tehnologia",
+        "sv": "hur teknik fungerar",
+        "no": "hvordan teknologi fungerer",
+        "da": "hvordan teknologi virker",
+        "fi": "miten teknologia toimii",
+        "fr": "comment fonctionne la technologie",
+        "it": "come funziona la tecnologia",
+        "es": "cómo funciona la tecnología",
+        "pt": "como funciona a tecnologia",
+        "ja": "身近な技術の仕組み",
+        "ko": "기술의 작동 원리",
+        "hi": "तकनीक कैसे काम करती है",
+        "bn": "প্রযুক্তি কীভাবে কাজ করে",
+        "id": "cara kerja teknologi",
+        "vi": "công nghệ hoạt động như thế nào",
+        "ar": "كيف تعمل التكنولوجيا",
+        "hu": "hogyan működik a technológia"
+      }
+    },
+    {
+      "id": "economics",
+      "label": "Ekonomi",
+      "queries": {
+        "tr": "ekonomide yaşanmış ilginç olaylar",
+        "de": "kuriose Geschichten aus der Wirtschaft",
+        "en": "strange stories from economic history",
+        "nl": "opmerkelijke economische geschiedenis",
+        "pl": "ciekawostki z historii gospodarki",
+        "cs": "zajímavosti z dějin ekonomiky",
+        "ro": "curiozități din istoria economiei",
+        "sv": "märkliga ekonomiska händelser",
+        "no": "rare hendelser i økonomisk historie",
+        "da": "mærkelige begivenheder i økonomisk historie",
+        "fi": "taloushistorian oudot tapahtumat",
+        "fr": "histoires insolites de l'économie",
+        "it": "curiosità di storia economica",
+        "es": "curiosidades de la historia económica",
+        "pt": "curiosidades da história econômica",
+        "ja": "経済史の意外な事件",
+        "ko": "경제사의 흥미로운 사건",
+        "hi": "आर्थिक इतिहास की अनोखी घटनाएं",
+        "bn": "অর্থনীতির ইতিহাসের অদ্ভুত ঘটনা",
+        "id": "kisah unik sejarah ekonomi",
+        "vi": "những chuyện thú vị trong lịch sử kinh tế",
+        "ar": "قصص غريبة من تاريخ الاقتصاد",
+        "hu": "érdekes gazdaságtörténeti események"
+      }
+    },
+    {
+      "id": "facts",
+      "label": "İlginç bilgiler",
+      "queries": {
+        "tr": "az bilinen şaşırtıcı gerçekler",
+        "de": "verblüffende Fakten die kaum jemand kennt",
+        "en": "surprising facts you probably didn't know",
+        "nl": "verrassende weetjes",
+        "pl": "zaskakujące ciekawostki",
+        "cs": "zajímavosti které jste nevěděli",
+        "ro": "curiozități mai puțin cunoscute",
+        "sv": "fascinerande fakta",
+        "no": "fascinerende fakta",
+        "da": "overraskende fakta",
+        "fi": "yllättäviä faktoja",
+        "fr": "faits étonnants méconnus",
+        "it": "curiosità che pochi conoscono",
+        "es": "datos curiosos que no sabías",
+        "pt": "curiosidades que você não sabia",
+        "ja": "知られざる雑学",
+        "ko": "잘 알려지지 않은 흥미로운 사실",
+        "hi": "रोचक तथ्य जो आप नहीं जानते",
+        "bn": "অজানা মজার তথ্য",
+        "id": "fakta menarik yang jarang diketahui",
+        "vi": "sự thật thú vị ít người biết",
+        "ar": "حقائق مدهشة لا يعرفها الكثيرون",
+        "hu": "meglepő kevéssé ismert tények"
+      }
+    }
+  ],
+  "view_targets": [
+    10000,
+    100000,
+    1000000,
+    10000000
+  ]
+}

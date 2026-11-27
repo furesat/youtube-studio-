@@ -1,0 +1,654 @@
+{
+  "as_of": "2026-11-27",
+  "method": "Third-party country reference points; illustrative low/high sensitivity; no YouTube Data API inputs",
+  "rows": [
+    {
+      "market_id": "tr",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.55,
+      "base": 1.1,
+      "high": 1.65,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "tr",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.012,
+      "base": 0.024,
+      "high": 0.036,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "de",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.25,
+      "base": 6.5,
+      "high": 9.75,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "de",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0815,
+      "base": 0.163,
+      "high": 0.2445,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "en",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 4.5,
+      "base": 9,
+      "high": 13.5,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "en",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.164,
+      "base": 0.328,
+      "high": 0.492,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "at-de",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3,
+      "base": 6,
+      "high": 9,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "at-de",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0675,
+      "base": 0.135,
+      "high": 0.2025,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ch-de",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.5,
+      "base": 7,
+      "high": 10.5,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ch-de",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.1025,
+      "base": 0.205,
+      "high": 0.3075,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "gb-en",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.75,
+      "base": 7.5,
+      "high": 11.25,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "gb-en",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.083,
+      "base": 0.166,
+      "high": 0.249,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ca-en",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.5,
+      "base": 7,
+      "high": 10.5,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ca-en",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0825,
+      "base": 0.165,
+      "high": 0.2475,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "au-en",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 4,
+      "base": 8,
+      "high": 12,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "au-en",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0965,
+      "base": 0.193,
+      "high": 0.2895,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "nl",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3,
+      "base": 6,
+      "high": 9,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "nl",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.1,
+      "base": 0.2,
+      "high": 0.3,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "be-nl",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2.75,
+      "base": 5.5,
+      "high": 8.25,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "be-nl",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0915,
+      "base": 0.183,
+      "high": 0.2745,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "pl",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 1.1,
+      "base": 2.2,
+      "high": 3.3,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "pl",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0365,
+      "base": 0.073,
+      "high": 0.1095,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "cs",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 1,
+      "base": 2,
+      "high": 3,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "cs",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0335,
+      "base": 0.067,
+      "high": 0.1005,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ro",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.7,
+      "base": 1.4,
+      "high": 2.1,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ro",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0235,
+      "base": 0.047,
+      "high": 0.0705,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "sv",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.25,
+      "base": 6.5,
+      "high": 9.75,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "sv",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.1085,
+      "base": 0.217,
+      "high": 0.3255,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "no",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.4,
+      "base": 6.8,
+      "high": 10.2,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "no",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.1135,
+      "base": 0.227,
+      "high": 0.3405,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "da",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.15,
+      "base": 6.3,
+      "high": 9.45,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "da",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.105,
+      "base": 0.21,
+      "high": 0.315,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "fi",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2.9,
+      "base": 5.8,
+      "high": 8.7,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "fi",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0965,
+      "base": 0.193,
+      "high": 0.2895,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "fr",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2.25,
+      "base": 4.5,
+      "high": 6.75,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "fr",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.051,
+      "base": 0.102,
+      "high": 0.153,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ca-fr",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 3.5,
+      "base": 7,
+      "high": 10.5,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ca-fr",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0825,
+      "base": 0.165,
+      "high": 0.2475,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "it",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2,
+      "base": 4,
+      "high": 6,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "it",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0665,
+      "base": 0.133,
+      "high": 0.1995,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "es",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 1.75,
+      "base": 3.5,
+      "high": 5.25,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "es",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0585,
+      "base": 0.117,
+      "high": 0.1755,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "mx-es",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.55,
+      "base": 1.1,
+      "high": 1.65,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "mx-es",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.02,
+      "base": 0.04,
+      "high": 0.06,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ar-es",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.35,
+      "base": 0.7,
+      "high": 1.05,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ar-es",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0115,
+      "base": 0.023,
+      "high": 0.0345,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "pt",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 1.5,
+      "base": 3,
+      "high": 4.5,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "pt",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.05,
+      "base": 0.1,
+      "high": 0.15,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "br-pt",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.6,
+      "base": 1.2,
+      "high": 1.8,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "br-pt",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0225,
+      "base": 0.045,
+      "high": 0.0675,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ja",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2.4,
+      "base": 4.8,
+      "high": 7.2,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ja",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.072,
+      "base": 0.144,
+      "high": 0.216,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ko",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2,
+      "base": 4,
+      "high": 6,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ko",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0925,
+      "base": 0.185,
+      "high": 0.2775,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "hi",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.4,
+      "base": 0.8,
+      "high": 1.2,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "hi",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.004,
+      "base": 0.008,
+      "high": 0.012,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "bn",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.25,
+      "base": 0.5,
+      "high": 0.75,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "bn",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0085,
+      "base": 0.017,
+      "high": 0.0255,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "in-bn",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.4,
+      "base": 0.8,
+      "high": 1.2,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "in-bn",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.004,
+      "base": 0.008,
+      "high": 0.012,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "id",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.35,
+      "base": 0.7,
+      "high": 1.05,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "id",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.006,
+      "base": 0.012,
+      "high": 0.018,
+      "source": "AIR Media-Tech 2025 partner-country Shorts average, published January 2026, USD https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "vi",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.35,
+      "base": 0.7,
+      "high": 1.05,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "vi",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0115,
+      "base": 0.023,
+      "high": 0.0345,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ar",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2.25,
+      "base": 4.5,
+      "high": 6.75,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ar",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.075,
+      "base": 0.15,
+      "high": 0.225,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "eg-ar",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.25,
+      "base": 0.5,
+      "high": 0.75,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "eg-ar",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0085,
+      "base": 0.017,
+      "high": 0.0255,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ae-ar",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 2.75,
+      "base": 5.5,
+      "high": 8.25,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "ae-ar",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0915,
+      "base": 0.183,
+      "high": 0.2745,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "hu",
+      "format": "long_form",
+      "currency": "USD",
+      "low": 0.85,
+      "base": 1.7,
+      "high": 2.55,
+      "source": "RevenueLab public country benchmark (November 2026, directional estimate, USD) https://www.revenuelab.fyi/geo; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    },
+    {
+      "market_id": "hu",
+      "format": "shorts",
+      "currency": "USD",
+      "low": 0.0285,
+      "base": 0.057,
+      "high": 0.0855,
+      "source": "RevenueLab public modeled country Shorts estimate, USD https://www.revenuelab.fyi/youtube-shorts-revenue-by-country; low/high are Fasulye sensitivity assumptions (0.5x/1.5x), not measured bounds; country refers to hypothetical viewer geography, not query language. Not YouTube-approved or guaranteed."
+    }
+  ]
+}

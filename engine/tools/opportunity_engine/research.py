@@ -14,10 +14,11 @@ def count(value):
 
 
 def collect(client, pairs, search, now):
-    after = (now - timedelta(days=search["lookback_days"])).isoformat(timespec="seconds")
     before = now.isoformat(timespec="seconds")
     rows, hits = [], {}
     for topic, market, queries in pairs:
+        days = market.get("lookback_days", search["lookback_days"])
+        after = (now - timedelta(days=days)).isoformat(timespec="seconds")
         collected = []
         for query in queries:
             ids, pages, token, error = [], 0, None, None
@@ -38,17 +39,17 @@ def collect(client, pairs, search, now):
                 if not token:
                     break
             collected.append({
-                "query": query, "pages": pages, "has_more": None if error else bool(token),
+                "query": query, "order": market.get("search_order", "relevance"), "lookback_days": days, "pages": pages, "has_more": None if error else bool(token),
                 "error": error, "video_ids": list(dict.fromkeys(ids)),
             })
         rows.append((topic, market, collected))
 
     videos, video_errors = client.enrich(
-        "videos", hits, "statistics,contentDetails,snippet", "items(id,statistics(viewCount),contentDetails(duration),snippet(defaultLanguage,defaultAudioLanguage))"
+        "videos", hits, "statistics,contentDetails,snippet", "items(id,statistics(viewCount),contentDetails(duration),snippet(description,categoryId,defaultLanguage,defaultAudioLanguage))"
     )
     channels, channel_errors = client.enrich(
         "channels", (hit["channelId"] for hit in hits.values() if hit.get("channelId")),
-        "statistics", "items(id,statistics(subscriberCount,hiddenSubscriberCount))"
+        "statistics,snippet,contentDetails", "items(id,statistics(subscriberCount,hiddenSubscriberCount),snippet(publishedAt),contentDetails(relatedPlaylists/uploads))"
     )
 
     observations = {}
@@ -61,6 +62,10 @@ def collect(client, pairs, search, now):
             "published_at": snippet.get("publishedAt"),
             "channel_id": channel_id,
             "channel_title": snippet.get("channelTitle"),
+            "description": videos.get(video_id, {}).get("snippet", {}).get("description"),
+            "category_id": videos.get(video_id, {}).get("snippet", {}).get("categoryId"),
+            "channel_created_at": channels.get(channel_id, {}).get("snippet", {}).get("publishedAt"),
+            "uploads_playlist": channels.get(channel_id, {}).get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads"),
             "duration": videos.get(video_id, {}).get("contentDetails", {}).get("duration"),
             "default_language": videos.get(video_id, {}).get("snippet", {}).get("defaultLanguage"),
             "audio_language": videos.get(video_id, {}).get("snippet", {}).get("defaultAudioLanguage"),
@@ -86,7 +91,7 @@ def evidence(queries, observations):
         "known_subscriber_video_count": sum(video["subscribers"] is not None for video in videos)
         if has_sample else None,
         "known_view_video_count": len(views) if has_sample else None,
-        "sample_total_known_views": sum(views) if views else None,
+        "sample_total_known_views": None,  # no cross-channel view aggregation
         "video_ids": list(ids),
     }
 
@@ -135,7 +140,8 @@ def run(client, config, pairs, now, planned_max):
         rows.append({
             "topic_id": topic_id, "topic": topic["label"], "market_id": market_id,
             "market": market["label"], "region": market["region"], "language": market["language"],
-            "queries": queries, **evidence(queries, observations),
+            "queries": queries, "lookback_days": market.get("lookback_days", config["search"]["lookback_days"]),
+            "search_order": market.get("search_order", "relevance"), **evidence(queries, observations),
             "review": score(review, config["scoring"]),
         })
     rows.sort(key=lambda row: (

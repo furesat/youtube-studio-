@@ -32,13 +32,14 @@ def error_code(error):
 
 
 class YouTube:
-    def __init__(self, key, search_limit, detail_limit, opener=urlopen):
+    def __init__(self, key, search_limit, detail_limit, opener=urlopen, before_request=None):
         self.key = key
         self.limits = {"search": search_limit, "details": detail_limit}
         self.calls = Counter()
         self.successes = Counter()
         self.cache = {}
         self.opener = opener
+        self.before_request = before_request
         self.halted = None
 
     def request(self, endpoint, **parameters):
@@ -57,6 +58,8 @@ class YouTube:
         )
         self.calls[endpoint] += 1
         try:
+            if self.before_request is not None:
+                self.before_request()
             with self.opener(request, timeout=20) as response:
                 payload = json.load(response)
             if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):

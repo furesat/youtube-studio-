@@ -52,3 +52,6 @@ See NIGHT_SHIFT_PROGRESS.md for new security implementation, policy review, test
 
 ### V4 checkpoint 2
 Controlled campaign planning and provenance implemented behind an enqueue opt-in. Five isolated planner assertions passed; full tests/migration remain unverified. See progress file.
+
+### V4 checkpoint 3
+Atomic queue and standalone worker draft implemented. Prior two commits passed GitHub Actions. New SQL and worker behavior require isolated integration checks and owner-approved migration before activation.

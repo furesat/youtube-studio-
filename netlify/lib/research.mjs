@@ -103,6 +103,11 @@ export async function startResearch(input, fetcher = fetch) {
 
 export async function getRun(id, fetcher = fetch) {
   if (!ids.safeParse(id).success) throw new ResearchError(400, "Çalıştırma numarası geçersiz.");
+  if (/^9\d{15}$/.test(id)) {
+    const rows = await supabase("fasulye_runs", {select:"run_id,collected_at",run_id:"eq."+id,limit:"1"}, fetcher);
+    if (!rows.length) throw new ResearchError(404,"Yerel araştırma bulunamadı.");
+    return {id,status:"completed",conclusion:null,started_at:rows[0].collected_at,url:null,source:"standalone"};
+  }
   const response = await github(`/runs/${id}`, {}, fetcher);
   if (response.status === 404) throw new ResearchError(404, "Araştırma bulunamadı.");
   if (!response.ok) throw new ResearchError(502, "GitHub çalıştırma durumu okunamadı.");

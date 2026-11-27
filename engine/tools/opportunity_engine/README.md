@@ -204,3 +204,6 @@ The monthly calculator and MCP plan_monthly_production_economics use owner-enter
 
 ### Channel inspection
 Use an unexpired report's channel section or `inspect_channel_uploads` MCP tool (read-only). Filter by shared publication dates, duration group and declared language, sort raw observations, paginate. Current subscribers refer to collection, never publication. Duration does not establish Shorts classification. No separate permanent channel store. Start a new normal research explicitly to collect fresh samples; direct arbitrary-channel collection is not implemented. Browser clears expired visible reports on periodic check or returning to tab, and when logged out.
+
+### Browser smoke tests (isolated)
+From repository root: `python -m pip install playwright==1.51.0`, `python -m playwright install chromium` (Linux CI uses `--with-deps`), then `python web/tests/browser_smoke.py`. Real Chromium renders the actual local UI; all API responses are deterministic fixture data, and unexpected external requests fail the tests. This is not a production end-to-end verification.

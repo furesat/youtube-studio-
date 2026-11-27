@@ -80,3 +80,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 15c: channel inspection dashboard
 - Added date, channel, language, duration and raw-view sort filters; visible collection and expiry dates, incomplete sample warning, report clearing on expiry and logout. New research remains an explicit owner action, no background refresh or extra quota. Existing bounded max-two-channel sample retained. Arbitrary channel-ID collection not implemented. Browser tests next; CI pending.
+
+## Checkpoint 16: browser smoke harness
+- Added a separate GitHub Actions Chromium/Playwright job with pinned Python dependency, local static HTTP server and intercepted fixture APIs only. Tests exercise login, actual report rendering, local channel filter without network, expired-report rejection, logout, mobile keyboard navigation and horizontal overflow. No production credentials, real external data or live service calls. CI results pending.

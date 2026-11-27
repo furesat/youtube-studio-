@@ -13,7 +13,7 @@ export const batchSchema = z.strictObject({
   countries: z.array(z.string().regex(/^[A-Z]{2}$/)).max(36).optional(),
   languages: z.array(z.enum(Object.keys(catalog.languages))).max(23).optional(),
   categories: z.array(z.enum(categoryIds)).max(categoryIds.length).optional(),
-  topics: z.array(z.strictObject({topic:phrase,queries:z.record(z.enum(Object.keys(catalog.languages)),phrase)})).max(500).optional(),
+  topics: z.array(z.strictObject({topic:phrase,queries:z.partialRecord(z.enum(Object.keys(catalog.languages)),phrase)})).max(500).optional(),
 });
 export function planBatch(input) {
   const parsed = batchSchema.safeParse(input);

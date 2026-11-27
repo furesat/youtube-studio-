@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fasulye · Fırsat araştırması</title>
+  <style>
+    :root { color-scheme: light; --ink: #24221e; --muted: #5f584e; --paper: #f7f1e6; --line: #d9cfc0; --red: #a13427; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 1rem/1.55 system-ui, sans-serif; }
+    header, main, footer { width: min(90rem, calc(100% - 2rem)); margin: auto; }
+    header { padding: clamp(2rem, 6vw, 5rem) 0 1.6rem; border-bottom: 2px solid var(--ink); }
+    h1, h2 { font-family: Georgia, serif; line-height: 1.12; letter-spacing: -.035em; }
+    h1 { margin: 0 0 .6rem; font-size: clamp(2.6rem, 6vw, 5.5rem); }
+    h1 span { color: var(--red); }
+    h2 { font-size: clamp(1.65rem, 3.5vw, 2.35rem); margin: 0 0 .55rem; }
+    p { margin: .45rem 0; }
+    section { margin: 2rem 0; }
+    section > p, .muted, footer { color: var(--muted); }
+    .filters, nav { display: flex; flex-wrap: wrap; gap: .7rem 1.3rem; align-items: center; }
+    .filters { padding: 1rem 0; border-bottom: 1px solid var(--line); }
+    label { font-weight: 650; }
+    select { font: inherit; max-width: min(100%, 24rem); margin-left: .35rem; padding: .35rem; background: #fffaf3; border: 1px solid #847668; border-radius: .25rem; }
+    .scroll { overflow-x: auto; margin-top: .85rem; border: 1px solid var(--line); border-radius: .45rem; background: #fffaf3; }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th, td { padding: .65rem .8rem; text-align: start; border-bottom: 1px solid var(--line); vertical-align: top; }
+    th { background: #ede3d3; font-size: .875rem; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    a, summary { color: var(--red); }
+    summary { cursor: pointer; }
+    details p { min-width: 16rem; }
+    footer { padding: 1rem 0 2.5rem; border-top: 1px solid var(--line); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1><span>Fasulye</span> Fırsat araştırması</h1>
+    <p id="run-info" class="muted"></p>
+    <nav aria-label="Rapor dosyaları">
+      <a href="opportunities.csv" download>Konu ve pazar CSV</a>
+      <a href="videos.csv" download>Videolar CSV</a>
+      <a href="revenue.csv" download>Gelir CSV</a>
+      <a href="report.json" download>JSON</a>
+    </nav>
+  </header>
+  <main>
+    <div class="filters">
+      <label for="market">Pazar <select id="market"><option value="">Tümü</option></select></label>
+      <label for="topic">Konu <select id="topic"><option value="">Tümü</option></select></label>
+      <span id="matches" class="muted" role="status"></span>
+    </div>
+    <noscript>Filtreli tablo için JavaScript gerekir. Rapor dosyalarını yukarıdaki bağlantılardan açabilirsiniz.</noscript>
+    <section aria-labelledby="observations-title">
+      <h2 id="observations-title">YouTube arama gözlemleri</h2>
+      <p>Talep göstergesi örnekteki bilinen toplam video izlenmesidir. Rekabeti incelerken bulunan videolara, farklı kanallara ve herkese açık abone sayılarına bakın. Arama hacmi ve izleyici ülkesi bu örnekten ölçülemez.</p>
+      <p id="api-errors" role="status"></p>
+      <div class="scroll" role="region" tabindex="0" aria-labelledby="observations-title">
+        <table>
+          <thead><tr><th>Konu</th><th>Pazar</th><th>Arama</th><th>Video / kanal</th><th>Bilinen izlenme toplamı</th><th>Örnek videolar</th></tr></thead>
+          <tbody id="observations"></tbody>
+        </table>
+      </div>
+    </section>
+    <section aria-labelledby="reviews-title">
+      <h2 id="reviews-title">Fırsat puanı</h2>
+      <p>Bağımsız değerlendirme girdilerinden hesaplanır. Kapsam, girilen ölçütlerin toplam ağırlığıdır.</p>
+      <div class="scroll" role="region" tabindex="0" aria-labelledby="reviews-title">
+        <table>
+          <thead><tr><th>Konu</th><th>Pazar</th><th>Puan / 100</th><th>Kapsam</th><th>Talep</th><th>Rekabet</th><th>Kanal uyumu</th><th>Dayanak</th></tr></thead>
+          <tbody id="reviews"></tbody>
+        </table>
+      </div>
+    </section>
+    <section aria-labelledby="revenue-title">
+      <h2 id="revenue-title">Gelir senaryoları</h2>
+      <p>Varsayılan izlenme hedefleri ve kullanıcının girdiği RPM üzerinden hesaplanır. Shorts hedefi, gelir hesabına esas etkileşimli izlenmedir.</p>
+      <div class="scroll" role="region" tabindex="0" aria-labelledby="revenue-title">
+        <table>
+          <thead><tr><th>Pazar</th><th>Format</th><th>İzlenme hedefi</th><th>Düşük</th><th>Orta</th><th>Yüksek</th><th>RPM dayanağı</th></tr></thead>
+          <tbody id="revenue"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer>Video ve kanal gözlemlerinin kaynağı YouTube Data API. <a href="https://www.youtube.com/t/terms">YouTube Hizmet Şartları</a></footer>
+  <script type="application/json" id="data">__REPORT_JSON__</script>
+  <script>
+    'use strict';
+    const report = JSON.parse(document.getElementById('data').textContent);
+    const byId = id => document.getElementById(id);
+    const number = new Intl.NumberFormat('tr-TR', { maximumFractionDigits: 2 });
+    const percent = new Intl.NumberFormat('tr-TR', { style: 'percent' });
+    const fmt = value => value == null ? '—' : number.format(value);
+    const cash = (value, currency) => value == null ? '—' : fmt(value) + ' ' + currency;
+    const statusLabels = { complete: 'Tamamlandı', partial: 'Kısmi', failed: 'Başarısız', no_query: 'Sorgu yok' };
+
+    function element(tag, content) {
+      const node = document.createElement(tag);
+      if (content instanceof Node) node.append(content);
+      else node.textContent = content ?? '—';
+      return node;
+    }
+
+    function cells(tbody, contents) {
+      const row = element('tr', '');
+      for (const content of contents) row.append(element('td', content));
+      tbody.append(row);
+    }
+
+    const markets = new Map(report.opportunities.map(row => [row.market_id, row.market]));
+    const topics = new Map(report.opportunities.map(row => [row.topic_id, row.topic]));
+    for (const [id, entries] of [['market', markets], ['topic', topics]]) {
+      for (const [value, label] of entries) {
+        const option = element('option', label);
+        option.value = value;
+        byId(id).append(option);
+      }
+      byId(id).addEventListener('change', render);
+    }
+
+    function sample(row) {
+      const details = element('details', '');
+      details.append(element('summary', 'Sorguları ve videoları gör'));
+      for (const query of row.queries) {
+        const note = query.error ? ' · ' + query.error : query.has_more ? ' · Daha fazla sonuç var' : '';
+        details.append(element('p', query.query + ' · ' + query.pages + ' sayfa' + note));
+      }
+      const list = element('ul', '');
+      for (const id of row.video_ids) {
+        const video = report.videos[id];
+        const link = element('a', video.title ?? id);
+        link.href = 'https://www.youtube.com/watch?v=' + encodeURIComponent(id);
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+        const item = element('li', link);
+        item.append(' · ' + (video.channel_title ?? '—') + ' · '
+          + (video.published_at?.slice(0, 10) ?? '—') + ' · ' + fmt(video.views)
+          + ' izlenme · ' + fmt(video.subscribers) + ' abone');
+        list.append(item);
+      }
+      if (row.video_ids.length) details.append(list);
+      return details;
+    }
+
+    function render() {
+      const rows = report.opportunities.filter(row =>
+        (!byId('market').value || row.market_id === byId('market').value) &&
+        (!byId('topic').value || row.topic_id === byId('topic').value));
+      byId('matches').textContent = fmt(rows.length) + ' konu-pazar eşleşmesi';
+      for (const id of ['observations', 'reviews', 'revenue']) byId(id).replaceChildren();
+      for (const row of rows) {
+        cells(byId('observations'), [row.topic, row.market, statusLabels[row.search_status],
+          fmt(row.sample_video_count) + ' / ' + fmt(row.sample_channel_count),
+          fmt(row.sample_total_known_views) + ' (' + fmt(row.known_view_video_count) + ' videoda)',
+          row.queries.length ? sample(row) : '—']);
+        const review = row.review;
+        cells(byId('reviews'), [row.topic, row.market, fmt(review.score),
+          percent.format(review.coverage), fmt(review.demand), fmt(review.competition),
+          fmt(review.channel_fit), review.source]);
+      }
+      for (const market of new Set(rows.map(row => row.market_id))) {
+        for (const info of report.revenue_by_market[market]) {
+          cells(byId('revenue'), [markets.get(market), info.format === 'shorts' ? 'Shorts' : 'Uzun video',
+            fmt(info.views), ...['low', 'base', 'high'].map(band => cash(info[band], info.currency)),
+            info.rpm?.source ?? 'RPM girilmedi']);
+        }
+      }
+    }
+
+    byId('run-info').textContent = new Intl.DateTimeFormat('tr-TR', {
+      dateStyle: 'medium', timeStyle: 'short', timeZone: 'UTC',
+    }).format(new Date(report.collected_at)) + ' UTC · Son ' + fmt(report.lookback_days)
+      + ' gün · ' + report.quota.successes.search + '/' + report.quota.attempts.search + ' arama başarılı';
+    const errors = Object.values(report.detail_errors).flat();
+    if (errors.length) byId('api-errors').textContent = 'Video veya kanal verisi eksik · ' + [...new Set(errors)].join(', ');
+    render();
+  </script>
+</body>
+</html>

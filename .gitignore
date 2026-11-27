@@ -35,3 +35,9 @@ shorts/**/images/
 shorts/**/*.mp4
 shorts/**/*.mp3
 shorts/**/*.wav
+
+# YouTube araştırma raporları
+/opportunity-reports/
+/.netlify/
+/node_modules/
+/web/dist/

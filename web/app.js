@@ -237,6 +237,9 @@ function displayReport(data, id) {
     + (detailErrors.length ? " · Eksik ayrıntılar: " + [...new Set(detailErrors)].join(", ") : "");
   filterOptions("topic-filter", topics);
   filterOptions("market-filter", markets);
+  const declared=[...new Set(Object.values(data.videos).map(v=>v.audio_language??v.default_language??"unknown"))].sort();
+  filterOptions("video-declared-language",declared.map(l=>[l,l==="unknown"?"Bilinmiyor":(batchCatalog?.languages[l]??l)]));
+  el("video-include").value="";el("video-exclude").value="";
   renderRows();
   renderChannels(data.channel_samples??[]);
 }
@@ -365,6 +368,7 @@ el("batch-task-next").addEventListener("click",()=>{taskOffset+=100;void loadBat
 async function watchBatch(id) {
   navigate("batch");
   taskBatchId=id;taskOffset=0;el("batch-task-details").hidden=false;
+  compareBatchId=id;compareOffset=0;el("market-evidence").hidden=false;el("compare-topic").value="";el("compare-market").value="";el("compare-days").value="";if(el("market-evidence").open)void loadMarketEvidence();
   batchController?.abort();batchController=new AbortController();const {signal}=batchController;
   try {
     while(!signal.aborted){
@@ -403,7 +407,9 @@ function renderComparison(rows) {
   const ids=new Set(rows.flatMap(r=>r.video_ids));
   const cap=el("video-max-subs").value;
   const period=Number(el("video-period").value),format=el("video-format").value;
-  const videos=[...ids].map(id=>report.videos[id]).filter(v=>v&&(!cap||v.subscribers!=null&&v.subscribers<=Number(cap))&&(!period||(Date.parse(report.collected_at)-Date.parse(v.published_at)>=0&&Date.parse(report.collected_at)-Date.parse(v.published_at)<=period*86400000))&&(!format||durationGroup(v.duration)===format));
+  const include=el("video-include").value.trim().normalize("NFC").toLowerCase(),exclude=el("video-exclude").value.trim().normalize("NFC").toLowerCase(),language=el("video-declared-language").value;
+  const matches=v=>{const raw=((v.title??"")+" "+(v.description??"")).normalize("NFC").toLowerCase();return (!include||raw.includes(include))&&(!exclude||!raw.includes(exclude))&&(!language||(v.audio_language??v.default_language??"unknown")===language);};
+  const videos=[...ids].map(id=>report.videos[id]).filter(v=>v&&matches(v)&&(!cap||v.subscribers!=null&&v.subscribers<=Number(cap))&&(!period||(Date.parse(report.collected_at)-Date.parse(v.published_at)>=0&&Date.parse(report.collected_at)-Date.parse(v.published_at)<=period*86400000))&&(!format||durationGroup(v.duration)===format));
   const sort=el("video-sort").value;
   videos.sort((a,b)=>sort==="subscribers"?(a.subscribers??Infinity)-(b.subscribers??Infinity):sort==="date"?String(b.published_at??"").localeCompare(String(a.published_at??"")):(b.views??-1)-(a.views??-1));
   el("video-comparison").replaceChildren();
@@ -415,7 +421,7 @@ function renderComparison(rows) {
   }
   if(!videos.length)addRow("video-comparison",["Eşleşen video yok."]);
 }
-for(const id of ["video-sort","video-max-subs","video-period","video-format"])el(id).addEventListener("change",()=>{if(report)renderRows();});
+for(const id of ["video-sort","video-max-subs","video-period","video-format","video-declared-language","video-include","video-exclude"])el(id).addEventListener("change",()=>{if(report)renderRows();});
 function renderEvidence(){
   if(!evidenceData)return;
   for(const id of ["rpm-comparison","review-comparison","trend-list"])el(id).replaceChildren();
@@ -583,3 +589,37 @@ el("cost-form").addEventListener("submit",async e=>{
   try{await saveEvidence({kind:"cost",market_id:el("cost-market").value,format:el("cost-format").value,currency:el("cost-currency").value,source:el("cost-source").value,...Object.fromEntries(Object.keys(costs).map(k=>[k,Number(el("cost-"+k).value)]))});}
   catch(error){el("evidence-status").textContent=error.message;}
 });
+
+let compareBatchId,compareOffset=0,compareController;
+async function loadMarketEvidence(){
+  if(!compareBatchId)return;
+  compareController?.abort();compareController=new AbortController();const {signal}=compareController;
+  const query=new URLSearchParams({id:compareBatchId,compare:"1",offset:String(compareOffset)});
+  for(const [key,id] of [["topic","compare-topic"],["market","compare-market"],["days","compare-days"]])if(el(id).value)query.set(key,el(id).value);
+  el("compare-status").textContent="Karşılaştırma yükleniyor…";
+  try{
+    const data=await request("/api/batch?"+query,{signal});
+    for(const [id,entries] of [["compare-topic",data.topics.map(t=>[t,t])],["compare-market",data.markets.map(m=>[m,marketLabel(m)])]]){
+      const selected=el(id).value;filterOptions(id,entries);el(id).value=selected;
+    }
+    el("compare-rows").replaceChildren();
+    for(const r of data.rows){
+      const subject=node("div");subject.append(node("strong",r.topic),node("p",r.query));
+      const source=(r.independent_trend_available?"Trend kaydı var":"Trend bilinmiyor")+" / "+(r.independent_review_available?"Bağımsız inceleme var":"İnceleme yok");
+      let detail="Henüz veri yok";
+      if(r.report_state==="expired_or_unavailable")detail="Rapor süresi dolmuş / erişilemiyor";
+      if(r.report_run_id){detail=node("button","Örneklemi aç");detail.type="button";detail.className="secondary";detail.addEventListener("click",()=>void supervise(async s=>{await watch(r.report_run_id,s);if(report&&!s.aborted){el("topic-filter").value="queue-"+r.id;renderRows();}}));}
+      const count=r.sample_video_count==null?"Bilinmiyor":String(r.sample_video_count)+(r.has_more===true?" · devamı var":"");
+      const missing=r.sample_video_count==null?"Bilinmiyor":"İzlenme verisi: "+(r.known_view_video_count??"?")+", abone verisi: "+(r.known_subscriber_video_count??"?")+" videoda mevcut";
+      const status=({queued:"Sırada",running:"Çalışıyor",done:"Tamamlandı",failed:"Başarısız"})[r.status]??r.status;
+      addRow("compare-rows",[subject,marketLabel(r.market_id),r.lookback_days+" gün / "+r.search_order,status+(r.error_code?" · "+r.error_code:""),count,missing,source,detail]);
+    }
+    el("compare-prev").disabled=compareOffset===0;el("compare-next").disabled=compareOffset+data.limit>=data.total;
+    el("compare-status").textContent=data.total?"Görev "+(compareOffset+1)+"–"+Math.min(compareOffset+data.limit,data.total)+" / "+data.total+" · Arama hacmi bilinmiyor.":"Filtreye uyan görev yok.";
+  }catch(e){if(!signal.aborted)el("compare-status").textContent=e.message;}
+}
+el("market-evidence").addEventListener("toggle",()=>{if(el("market-evidence").open)void loadMarketEvidence();});
+el("compare-refresh").addEventListener("click",()=>void loadMarketEvidence());
+for(const id of ["compare-topic","compare-market","compare-days"])el(id).addEventListener("change",()=>{compareOffset=0;void loadMarketEvidence();});
+el("compare-prev").addEventListener("click",()=>{compareOffset=Math.max(0,compareOffset-50);void loadMarketEvidence();});
+el("compare-next").addEventListener("click",()=>{compareOffset+=50;void loadMarketEvidence();});

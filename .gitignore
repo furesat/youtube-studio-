@@ -41,3 +41,6 @@ shorts/**/*.wav
 /.netlify/
 /node_modules/
 /web/dist/
+
+# yerel pip indirmeleri
+*.whl

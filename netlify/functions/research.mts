@@ -1,9 +1,9 @@
 import {
-  acceptsToken, env, errorResponse, getHistory, getReport, getRun, json, publicCatalog, readBearer,
+  acceptsToken, env, errorResponse, getHistory, getReport, getRun, listReportVideos, json, publicCatalog, readBearer,
   ResearchError, startResearch, trustedOrigin,
 } from "../lib/research.mjs";
 
-import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch } from "../lib/batch.mjs";
+import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
@@ -42,6 +42,7 @@ export default async (request: Request) => {
       }
       if (request.method === "GET") {
         const id=url.searchParams.get("id");
+        if(id&&url.searchParams.get("tasks")==="1")return json(await listBatchTasks(id,Number(url.searchParams.get("offset")??0),100));
         if (id) { const result=await batchStatus(id); if (!result) throw new ResearchError(404,"Grup bulunamadı."); return json(result); }
         return json(await listBatches());
       }
@@ -62,6 +63,7 @@ export default async (request: Request) => {
       if (url.searchParams.get("result") === "history") return json(await getHistory());
       const id = url.searchParams.get("id") ?? "";
       const result = url.searchParams.get("result");
+      if(result==="videos")return json(await listReportVideos(id,{offset:Number(url.searchParams.get("offset")??0),limit:Number(url.searchParams.get("limit")??50),region:url.searchParams.get("region")??undefined,language:url.searchParams.get("language")??undefined,sort:url.searchParams.get("sort")??"views",max_subscribers:url.searchParams.has("max_subscribers")?Number(url.searchParams.get("max_subscribers")):undefined}));
       if (result === "report" || result === "zip") {
         const report = await getReport(id);
         if (result === "report") return json(report);

@@ -44,7 +44,7 @@ def collect(client, pairs, search, now):
         rows.append((topic, market, collected))
 
     videos, video_errors = client.enrich(
-        "videos", hits, "statistics", "items(id,statistics(viewCount))"
+        "videos", hits, "statistics,contentDetails,snippet", "items(id,statistics(viewCount),contentDetails(duration),snippet(defaultLanguage,defaultAudioLanguage))"
     )
     channels, channel_errors = client.enrich(
         "channels", (hit["channelId"] for hit in hits.values() if hit.get("channelId")),
@@ -61,6 +61,9 @@ def collect(client, pairs, search, now):
             "published_at": snippet.get("publishedAt"),
             "channel_id": channel_id,
             "channel_title": snippet.get("channelTitle"),
+            "duration": videos.get(video_id, {}).get("contentDetails", {}).get("duration"),
+            "default_language": videos.get(video_id, {}).get("snippet", {}).get("defaultLanguage"),
+            "audio_language": videos.get(video_id, {}).get("snippet", {}).get("defaultAudioLanguage"),
             "views": count(videos.get(video_id, {}).get("statistics", {}).get("viewCount")),
             "subscribers": count(channel.get("subscriberCount"))
             if channel.get("hiddenSubscriberCount") is False else None,

@@ -13,7 +13,18 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: isolated-test-only
+          POSTGRES_DB: fasulye_test
+        options: >-
+          --health-cmd "pg_isready -U postgres -d fasulye_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
@@ -25,6 +36,10 @@ jobs:
         with:
           node-version: "24"
       - run: python -m unittest discover -s engine/tools/opportunity_engine/tests -v
+      - name: Isolated PostgreSQL migration and queue regression tests
+        env:
+          FASULYE_TEST_PG_CONTAINER: ${{ job.services.postgres.id }}
+        run: python engine/tools/opportunity_engine/supabase/tests/run_isolated.py
       - run: npm ci
       - run: npm test
       - run: npm run build

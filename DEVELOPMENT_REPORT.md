@@ -58,3 +58,6 @@ Atomic queue and standalone worker draft implemented. Prior two commits passed G
 
 ### V4 checkpoint 4
 Independent Wikimedia evidence provider implemented, gated until migration/test approval. Does not measure YouTube search volume or national audience. No live provider verification.
+
+### V4 checkpoint 5
+Queue control, deduplication and observability SQL draft, isolated PostgreSQL regression harness. Worker CI passed; Wikimedia CI initially 35/36 due to old MCP count, corrected with explicit registration assertions. Latest CI pending.

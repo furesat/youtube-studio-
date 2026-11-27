@@ -25,7 +25,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "2.0.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "3.0.0" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -99,6 +99,7 @@ function buildServer() {
   server.registerTool("save_independent_evidence",{description:"Kullanıcı tarafından sağlanan doğrulanabilir kaynaklı trend CSV, RPM varsayımı veya bağımsız değerlendirmeyi kaydeder. YouTube API verisinden puan veya gelir türetme.",inputSchema:evidenceSchema,annotations:{readOnlyHint:false,destructiveHint:false}},input=>tool("save_independent_evidence",()=>writeEvidence(input)));
   server.registerTool("list_batch_tasks",{description:"Grup içindeki görevleri ve gerçek hata durumlarını sayfalar.",inputSchema:{id:z.string().uuid(),offset:z.number().int().min(0).default(0),limit:z.number().int().min(1).max(100).default(50)},annotations:{readOnlyHint:true}},({id,offset,limit})=>tool("list_batch_tasks",()=>listBatchTasks(id,offset,limit)));
   server.registerTool("list_report_videos",{description:"Raporun ham YouTube video örneklemini, ülke/dil filtresi ve ayrı izlenme/abone/tarih sıralamasıyla sayfalar. Ülke arama pazarıdır, izleyici coğrafyası değildir.",inputSchema:{id:readSchema,offset:z.number().int().min(0).default(0),limit:z.number().int().min(1).max(100).default(30),region:z.string().regex(/^[A-Z]{2}$/).optional(),language:z.string().optional(),sort:z.enum(["views","subscribers","date"]).default("views"),max_subscribers:z.number().int().min(0).optional()},annotations:{readOnlyHint:true}},({id,...options})=>tool("list_report_videos",()=>listReportVideos(id,options)));
+  server.registerTool("get_channel_samples",{description:"Raporda yer alan küçük kanalların son 25 herkese açık yüklemelerini ham istatistiklerle gösterir. Abone sayısı toplama anına aittir.",inputSchema:{id:readSchema},annotations:{readOnlyHint:true}},({id})=>tool("get_channel_samples",async()=>{const r=await getReport(id);return {collected_at:r.collected_at,channels:r.channel_samples??[]};}));
   return server;
 }
 

@@ -1,0 +1,17 @@
+{
+  "name": "fasulye-opportunity-engine",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "build": "node web/build.mjs",
+    "test": "node --test netlify/tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "jose": "6.2.18",
+    "yauzl": "3.4.0",
+    "zod": "4.6.7"
+  }
+}

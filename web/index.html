@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3ede0">
+  <title>Fasulye | YouTube araştırma paneli</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script defer src="/app.js"></script>
+</head>
+<body>
+  <header class="top">
+    <div class="brand"><span class="mark" aria-hidden="true">F</span> Fasulye</div>
+    <a href="https://github.com/furesat/youtube-studio-" target="_blank" rel="noopener">GitHub ↗</a>
+  </header>
+  <main>
+    <header class="intro">
+      <h1>YouTube araştırma paneli</h1>
+      <p>Bir konuyu yerel dilde ara, farklı pazarlardaki videoları karşılaştır ve yayın fikrini değerlendir.</p>
+    </header>
+
+    <section class="workspace" aria-labelledby="research-title">
+      <div class="form-panel">
+        <h2 id="research-title">Yeni araştırma</h2>
+        <form id="search">
+          <fieldset class="modes">
+            <legend class="visually-hidden">Araştırma türü</legend>
+            <label><input type="radio" name="mode" value="manual" checked><span>Manuel sorgu</span></label>
+            <label><input type="radio" name="mode" value="catalog"><span>Hazır konular</span></label>
+          </fieldset>
+          <div id="manual-fields" class="field-group">
+            <label for="query">Arama sorgusu</label>
+            <input id="query" type="search" maxlength="160" placeholder="Ör. Takvimden silinen 11 gün" required>
+            <div class="columns">
+              <div>
+                <label for="region">Ülke kodu</label>
+                <input id="region" value="TR" maxlength="2" pattern="[A-Za-z]{2}" list="regions" required>
+                <datalist id="regions"></datalist>
+              </div>
+              <div>
+                <label for="language">Dil kodu</label>
+                <input id="language" value="tr" maxlength="7" pattern="[a-z]{2}|zh\-Hans|zh\-Hant" list="languages" required>
+                <datalist id="languages"></datalist>
+              </div>
+            </div>
+          </div>
+          <div id="catalog-fields" class="columns" hidden>
+            <fieldset><legend>Konular</legend><div id="topics"></div></fieldset>
+            <fieldset><legend>Pazarlar</legend><div id="markets"></div></fieldset>
+          </div>
+          <button type="submit" id="start">Araştırmayı başlat <span aria-hidden="true">↗</span></button>
+        </form>
+      </div>
+
+      <aside class="run-panel">
+        <h2>Çalıştırma</h2>
+        <label for="token">Panel erişim anahtarı</label>
+        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="Netlify’da tanımladığın anahtar">
+        <p class="hint">Anahtar bu sekme açıkken bellekte tutulur.</p>
+        <form id="resume">
+          <label for="run-id">GitHub Actions çalıştırma numarası</label>
+          <div class="resume-row">
+            <input id="run-id" type="text" inputmode="numeric" pattern="[1-9][0-9]{0,15}" required placeholder="Çalıştırma numarası">
+            <button type="submit" class="secondary">Aç</button>
+          </div>
+        </form>
+        <p id="status" class="status" role="status" aria-live="polite">Araştırma başlatabilir veya önceki bir sonucu açabilirsin.</p>
+        <a id="run-link" href="" target="_blank" rel="noopener" hidden>GitHub Actions’ta aç ↗</a>
+      </aside>
+    </section>
+
+    <section id="results" aria-labelledby="results-title" hidden>
+      <div class="result-head">
+        <div>
+          <h2 id="results-title">Araştırma sonuçları</h2>
+          <p id="report-meta"></p>
+        </div>
+        <button id="download" type="button" class="secondary">Raporları indir (ZIP)</button>
+      </div>
+      <div class="filters">
+        <label for="topic-filter">Konu <select id="topic-filter"></select></label>
+        <label for="market-filter">Pazar <select id="market-filter"></select></label>
+      </div>
+      <h3>YouTube arama gözlemleri</h3>
+      <p class="hint">Örnekteki izlenmeler talep, bulunan videolar ve kanallar rekabet hakkında ipucu verir. Bunlar arama hacmini veya izleyici ülkesini ölçmez.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="YouTube arama gözlemleri">
+        <table>
+          <thead><tr><th scope="col">Konu / pazar</th><th scope="col">Arama durumu</th><th scope="col">Video / kanal</th><th scope="col">Bilinen toplam izlenme</th><th scope="col">Sorgular ve videolar</th></tr></thead>
+          <tbody id="observations"></tbody>
+        </table>
+      </div>
+      <h3>Bağımsız fırsat puanı</h3>
+      <p class="hint">Talep, rekabet ve kanal uyumu puanları bağımsız değerlendirme girdileridir.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Bağımsız fırsat puanı">
+        <table>
+          <thead><tr><th scope="col">Konu / pazar</th><th scope="col">Puan / 100</th><th scope="col">Kapsam</th><th scope="col">Dayanak</th></tr></thead>
+          <tbody id="reviews"></tbody>
+        </table>
+      </div>
+      <h3>Gelir senaryoları</h3>
+      <p class="hint">Gelir, girilen RPM ve izlenme hedefiyle hesaplanır. Shorts için hedef, gelir hesabına esas etkileşimli izlenmedir.</p>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Gelir senaryoları">
+        <table>
+          <thead><tr><th scope="col">Pazar / format</th><th scope="col">İzlenme hedefi</th><th scope="col">Düşük</th><th scope="col">Orta</th><th scope="col">Yüksek</th><th scope="col">Dayanak</th></tr></thead>
+          <tbody id="revenue"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <footer>Video ve kanal verileri YouTube Data API’den gelir. <a href="https://www.youtube.com/t/terms">YouTube Hizmet Şartları</a></footer>
+</body>
+</html>

@@ -48,9 +48,8 @@ class YouTube:
         if self.halted:
             raise ApiError(self.halted)
         bucket = "search" if endpoint == "search" else "details"
-        if self.calls["search" if bucket == "search" else "videos"] + (
-            self.calls["channels"] if bucket == "details" else 0
-        ) >= self.limits[bucket]:
+        used = self.calls["search"] if bucket == "search" else self.calls["videos"] + self.calls["channels"]
+        if used >= self.limits[bucket]:
             raise ApiError(f"local_{bucket}_budget")
         request = Request(
             "https://www.googleapis.com/youtube/v3/" + endpoint + "?" + urlencode(parameters),

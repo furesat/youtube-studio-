@@ -1,7 +1,8 @@
 from collections import Counter
+from contextlib import redirect_stderr, redirect_stdout
 import csv
 from datetime import datetime, timezone
-from io import BytesIO
+from io import BytesIO, StringIO
 import json
 from pathlib import Path
 import tempfile
@@ -9,6 +10,7 @@ import unittest
 from urllib.error import HTTPError
 from urllib.parse import parse_qs, urlsplit
 
+from engine.tools.opportunity_engine.__main__ import main
 from engine.tools.opportunity_engine.config import load_config, max_search_pages, plan_pairs
 from engine.tools.opportunity_engine.report import write_report
 from engine.tools.opportunity_engine.research import run, scenarios, score
@@ -44,6 +46,17 @@ class EngineTest(unittest.TestCase):
             path.write_text(json.dumps(self.config), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "dayanak"):
                 load_config(path)
+
+    def test_manual_plan_requires_a_single_locale_and_no_catalog_filters(self):
+        stdout, stderr = StringIO(), StringIO()
+        with redirect_stdout(stdout), redirect_stderr(stderr):
+            self.assertEqual(main(["--plan", "--query", "宝石の歴史",
+                                   "--region", "JP", "--language", "ja"]), 0)
+            self.assertEqual(main(["--plan", "--query", "çatal", "--markets", "tr"]), 2)
+            self.assertEqual(main(["--plan", "--query", "çatal", "--region", "Germany"]), 2)
+        self.assertIn("custom-jp-ja", stdout.getvalue())
+        self.assertIn("宝石の歴史", stdout.getvalue())
+        self.assertIn("geçersiz", stderr.getvalue())
 
     def test_pagination_deduplication_regional_parameters_and_missing_data(self):
         calls = []

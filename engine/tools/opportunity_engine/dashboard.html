@@ -52,11 +52,11 @@
     <noscript>Filtreli tablo için JavaScript gerekir. Rapor dosyalarını yukarıdaki bağlantılardan açabilirsiniz.</noscript>
     <section aria-labelledby="observations-title">
       <h2 id="observations-title">YouTube arama gözlemleri</h2>
-      <p>Talep göstergesi örnekteki bilinen toplam video izlenmesidir. Rekabeti incelerken bulunan videolara, farklı kanallara ve herkese açık abone sayılarına bakın. Arama hacmi ve izleyici ülkesi bu örnekten ölçülemez.</p>
+      <p>Talep bilinmiyor; bu yalnızca API arama örneklemidir. Rekabeti incelerken bulunan videolara, farklı kanallara ve herkese açık abone sayılarına bakın. Arama hacmi ve izleyici ülkesi bu örnekten ölçülemez.</p>
       <p id="api-errors" role="status"></p>
       <div class="scroll" role="region" tabindex="0" aria-labelledby="observations-title">
         <table>
-          <thead><tr><th>Konu</th><th>Pazar</th><th>Arama</th><th>Video / kanal</th><th>Bilinen izlenme toplamı</th><th>Örnek videolar</th></tr></thead>
+          <thead><tr><th>Konu</th><th>Pazar</th><th>Arama</th><th>Video / kanal</th><th>Dönem / sıralama</th><th>Örnek videolar</th></tr></thead>
           <tbody id="observations"></tbody>
         </table>
       </div>
@@ -151,7 +151,7 @@
       for (const row of rows) {
         cells(byId('observations'), [row.topic, row.market, statusLabels[row.search_status],
           fmt(row.sample_video_count) + ' / ' + fmt(row.sample_channel_count),
-          fmt(row.sample_total_known_views) + ' (' + fmt(row.known_view_video_count) + ' videoda)',
+          (row.lookback_days ?? 365) + ' gün / ' + (row.search_order ?? 'relevance'),
           row.queries.length ? sample(row) : '—']);
         const review = row.review;
         cells(byId('reviews'), [row.topic, row.market, fmt(review.score),

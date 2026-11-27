@@ -29,14 +29,14 @@ def write_report(output, report):
         output / "opportunities.csv",
         ("topic_id", "topic", "market_id", "market", "region", "language", "search_status",
          "sample_video_count", "sample_channel_count", "known_view_video_count",
-         "known_subscriber_video_count", "sample_total_known_views",
+         "known_subscriber_video_count", "lookback_days", "search_order",
          "demand", "competition", "channel_fit", "coverage", "score", "source"),
         ({**row, **row["review"]} for row in report["opportunities"]),
     )
     write_csv(
         output / "videos.csv",
         ("topic_id", "market_id", "video_id", "title", "published_at", "channel_id",
-         "channel_title", "views", "subscribers"),
+         "channel_title", "views", "subscribers", "duration", "category_id", "default_language", "audio_language", "description", "channel_created_at"),
         ({"topic_id": row["topic_id"], "market_id": row["market_id"], **report["videos"][video_id]}
          for row in report["opportunities"] for video_id in row["video_ids"]),
     )

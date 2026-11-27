@@ -1,8 +1,14 @@
 name: Fasulye Opportunity Engine
 
 on:
+  schedule:
+    - cron: "17 */8 * * *"
   workflow_dispatch:
     inputs:
+      queue:
+        description: "Process queued research tasks"
+        type: boolean
+        default: false
       topics:
         description: "Konu kimlikleri (virgülle ayır, boşsa tümü)"
         type: string
@@ -52,6 +58,7 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           SUPABASE_URL: https://niihqywncuwxfxipkgte.supabase.co
+          FASULYE_QUEUE: ${{ inputs.queue }}
           FASULYE_TOPICS: ${{ inputs.topics }}
           FASULYE_MARKETS: ${{ inputs.markets }}
           FASULYE_QUERY: ${{ inputs.query }}
@@ -61,6 +68,10 @@ jobs:
           if [[ "$SUPABASE_SECRET_KEY" != sb_secret_* ]]; then
             echo "Configure SUPABASE_SECRET_KEY in Actions secrets before research." >&2
             exit 1
+          fi
+          if [[ "$FASULYE_QUEUE" == "true" || "$GITHUB_EVENT_NAME" == "schedule" ]]; then
+            python -m engine.tools.opportunity_engine.queue_worker
+            exit $?
           fi
           python -m engine.tools.opportunity_engine --persist \
             --topics="$FASULYE_TOPICS" --markets="$FASULYE_MARKETS" \

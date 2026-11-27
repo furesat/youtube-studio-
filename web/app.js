@@ -22,7 +22,7 @@ function showStatus(message, isError = false) {
 async function request(path, options = {}) {
   const { method = "GET", body, signal, binary = false } = options;
   const headers = new Headers();
-  if (path !== "/api/catalog") {
+  if (!["/api/catalog","/api/discovery-catalog"].includes(path)) {
     const token = el("token").value.trim();
     if (!token) {
       el("token").focus();
@@ -212,7 +212,7 @@ function detailFor(row) {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     const item = node("li");
-    item.append(link, ` · ${video.channel_title ?? "—"} · ${fmt(video.views)} izlenme · ${fmt(video.subscribers)} abone`);
+    item.append(link, ` · ${video.channel_title ?? "—"} · ${fmt(video.views)} izlenme · ${fmt(video.subscribers)} abone · ${video.duration ?? "süre bilinmiyor"} · ${video.audio_language ?? video.default_language ?? "dil bilinmiyor"}`);
     list.append(item);
   }
   details.append(list);
@@ -251,6 +251,7 @@ function renderRows() {
   const rows = report.opportunities.filter(row =>
     (!el("topic-filter").value || row.topic_id === el("topic-filter").value) &&
     (!el("market-filter").value || row.market_id === el("market-filter").value));
+  renderComparison(rows);
   for (const id of ["observations", "reviews", "revenue"]) el(id).replaceChildren();
   for (const row of rows) {
     const label = `${row.topic} / ${row.market}`;
@@ -302,3 +303,180 @@ if (initialRun && /^[1-9]\d{0,15}$/.test(initialRun)) {
 }
 updateMode();
 void loadCatalog();
+
+let batchCatalog, batchController;
+const selected = id => Array.from(el(id).selectedOptions, o => o.value);
+function appendOption(id,value,label) { const opt=node("option",label);opt.value=value;el(id).append(opt); }
+function flag(code) { return String.fromCodePoint(...[...code].map(c=>127397+c.charCodeAt(0))); }
+async function initBatch() {
+  try {
+    batchCatalog = await request("/api/discovery-catalog");
+    const names=new Intl.DisplayNames(["tr"],{type:"region"});
+    for(const code of new Set(batchCatalog.markets.map(m=>m.region))) appendOption("batch-countries",code,flag(code)+" "+names.of(code));
+    for(const [code,label] of Object.entries(batchCatalog.languages)) appendOption("batch-languages",code,label);
+    for(const c of batchCatalog.categories) appendOption("batch-categories",c.id,c.label);
+    for(const market of batchCatalog.markets) for(const id of ["trend-market","rpm-market","rpm-filter-market","review-market"]) appendOption(id,market.id,flag(market.region)+" "+market.label);
+  } catch(e) { el("batch-status").textContent=e.message; }
+}
+function batchInput() {
+  if(!batchCatalog) throw new Error("Katalog yüklenmedi.");
+  const mode=el("batch-mode").value,languages=selected("batch-languages");
+  const input={mode,countries:selected("batch-countries"),languages};
+  if(mode==="discovery") return {...input,categories:selected("batch-categories")};
+  const topics=new Map();
+  const raw=el("batch-topics").value.trim();
+  const lines=raw.includes("|")?raw.split(/\r?\n/):raw.split(/[,\r\n]+/);
+  for(const line of lines.map(s=>s.trim()).filter(Boolean)){
+    const parts=line.split("|").map(s=>s.trim());
+    if(parts.length===1){
+      const normalized=parts[0].normalize("NFC").toLocaleLowerCase("tr");
+      const known=batchCatalog.topics?.some(t=>[t.id,t.label,...t.aliases].some(s=>s.normalize("NFC").toLocaleLowerCase("tr")===normalized));
+      if(known || languages.length!==1){if(!topics.has(parts[0]))topics.set(parts[0],{topic:parts[0],queries:{}});continue;}
+      parts.push(languages[0],parts[0]);
+    }
+    if(parts.length!==3 || !batchCatalog.languages[parts[1]] || !parts[0] || !parts[2]) throw new Error("Her satırda konu | dil kodu | yerel sorgu gir veya tek dil seç.");
+    if(!topics.has(parts[0])) topics.set(parts[0],{topic:parts[0],queries:{}});
+    topics.get(parts[0]).queries[parts[1]]=parts[2];
+  }
+  return {...input,topics:[...topics.values()]};
+}
+el("batch-mode").addEventListener("change",()=>{
+  const discovery=el("batch-mode").value==="discovery";
+  el("category-field").hidden=!discovery;el("bulk-field").hidden=discovery;
+});
+async function submitBatch(preview) {
+  const button=el(preview?"batch-preview":"batch-submit");button.disabled=true;
+  try {
+    const data=await request("/api/batch"+(preview?"?preview=1":""),{method:"POST",body:JSON.stringify(batchInput())});
+    el("batch-status").textContent=data.tasks+" görev · "+data.missing.length+" eksik pazar yerelleştirmesi"+(preview?" · Plan; henüz kuyruğa eklenmedi.":" · Kuyruğa kaydedildi.");
+    if(!preview) { el("batch-status").textContent += data.worker?.state==="dispatched"?" Worker başlatıldı.":" Zamanlanmış worker bekleniyor."; void watchBatch(data.id); }
+  } catch(e) {el("batch-status").textContent=e.message;}
+  finally {button.disabled=false;}
+}
+el("batch-preview").addEventListener("click",()=>void submitBatch(true));
+el("batch-form").addEventListener("submit",e=>{e.preventDefault();void submitBatch(false);});
+let taskBatchId,taskOffset=0,taskTotal=0;
+async function loadBatchTasks(){
+  if(!taskBatchId)return;
+  try{const rows=await request("/api/batch?"+new URLSearchParams({id:taskBatchId,tasks:"1",offset:String(taskOffset)}));el("batch-task-rows").replaceChildren();for(const t of rows)addRow("batch-task-rows",[t.topic+" / "+t.query,t.region+" / "+t.language,t.status,t.attempts,t.error_code]);el("batch-task-prev").disabled=taskOffset===0;el("batch-task-next").disabled=taskOffset+100>=taskTotal;}catch(e){el("batch-status").textContent=e.message;}
+}
+el("batch-task-details").addEventListener("toggle",()=>{if(el("batch-task-details").open)void loadBatchTasks();});
+el("batch-task-prev").addEventListener("click",()=>{taskOffset=Math.max(0,taskOffset-100);void loadBatchTasks();});
+el("batch-task-next").addEventListener("click",()=>{taskOffset+=100;void loadBatchTasks();});
+async function watchBatch(id) {
+  taskBatchId=id;taskOffset=0;el("batch-task-details").hidden=false;
+  batchController?.abort();batchController=new AbortController();const {signal}=batchController;
+  try {
+    while(!signal.aborted){
+      const b=await request("/api/batch?"+new URLSearchParams({id}),{signal});
+      taskTotal=b.total;if(el("batch-task-details").open)void loadBatchTasks();
+      const p=el("batch-progress");p.hidden=false;p.max=b.total||1;p.value=b.done+b.failed;
+      el("batch-status").textContent=b.label+" · "+b.done+"/"+b.total+" tamamlandı · "+b.running+" çalışıyor · "+b.queued+" sırada · "+b.failed+" başarısız";
+      const container=el("batch-reports");container.replaceChildren();
+      for(const runId of b.reports){const button=node("button","Raporu aç · "+runId);button.type="button";button.className="secondary";button.addEventListener("click",()=>void supervise(s=>watch(runId,s)));container.append(button);}
+      if(b.done+b.failed>=b.total) break;
+      await new Promise(resolve=>setTimeout(resolve,15000));
+    }
+  } catch(e){if(!signal.aborted)el("batch-status").textContent=e.message;}
+}
+el("batch-history").addEventListener("click",async()=>{
+  try{
+    const rows=await request("/api/batch");const list=el("batch-list");list.replaceChildren();
+    if(!rows.length)list.append(node("p","Henüz araştırma grubu yok."));
+    for(const b of rows){const button=node("button",b.label+" · "+dates.format(new Date(b.created_at)));button.type="button";button.className="secondary";button.addEventListener("click",()=>void watchBatch(b.id));list.append(button);}
+  }catch(e){el("batch-status").textContent=e.message;}
+});
+el("quota-load").addEventListener("click",async()=>{
+  try{const q=await request("/api/quota");el("quota-status").textContent="Günlük sınır: "+q.daily_limit+" · "+(q.reservations.map(r=>r.day+": "+r.reserved).join(" · ")||"Rezervasyon yok")+" · "+q.scope;}catch(e){el("quota-status").textContent=e.message;}
+});
+void initBatch();
+
+let evidenceData;
+const factors={demand:"İzleyici talebi",gap:"İçerik açığı",competition:"Rekabet",revenue:"Reklam geliri",cost:"Üretim maliyeti",cultural_fit:"Dil ve kültür uyumu",long_term:"Uzun vadeli potansiyel"};
+for(const [key,label] of Object.entries(factors)){
+  const wrap=node("div"), lab=node("label",label), input=node("input");
+  lab.htmlFor=input.id="factor-"+key; input.type="number";input.min="0";input.max="100";input.step="any";
+  wrap.append(lab,input);el("review-factors").append(wrap);
+}
+function marketLabel(id){return batchCatalog?.markets.find(m=>m.id===id)?.label??id;}
+function renderComparison(rows) {
+  const ids=new Set(rows.flatMap(r=>r.video_ids));
+  const cap=el("video-max-subs").value;
+  const videos=[...ids].map(id=>report.videos[id]).filter(v=>v&&(!cap||v.subscribers!=null&&v.subscribers<=Number(cap)));
+  const sort=el("video-sort").value;
+  videos.sort((a,b)=>sort==="subscribers"?(a.subscribers??Infinity)-(b.subscribers??Infinity):sort==="date"?String(b.published_at??"").localeCompare(String(a.published_at??"")):(b.views??-1)-(a.views??-1));
+  el("video-comparison").replaceChildren();
+  for(const v of videos){
+    const link=node("a",v.title??v.video_id);link.href="https://www.youtube.com/watch?v="+encodeURIComponent(v.video_id);link.target="_blank";link.rel="noopener noreferrer";
+    const channel=node("a",v.channel_title??v.channel_id??"Bilinmiyor");channel.href="https://www.youtube.com/channel/"+encodeURIComponent(v.channel_id??"");channel.target="_blank";channel.rel="noopener noreferrer";
+    addRow("video-comparison",[link,channel,fmt(v.views),fmt(v.subscribers),v.published_at?.slice(0,10),v.duration,v.audio_language??v.default_language??"Bilinmiyor"]);
+  }
+  if(!videos.length)addRow("video-comparison",["Eşleşen video yok."]);
+}
+for(const id of ["video-sort","video-max-subs"])el(id).addEventListener("change",()=>{if(report)renderRows();});
+function renderEvidence(){
+  if(!evidenceData)return;
+  for(const id of ["rpm-comparison","review-comparison","trend-list"])el(id).replaceChildren();
+  el("trend-provider").textContent="Google Trends API: "+(evidenceData.trend_api==="configured"?"Yapılandırıldı":"Onay / erişim bekleniyor")+". Mutlak arama hacmi: bilinmiyor. CSV değerleri göreli ilgidir.";
+  for(const item of evidenceData.trends){
+    const button=node("button",item.topic+" · "+item.region+"/"+item.language+" · "+item.period_start+" – "+item.period_end);
+    button.type="button";button.className="secondary";button.addEventListener("click",()=>void showTrend(item.id));el("trend-list").append(button);
+  }
+  if(!evidenceData.trends.length)el("trend-list").append(node("p","Henüz gerçek trend CSV verisi aktarılmadı."));
+  const market=el("rpm-filter-market").value,format=el("rpm-filter-format").value,views=Number(el("rpm-filter-views").value);
+  for(const row of evidenceData.rpm.filter(r=>(!market||r.market_id===market)&&(!format||r.format===format))){
+    const s=row.scenarios.find(x=>x.views===views);if(!s)continue;
+    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.source]);
+  }
+  if(!el("rpm-comparison").children.length)addRow("rpm-comparison",["Kaynaklı RPM girdisi yok."]);
+  for(const row of [...evidenceData.reviews].sort((a,b)=>(b.score??-1)-(a.score??-1))){
+    addRow("review-comparison",[row.topic,marketLabel(row.market_id),fmt(row.score),percentages.format(row.coverage),{high:"Yüksek",medium:"Orta",low:"Düşük"}[row.confidence],row.source]);
+  }
+  if(!evidenceData.reviews.length)addRow("review-comparison",["Henüz bağımsız değerlendirme yok."]);
+}
+async function loadEvidence(){
+  try{evidenceData=await request("/api/evidence");renderEvidence();el("evidence-status").textContent="Kaynaklar güncellendi.";}
+  catch(e){el("evidence-status").textContent=e.message;}
+}
+async function showTrend(id){
+  try{
+    const series=await request("/api/evidence?"+new URLSearchParams({id}));
+    const box=el("trend-detail");box.replaceChildren(node("h3",series.topic),node("p",series.source));
+    const wrap=node("div");wrap.className="table-scroll";const table=node("table"), body=node("tbody");
+    for(const point of series.series){const row=node("tr");row.append(node("td",point.label),node("td",point.below_one?"<1":fmt(point.value)));body.append(row);}
+    table.append(body);wrap.append(table);box.append(wrap);
+  }catch(e){el("evidence-status").textContent=e.message;}
+}
+async function saveEvidence(body){
+  await request("/api/evidence",{method:"POST",body:JSON.stringify(body)});await loadEvidence();
+}
+el("evidence-load").addEventListener("click",()=>void loadEvidence());
+for(const id of ["rpm-filter-market","rpm-filter-format","rpm-filter-views"])el(id).addEventListener("change",renderEvidence);
+el("trend-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  try{
+    const market=batchCatalog?.markets.find(m=>m.id===el("trend-market").value),file=el("trend-csv").files[0];
+    if(!market||!file||file.size>300000)throw new Error("Pazar ve 300 KB'dan küçük bir CSV gerekli.");
+    await saveEvidence({kind:"trend",topic:el("trend-topic").value,region:market.region,language:market.language,source:el("trend-source").value,csv:await file.text()});
+  }catch(error){el("evidence-status").textContent=error.message;}
+});
+el("rpm-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  try{await saveEvidence({kind:"rpm",market_id:el("rpm-market").value,format:el("rpm-format").value,currency:el("rpm-currency").value,low:Number(el("rpm-low").value),base:Number(el("rpm-base").value),high:Number(el("rpm-high").value),source:el("rpm-source").value});}
+  catch(error){el("evidence-status").textContent=error.message;}
+});
+el("review-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  try{await saveEvidence({kind:"review",topic:el("review-topic").value,market_id:el("review-market").value,source:el("review-source").value,factors:Object.fromEntries(Object.keys(factors).filter(key=>el("factor-"+key).value!=="").map(key=>[key,Number(el("factor-"+key).value)]))});}
+  catch(error){el("evidence-status").textContent=error.message;}
+});
+el("system-check").addEventListener("click",async()=>{
+  const results=el("system-status");results.replaceChildren(node("p","Bağlantılar kontrol ediliyor."));
+  const checks=await Promise.allSettled([request("/api/discovery-catalog"),request("/api/quota"),request("/api/research?result=history")]);
+  results.replaceChildren();
+  for(const [i,label] of ["Katalog","Supabase kuyruk kotası","Supabase araştırma geçmişi"].entries())results.append(node("p",label+": "+(checks[i].status==="fulfilled"?"Erişilebilir":checks[i].reason.message)));
+  if(checks[2].status==="fulfilled"&&checks[2].value.length){
+    try{const id=checks[2].value[0].run_id,run=await request("/api/research?"+new URLSearchParams({id}));results.append(node("p","GitHub Actions son kayıtlı çalışma: "+run.status+" / "+(run.conclusion??"bekliyor")));}
+    catch(e){results.append(node("p","GitHub Actions: "+e.message));}
+  }
+});

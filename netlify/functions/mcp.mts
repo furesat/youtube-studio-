@@ -3,9 +3,13 @@ import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/
 import { z } from "zod";
 import { mcpAuthorized, mcpUnauthorized, oauthConfig, resourceMetadata } from "../lib/mcp-auth.mjs";
 import {
-  getHistory, getReport, getRun, json, publicCatalog, readSchema, ResearchError,
+  getHistory, getReport, getRun, listReportVideos, json, publicCatalog, readSchema, ResearchError,
   startResearch, startSchema, trustedOrigin,
 } from "../lib/research.mjs";
+
+import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch, listBatchTasks } from "../lib/batch.mjs";
+
+import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 
 function tool(name: string, fn: () => Promise<unknown> | unknown) {
   return Promise.resolve().then(async () => {
@@ -21,7 +25,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "1.0.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "2.0.0" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -76,6 +80,25 @@ function buildServer() {
       throw error;
     }
   }));
+  server.registerTool("list_discovery_catalog", {
+    description:"23 dil, ülke-dil pazarları ve doğal keşif sorguları.",annotations:{readOnlyHint:true,openWorldHint:false},
+  },()=>tool("list_discovery_catalog",()=>discoveryCatalog));
+  server.registerTool("preview_batch", {
+    description:"Kota kullanmadan görev sayısını ve eksik yerelleştirmeleri gösterir.",inputSchema:batchSchema,annotations:{readOnlyHint:true,openWorldHint:false},
+  },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing};}));
+  server.registerTool("enqueue_research_batch", {
+    description:"Pazar keşfi veya toplu araştırmayı kuyruğa ekler. Bulk modunda her konu için hedef dilde doğal sorgular sağla. Çalışan motor zamanlanmış şekilde kotaya göre işler.",inputSchema:batchSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:false,openWorldHint:true},
+  },input=>tool("enqueue_research_batch",()=>enqueueBatch(input)));
+  server.registerTool("get_batch_status", {
+    description:"Grup ilerlemesini ve rapor çalıştırma kimliklerini getirir.",inputSchema:{id:z.string().uuid()},annotations:{readOnlyHint:true},
+  },({id})=>tool("get_batch_status",()=>batchStatus(id)));
+  server.registerTool("list_research_batches", {description:"Son 50 araştırma grubunu listeler.",annotations:{readOnlyHint:true}},()=>tool("list_research_batches",()=>listBatches()));
+  server.registerTool("get_queue_budget", {description:"Uygulamanın yerel günlük arama rezervasyonlarını gösterir; Google toplam kotası değildir.",annotations:{readOnlyHint:true}},()=>tool("get_queue_budget",()=>queueBudget()));
+  server.registerTool("get_independent_evidence",{description:"Kaynaklı trend, RPM ve bağımsız fırsat girdileri. Arama hacmi bilinmiyorsa null.",annotations:{readOnlyHint:true}},()=>tool("get_independent_evidence",()=>getEvidence()));
+  server.registerTool("get_trend_series",{description:"Kaydedilen Google Trends CSV serisini okur; mutlak arama hacmi değildir.",inputSchema:{id:z.string().uuid()},annotations:{readOnlyHint:true}},({id})=>tool("get_trend_series",()=>getTrend(id)));
+  server.registerTool("save_independent_evidence",{description:"Kullanıcı tarafından sağlanan doğrulanabilir kaynaklı trend CSV, RPM varsayımı veya bağımsız değerlendirmeyi kaydeder. YouTube API verisinden puan veya gelir türetme.",inputSchema:evidenceSchema,annotations:{readOnlyHint:false,destructiveHint:false}},input=>tool("save_independent_evidence",()=>writeEvidence(input)));
+  server.registerTool("list_batch_tasks",{description:"Grup içindeki görevleri ve gerçek hata durumlarını sayfalar.",inputSchema:{id:z.string().uuid(),offset:z.number().int().min(0).default(0),limit:z.number().int().min(1).max(100).default(50)},annotations:{readOnlyHint:true}},({id,offset,limit})=>tool("list_batch_tasks",()=>listBatchTasks(id,offset,limit)));
+  server.registerTool("list_report_videos",{description:"Raporun ham YouTube video örneklemini, ülke/dil filtresi ve ayrı izlenme/abone/tarih sıralamasıyla sayfalar. Ülke arama pazarıdır, izleyici coğrafyası değildir.",inputSchema:{id:readSchema,offset:z.number().int().min(0).default(0),limit:z.number().int().min(1).max(100).default(30),region:z.string().regex(/^[A-Z]{2}$/).optional(),language:z.string().optional(),sort:z.enum(["views","subscribers","date"]).default("views"),max_subscribers:z.number().int().min(0).optional()},annotations:{readOnlyHint:true}},({id,...options})=>tool("list_report_videos",()=>listReportVideos(id,options)));
   return server;
 }
 

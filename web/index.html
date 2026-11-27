@@ -15,10 +15,11 @@
   </header>
   <main>
     <header class="intro">
-      <h1>YouTube araştırma paneli</h1>
+      <h1>Opportunity Engine 2.0</h1>
       <p>Bir konuyu yerel dilde ara, farklı pazarlardaki videoları karşılaştır ve yayın fikrini değerlendir.</p>
     </header>
 
+    <nav class="section-nav" aria-label="Panel bölümleri"><a href="#research-title">Genel bakış</a><a href="#batch-title">Keşif ve toplu araştırma</a><a href="#trend-title">Trendler</a><a href="#comparison-title">Rakip videolar</a><a href="#review-title">Fırsatlar</a><a href="#rpm-title">Gelir ve pazarlar</a><a href="#batch-history">Geçmiş</a><a href="#quota-load">Kota</a><a href="#system-title">Sistem</a></nav>
     <section class="workspace" aria-labelledby="research-title">
       <div class="form-panel">
         <h2 id="research-title">Yeni araştırma</h2>
@@ -71,6 +72,36 @@
       </aside>
     </section>
 
+    <section class="form-panel" aria-labelledby="batch-title">
+      <h2 id="batch-title">Uluslararası pazar keşfi ve toplu araştırma</h2>
+      <p class="hint">Hazır keşif sorguları 23 dilde yerelleştirilmiştir. Özel konular için hedef dilde doğal arama ifadeleri gir; eksik dil otomatik olarak çevrilmiş sayılmaz.</p>
+      <form id="batch-form">
+        <label for="batch-mode">Araştırma tipi</label>
+        <select id="batch-mode"><option value="discovery">Otomatik kategori keşfi</option><option value="bulk">Özel konular</option></select>
+        <div class="columns">
+          <div><label for="batch-countries">Ülkeler (boş = tümü)</label><select id="batch-countries" multiple size="7"></select></div>
+          <div><label for="batch-languages">Diller (boş = tümü)</label><select id="batch-languages" multiple size="7"></select></div>
+          <div id="category-field"><label for="batch-categories">Kategoriler (boş = tümü)</label><select id="batch-categories" multiple size="7"></select></div>
+        </div>
+        <div id="bulk-field" hidden>
+          <label for="batch-topics">Konu | dil kodu | yerel sorgu (her satır bir dil)</label>
+          <textarea id="batch-topics" rows="6" placeholder="Çatalın tarihi | tr | çatal ne zaman icat edildi&#10;Çatalın tarihi | de | Geschichte der Gabel"></textarea>
+          <p class="hint">Bilinen konular (çatal, takvim, uyku, lale çılgınlığı) tüm seçili dillerde otomatik yerelleştirilir. Diğer konularda tek dil seç veya dil başına doğal sorgu gir.</p>
+        </div>
+        <button id="batch-preview" type="button" class="secondary">Planı kontrol et</button>
+        <button id="batch-submit" type="submit">Kuyruğa ekle</button>
+      </form>
+      <p id="batch-status" role="status" aria-live="polite"></p>
+      <progress id="batch-progress" max="1" value="0" hidden></progress>
+      <div id="batch-reports"></div>
+      <details id="batch-task-details" hidden><summary>Görev ayrıntıları</summary><div class="table-scroll"><table><thead><tr><th>Konu / sorgu</th><th>Pazar</th><th>Durum</th><th>Deneme</th><th>Hata</th></tr></thead><tbody id="batch-task-rows"></tbody></table></div><button id="batch-task-prev" type="button" class="secondary">Önceki</button> <button id="batch-task-next" type="button" class="secondary">Sonraki</button></details>
+      <h3>Araştırma grupları</h3>
+      <button id="batch-history" type="button" class="secondary">Grupları yükle</button>
+      <div id="batch-list"></div>
+      <h3>API kota yönetimi</h3>
+      <button id="quota-load" type="button" class="secondary">Kota durumunu oku</button>
+      <p id="quota-status" role="status"></p>
+    </section>
     <section id="results" aria-labelledby="results-title" hidden>
       <div class="result-head">
         <div>
@@ -91,6 +122,13 @@
           <tbody id="observations"></tbody>
         </table>
       </div>
+      <h3 id="comparison-title">Rakip videolar · ham API verileri</h3>
+      <p class="hint">İzlenme ve abone sayılarını ayrı ayrı filtrele. Küçük kanal başarısı için türetilmiş oran veya tahmini kazanç üretmez. Videoların izleyici ülkesi bilinmiyor.</p>
+      <div class="filters">
+        <label for="video-sort">Sırala <select id="video-sort"><option value="views">İzlenme (çoktan aza)</option><option value="subscribers">Abone (azdan çoğa)</option><option value="date">Yeni yayınlar</option></select></label>
+        <label for="video-max-subs">Azami abone <select id="video-max-subs"><option value="">Tümü</option><option value="1000">1.000</option><option value="10000">10.000</option><option value="100000">100.000</option></select></label>
+      </div>
+      <div class="table-scroll"><table><thead><tr><th>Video</th><th>Kanal</th><th>İzlenme</th><th>Abone</th><th>Yayın</th><th>Süre (ISO)</th><th>Beyan edilen dil</th></tr></thead><tbody id="video-comparison"></tbody></table></div>
       <h3>Bağımsız fırsat puanı</h3>
       <p class="hint">Talep, rekabet ve kanal uyumu puanları bağımsız değerlendirme girdileridir.</p>
       <div class="table-scroll" tabindex="0" role="region" aria-label="Bağımsız fırsat puanı">
@@ -107,6 +145,33 @@
           <tbody id="revenue"></tbody>
         </table>
       </div>
+    </section>
+    <section class="form-panel evidence-panel" aria-labelledby="trend-title">
+      <h2 id="trend-title">Trendler ve arama ilgisi</h2>
+      <p id="trend-provider" class="hint">Google Trends API erişimi bekleniyor. CSV aktarımı, 0–100 göreli ilgi; mutlak arama hacmi değildir.</p>
+      <form id="trend-form">
+        <label for="trend-topic">Konu</label><input id="trend-topic" required maxlength="160">
+        <label for="trend-market">CSV'nin ülke ve dili</label><select id="trend-market" required></select>
+        <label for="trend-source">Kaynak (Google Trends bağlantısı ve arama türü)</label><input id="trend-source" required maxlength="1000">
+        <label for="trend-csv">Tek sorgulu zaman serisi CSV dosyası</label><input type="file" id="trend-csv" accept=".csv,text/csv" required>
+        <button type="submit">CSV kaydet</button>
+      </form>
+      <button id="evidence-load" type="button" class="secondary">Kaynakları ve hesaplamaları yükle</button>
+      <p id="evidence-status" role="status"></p><div id="trend-list"></div><div id="trend-detail"></div>
+      <h2 id="rpm-title">Gelir hesaplayıcısı ve ülke karşılaştırması</h2>
+      <p class="hint">Üçüncü taraf RPM varsayımlarıdır; YouTube tarafından onaylanmaz veya garanti edilmez. Ülke, varsayılan izleyici konumudur. Shorts için gelir hesabına esas etkileşimli izlenmeleri kullan. Alt/üst değerler duyarlılık senaryolarıdır, ölçülmüş güven aralığı değildir.</p>
+      <form id="rpm-form">
+        <div class="columns"><div><label for="rpm-market">Pazar</label><select id="rpm-market" required></select></div><div><label for="rpm-format">Format</label><select id="rpm-format"><option value="long_form">Normal video</option><option value="shorts">Shorts</option></select></div></div>
+        <div class="columns"><div><label for="rpm-low">Düşük RPM</label><input id="rpm-low" type="number" min="0" max="1000000" step="any" required></div><div><label for="rpm-base">Orta RPM</label><input id="rpm-base" type="number" min="0" max="1000000" step="any" required></div><div><label for="rpm-high">Yüksek RPM</label><input id="rpm-high" type="number" min="0" max="1000000" step="any" required></div><div><label for="rpm-currency">Para birimi</label><input id="rpm-currency" value="USD" pattern="[A-Z]{3}" required></div></div>
+        <label for="rpm-source">Kaynak ve varsayım yöntemi</label><input id="rpm-source" required maxlength="1000"><button type="submit">RPM varsayımını kaydet</button>
+      </form>
+      <div class="filters"><label for="rpm-filter-market">Pazar <select id="rpm-filter-market"><option value="">Tümü</option></select></label><label for="rpm-filter-format">Format <select id="rpm-filter-format"><option value="">Tümü</option><option value="long_form">Normal video</option><option value="shorts">Shorts</option></select></label><label for="rpm-filter-views">Hedef <select id="rpm-filter-views"><option value="10000">10.000</option><option value="100000">100.000</option><option value="1000000" selected>1 milyon</option><option value="10000000">10 milyon</option></select></label></div>
+      <div class="table-scroll"><table><thead><tr><th>Pazar</th><th>Format</th><th>Düşük</th><th>Orta</th><th>Yüksek</th><th>Kaynak</th></tr></thead><tbody id="rpm-comparison"></tbody></table></div>
+      <h2 id="review-title">Bağımsız içerik fırsatları</h2>
+      <p class="hint">0–100 girdileri YouTube API verilerinden bağımsız araştırmaya dayanmalıdır. Eksik olanları boş bırak. Rekabet ve maliyette yüksek değer olumsuzdur.</p>
+      <form id="review-form"><label for="review-topic">Konu</label><input id="review-topic" maxlength="160" required><label for="review-market">Pazar</label><select id="review-market" required></select><div id="review-factors" class="columns"></div><label for="review-source">Bağımsız kaynak ve yöntem</label><input id="review-source" maxlength="1000" required><button type="submit">Değerlendirmeyi kaydet</button></form>
+      <div class="table-scroll"><table><thead><tr><th>Konu</th><th>Pazar</th><th>Puan</th><th>Kapsam</th><th>Güven</th><th>Kaynak</th></tr></thead><tbody id="review-comparison"></tbody></table></div>
+      <h2 id="system-title">Sistem durumu</h2><button id="system-check" type="button" class="secondary">Canlı bağlantıları kontrol et</button><div id="system-status" role="status"></div>
     </section>
   </main>
   <footer>Video ve kanal verileri YouTube Data API’den gelir. <a href="https://www.youtube.com/t/terms">YouTube Hizmet Şartları</a></footer>

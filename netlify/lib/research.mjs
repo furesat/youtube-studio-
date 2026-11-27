@@ -144,3 +144,20 @@ export async function getReport(id, fetcher = fetch) {
 export async function getHistory(fetcher = fetch) {
   return supabase("fasulye_runs", {select:"run_id,attempt,collected_at,context",order:"collected_at.desc",limit:"50"},fetcher);
 }
+
+export async function startQueueWorker(fetcher=fetch) {
+  const response=await github(`/workflows/${workflow}/dispatches`,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({ref:"main",inputs:{queue:"true"}})},fetcher);
+  if(!response.ok)throw new ResearchError(502,"Kuyruk worker başlatılamadı; zamanlanmış işlem çalışacak.");
+  const result=response.status===200?await response.json():{};
+  const id=String(result.workflow_run_id??"");
+  return {state:"dispatched",run_id:ids.safeParse(id).success?id:null};
+}
+export async function listReportVideos(id,{offset=0,limit=50,region,language,sort="views",max_subscribers}={},fetcher=fetch) {
+  if(!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>100)throw new ResearchError(400,"Geçersiz sayfalama.");
+  const report=await getReport(id,fetcher);
+  const rows=report.opportunities.filter(r=>(!region||r.region===region)&&(!language||r.language===language));
+  const keys=[...new Set(rows.flatMap(r=>r.video_ids))];
+  const videos=keys.map(k=>report.videos[k]).filter(v=>v&&(max_subscribers==null||v.subscribers!=null&&v.subscribers<=max_subscribers));
+  videos.sort((a,b)=>sort==="subscribers"?(a.subscribers??Infinity)-(b.subscribers??Infinity):sort==="date"?String(b.published_at??"").localeCompare(String(a.published_at??"")):(b.views??-1)-(a.views??-1));
+  return {run_id:id,collected_at:report.collected_at,total_sample:videos.length,offset,limit,videos:videos.slice(offset,offset+limit).map(v=>({...v,url:"https://www.youtube.com/watch?v="+encodeURIComponent(v.video_id)}))};
+}

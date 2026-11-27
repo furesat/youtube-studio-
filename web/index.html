@@ -15,7 +15,7 @@
   </header>
   <main>
     <header class="intro">
-      <h1>YouTube araştırma paneli</h1>
+      <h1>Opportunity Engine 2.0</h1>
       <p>Bir konuyu yerel dilde ara, farklı pazarlardaki videoları karşılaştır ve yayın fikrini değerlendir.</p>
     </header>
 
@@ -71,6 +71,35 @@
       </aside>
     </section>
 
+    <section class="form-panel" aria-labelledby="batch-title">
+      <h2 id="batch-title">Uluslararası pazar keşfi ve toplu araştırma</h2>
+      <p class="hint">Hazır keşif sorguları 23 dilde yerelleştirilmiştir. Özel konular için hedef dilde doğal arama ifadeleri gir; eksik dil otomatik olarak çevrilmiş sayılmaz.</p>
+      <form id="batch-form">
+        <label for="batch-mode">Araştırma tipi</label>
+        <select id="batch-mode"><option value="discovery">Otomatik kategori keşfi</option><option value="bulk">Özel konular</option></select>
+        <div class="columns">
+          <div><label for="batch-countries">Ülkeler (boş = tümü)</label><select id="batch-countries" multiple size="7"></select></div>
+          <div><label for="batch-languages">Diller (boş = tümü)</label><select id="batch-languages" multiple size="7"></select></div>
+          <div id="category-field"><label for="batch-categories">Kategoriler (boş = tümü)</label><select id="batch-categories" multiple size="7"></select></div>
+        </div>
+        <div id="bulk-field" hidden>
+          <label for="batch-topics">Konu | dil kodu | yerel sorgu (her satır bir dil)</label>
+          <textarea id="batch-topics" rows="6" placeholder="Çatalın tarihi | tr | çatal ne zaman icat edildi&#10;Çatalın tarihi | de | Geschichte der Gabel"></textarea>
+          <p class="hint">Tek dil seçilmişse virgülle veya satırla ayrılmış yerel konular da girilebilir.</p>
+        </div>
+        <button id="batch-preview" type="button" class="secondary">Planı kontrol et</button>
+        <button id="batch-submit" type="submit">Kuyruğa ekle</button>
+      </form>
+      <p id="batch-status" role="status" aria-live="polite"></p>
+      <progress id="batch-progress" max="1" value="0" hidden></progress>
+      <div id="batch-reports"></div>
+      <h3>Araştırma grupları</h3>
+      <button id="batch-history" type="button" class="secondary">Grupları yükle</button>
+      <div id="batch-list"></div>
+      <h3>API kota yönetimi</h3>
+      <button id="quota-load" type="button" class="secondary">Kota durumunu oku</button>
+      <p id="quota-status" role="status"></p>
+    </section>
     <section id="results" aria-labelledby="results-title" hidden>
       <div class="result-head">
         <div>

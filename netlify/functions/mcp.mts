@@ -9,6 +9,8 @@ import {
 
 import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch } from "../lib/batch.mjs";
 
+import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
+
 function tool(name: string, fn: () => Promise<unknown> | unknown) {
   return Promise.resolve().then(async () => {
     console.info("Fasulye MCP tool:", name);
@@ -92,6 +94,9 @@ function buildServer() {
   },({id})=>tool("get_batch_status",()=>batchStatus(id)));
   server.registerTool("list_research_batches", {description:"Son 50 araştırma grubunu listeler.",annotations:{readOnlyHint:true}},()=>tool("list_research_batches",()=>listBatches()));
   server.registerTool("get_queue_budget", {description:"Uygulamanın yerel günlük arama rezervasyonlarını gösterir; Google toplam kotası değildir.",annotations:{readOnlyHint:true}},()=>tool("get_queue_budget",()=>queueBudget()));
+  server.registerTool("get_independent_evidence",{description:"Kaynaklı trend, RPM ve bağımsız fırsat girdileri. Arama hacmi bilinmiyorsa null.",annotations:{readOnlyHint:true}},()=>tool("get_independent_evidence",()=>getEvidence()));
+  server.registerTool("get_trend_series",{description:"Kaydedilen Google Trends CSV serisini okur; mutlak arama hacmi değildir.",inputSchema:{id:z.string().uuid()},annotations:{readOnlyHint:true}},({id})=>tool("get_trend_series",()=>getTrend(id)));
+  server.registerTool("save_independent_evidence",{description:"Kullanıcı tarafından sağlanan doğrulanabilir kaynaklı trend CSV, RPM varsayımı veya bağımsız değerlendirmeyi kaydeder. YouTube API verisinden puan veya gelir türetme.",inputSchema:evidenceSchema,annotations:{readOnlyHint:false,destructiveHint:false}},input=>tool("save_independent_evidence",()=>writeEvidence(input)));
   return server;
 }
 

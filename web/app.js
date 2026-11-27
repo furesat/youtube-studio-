@@ -22,7 +22,7 @@ function showStatus(message, isError = false) {
 async function request(path, options = {}) {
   const { method = "GET", body, signal, binary = false } = options;
   const headers = new Headers();
-  if (path !== "/api/catalog") {
+  if (!["/api/catalog","/api/discovery-catalog"].includes(path)) {
     const token = el("token").value.trim();
     if (!token) {
       el("token").focus();
@@ -212,7 +212,7 @@ function detailFor(row) {
     link.target = "_blank";
     link.rel = "noopener noreferrer";
     const item = node("li");
-    item.append(link, ` · ${video.channel_title ?? "—"} · ${fmt(video.views)} izlenme · ${fmt(video.subscribers)} abone`);
+    item.append(link, ` · ${video.channel_title ?? "—"} · ${fmt(video.views)} izlenme · ${fmt(video.subscribers)} abone · ${video.duration ?? "süre bilinmiyor"} · ${video.audio_language ?? video.default_language ?? "dil bilinmiyor"}`);
     list.append(item);
   }
   details.append(list);
@@ -302,3 +302,74 @@ if (initialRun && /^[1-9]\d{0,15}$/.test(initialRun)) {
 }
 updateMode();
 void loadCatalog();
+
+let batchCatalog, batchController;
+const selected = id => Array.from(el(id).selectedOptions, o => o.value);
+function appendOption(id,value,label) { const opt=node("option",label);opt.value=value;el(id).append(opt); }
+function flag(code) { return String.fromCodePoint(...[...code].map(c=>127397+c.charCodeAt(0))); }
+async function initBatch() {
+  try {
+    batchCatalog = await request("/api/discovery-catalog");
+    const names=new Intl.DisplayNames(["tr"],{type:"region"});
+    for(const code of new Set(batchCatalog.markets.map(m=>m.region))) appendOption("batch-countries",code,flag(code)+" "+names.of(code));
+    for(const [code,label] of Object.entries(batchCatalog.languages)) appendOption("batch-languages",code,label);
+    for(const c of batchCatalog.categories) appendOption("batch-categories",c.id,c.label);
+  } catch(e) { el("batch-status").textContent=e.message; }
+}
+function batchInput() {
+  if(!batchCatalog) throw new Error("Katalog yüklenmedi.");
+  const mode=el("batch-mode").value,languages=selected("batch-languages");
+  const input={mode,countries:selected("batch-countries"),languages};
+  if(mode==="discovery") return {...input,categories:selected("batch-categories")};
+  const topics=new Map();
+  const raw=el("batch-topics").value.trim();
+  const lines=raw.includes("|")?raw.split(/\r?\n/):raw.split(/[,\r\n]+/);
+  for(const line of lines.map(s=>s.trim()).filter(Boolean)){
+    const parts=line.split("|").map(s=>s.trim());
+    if(parts.length===1 && languages.length===1) parts.push(languages[0],parts[0]);
+    if(parts.length!==3 || !batchCatalog.languages[parts[1]] || !parts[0] || !parts[2]) throw new Error("Her satırda konu | dil kodu | yerel sorgu gir veya tek dil seç.");
+    if(!topics.has(parts[0])) topics.set(parts[0],{topic:parts[0],queries:{}});
+    topics.get(parts[0]).queries[parts[1]]=parts[2];
+  }
+  return {...input,topics:[...topics.values()]};
+}
+el("batch-mode").addEventListener("change",()=>{
+  const discovery=el("batch-mode").value==="discovery";
+  el("category-field").hidden=!discovery;el("bulk-field").hidden=discovery;
+});
+async function submitBatch(preview) {
+  const button=el(preview?"batch-preview":"batch-submit");button.disabled=true;
+  try {
+    const data=await request("/api/batch"+(preview?"?preview=1":""),{method:"POST",body:JSON.stringify(batchInput())});
+    el("batch-status").textContent=data.tasks+" görev · "+data.missing.length+" eksik pazar yerelleştirmesi"+(preview?" · Plan; henüz kuyruğa eklenmedi.":" · Kuyruğa kaydedildi.");
+    if(!preview) void watchBatch(data.id);
+  } catch(e) {el("batch-status").textContent=e.message;}
+  finally {button.disabled=false;}
+}
+el("batch-preview").addEventListener("click",()=>void submitBatch(true));
+el("batch-form").addEventListener("submit",e=>{e.preventDefault();void submitBatch(false);});
+async function watchBatch(id) {
+  batchController?.abort();batchController=new AbortController();const {signal}=batchController;
+  try {
+    while(!signal.aborted){
+      const b=await request("/api/batch?"+new URLSearchParams({id}),{signal});
+      const p=el("batch-progress");p.hidden=false;p.max=b.total||1;p.value=b.done+b.failed;
+      el("batch-status").textContent=b.label+" · "+b.done+"/"+b.total+" tamamlandı · "+b.running+" çalışıyor · "+b.queued+" sırada · "+b.failed+" başarısız";
+      const container=el("batch-reports");container.replaceChildren();
+      for(const runId of b.reports){const button=node("button","Raporu aç · "+runId);button.type="button";button.className="secondary";button.addEventListener("click",()=>void supervise(s=>watch(runId,s)));container.append(button);}
+      if(b.done+b.failed>=b.total) break;
+      await new Promise(resolve=>setTimeout(resolve,15000));
+    }
+  } catch(e){if(!signal.aborted)el("batch-status").textContent=e.message;}
+}
+el("batch-history").addEventListener("click",async()=>{
+  try{
+    const rows=await request("/api/batch");const list=el("batch-list");list.replaceChildren();
+    if(!rows.length)list.append(node("p","Henüz araştırma grubu yok."));
+    for(const b of rows){const button=node("button",b.label+" · "+dates.format(new Date(b.created_at)));button.type="button";button.className="secondary";button.addEventListener("click",()=>void watchBatch(b.id));list.append(button);}
+  }catch(e){el("batch-status").textContent=e.message;}
+});
+el("quota-load").addEventListener("click",async()=>{
+  try{const q=await request("/api/quota");el("quota-status").textContent="Günlük sınır: "+q.daily_limit+" · "+(q.reservations.map(r=>r.day+": "+r.reserved).join(" · ")||"Rezervasyon yok")+" · "+q.scope;}catch(e){el("quota-status").textContent=e.message;}
+});
+void initBatch();

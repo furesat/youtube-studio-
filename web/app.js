@@ -238,6 +238,7 @@ function displayReport(data, id) {
   filterOptions("topic-filter", topics);
   filterOptions("market-filter", markets);
   renderRows();
+  renderChannels(data.channel_samples??[]);
 }
 
 function renderRows() {
@@ -313,7 +314,7 @@ async function initBatch() {
     for(const code of new Set(batchCatalog.markets.map(m=>m.region))) appendOption("region",code,flag(code)+" "+names.of(code));
     for(const [code,label] of Object.entries(batchCatalog.languages)) appendOption("language",code,label);
     el("region").value="TR";el("language").value="tr";
-    for(const market of batchCatalog.markets) for(const id of ["trend-market","rpm-market","rpm-filter-market","review-market"]) appendOption(id,market.id,flag(market.region)+" "+market.label);
+    for(const market of batchCatalog.markets) for(const id of ["trend-market","rpm-market","rpm-filter-market","review-market","cost-market"]) appendOption(id,market.id,flag(market.region)+" "+market.label);
   } catch(e) { el("batch-status").textContent=e.message; }
 }
 function batchInput() {
@@ -356,7 +357,7 @@ el("batch-form").addEventListener("submit",e=>{e.preventDefault();void submitBat
 let taskBatchId,taskOffset=0,taskTotal=0;
 async function loadBatchTasks(){
   if(!taskBatchId)return;
-  try{const rows=await request("/api/batch?"+new URLSearchParams({id:taskBatchId,tasks:"1",offset:String(taskOffset)}));el("batch-task-rows").replaceChildren();for(const t of rows)addRow("batch-task-rows",[t.topic+" / "+t.query,t.region+" / "+t.language,t.status,t.attempts,t.error_code]);el("batch-task-prev").disabled=taskOffset===0;el("batch-task-next").disabled=taskOffset+100>=taskTotal;}catch(e){el("batch-status").textContent=e.message;}
+  try{const rows=await request("/api/batch?"+new URLSearchParams({id:taskBatchId,tasks:"1",offset:String(taskOffset)}));el("batch-task-rows").replaceChildren();for(const t of rows)addRow("batch-task-rows",[t.topic+" / "+t.query,t.region+" / "+t.language,(t.lookback_days??365)+" gün / "+(t.search_order??"relevance"),t.status,t.attempts,t.error_code]);el("batch-task-prev").disabled=taskOffset===0;el("batch-task-next").disabled=taskOffset+100>=taskTotal;}catch(e){el("batch-status").textContent=e.message;}
 }
 el("batch-task-details").addEventListener("toggle",()=>{if(el("batch-task-details").open)void loadBatchTasks();});
 el("batch-task-prev").addEventListener("click",()=>{taskOffset=Math.max(0,taskOffset-100);void loadBatchTasks();});
@@ -427,7 +428,7 @@ function renderEvidence(){
   const market=el("rpm-filter-market").value,format=el("rpm-filter-format").value,views=Number(el("rpm-filter-views").value);
   for(const row of evidenceData.rpm.filter(r=>(!market||r.market_id===market)&&(!format||r.format===format))){
     const s=row.scenarios.find(x=>x.views===views);if(!s)continue;
-    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.source]);
+    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.production_cost==null?"Bilinmiyor":fmt(s.production_cost)+" "+s.currency,s.profit?["low","base","high"].map(k=>fmt(s.profit[k])+" "+s.currency).join(" / "):"Bilinmiyor",s.source+" · "+(row.source_date??"yayın tarihi bilinmiyor")+" · "+(row.source_checked_at??"doğrulama tarihi yok")+" · "+(row.reliability??"unspecified")]);
   }
   if(!el("rpm-comparison").children.length)addRow("rpm-comparison",["Kaynaklı RPM girdisi yok."]);
   for(const row of [...evidenceData.reviews].sort((a,b)=>(b.score??-1)-(a.score??-1))){
@@ -463,7 +464,7 @@ el("trend-form").addEventListener("submit",async e=>{
 });
 el("rpm-form").addEventListener("submit",async e=>{
   e.preventDefault();
-  try{await saveEvidence({kind:"rpm",market_id:el("rpm-market").value,format:el("rpm-format").value,currency:el("rpm-currency").value,low:Number(el("rpm-low").value),base:Number(el("rpm-base").value),high:Number(el("rpm-high").value),source:el("rpm-source").value});}
+  try{await saveEvidence({kind:"rpm",market_id:el("rpm-market").value,format:el("rpm-format").value,currency:el("rpm-currency").value,low:Number(el("rpm-low").value),base:Number(el("rpm-base").value),high:Number(el("rpm-high").value),source:el("rpm-source").value,source_date:el("rpm-source-date").value||undefined,reliability:el("rpm-reliability").value});}
   catch(error){el("evidence-status").textContent=error.message;}
 });
 el("review-form").addEventListener("submit",async e=>{
@@ -552,4 +553,33 @@ el("priority-campaign").addEventListener("click",()=>{
   el("batch-mode").value="campaign";el("batch-mode").dispatchEvent(new Event("change"));
   for(const id of ["batch-countries","batch-languages","batch-categories"])for(const option of el(id).options)option.selected=false;
   el("batch-preview").click();
+});
+
+function renderChannels(channels){
+  const box=el("channel-library");box.replaceChildren();
+  if(!channels.length){box.append(node("p","Bu raporda kanal yükleme örneklemi yok."));return;}
+  for(const channel of channels){
+    const details=node("details");const title=node("summary",(channel.channel_title??channel.channel_id)+" · "+fmt(channel.current_subscribers)+" mevcut abone");
+    details.append(title,node("p","Kanal kuruluşu: "+(channel.channel_created_at?.slice(0,10)??"bilinmiyor")));
+    const link=node("a","YouTube kanalını aç");link.href="https://www.youtube.com/channel/"+encodeURIComponent(channel.channel_id);link.target="_blank";link.rel="noopener noreferrer";details.append(link);
+    if(channel.error)details.append(node("p","Eksik veri: "+channel.error));
+    const list=node("ul");
+    for(const v of channel.videos??[]){
+      const item=node("li"),a=node("a",v.title??v.video_id);
+      a.href="https://www.youtube.com/watch?v="+encodeURIComponent(v.video_id);a.target="_blank";a.rel="noopener noreferrer";
+      item.append(a,document.createTextNode(" · "+(v.published_at?.slice(0,10)??"bilinmiyor")+" · "+fmt(v.views)+" izlenme · "+(v.duration??"süre bilinmiyor")));list.append(item);
+    }
+    details.append(list);box.append(details);
+  }
+}
+const costs={voice:"Seslendirme",visuals:"Görsel üretimi",translation:"Çeviri",editing:"Kurgu",other:"Diğer"};
+for(const [key,label] of Object.entries(costs)){
+  const wrap=node("div"),lab=node("label",label),input=node("input");
+  lab.htmlFor=input.id="cost-"+key;input.type="number";input.min="0";input.max="10000000";input.step="any";input.required=true;
+  wrap.append(lab,input);el("cost-fields").append(wrap);
+}
+el("cost-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  try{await saveEvidence({kind:"cost",market_id:el("cost-market").value,format:el("cost-format").value,currency:el("cost-currency").value,source:el("cost-source").value,...Object.fromEntries(Object.keys(costs).map(k=>[k,Number(el("cost-"+k).value)]))});}
+  catch(error){el("evidence-status").textContent=error.message;}
 });

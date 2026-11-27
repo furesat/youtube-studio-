@@ -55,3 +55,6 @@ Controlled campaign planning and provenance implemented behind an enqueue opt-in
 
 ### V4 checkpoint 3
 Atomic queue and standalone worker draft implemented. Prior two commits passed GitHub Actions. New SQL and worker behavior require isolated integration checks and owner-approved migration before activation.
+
+### V4 checkpoint 4
+Independent Wikimedia evidence provider implemented, gated until migration/test approval. Does not measure YouTube search volume or national audience. No live provider verification.

@@ -5,6 +5,7 @@ import {
 
 import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
+import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
 import { editorialRequest } from "../lib/editorial.mjs";
 import { exportReport } from "../lib/report-export.mjs";
@@ -28,6 +29,16 @@ export default async (request: Request) => {
       const result = await editorialRequest(request, url);
       return json(result.body, result.status);
     }
+    if (url.pathname === "/api/wikimedia") {
+      if(env("FASULYE_WIKIMEDIA_EVIDENCE")!=="1")throw new ResearchError(503,"Wikimedia kanıt modülü henüz etkin değil.");
+      if(request.method==="GET")return json(await listWiki({offset:Number(url.searchParams.get("offset")??0)}));
+      if(request.method==="POST"){
+        const raw=await request.text();if(raw.length>4096)throw new ResearchError(413,"İstek çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        if(url.searchParams.get("search")==="1")return json(await searchWiki(body));
+        return json(await collectWiki(body),201);
+      }
+    }
     if (url.pathname === "/api/evidence") {
       if (request.method === "GET") { const id=url.searchParams.get("id"); return json(id?await getTrend(id):await getEvidence()); }
       if (request.method === "POST") {
@@ -45,7 +56,7 @@ export default async (request: Request) => {
         try { input = JSON.parse(body); } catch { throw new ResearchError(400,"JSON geçersiz."); }
         if (url.searchParams.get("preview") === "1") {
           const plan = planBatch(input);
-          return json({tasks:plan.tasks.length,missing:plan.missing});
+          return json({tasks:plan.tasks.length,missing:plan.missing,methodology:plan.methodology??null});
         }
         return json(await enqueueBatch(input),202);
       }
@@ -96,6 +107,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

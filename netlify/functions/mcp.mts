@@ -4,12 +4,13 @@ import { z } from "zod";
 import { mcpAuthorized, mcpUnauthorized, oauthConfig, resourceMetadata } from "../lib/mcp-auth.mjs";
 import {
   getHistory, getReport, getRun, listReportVideos, json, publicCatalog, readSchema, ResearchError,
-  startResearch, startSchema, trustedOrigin,
+  startResearch, startSchema, trustedOrigin, env,
 } from "../lib/research.mjs";
 
 import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
+import {wikiSearchSchema,wikiCollectSchema,wikiListSchema,searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 
 import {
   candidateListSchema, candidateSchema, candidateUpdateSchema, createCandidate, listCandidates, updateCandidate, getProductionBrief,
@@ -89,7 +90,7 @@ function buildServer() {
   },()=>tool("list_discovery_catalog",()=>discoveryCatalog));
   server.registerTool("preview_batch", {
     description:"Kota kullanmadan görev sayısını ve eksik yerelleştirmeleri gösterir.",inputSchema:batchSchema,annotations:{readOnlyHint:true,openWorldHint:false},
-  },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing};}));
+  },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing,methodology:p.methodology??null};}));
   server.registerTool("enqueue_research_batch", {
     description:"Pazar keşfi veya toplu araştırmayı kuyruğa ekler. Bulk modunda her konu için hedef dilde doğal sorgular sağla. Çalışan motor zamanlanmış şekilde kotaya göre işler.",inputSchema:batchSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:false,openWorldHint:true},
   },input=>tool("enqueue_research_batch",()=>enqueueBatch(input)));
@@ -126,6 +127,10 @@ function buildServer() {
     description:"Mevcut özgün editoryal adayın kaynaklarını, belirsizliklerini ve üretim kontrol listesini Markdown olarak döndürür; yeni iddia veya senaryo üretmez.",
     inputSchema:{id:z.uuid()},annotations:{readOnlyHint:true,openWorldHint:false},
   },({id})=>tool("get_editorial_production_brief",()=>getProductionBrief(id)));
+  const wikiEnabled=()=>{if(env("FASULYE_WIKIMEDIA_EVIDENCE")!=="1")throw new ResearchError(503,"Wikimedia evidence not enabled.");};
+  server.registerTool("search_wikimedia_articles",{description:"Explicit external research: search a Wikipedia language edition for candidate articles. Manually choose the correct page. No YouTube quota.",inputSchema:wikiSearchSchema,annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:true}},input=>tool("search_wikimedia_articles",()=>{wikiEnabled();return searchWiki(input);}));
+  server.registerTool("collect_wikimedia_evidence",{description:"Explicitly collect and save selected article's daily worldwide Wikipedia pageviews (max 90 past days), not country audience or YouTube demand.",inputSchema:wikiCollectSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:true}},input=>tool("collect_wikimedia_evidence",()=>{wikiEnabled();return collectWiki(input);}));
+  server.registerTool("list_wikimedia_evidence",{description:"Read stored independent Wikimedia evidence only; never calls provider.",inputSchema:wikiListSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("list_wikimedia_evidence",()=>{wikiEnabled();return listWiki(input);}));
   return server;
 }
 

@@ -828,3 +828,40 @@ el("editorial-form").addEventListener("submit", async event => {
     el("editorial-save").disabled = el("editorial-cancel").disabled = false;
   }
 });
+
+let wikiSelectionLanguage=null;
+el("wiki-language").addEventListener("change",()=>{wikiSelectionLanguage=null;el("wiki-page").replaceChildren(new Option("Önce ara",""));});
+el("wiki-query").addEventListener("input",()=>{wikiSelectionLanguage=null;el("wiki-page").replaceChildren(new Option("Önce ara",""));});
+el("wiki-search").addEventListener("submit",async e=>{
+ e.preventDefault();const language=el("wiki-language").value,query=el("wiki-query").value;
+ wikiSelectionLanguage=null;el("wiki-page").replaceChildren(new Option("Seçiniz",""));el("wiki-status").textContent="Makaleler aranıyor…";
+ try{
+  const result=await request("/api/wikimedia?search=1",{method:"POST",body:JSON.stringify({language,query})});
+  if(el("wiki-language").value!==language||el("wiki-query").value!==query)return;
+  for(const row of result.results)el("wiki-page").append(new Option(row.title,String(row.page_id)));
+  wikiSelectionLanguage=language;el("wiki-status").textContent=result.results.length?"Doğru makaleyi elle seçin.":"Makale adayı bulunamadı.";
+ }catch(err){el("wiki-status").textContent=err.message;}
+});
+async function loadWiki(){
+ try{
+  const p=await request("/api/wikimedia");const list=el("wiki-list");list.replaceChildren();
+  for(const r of p.records){
+   const item=node("p",r.topic+" · "+r.article_title+" · "+r.language+" · "+r.period_start+" – "+r.period_end+" · "+r.freshness);
+   const detail=node("details");detail.append(node("summary","Günlük ham gözlemler"));
+   const table=node("ul");for(const v of r.series)table.append(node("li",v.date+": "+(v.views===null?"Bilinmiyor":fmt(v.views))));
+   detail.append(table,node("p",r.limitations),node("p","Kaynak: "+r.source_url),node("p","Alım: "+r.retrieved_at+" / "+r.license));
+   list.append(item,detail);
+  }
+  if(!p.records.length)list.append(node("p","Henüz kanıt yok."));
+  el("wiki-status").textContent="Kayıtlı bağımsız kanıtlar.";
+ }catch(err){el("wiki-status").textContent=err.message;}
+}
+el("wiki-list-button").addEventListener("click",()=>void loadWiki());
+el("wiki-collect").addEventListener("submit",async e=>{
+ e.preventDefault();
+ try{
+  if(wikiSelectionLanguage!==el("wiki-language").value||!el("wiki-page").value)throw new Error("Önce doğru makaleyi seçin.");
+  el("wiki-status").textContent="Gözlemler alınıyor…";
+  await request("/api/wikimedia",{method:"POST",body:JSON.stringify({language:wikiSelectionLanguage,topic:el("wiki-topic").value,page_id:Number(el("wiki-page").value),start:el("wiki-start").value,end:el("wiki-end").value})});await loadWiki();
+ }catch(err){el("wiki-status").textContent=err.message;}
+});

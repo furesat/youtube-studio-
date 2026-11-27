@@ -98,7 +98,7 @@ class EngineTest(unittest.TestCase):
         self.assertEqual([endpoint for endpoint, _ in calls], ["search", "search", "videos", "channels"])
         self.assertEqual(row["video_ids"], ["a", "b"])
         self.assertEqual(row["sample_channel_count"], 2)
-        self.assertEqual(row["sample_total_known_views"], 0)
+        self.assertIsNone(row["sample_total_known_views"])
         self.assertEqual(row["known_view_video_count"], 1)
         self.assertEqual(row["known_subscriber_video_count"], 1)
         self.assertIsNone(report["videos"]["a"]["subscribers"])

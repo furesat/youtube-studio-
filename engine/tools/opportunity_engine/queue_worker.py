@@ -45,7 +45,7 @@ def prepare(tasks):
         pairs.append((topic,market,[task["query"]]))
     return pairs
 
-def work(env=os.environ):
+def _work(env=os.environ):
     run_id = env.get("GITHUB_RUN_ID","")
     youtube_key = env.get("YOUTUBE_API_KEY","").strip()
     if not youtube_key:
@@ -62,6 +62,7 @@ def work(env=os.environ):
             if not rpc("fasulye_renew_lease", {"p_run_id": run_id, "p_count": len(tasks)}, env):
                 raise RuntimeError("Queue lease lost")
             last_renew = time.monotonic()
+            heartbeat(env,"running")
     config, _, _ = load_config(ROOT/"config.json")
     config["search"]["pages_per_query"] = 1
     config["search"]["results_per_page"] = 50
@@ -96,6 +97,27 @@ def work(env=os.environ):
                 raise RuntimeError("Queue completion not acknowledged")
     print(f"Queue: {len(tasks)-failures}/{len(tasks)} tasks complete; {len(report['videos'])} real videos; report {run_id}")
     return 2 if failures else 0
+
+def heartbeat(env, state):
+    if env.get("FASULYE_QUEUE_CONTROLS") != "1":
+        return
+    run_id=env.get("GITHUB_RUN_ID","")
+    source="standalone" if len(run_id)==16 and run_id.startswith("9") else "github"
+    worker_id=env.get("FASULYE_WORKER_ID") or source+":"+run_id
+    try:
+        rpc("fasulye_worker_heartbeat", {"p_worker_id":worker_id,"p_source":source,"p_state":state,"p_run_id":run_id or None},env)
+    except (RuntimeError,ValueError):
+        print("Worker heartbeat unavailable",file=sys.stderr)
+
+def work(env=os.environ):
+    heartbeat(env,"running")
+    try:
+        code=_work(env)
+    except Exception:
+        heartbeat(env,"error")
+        raise
+    heartbeat(env,"idle" if code==0 else "error")
+    return code
 
 if __name__ == "__main__":
     try:

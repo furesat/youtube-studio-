@@ -95,7 +95,9 @@ test("an MCP client connects, lists tools and reads the catalog using its bearer
   await client.connect(transport);
   try {
     const tools = await client.listTools();
-    assert.equal(tools.tools.length, 24);
+    assert.equal(tools.tools.length, 26);
+    assert.equal(tools.tools.find(t=>t.name==="get_queue_health").annotations.readOnlyHint,true);
+    assert.equal(tools.tools.find(t=>t.name==="control_research_queue").annotations.destructiveHint,true);
     for(const name of ["search_wikimedia_articles","collect_wikimedia_evidence","list_wikimedia_evidence"]){
       const registered=tools.tools.find(tool=>tool.name===name);
       assert.ok(registered,name);
@@ -137,4 +139,19 @@ test("optional OAuth discovery advertises the protected resource and enforces is
     delete process.env.FASULYE_OAUTH_RESOURCE;
     delete process.env.FASULYE_OAUTH_SUBJECT;
   }
+});
+
+test("standalone report lookup never contacts GitHub and checks expiry",async()=>{
+ process.env.SUPABASE_SECRET_KEY="sb_secret_unit_test";
+ const id="9123456789012345";
+ try{
+  const result=await getReport(id,async(url,req)=>{
+   assert.equal(new URL(url).hostname,"niihqywncuwxfxipkgte.supabase.co");
+   assert.equal(new URL(url).searchParams.get("run_id"),"eq."+id);
+   if(url.includes("fasulye_runs"))return Response.json([{run_id:id,collected_at:"2026-11-27T00:00:00Z"}]);
+   assert.match(new URL(url).searchParams.get("expires_at"),/^gt\./);
+   return Response.json([{report}]);
+  });
+  assert.deepEqual(result,report);
+ }finally{delete process.env.SUPABASE_SECRET_KEY;}
 });

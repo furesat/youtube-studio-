@@ -11,6 +11,7 @@ import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, 
 
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {wikiSearchSchema,wikiCollectSchema,wikiListSchema,searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
+import {queueControlSchema,controlQueue,queueHealth,featureFlags} from "../lib/queue-control.mjs";
 
 import {
   candidateListSchema, candidateSchema, candidateUpdateSchema, createCandidate, listCandidates, updateCandidate, getProductionBrief,
@@ -30,7 +31,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "3.3.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "4.0.0-draft" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -87,7 +88,7 @@ function buildServer() {
   }));
   server.registerTool("list_discovery_catalog", {
     description:"23 dil, ülke-dil pazarları ve doğal keşif sorguları.",annotations:{readOnlyHint:true,openWorldHint:false},
-  },()=>tool("list_discovery_catalog",()=>discoveryCatalog));
+  },()=>tool("list_discovery_catalog",()=>({...discoveryCatalog,features:featureFlags()})));
   server.registerTool("preview_batch", {
     description:"Kota kullanmadan görev sayısını ve eksik yerelleştirmeleri gösterir.",inputSchema:batchSchema,annotations:{readOnlyHint:true,openWorldHint:false},
   },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing,methodology:p.methodology??null};}));
@@ -131,6 +132,8 @@ function buildServer() {
   server.registerTool("search_wikimedia_articles",{description:"Explicit external research: search a Wikipedia language edition for candidate articles. Manually choose the correct page. No YouTube quota.",inputSchema:wikiSearchSchema,annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:true}},input=>tool("search_wikimedia_articles",()=>{wikiEnabled();return searchWiki(input);}));
   server.registerTool("collect_wikimedia_evidence",{description:"Explicitly collect and save selected article's daily worldwide Wikipedia pageviews (max 90 past days), not country audience or YouTube demand.",inputSchema:wikiCollectSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:true}},input=>tool("collect_wikimedia_evidence",()=>{wikiEnabled();return collectWiki(input);}));
   server.registerTool("list_wikimedia_evidence",{description:"Read stored independent Wikimedia evidence only; never calls provider.",inputSchema:wikiListSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("list_wikimedia_evidence",()=>{wikiEnabled();return listWiki(input);}));
+  server.registerTool("get_queue_health",{description:"Stored queue health and worker heartbeats. Does not launch research or contact YouTube.",annotations:{readOnlyHint:true,openWorldHint:false}},()=>tool("get_queue_health",()=>queueHealth()));
+  server.registerTool("control_research_queue",{description:"Explicit owner-requested queue action: pause/resume, priority -10 to 10, cancellation (running tasks finish cooperatively), or retry failed. Cancel/retry require explicit confirm=true; never refunds quota.",inputSchema:queueControlSchema,annotations:{readOnlyHint:false,destructiveHint:true,idempotentHint:false,openWorldHint:false}},input=>tool("control_research_queue",()=>controlQueue(input)));
   return server;
 }
 

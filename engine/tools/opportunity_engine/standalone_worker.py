@@ -7,7 +7,7 @@ import secrets
 import signal
 import sys
 import threading
-from .queue_worker import work
+from .queue_worker import work, heartbeat
 from .storage import PROJECT_URL
 
 def execution_id():
@@ -48,9 +48,12 @@ def main(argv=None, env=None, stop=None, worker=work):
         stop=threading.Event()
         for sig in (signal.SIGINT, signal.SIGTERM):
             signal.signal(sig, lambda *_: stop.set())
+    env.setdefault("FASULYE_WORKER_ID","standalone:"+secrets.token_hex(12))
+    last_env=None
     while not stop.is_set():
         run_id=execution_id()
         local={**env, "GITHUB_RUN_ID":run_id, "GITHUB_RUN_ATTEMPT":"1"}
+        last_env=local
         log("poll_started", run_id=run_id)
         try:
             code=worker(local)
@@ -62,6 +65,8 @@ def main(argv=None, env=None, stop=None, worker=work):
         if args.once:
             return code
         stop.wait(args.poll_seconds)
+    if last_env is not None:
+        heartbeat(last_env,"stopped")
     log("shutdown")
     return 0
 

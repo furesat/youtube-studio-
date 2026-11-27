@@ -61,3 +61,6 @@ Independent Wikimedia evidence provider implemented, gated until migration/test 
 
 ### V4 checkpoint 5
 Queue control, deduplication and observability SQL draft, isolated PostgreSQL regression harness. Worker CI passed; Wikimedia CI initially 35/36 due to old MCP count, corrected with explicit registration assertions. Latest CI pending.
+
+### V4 checkpoint 6
+Isolated SQL migration/concurrency CI succeeded (45928051692: 18 Python, 36 Node, build). Queue management API/MCP, worker heartbeat and local service examples added; latest checkpoint CI pending.

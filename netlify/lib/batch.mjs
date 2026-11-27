@@ -94,7 +94,8 @@ export async function enqueueBatch(input,fetcher=fetch) {
   return {id,status:"queued",tasks:plan.tasks.length,missing:plan.missing,worker};
 }
 export async function listBatches(fetcher=fetch) {
-  return db("fasulye_batches?select=id,label,created_at&order=created_at.desc&limit=50",{fetcher});
+  const columns="id,label,created_at"+(env("FASULYE_QUEUE_CONTROLS")==="1"?",paused,priority":"");
+  return db("fasulye_batches?select="+columns+"&order=created_at.desc&limit=50",{fetcher});
 }
 export async function batchStatus(id,fetcher=fetch) {
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) throw new ResearchError(400,"Geçersiz grup kimliği.");
@@ -107,7 +108,8 @@ export async function queueBudget(fetcher=fetch) {
 
 export async function listBatchTasks(id,offset=0,limit=100,fetcher=fetch) {
   if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)||!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>100)throw new ResearchError(400,"Grup veya sayfalama geçersiz.");
-  return db("fasulye_tasks?"+new URLSearchParams({select:"id,topic,query,region,language,search_order,lookback_days,status,attempts,next_attempt_at,report_run_id,error_code",batch_id:"eq."+id,order:"id.asc",offset:String(offset),limit:String(limit)}),{fetcher});
+  const columns="id,topic,query,region,language,search_order,lookback_days,status,attempts,next_attempt_at,report_run_id,error_code"+(env("FASULYE_QUEUE_CONTROLS")==="1"?",priority,cancel_requested,source_task_id,reused_at,methodology_version,comparison_axis,query_variant,window_anchor":"");
+  return db("fasulye_tasks?"+new URLSearchParams({select:columns,batch_id:"eq."+id,order:"id.asc",offset:String(offset),limit:String(limit)}),{fetcher});
 }
 
 export async function marketEvidence(id,{topic=null,market=null,days=null,offset=0,limit=50}={},fetcher=fetch){

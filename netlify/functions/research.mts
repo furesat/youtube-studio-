@@ -6,6 +6,7 @@ import {
 import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
+import {featureFlags,controlQueue,queueHealth} from "../lib/queue-control.mjs";
 import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
 import { editorialRequest } from "../lib/editorial.mjs";
 import { exportReport } from "../lib/report-export.mjs";
@@ -13,7 +14,7 @@ import { exportReport } from "../lib/report-export.mjs";
 export default async (request: Request) => {
   const url = new URL(request.url);
   if (!trustedOrigin(request)) return json({ error: "İstek kaynağına izin verilmedi." }, 403);
-  if (url.pathname === "/api/discovery-catalog" && request.method === "GET") return json(discoveryCatalog);
+  if (url.pathname === "/api/discovery-catalog" && request.method === "GET") return json({...discoveryCatalog,features:featureFlags()});
   if (url.pathname === "/api/catalog" && request.method === "GET") return json(publicCatalog);
   if (!env("FASULYE_ACCESS_TOKEN")) {
     return json({ error: "Panel erişimi Netlify'da yapılandırılmalı." }, 503);
@@ -28,6 +29,14 @@ export default async (request: Request) => {
     if (url.pathname === "/api/editorial" && ["GET", "POST", "PUT"].includes(request.method)) {
       const result = await editorialRequest(request, url);
       return json(result.body, result.status);
+    }
+    if(url.pathname==="/api/queue"){
+      if(request.method==="GET")return json(await queueHealth());
+      if(request.method==="POST"){
+        const raw=await request.text();if(raw.length>4096)throw new ResearchError(413,"İstek çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        return json(await controlQueue(body));
+      }
     }
     if (url.pathname === "/api/wikimedia") {
       if(env("FASULYE_WIKIMEDIA_EVIDENCE")!=="1")throw new ResearchError(503,"Wikimedia kanıt modülü henüz etkin değil.");
@@ -107,6 +116,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia", "/api/queue"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

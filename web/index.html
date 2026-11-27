@@ -86,7 +86,7 @@
         <div id="bulk-field" hidden>
           <label for="batch-topics">Konu | dil kodu | yerel sorgu (her satır bir dil)</label>
           <textarea id="batch-topics" rows="6" placeholder="Çatalın tarihi | tr | çatal ne zaman icat edildi&#10;Çatalın tarihi | de | Geschichte der Gabel"></textarea>
-          <p class="hint">Tek dil seçilmişse virgülle veya satırla ayrılmış yerel konular da girilebilir.</p>
+          <p class="hint">Bilinen konular (çatal, takvim, uyku, lale çılgınlığı) tüm seçili dillerde otomatik yerelleştirilir. Diğer konularda tek dil seç veya dil başına doğal sorgu gir.</p>
         </div>
         <button id="batch-preview" type="button" class="secondary">Planı kontrol et</button>
         <button id="batch-submit" type="submit">Kuyruğa ekle</button>
@@ -94,6 +94,7 @@
       <p id="batch-status" role="status" aria-live="polite"></p>
       <progress id="batch-progress" max="1" value="0" hidden></progress>
       <div id="batch-reports"></div>
+      <details id="batch-task-details" hidden><summary>Görev ayrıntıları</summary><div class="table-scroll"><table><thead><tr><th>Konu / sorgu</th><th>Pazar</th><th>Durum</th><th>Deneme</th><th>Hata</th></tr></thead><tbody id="batch-task-rows"></tbody></table></div><button id="batch-task-prev" type="button" class="secondary">Önceki</button> <button id="batch-task-next" type="button" class="secondary">Sonraki</button></details>
       <h3>Araştırma grupları</h3>
       <button id="batch-history" type="button" class="secondary">Grupları yükle</button>
       <div id="batch-list"></div>

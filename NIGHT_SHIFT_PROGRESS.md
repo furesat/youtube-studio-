@@ -62,3 +62,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 11: versioned editorial workflow and owner analytics import
 - CI 45928625311 and 45928728479 passed (session registry and quota ledger). Added nine explicit sequential stages, immutable events with candidate revision and atomic expected revision fencing, source quality gates, fact/creative distinction, cost plan, preregistered experiment, owner-attested first-party normalized CSV validation, long-form decision, JSON/Markdown exports, REST/MCP read/advance. No OAuth or live analytics; manual export normalization required. No fabricated observations or external calls. SQL and unit tests pending CI. UI next.
+
+## Checkpoint 12: editorial workflow UI
+- Added progressive nine-stage controls inside existing candidate cards, evidence-quality fields, fact/creative checklist, cost estimate, preregistration, owner CSV upload, decision and versioned export downloads. No raw JSON or run IDs required in routine use. Source declarations remain editor-reviewed; no automatic publication. Feature gated; CI and browser checks pending.

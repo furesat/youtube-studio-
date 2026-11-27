@@ -10,7 +10,7 @@ export const queueControlSchema=z.discriminatedUnion("action",[
  z.strictObject({id,action:z.literal("priority"),task_id,priority:z.number().int().min(-10).max(10)})
 ]);
 export function featureFlags(){
- return {queue_controls:env("FASULYE_QUEUE_CONTROLS")==="1",controlled_campaigns:env("FASULYE_CONTROLLED_CAMPAIGNS")==="1",wikimedia_evidence:env("FASULYE_WIKIMEDIA_EVIDENCE")==="1"};
+ return {queue_controls:env("FASULYE_QUEUE_CONTROLS")==="1",controlled_campaigns:env("FASULYE_CONTROLLED_CAMPAIGNS")==="1",wikimedia_evidence:env("FASULYE_WIKIMEDIA_EVIDENCE")==="1",editorial_workflow:env("FASULYE_EDITORIAL_WORKFLOW")==="1"};
 }
 function enabled(){if(!featureFlags().queue_controls)throw new ResearchError(503,"Gelişmiş kuyruk yönetimi henüz etkin değil.");}
 export async function controlQueue(input,fetcher=fetch){

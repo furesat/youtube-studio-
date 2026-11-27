@@ -79,3 +79,6 @@ Evidence quality evaluator and independent break-even math; coverage is not stat
 
 ### V4 checkpoint 11
 Nine-stage independent editorial workflow with revision fencing, manual owner CSV experiment import, factual-claim and decision gates, Markdown/JSON export, API/MCP. Gated, pending CI and UI. No automatic publishing, generation or OAuth.
+
+### V4 checkpoint 12
+Dashboard stage controls and owner CSV import attached to candidate cards. Existing visual identity preserved. No production activation.

@@ -704,6 +704,7 @@ function editorialCard(candidate) {
     }catch(error){el("editorial-status").textContent=error.message;}finally{brief.disabled=false;}
   });
   const actions=node("div");actions.className="editorial-actions";actions.append(edit,brief);card.append(detail,actions);
+  if(batchCatalog?.features?.editorial_workflow)card.append(workflowPanel(candidate));
   return card;
 }
 
@@ -889,3 +890,115 @@ async function queueAction(action,task_id,priority){
 }
 for(const [id,action] of [["queue-pause","pause"],["queue-resume","resume"],["queue-cancel","cancel"],["queue-retry","retry_failed"]])el(id).addEventListener("click",()=>void queueAction(action));
 el("queue-set-priority").addEventListener("click",()=>void queueAction("priority",undefined,Number(el("queue-priority").value)));
+
+const workflowStages={discovered:"Aday keşfi",sources_collected:"Bağımsız kaynaklar",demand_evaluated:"Talep hipotezi",coverage_reviewed:"Pazar kapsamı",angle_validated:"Özgün açı ve olgular",cost_estimated:"Üretim maliyeti",experiment_ready:"Ön kayıtlı deney ve üretim planı",experiment_completed:"Yayın sonrası deney",long_form_decision:"Uzun video kararı"};
+function downloadWorkflow(content,filename,type){
+ const url=URL.createObjectURL(new Blob([content],{type})),a=node("a");a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function workflowPanel(candidate){
+ const panel=node("details"),body=node("div");panel.append(node("summary","Araştırma ve deney iş akışı"),body);
+ let loaded=false;
+ async function load(){
+  body.replaceChildren(node("p","İş akışı yükleniyor…"));
+  try{
+   const w=await request("/api/workflow?"+new URLSearchParams({candidate_id:candidate.id}));
+   body.replaceChildren(node("p",w.events.length+"/9 aşama tamamlandı. Kayıtlar değiştirilemez."));
+   const list=node("ol");for(const [id,title] of Object.entries(workflowStages))list.append(node("li",title+(w.events.some(e=>e.stage===id)?" · Kaydedildi":id===w.next_stage?" · Sıradaki":"")));body.append(list);
+   const exports=node("div");exports.className="editorial-actions";
+   for(const [label,ext,content,type] of [["Markdown indir","md",w.markdown,"text/markdown"],["JSON indir","json",JSON.stringify(w,null,2),"application/json"]]){
+    const b=node("button",label);b.type="button";b.className="secondary";b.addEventListener("click",()=>downloadWorkflow(content,"fasulye-workflow-"+candidate.id+"-r"+w.events.length+"."+ext,type));exports.append(b);
+   }body.append(exports);
+   if(w.next_stage)body.append(workflowForm(w,load));
+  }catch(e){body.replaceChildren(node("p",e.message));}
+ }
+ panel.addEventListener("toggle",()=>{if(panel.open&&!loaded){loaded=true;void load();}});
+ return panel;
+}
+function workflowForm(w,refresh){
+ const stage=w.next_stage,form=node("form"),fields=node("div"),status=node("p");form.className="editorial-form";status.setAttribute("role","status");
+ form.append(node("h4",workflowStages[stage]),fields);
+ const inputs={};
+ function field(parent,key,label,{type="text",value="",options,required=true,min,max,step}={}){
+  const wrap=node("label",label),input=node(options?"select":type==="textarea"?"textarea":"input");
+  if(options)for(const [v,t] of options){const o=node("option",t);o.value=v;input.append(o);}
+  else if(type!=="textarea")input.type=type;
+  if(type==="textarea"){input.rows=2;input.maxLength=4000;}
+  if(min!==undefined)input.min=String(min);if(max!==undefined)input.max=String(max);if(step!==undefined)input.step=String(step);
+  if(type==="checkbox")input.checked=Boolean(value);else if(type!=="file")input.value=value;
+  input.required=required;wrap.append(input);parent.append(wrap);return input;
+ }
+ function f(key,label,options){inputs[key]=field(fields,key,label,options);}
+ function notes(keys){for(const [key,label] of keys)f(key,label,{type:"textarea"});}
+ function value(input){return input.type==="checkbox"?input.checked:input.type==="number"?input.valueAsNumber:input.value;}
+ const sourceInputs=[],claimInputs=[];
+ if(stage==="discovered")notes([["origin","Fikrin kaynağı / nasıl bulundu?"]]);
+ if(stage==="sources_collected"||stage==="demand_evaluated"){
+  const old=w.events.find(e=>e.stage==="sources_collected")?.data.evidence.sources;
+  const seeds=old??w.candidate.sources.map(s=>({...s,type:{context:"historical_context",demand:"general_interest",coverage:"market_coverage"}[s.kind],credibility:"unverified",direction:"unknown",independence_group:"",methodology:"",limitations:"",region:null,language:null,license:null}));
+  if(!seeds.length)fields.append(node("p","Önce aday düzenleme ekranından bağımsız kaynak ekle."));
+  const kindOptions=[["general_interest","Genel ilgi"],["search_interest","Arama ilgisi"],["youtube_demand","YouTube talebi (bağımsız kanıt)"],["historical_context","Tarihsel bağlam"],["market_coverage","Pazar kapsamı"],["editorial_fit","Editoryal uygunluk"]];
+  function addSource(s={}){
+   const box=node("fieldset");box.append(node("legend","Kaynak "+(sourceInputs.length+1)));
+   const row={};
+   for(const [key,label,opts] of [
+    ["url","HTTPS kaynak adresi",{type:"url"}],["publisher","Yayıncı",{}],["checked_on","Kontrol tarihi",{type:"date"}],["type","Kanıt türü",{options:kindOptions}],["credibility","Güvenilirlik",{options:[["unverified","Doğrulanmadı"],["primary","Birincil"],["secondary","İkincil"]]}],
+    ["independence_group","Bağımsızlık grubu (ortak dayanağı aynı adla belirt)",{}],["direction","Hipotez ilişkisi",{options:[["unknown","Bilinmiyor"],["supports","Destekliyor"],["contradicts","Çelişiyor"],["neutral","Nötr"]]}],
+    ["finding","Bulgu",{type:"textarea"}],["methodology","Yöntem",{type:"textarea"}],["limitations","Sınırlamalar",{type:"textarea"}],["region","Ülke kodu (varsa)",{required:false}],["language","Dil kodu (varsa)",{required:false}],["license","Lisans (biliniyorsa)",{required:false}]])
+    row[key]=field(box,key,label,{...opts,value:s[key]??(opts.options?opts.options[0][0]:"")});
+   sourceInputs.push(row);fields.append(box);
+  }
+  for(const s of seeds)addSource(s);
+  const add=node("button","Bağımsız kaynak ekle");add.type="button";add.className="secondary";add.addEventListener("click",()=>{if(sourceInputs.length<40)addSource();});fields.append(add);
+  if(stage==="demand_evaluated"){f("conclusion","Sonuç",{options:[["inconclusive","Belirsiz"],["supports","Destekleniyor"],["contradicts","Çelişiyor"]]});notes([["reason","Gerekçe ve belirsizlik"]]);}
+ }
+ if(stage==="coverage_reviewed"){f("manual_review","Pazar kapsamını manuel inceledim",{type:"checkbox"});notes([["method","İnceleme yöntemi"],["findings","Bulgular"],["limitations","Sınırlamalar (az sonuç, boş pazar anlamına gelmez)"]]);}
+ if(stage==="angle_validated"){
+  f("angle","Özgün anlatım açısı",{type:"textarea",value:w.candidate.narrative_angle});
+  f("original","Bu anlatım ve görsel yaklaşım özgündür",{type:"checkbox"});
+  const sources=[...new Set(w.events.flatMap(e=>e.data?.evidence?.sources??[]).map(s=>s.url))];
+  function addClaim(){
+   const box=node("fieldset");box.append(node("legend","Olgu / kurgu "+(claimInputs.length+1)));
+   const row={claim:field(box,"claim","İddia",{type:"textarea"}),kind:field(box,"kind","Tür",{options:[["verified_fact","Doğrulanmış olgu"],["creative_storytelling","Yaratıcı anlatım"],["unverified","Doğrulanmadı"]]}),source_url:field(box,"source_url","İncelenen kaynak",{required:false,options:[["","Yok"],...sources.map(u=>[u,u])]})};claimInputs.push(row);fields.append(box);
+  }addClaim();const add=node("button","Olgu ekle");add.type="button";add.className="secondary";add.addEventListener("click",()=>{if(claimInputs.length<30)addClaim();});fields.append(add);
+ }
+ if(stage==="cost_estimated"){
+  f("currency","Para birimi",{value:w.candidate.cost?.currency??"EUR"});
+  for(const [k,l] of [["research_hours","İnsan araştırma saati"],["hourly_rate","Saat maliyeti"],["translation","Çeviri"],["voice","Ses"],["visuals","Görsel"],["editing","Kurgu"],["other","Diğer"]])f(k,l,{type:"number",min:0,max:10000000,step:"any"});
+  notes([["basis","Maliyet dayanağı"]]);
+ }
+ if(stage==="experiment_ready"){
+  f("format","Deney formatı",{options:[["shorts","Shorts"],["long_form","Uzun video"]]});
+  notes([["hypothesis","Önceden belirlenen hipotez"],["primary_metric","Ana metrik (örneğin CTR)"],["success_rule","Önceden belirlenen değerlendirme kuralı"],["script_outline","Senaryo taslağı"],["scene_requirements","Sahne ihtiyaçları"],["thumbnail_concept","Kapak fikri"],["publication_checklist","Yayın kontrol listesi (her satır bir madde)"]]);
+  f("observation_days","Gözlem süresi (gün)",{type:"number",min:1,max:90,step:1,value:7});
+  f("proposed_long_form","Shorts ile ilişkili uzun video fikri",{type:"textarea",required:false});
+ }
+ if(stage==="experiment_completed"){
+  f("published_at","Gerçek yayın zamanı (yerel saat)",{type:"datetime-local"});
+  f("video_reference","Kendi video referansın",{});
+  f("own_channel","Bu CSV kendi kanalıma ait; paylaşım yetkim var",{type:"checkbox"});
+  f("csv","Normalize edilmiş YouTube Studio CSV",{type:"file"});
+  fields.append(node("p","CSV başlığı: metric,period_start,period_end,value,unit,dimension_type,dimension_value. Boş değer bilinmiyor; 0 gerçek sıfır."));
+  notes([["evaluation","Sonuç değerlendirmesi"],["limitations","Sınırlamalar"]]);
+ }
+ if(stage==="long_form_decision"){
+  f("decision","Karar",{options:[["hold","Bekle"],["go","Uzun videoya geç"],["no_go","Devam etme"]]});
+  notes([["reason","Deney ve kaynaklara dayalı gerekçe"]]);
+  f("episode_outline","Özgün uzun video taslağı",{type:"textarea",required:false});
+ }
+ const confirm=field(form,"confirm","Bu aşamanın kaydını onaylıyorum (geri alınamaz)",{type:"checkbox"});
+ const save=node("button","Aşamayı kaydet");save.type="submit";form.append(save,status);
+ form.addEventListener("submit",async e=>{
+  e.preventDefault();save.disabled=true;status.textContent="Kaydediliyor…";
+  try{
+   const data=Object.fromEntries(Object.entries(inputs).map(([k,input])=>[k,value(input)]));
+   if(sourceInputs.length||stage==="sources_collected"||stage==="demand_evaluated")data.evidence={topic:w.candidate.title,hypothesis:w.candidate.hypothesis,sources:sourceInputs.map(row=>Object.fromEntries(Object.entries(row).map(([k,input])=>[k,["region","language","license"].includes(k)?value(input)||null:value(input)])))};
+   if(stage==="angle_validated")data.claims=claimInputs.map(row=>({claim:value(row.claim),kind:value(row.kind),source_url:value(row.source_url)||null}));
+   if(stage==="experiment_ready"){data.publication_checklist=data.publication_checklist.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);data.proposed_long_form=data.proposed_long_form||null;}
+   if(stage==="experiment_completed"){const file=inputs.csv.files[0];if(!file||file.size>300000)throw new Error("300 KB altında CSV seç.");data.csv=await file.text();data.published_at=new Date(data.published_at).toISOString();data.source="owner_youtube_studio_csv";}
+   if(stage==="long_form_decision")data.episode_outline=data.episode_outline||null;
+   await request("/api/workflow",{method:"POST",body:JSON.stringify({candidate_id:w.candidate.id,candidate_revision:w.candidate.revision,expected_revision:w.events.length,stage,data,confirm:confirm.checked})});
+   await refresh();
+  }catch(err){status.textContent=err.message;save.disabled=false;}
+ });
+ return form;
+}

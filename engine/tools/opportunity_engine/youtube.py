@@ -77,7 +77,7 @@ class YouTube:
 
     def search(self, market, query, after, before, limit, token):
         parameters = dict(
-            part="snippet", type="video", order="relevance", q=query,
+            part="snippet", type="video", order=market.get("search_order", "relevance"), q=query,
             regionCode=market["region"], relevanceLanguage=market["language"],
             publishedAfter=after, publishedBefore=before, maxResults=limit,
             fields="nextPageToken,items(id/videoId,snippet(channelId,channelTitle,title,publishedAt))",

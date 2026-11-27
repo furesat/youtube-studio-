@@ -105,7 +105,7 @@ async function watch(id, signal) {
           : "Çalıştırma eksik sona erdi. Kaydedilen raporu görüntülüyorsun.", run.conclusion !== "success");
       } catch (error) {
         if (signal.aborted) return;
-        throw new Error("Arşiv açılamadı. " + error.message + " Ayrıntılar GitHub Actions kaydında.");
+        throw new Error("Supabase raporu açılamadı. " + error.message + " Ayrıntılar GitHub Actions kaydında.");
       }
       return;
     }
@@ -156,6 +156,34 @@ el("resume").addEventListener("submit", event => {
   const id = el("run-id").value;
   showStatus("Çalıştırma açılıyor…");
   void supervise(signal => watch(id, signal));
+});
+
+el("load-history").addEventListener("click", async () => {
+  const panel = el("research-history");
+  el("load-history").disabled = true;
+  try {
+    const rows = await request("/api/research?result=history");
+    panel.replaceChildren();
+    panel.hidden = false;
+    if (!rows.length) panel.append(node("p", "Henüz kayıtlı araştırma yok."));
+    for (const row of rows) {
+      const topics = [...new Set((row.context?.topics_markets ?? []).map(item => item.topic))];
+      const entry = node("div");
+      const label = dates.format(new Date(row.collected_at)) + " · " + topics.join(", ");
+      const button = node("button", "Raporu aç");
+      button.type = "button";
+      button.className = "secondary";
+      const available = Date.now() - new Date(row.collected_at).getTime() < 30 * 86400000;
+      button.disabled = !available;
+      button.addEventListener("click", () => void supervise(signal => watch(row.run_id, signal)));
+      entry.append(node("p", label), available ? button : node("p", "YouTube raporunun saklama süresi doldu."));
+      panel.append(entry);
+    }
+  } catch (error) {
+    showStatus(error.message, true);
+  } finally {
+    el("load-history").disabled = false;
+  }
 });
 
 function addRow(id, values) {

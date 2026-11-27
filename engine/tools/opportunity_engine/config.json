@@ -1,7 +1,7 @@
 {
   "search": {
     "lookback_days": 365,
-    "results_per_page": 25,
+    "results_per_page": 50,
     "pages_per_query": 1,
     "max_search_calls": 30,
     "max_detail_units": 200

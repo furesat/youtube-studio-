@@ -1,7 +1,7 @@
 name: Opportunity integration checks
 on:
   push:
-    branches: [integration/fasulye-supabase, feature/opportunity-engine-v2]
+    branches: [integration/fasulye-supabase, feature/opportunity-engine-v2, feature/panel-session-ux]
   pull_request:
     paths:
       - 'engine/tools/opportunity_engine/**'

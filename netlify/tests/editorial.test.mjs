@@ -62,6 +62,7 @@ test("REST protects reads and writes, validates JSON, filters, and reuses panel 
     assert.equal(target.pathname, "/rest/v1/fasulye_editorial_candidates");
     assert.equal(init.headers.apikey, "sb_secret_test_only");
     if (init.method === "GET") {
+      if(target.searchParams.has("id")) return Response.json([{...candidate,id,revision:1,sources:[source]}]);
       assert.equal(target.searchParams.get("market_id"), "eq.de");
       assert.equal(target.searchParams.get("status"), "eq.draft");
       assert.equal(target.searchParams.get("offset"), "0");
@@ -89,6 +90,10 @@ test("REST protects reads and writes, validates JSON, filters, and reuses panel 
   assert.equal(listed.headers.get("Cache-Control"), "no-store");
   assert.deepEqual(await listed.json(), { candidates: [{ id, ...candidate }], next_offset: 1 });
 
+  const briefResponse=await get({cookie},"?brief="+id);
+  assert.equal(briefResponse.status,200);
+  assert.equal((await briefResponse.json()).source_presence.context,true);
+  assert.equal((await get({cookie},"?brief=invalid")).status,400);
   const created = await write("POST", { cookie, origin: host });
   assert.equal(created.status, 201);
   assert.equal((await created.json()).revision, 1);
@@ -128,6 +133,8 @@ test("MCP uses the shared editorial contract on all three tools", async t => {
     assert.equal(JSON.parse(updated.content[0].text).revision, 2);
     const result = await call("list_editorial_candidates", { status: "ready" });
     assert.equal(JSON.parse(result.content[0].text).candidates[0].status, "ready");
+    const brief=await call("get_editorial_production_brief",{id});
+    assert.equal(JSON.parse(brief.content[0].text).source_presence.context,true);
   } finally {
     await client.close();
   }

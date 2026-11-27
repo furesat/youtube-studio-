@@ -11,6 +11,7 @@ from .config import load_config, max_search_pages
 from .research import run
 from .storage import PROJECT_URL, NoRedirect, save_report
 from .youtube import YouTube
+from .channel_samples import collect_channel_samples
 
 ROOT = Path(__file__).parent
 
@@ -57,6 +58,9 @@ def work(env=os.environ):
     pairs = prepare(tasks)
     client = YouTube(youtube_key, len(tasks), config["search"]["max_detail_units"])
     report = run(client,config,pairs,datetime.now(timezone.utc),len(tasks))
+    report["channel_samples"] = collect_channel_samples(client, report["videos"])
+    report["quota"]["attempts"] = dict(client.calls)
+    report["quota"]["successes"] = dict(client.successes)
     save_report(report,environ=env)
     by_topic = {row["topic_id"]: row for row in report["opportunities"]}
     detail_errors = sorted({error for values in report["detail_errors"].values() for error in values})

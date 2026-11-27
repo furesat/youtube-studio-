@@ -13,15 +13,19 @@ def collect_channel_samples(client, observations, limit=2):
         row = {"channel_id": item["channel_id"], "channel_title": item.get("channel_title"),
                "current_subscribers": item["subscribers"], "channel_created_at": item.get("channel_created_at"),
                "selection": "smallest disclosed subscriber counts in this search sample",
-               "videos": [], "error": None}
+               "videos": [], "error": None, "requested_upload_limit": 25,
+               "playlist_has_more": None, "missing_video_details": None,
+               "format_classification": "unverified"}
         try:
             result = client.request("playlistItems", part="snippet,contentDetails",
                 playlistId=item["uploads_playlist"], maxResults=25,
                 fields="items(contentDetails/videoId,snippet(title,publishedAt)),nextPageToken")
+            row["playlist_has_more"] = bool(result.get("nextPageToken"))
             ids = [r.get("contentDetails",{}).get("videoId") for r in result["items"]]
             ids = list(dict.fromkeys(i for i in ids if i))
             details, errors = client.enrich("videos", ids, "snippet,statistics,contentDetails",
-                "items(id,snippet(title,publishedAt),statistics(viewCount),contentDetails(duration))")
+                "items(id,snippet(title,publishedAt,defaultLanguage,defaultAudioLanguage),statistics(viewCount),contentDetails(duration))")
+            row["missing_video_details"] = sum(vid not in details for vid in ids)
             for vid in ids:
                 data = details.get(vid)
                 if data:
@@ -29,7 +33,9 @@ def collect_channel_samples(client, observations, limit=2):
                     row["videos"].append({"video_id":vid,"title":data.get("snippet",{}).get("title"),
                         "published_at":data.get("snippet",{}).get("publishedAt"),
                         "views":int(raw_views) if isinstance(raw_views,str) and raw_views.isascii() and raw_views.isdecimal() else None,
-                        "duration":data.get("contentDetails",{}).get("duration")})
+                        "duration":data.get("contentDetails",{}).get("duration"),
+                        "default_language":data.get("snippet",{}).get("defaultLanguage"),
+                        "audio_language":data.get("snippet",{}).get("defaultAudioLanguage")})
             row["error"] = ", ".join(errors) if errors else None
         except ApiError as exc:
             row["error"] = str(exc)

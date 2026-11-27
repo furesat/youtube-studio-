@@ -71,3 +71,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 14: production economics and source audit
 - Rechecked RevenueLab country benchmark and methodology (https://www.revenuelab.fyi/youtube-rpm-by-country, https://www.revenuelab.fyi/methodology) and AIR article (https://air.io/en/monetization/what-rpm-can-you-expect-from-shorts-in-2026). RevenueLab describes modeled country ranges, mixes dollar display and local currency metadata; individual currency basis must be confirmed. AIR article accessible version identifies 2025 sample and Jan 23 2026 update; population and per-country sample details are not fully established. Existing assumptions preserved, flagged unverified, date/age and methodology warnings added. No automatic replacement. Independent monthly low/base/high production/revenue plan includes human research time, fixed costs, budget, per-video break-even, ISO currency validation, multi-format inputs, panel and MCP. Discovery CI 45929060932 passed; economics CI pending.
+
+## Checkpoint 15a: raw channel metadata
+- Economics CI 45929238055 passed. Added declared languages, playlist truncation and missing video detail fields to existing bounded channel samples; explicit unverified format. No extra API calls. Two fixture tests added; CI pending. Next: read-only filtering API/MCP, dashboard and expiry.

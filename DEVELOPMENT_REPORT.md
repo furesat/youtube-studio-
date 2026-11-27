@@ -88,3 +88,6 @@ Independent topic templates, bounded article discovery and stored cross-language
 
 ### V4 checkpoint 14
 Monthly production economics and source provenance flags. Independent assumptions only; no competitor analytics. Existing RPM numbers unchanged.
+
+### V4 checkpoint 15a
+Raw channel sample metadata enriched without additional requests. CI pending.

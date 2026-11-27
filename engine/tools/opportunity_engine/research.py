@@ -62,7 +62,7 @@ def collect(client, pairs, search, now):
             "published_at": snippet.get("publishedAt"),
             "channel_id": channel_id,
             "channel_title": snippet.get("channelTitle"),
-            "description": videos.get(video_id, {}).get("snippet", {}).get("description"),
+            "description": (videos.get(video_id, {}).get("snippet", {}).get("description") or "")[:600] or None,
             "category_id": videos.get(video_id, {}).get("snippet", {}).get("categoryId"),
             "channel_created_at": channels.get(channel_id, {}).get("snippet", {}).get("publishedAt"),
             "uploads_playlist": channels.get(channel_id, {}).get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads"),
@@ -152,6 +152,7 @@ def run(client, config, pairs, now, planned_max):
         "schema_version": 1,
         "collected_at": now.isoformat(timespec="seconds"),
         "lookback_days": config["search"]["lookback_days"],
+        "research_method": {"api": "YouTube Data API v3", "sample_only": True, "semantic_review": "manual_required", "audience_geography": "unknown", "shorts_classification": "unverified", "search_volume": None, "description_excerpt_max_chars": 600},
         "scoring": config["scoring"],
         "quota": {
             "planned_search_max": planned_max,

@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import { CsvTrendProvider, GoogleTrendsApiProvider, scoreIndependent, revenueScenarios, writeEvidence } from "../lib/evidence.mjs";
+import { CsvTrendProvider, GoogleTrendsApiProvider, scoreIndependent, revenueScenarios, profitScenarios, writeEvidence } from "../lib/evidence.mjs";
 test("parses single-series Google Trends CSV with censored values",()=>{
   const series=new CsvTrendProvider().parse('\uFEFFCategory: All categories\r\n\r\nWeek,Query: (Germany)\r\n2026-01-04,100\r\n2026-01-11,<1\r\n2026-01-18,0');
   assert.equal(series.length,3);assert.equal(series[0].value,100);assert.equal(series[1].value,null);assert.equal(series[1].below_one,true);assert.equal(series[2].value,0);
@@ -22,4 +22,12 @@ test("independent RPM calculations use four targets",()=>{
 });
 test("source is mandatory and invalid RPM order never reaches database",async()=>{
   await assert.rejects(()=>writeEvidence({kind:"rpm",market_id:"tr",format:"shorts",currency:"USD",low:3,base:2,high:1,source:"unit test"},()=>assert.fail("Unexpected DB call")),{status:400});
+});
+
+test("profit estimates use independent costs and do not silently convert currencies",()=>{
+  const rpm={format:"shorts",currency:"USD",source:"unit test",low:0,base:.1,high:.2};
+  const cost={currency:"USD",voice:5,visuals:10,translation:0,editing:5,other:0};
+  assert.equal(profitScenarios(rpm,cost)[0].profit.base,-19);
+  assert.equal(profitScenarios(rpm,{...cost,currency:"EUR"})[0].profit,null);
+  assert.equal(profitScenarios(rpm,null)[0].profit,null);
 });

@@ -22,17 +22,10 @@ function showStatus(message, isError = false) {
 async function request(path, options = {}) {
   const { method = "GET", body, signal, binary = false } = options;
   const headers = new Headers();
-  if (!["/api/catalog","/api/discovery-catalog"].includes(path)) {
-    const token = el("token").value.trim();
-    if (!token) {
-      el("token").focus();
-      throw new Error("Panel erişim anahtarını gir.");
-    }
-    headers.set("Authorization", "Bearer " + token);
-  }
   if (body) headers.set("Content-Type", "application/json");
-  const response = await fetch(path, { method, headers, body, signal, cache: "no-store" });
+  const response = await fetch(path, { method, headers, body, signal, cache: "no-store", credentials:"same-origin" });
   if (!response.ok) {
+    if(response.status===401 && !["/api/login","/api/admin/unlock"].includes(path)) showLogin();
     const payload = await response.json().catch(() => ({}));
     throw new Error(payload.error ?? `İşlem tamamlanamadı (HTTP ${response.status}).`);
   }
@@ -137,6 +130,7 @@ el("search").addEventListener("submit", event => {
     region: el("region").value.trim().toUpperCase(),
     language: el("language").value.trim(),
   } : { topics: checked("topics"), markets: checked("markets") };
+  navigate("search");
   el("run-link").hidden = true;
   showStatus("Araştırma başlatılıyor…");
   el("start").disabled = true;
@@ -236,7 +230,7 @@ function displayReport(data, id) {
   el("download").dataset.runId = id;
   const markets = new Map(data.opportunities.map(row => [row.market_id, row.market]));
   const topics = new Map(data.opportunities.map(row => [row.topic_id, row.topic]));
-  el("results").hidden = false;
+  navigate("results");
   const detailErrors = Object.values(data.detail_errors).flat();
   el("report-meta").textContent = dates.format(new Date(data.collected_at)) + " · "
     + data.quota.successes.search + "/" + data.quota.attempts.search + " arama başarılı"
@@ -302,7 +296,7 @@ if (initialRun && /^[1-9]\d{0,15}$/.test(initialRun)) {
   showStatus("Anahtarı girip Aç düğmesini seçerek bu çalıştırmayı görüntüleyebilirsin.");
 }
 updateMode();
-void loadCatalog();
+
 
 let batchCatalog, batchController;
 const selected = id => Array.from(el(id).selectedOptions, o => o.value);
@@ -389,7 +383,7 @@ el("batch-history").addEventListener("click",async()=>{
 el("quota-load").addEventListener("click",async()=>{
   try{const q=await request("/api/quota");el("quota-status").textContent="Günlük sınır: "+q.daily_limit+" · "+(q.reservations.map(r=>r.day+": "+r.reserved).join(" · ")||"Rezervasyon yok")+" · "+q.scope;}catch(e){el("quota-status").textContent=e.message;}
 });
-void initBatch();
+
 
 let evidenceData;
 const factors={demand:"İzleyici talebi",gap:"İçerik açığı",competition:"Rekabet",revenue:"Reklam geliri",cost:"Üretim maliyeti",cultural_fit:"Dil ve kültür uyumu",long_term:"Uzun vadeli potansiyel"};
@@ -480,3 +474,63 @@ el("system-check").addEventListener("click",async()=>{
     catch(e){results.append(node("p","GitHub Actions: "+e.message));}
   }
 });
+
+let initialized=false,currentPage="search";
+function showLogin(){
+  active?.abort();batchController?.abort();
+  el("dashboard").hidden=true;el("account-bar").hidden=true;el("panel-footer").hidden=true;el("login-screen").hidden=false;
+  el("login-status").textContent="Devam etmek için giriş yap.";
+}
+function navigate(page){
+  currentPage=page;
+  const evidence=["trend","rpm","review","system"].includes(page);
+  for(const name of ["search","batch","history"])el("page-"+name).hidden=page!==name;
+  el("results").hidden=page!=="results"||!report;
+  el("page-evidence").hidden=!evidence;
+  for(const name of ["trend","rpm","review","system"])el("evidence-"+name).hidden=page!==name;
+  for(const button of document.querySelectorAll("[data-page]"))button.setAttribute("aria-current",button.dataset.page===page?"page":"false");
+  el("panel-warning").hidden=true;
+  if(page==="results"&&!report){el("panel-warning").hidden=false;el("panel-warning").textContent="Henüz açık rapor yok. Geçmişten bir rapor seç veya araştırma başlat.";}
+  if(page==="history"){el("load-history").click();el("batch-history").click();}
+  if(["trend","rpm","review"].includes(page))void loadEvidence();
+}
+for(const button of document.querySelectorAll("[data-page]"))button.addEventListener("click",()=>navigate(button.dataset.page));
+el("history-slot").append(el("load-history"),el("research-history"));
+el("groups-slot").append(el("batch-history"),el("batch-list"));
+async function openDashboard(session){
+  el("login-screen").hidden=true;el("dashboard").hidden=false;el("account-bar").hidden=false;el("panel-footer").hidden=false;
+  el("admin-form").hidden=!!session.admin;
+  el("audit-refresh").hidden=!session.admin;
+  el("audit-status").textContent=session.admin_configured?"": "Giriş kayıtlarını açmak için Netlify'da FASULYE_ADMIN_TOKEN ayarlanmalı.";
+  if(!session.audit_configured){el("audit-status").textContent+=" Supabase sunucu anahtarı eksik; giriş kaydı tutulamıyor.";}
+  if(!initialized){initialized=true;await Promise.all([loadCatalog(),initBatch()]);}
+  navigate("search");
+  if(session.audit==="unavailable"){el("panel-warning").hidden=false;el("panel-warning").textContent="Oturum açık; giriş kaydı şu anda kaydedilemedi.";}
+  if(session.admin)void loadAudit();
+}
+el("login-form").addEventListener("submit",async e=>{
+  e.preventDefault();el("login-submit").disabled=true;
+  try{
+    const session=await request("/api/login",{method:"POST",body:JSON.stringify({password:el("login-password").value,remember:el("remember-device").checked,label:el("device-label").value})});
+    el("login-password").value="";await openDashboard(session);
+  }catch(e){el("login-status").textContent=e.message;}finally{el("login-submit").disabled=false;}
+});
+el("logout").addEventListener("click",async()=>{
+  try{await request("/api/logout",{method:"POST"});location.reload();}catch(e){el("panel-warning").hidden=false;el("panel-warning").textContent=e.message;}
+});
+async function loadAudit(){
+  try{
+    const result=await request("/api/admin/logins");const s=result.summary;
+    el("audit-metrics").replaceChildren(node("p","Son 90 gün: "+s.total_logins+" giriş · "+s.distinct_devices+" tarayıcı/cihaz · Son 24 saat: "+s.last_24h));
+    el("audit-rows").replaceChildren();
+    for(const entry of result.events)addRow("audit-rows",[dates.format(new Date(entry.signed_in_at)),entry.device_label||entry.device_id.slice(0,8),entry.browser+" / "+entry.platform,entry.remembered?"Evet":"Hayır"]);
+    el("audit-status").textContent="En son 100 başarılı parola girişi. Cihaz kimliği kişiyi doğrulamaz.";
+  }catch(e){el("audit-status").textContent=e.message;}
+}
+el("admin-form").addEventListener("submit",async e=>{
+  e.preventDefault();
+  try{await request("/api/admin/unlock",{method:"POST",body:JSON.stringify({password:el("admin-password").value})});el("admin-password").value="";el("admin-form").hidden=true;el("audit-refresh").hidden=false;await loadAudit();}
+  catch(e){el("audit-status").textContent=e.message;}
+});
+el("audit-refresh").addEventListener("click",()=>void loadAudit());
+void (async()=>{try{const session=await request("/api/session");if(session.authenticated)await openDashboard(session);else showLogin();}catch(e){el("login-status").textContent=e.message;}})();

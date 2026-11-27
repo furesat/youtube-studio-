@@ -35,3 +35,6 @@ shorts/**/images/
 shorts/**/*.mp4
 shorts/**/*.mp3
 shorts/**/*.wav
+
+# YouTube araştırma raporları
+/opportunity-reports/

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import catalog from "../../engine/tools/opportunity_engine/catalog_v2.json" with { type: "json" };
-import { env, ResearchError } from "./research.mjs";
+import { env, ResearchError, startQueueWorker } from "./research.mjs";
 
 export const discoveryCatalog = catalog;
 const marketIds = catalog.markets.map(m => m.id);
@@ -55,7 +55,9 @@ export async function enqueueBatch(input,fetcher=fetch) {
   const plan=planBatch(input);
   const id=await db("rpc/fasulye_enqueue",{method:"POST",body:{p_label:plan.label,p_tasks:plan.tasks},fetcher});
   if (typeof id!=="string" || !/^[0-9a-f-]{36}$/i.test(id)) throw new ResearchError(502,"Kuyruk kimliği alınamadı.");
-  return {id,status:"queued",tasks:plan.tasks.length,missing:plan.missing};
+  let worker={state:"scheduled",run_id:null};
+  try { worker=await startQueueWorker(fetcher); } catch { /* Durable queue already saved; scheduled worker is fallback. */ }
+  return {id,status:"queued",tasks:plan.tasks.length,missing:plan.missing,worker};
 }
 export async function listBatches(fetcher=fetch) {
   return db("fasulye_batches?select=id,label,created_at&order=created_at.desc&limit=50",{fetcher});
@@ -67,4 +69,9 @@ export async function batchStatus(id,fetcher=fetch) {
 export async function queueBudget(fetcher=fetch) {
   const rows=await db("fasulye_queue_budget?select=day,reserved&order=day.desc&limit=7",{fetcher});
   return {daily_limit:30,reservations:rows,scope:"Fasulye Actions rezervasyonları; Google Cloud proje kotası değildir."};
+}
+
+export async function listBatchTasks(id,offset=0,limit=100,fetcher=fetch) {
+  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)||!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>100)throw new ResearchError(400,"Grup veya sayfalama geçersiz.");
+  return db("fasulye_tasks?"+new URLSearchParams({select:"id,topic,query,region,language,status,attempts,next_attempt_at,report_run_id,error_code",batch_id:"eq."+id,order:"id.asc",offset:String(offset),limit:String(limit)}),{fetcher});
 }

@@ -8,10 +8,14 @@ test("catalog covers 23 languages with natural discovery queries",()=>{
   assert.equal(planBatch({mode:"discovery",countries:["DE","AT"],languages:["de"],categories:["history"]}).tasks.length,2);
 });
 test("bulk deduplicates and never fabricates translations",()=>{
-  const topic={topic:"Çatal",queries:{tr:"çatalın tarihi"}};
+  const topic={topic:"Özel örnek konu",queries:{tr:"özel örnek konu tarihi"}};
   const p=planBatch({mode:"bulk",countries:["TR","DE"],topics:[topic,topic]});
   assert.equal(p.tasks.length,1);assert.equal(p.missing.length,2);
   assert.throws(()=>planBatch({mode:"bulk",countries:["DE"],topics:[topic]}),/Görev sayısı/);
+});
+test("known topics automatically resolve local expressions",()=>{
+  const p=planBatch({mode:"bulk",countries:["TR","DE"],topics:[{topic:"çatal"}]});
+  assert.equal(p.tasks.length,2);assert.equal(p.missing.length,0);assert.ok(p.tasks.some(t=>t.query.includes("Geschichte")));
 });
 test("enqueue uses fixed project and only server secret",async()=>{
   process.env.SUPABASE_SECRET_KEY="sb_secret_unit_test";

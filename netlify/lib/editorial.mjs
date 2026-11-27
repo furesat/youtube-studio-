@@ -95,6 +95,10 @@ export async function updateCandidate(input, fetcher = fetch) {
 
 export async function editorialRequest(request, url) {
   if (request.method === "GET") {
+    if (url.searchParams.has("brief")) {
+      if ([...url.searchParams.keys()].length !== 1) throw new ResearchError(400,"Brif için yalnızca aday kimliği gerekli.");
+      return {body:await getProductionBrief(url.searchParams.get("brief")),status:200};
+    }
     const params = Object.fromEntries(url.searchParams);
     for (const key of ["offset", "limit"]) {
       if (key in params) params[key] = /^\d+$/.test(params[key]) ? Number(params[key]) : NaN;
@@ -108,4 +112,45 @@ export async function editorialRequest(request, url) {
   return request.method === "POST"
     ? { body: await createCandidate(body), status: 201 }
     : { body: await updateCandidate(body), status: 200 };
+}
+
+export function buildProductionBrief(candidate) {
+  const market=discoveryCatalog.markets.find(m=>m.id===candidate.market_id);
+  const sources=candidate.sources??[];
+  const presence=Object.fromEntries(["context","demand","coverage"].map(kind=>[kind,sources.some(s=>s.kind===kind)]));
+  const pending=[];
+  if(!presence.context)pending.push("Hikâyedeki tarihsel veya bilimsel iddiaları bağımsız kaynaklarla kontrol et.");
+  if(!presence.demand)pending.push("Hedef pazarda bağımsız izleyici ilgisi verisi ara; arama hacmi bilinmiyor.");
+  if(!presence.coverage)pending.push("Hedef dilde içerik kapsamını bağımsız olarak incele; içerik boşluğu doğrulanmadı.");
+  if(candidate.format==="undecided")pending.push("Shorts veya uzun video formatını belirle.");
+  if(candidate.cost==null)pending.push("Üretim maliyetlerini hesapla; bütçe bilinmiyor.");
+  pending.push("Kaynakların doğruluğunu, görsel kullanım haklarını ve özgün anlatımı yayın öncesi kontrol et.");
+  const clean=v=>String(v??"Bilinmiyor").replace(/\r?\n/g," ").replace(/[\\`*_{}\[\]<>#!|]/g,"\\$&");
+  const format={shorts:"Shorts",long_form:"Uzun video",undecided:"Karar verilmedi"}[candidate.format];
+  const status={draft:"Taslak",researching:"Araştırılıyor",ready:"Hazır",in_production:"Üretimde",published:"Yayınlandı",archived:"Arşivlendi"}[candidate.status];
+  const cost=candidate.cost?candidate.cost.amount+" "+candidate.cost.currency+" ("+candidate.cost.basis+")":"Bilinmiyor";
+  const markdown=[
+    "# "+clean(candidate.title),
+    "",
+    "- Hedef pazar: "+clean(market?.label??candidate.market_id),
+    "- Format: "+format,
+    "- Durum: "+status,
+    "- Kayıt revizyonu: "+candidate.revision,
+    "- Tahmini üretim maliyeti: "+clean(cost),
+    "",
+    "## Pazar hipotezi","",clean(candidate.hypothesis),"",
+    "## Özgün anlatım açısı","",clean(candidate.narrative_angle),"",
+    "## Belirsizlikler","",clean(candidate.uncertainty),"",
+    "## Bağımsız kaynaklar","",
+    ...(sources.length?sources.flatMap(s=>["- "+clean(s.publisher)+" ("+s.checked_on+" / "+s.kind+")", "  - "+clean(s.url), "  - "+clean(s.finding)]):["Henüz kaynak eklenmedi."]),
+    "","## Üretim öncesi kontrol listesi","",...pending.map(s=>"- [ ] "+s),"",
+    "Not: Kaynak kaydı varlığı, kaynağın doğruluğunu veya talebi kanıtlamaz. Bu belge bir editoryal briftir, doğrulanmış senaryo veya kesin fırsat puanı değildir."
+  ].join("\n")+"\n";
+  return {candidate_id:candidate.id,revision:candidate.revision,source_presence:presence,pending,markdown};
+}
+export async function getProductionBrief(id,fetcher=fetch){
+  const valid=validate(z.uuid(),id);
+  const rows=await db(table+"?"+new URLSearchParams({select:"*",id:"eq."+valid,limit:"1"}),{fetcher});
+  if(!rows?.length)throw new ResearchError(404,"Aday bulunamadı.");
+  return buildProductionBrief(rows[0]);
 }

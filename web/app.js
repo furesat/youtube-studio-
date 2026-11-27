@@ -684,7 +684,17 @@ function editorialCard(candidate) {
   edit.type = "button";
   edit.className = "secondary";
   edit.addEventListener("click", () => openEditorialForm(candidate));
-  card.append(detail, edit);
+  const brief=node("button","Üretim brifini indir");brief.type="button";brief.className="secondary";
+  brief.addEventListener("click",async()=>{
+    brief.disabled=true;
+    try{
+      const data=await request("/api/editorial?"+new URLSearchParams({brief:candidate.id}));
+      const url=URL.createObjectURL(new Blob([data.markdown],{type:"text/markdown;charset=utf-8"}));
+      const link=node("a");link.href=url;link.download="fasulye-brief-"+candidate.id+".md";document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+      el("editorial-status").textContent="Güncel revizyonun üretim brifi indirildi.";
+    }catch(error){el("editorial-status").textContent=error.message;}finally{brief.disabled=false;}
+  });
+  const actions=node("div");actions.className="editorial-actions";actions.append(edit,brief);card.append(detail,actions);
   return card;
 }
 

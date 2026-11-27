@@ -97,3 +97,6 @@ Channel sample workspace filters, raw metadata and expiry guard; 34 MCP tools. E
 
 ### V4 checkpoint 17
 Improved read-only system health and reservation transparency. No production changes.
+
+### V4 checkpoint 19
+Review and rollout runbook: architecture, test commands, isolated migration order, backup/retention, gates, activation and rollback. See engine/tools/opportunity_engine/V4_ROLLOUT.md. Production untouched.

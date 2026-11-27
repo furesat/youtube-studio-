@@ -22,7 +22,7 @@ Panelde çalıştırma durumunu, kaynak video bağlantılarını, bağımsız pu
 
 ## ChatGPT ve Claude bağlantısı
 
-`https://NETLIFY-SITE/mcp` adresi dört araç sunar. `list_research_catalog` konu ve pazarları getirir. `start_youtube_research` bir sorgu veya seçilmiş konu ve pazarlarla araştırmayı başlatır ve çalıştırma numarası verir. `get_research_result` durumu ve hazır olduğunda video bağlantılarıyla sınırlı bir özeti okur. `list_research_history` son 50 araştırmanın bağımsız bağlamını getirir. Tam rapor için paneli kullan.
+`https://NETLIFY-SITE/mcp` adresi V4 taslağında 34 araç sunar; dört temel eski araç korunur. `list_research_catalog` konu ve pazarları getirir. `start_youtube_research` bir sorgu veya seçilmiş konu ve pazarlarla araştırmayı başlatır ve çalıştırma numarası verir. `get_research_result` durumu ve hazır olduğunda video bağlantılarıyla sınırlı bir özeti okur. `list_research_history` son 50 araştırmanın bağımsız bağlamını getirir. Tam rapor için paneli kullan.
 
 **Claude Code ve Bearer başlığı destekleyen MCP istemcileri.** `FASULYE_ACCESS_TOKEN` değerini bir ortam değişkeni olarak tanımladıktan sonra şu komutu kullanabilirsin.
 
@@ -45,7 +45,7 @@ Sağlayıcıda API kaynak tanımlayıcısını MCP adresiyle aynı yap, RS256 im
 
 Actions → **Fasulye Opportunity Engine** → **Run workflow**. Alanlar boşken katalog çalışır. `topics` ve `markets` alanları virgülle ayrılmış kimlikleri, `query` seçeneği ise `region` ve `language` ile manuel aramayı alır. Aynı yöntem API üzerinden de çalışır. Repo dalı birleştirildikten sonra normal çalıştırma hedefi `main` olur. Araştırma, panel veya asistan isteği de dahil olmak üzere talep üzerine başlar.
 
-Python 3.9+ kullanılır. Ek Python paketi gerekmez. Depo kökünden çalıştır.
+Güncel doğrulanmış CI ortamı Python 3.12 kullanır. Ek Python paketi gerekmez. Depo kökünden çalıştır.
 
 ```sh
 python3 -m engine.tools.opportunity_engine --plan
@@ -57,7 +57,7 @@ npm test
 npm run build
 ```
 
-Yerel canlı araştırma için `YOUTUBE_API_KEY` ortam değişkenini tanımla. `--plan` anahtarsız çalışır ve sorgu/bütçe planını gösterir. `--config /path/config.json` alternatif katalog, `--output /path/reports` ayrı bir çıktı dizini seçer. Paneli ve sunucu işlevlerini yerelde birlikte açmak için Node.js 22.18+ ile Netlify CLI üzerinden `netlify dev` kullan.
+Yerel canlı araştırma için `YOUTUBE_API_KEY` ortam değişkenini tanımla. `--plan` anahtarsız çalışır ve sorgu/bütçe planını gösterir. `--config /path/config.json` alternatif katalog, `--output /path/reports` ayrı bir çıktı dizini seçer. Paneli ve sunucu işlevlerini yerelde birlikte açmak için Node.js 24 ile Netlify CLI üzerinden `netlify dev` kullan.
 
 ## Katalog, kota ve ölçümler
 
@@ -133,7 +133,7 @@ Yerel kullanımda `--persist` isteğe bağlıdır. Geçerli `GITHUB_RUN_ID` ve s
 - Google'ın [API politikaları](https://developers.google.com/youtube/terms/developer-policies) ve [özel türetilmiş metrik izinleri](https://developers.google.com/youtube/terms/derived-metrics-policy): rakip izlenme toplamı/dönüşüm oranı veya otomatik başarı puanı üretme. Ham veri ayrı, bağımsız kaynak girdisi ayrı. API verisi en fazla 30 gün. [Arama seçenekleri](https://developers.google.com/youtube/data/reference/rest/v3/search/list), [kota](https://developers.google.com/youtube/data/determine_quota_cost) ve [Shorts tanımı](https://support.google.com/youtube/answer/15424877).
 - Talep: Google Trends CSV ve bağımsız değerlendirme mevcut; Alpha API onayı bekliyor. Google Ads [Keyword Planner API](https://developers.google.com/google-ads/api/docs/keyword-planning/overview), [historical metrics](https://developers.google.com/google-ads/api/docs/keyword-planning/generate-historical-metrics) teknik olarak mümkün fakat Google Ads hesabı/OAuth, uygun geliştirici tokenı ve kota gerekir; Google Search hacmi YouTube arama hacmi değildir. Canlı Ads entegrasyonu yapılmadı; ücretli servis kullanılmadı.
 - RPM için kaynak tarihi (bilinmiyorsa null), kontrol tarihi ve kaynak türü. AIR verileri 2025 örneklemidir, 23.01.2026 yayını; RevenueLab yönlendirici modeldir ve yayın tarihi doğrulanmamışsa bilinmiyor. Kâr senaryoları yalnız bağımsız RPM ve kullanıcının sağladığı aynı para birimindeki ses/görsel/çeviri/kurgu/diğer maliyetler ile hesaplanır; vergi öncesi, garanti değil. Eksik maliyet veya farklı para birimi = bilinmiyor. API izlenmelerinden rakip kazancı türetilmez.
-- Panel oturumu: mevcut `FASULYE_ACCESS_TOKEN` giriş parolası. Hatırlanan tarayıcı 90 gün; parola tarayıcı depolamasına yazılmaz. Secure, HttpOnly, SameSite=Strict imzalı cookie; `FASULYE_GITHUB_TOKEN` ile alan ayrımlı imzalama, token rotasyonu oturumları geçersiz kılar. MCP bearer erişimi korunur. Oturum kapanınca cookie silinir; stateless token için tekil sunucu tarafı iptal listesi henüz yok. Ayrı `FASULYE_ADMIN_TOKEN` (panel/GitHub tokenından farklı ve güçlü) giriş kayıtlarını korur. Login audit yalnız `SUPABASE_SECRET_KEY` Netlify Functions ortamında yapılandırıldığında çalışır. İsteğe bağlı cihaz etiketi, rastgele tarayıcı kimliği, zaman, tarayıcı ve OS; IP/parola tutulmaz, 90 gün temizliği etkin. Aynı parolayı paylaşan kişilerin gerçek kimliği doğrulanamaz. Netlify ortam değişkenleri: https://app.netlify.com/projects/studioyout/configuration/env .
+- Panel oturumu: mevcut `FASULYE_ACCESS_TOKEN` giriş parolası. Hatırlanan tarayıcı 90 gün; parola tarayıcı depolamasına yazılmaz. Secure, HttpOnly, SameSite=Strict imzalı cookie; V4'te bağımsız `FASULYE_SESSION_SECRET` tercih edilir; yalnız geçişte eski GitHub anahtarından türetilen imza desteklenir. MCP bearer erişimi korunur. Oturum kapanınca cookie silinir; V4'te migration ve özellik bayrağı ile sunucu tarafı iptal listesi kullanılabilir. Ayrı `FASULYE_ADMIN_TOKEN` (panel/GitHub tokenından farklı ve güçlü) giriş kayıtlarını korur. Login audit yalnız `SUPABASE_SECRET_KEY` Netlify Functions ortamında yapılandırıldığında çalışır. İsteğe bağlı cihaz etiketi, rastgele tarayıcı kimliği, zaman, tarayıcı ve OS; IP/parola tutulmaz, 90 gün temizliği etkin. Aynı parolayı paylaşan kişilerin gerçek kimliği doğrulanamaz. Netlify ortam değişkenleri: https://app.netlify.com/projects/studioyout/configuration/env .
 - [DEVELOPMENT_REPORT.md](../../../DEVELOPMENT_REPORT.md) doğrulanan ilerlemeyi ve engelleri açıklar.
 
 ## 3.1 pazar karşılaştırması
@@ -166,7 +166,7 @@ Editoryal iş listesinde **Üretim brifini indir** düğmesi adayın güncel rev
 
 ## V4 security migration (draft)
 
-Set a new independent Functions-only `FASULYE_SESSION_SECRET` (generate with `openssl rand -hex 32`; never commit it). It must differ from the panel, admin and GitHub credentials. Deploy only after checks pass and owner approval. With the new secret, existing panel/admin cookies are deliberately invalidated once; sign in again. Rotating the GitHub token then no longer rotates the session key. Rotating the panel password or session secret invalidates sessions. An unset secret preserves legacy behavior during rollout; a nonempty invalid secret fails closed. Keep the dedicated secret configured after rollout: removing it can re-enable legacy signatures until their original expiry. Logout currently clears cookies only; per-session server-side revocation is still outstanding. Do not remove the secret as a routine rollback. If reverting code, coordinate credential rotation to invalidate legacy sessions.
+Set a new independent Functions-only `FASULYE_SESSION_SECRET` (generate with `openssl rand -hex 32`; never commit it). It must differ from the panel, admin and GitHub credentials. Deploy only after checks pass and owner approval. With the new secret, existing panel/admin cookies are deliberately invalidated once; sign in again. Rotating the GitHub token then no longer rotates the session key. Rotating the panel password or session secret invalidates sessions. An unset secret preserves legacy behavior during rollout; a nonempty invalid secret fails closed. Keep the dedicated secret configured after rollout: removing it can re-enable legacy signatures until their original expiry. The optional persistent revocation registry is described below; without its flag, logout only clears cookies. Do not remove the secret as a routine rollback. If reverting code, coordinate credential rotation to invalidate legacy sessions.
 
 
 ### Controlled research (V4 draft)
@@ -207,3 +207,6 @@ Use an unexpired report's channel section or `inspect_channel_uploads` MCP tool 
 
 ### Browser smoke tests (isolated)
 From repository root: `python -m pip install playwright==1.51.0`, `python -m playwright install chromium` (Linux CI uses `--with-deps`), then `python web/tests/browser_smoke.py`. Real Chromium renders the actual local UI; all API responses are deterministic fixture data, and unexpected external requests fail the tests. This is not a production end-to-end verification.
+
+## V4 review and rollout
+See [V4 rollout runbook](V4_ROLLOUT.md) for the architecture, exact isolated migration order, feature flags, deployment and rollback gates, redacted security audit, backup and retention considerations. Do not apply production migrations or deploy without explicit approval.

@@ -93,3 +93,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 ## Checkpoint 18: full local-ref history scan and migration coverage
 - Added bounded redacted Git text-blob scanner across HEAD and all locally reachable refs, optional local-only blob IDs, candidate counts only in CI, no secret values or live credential testing. Current credential-shaped candidates fail audit; historical/email findings are review-only. Full checkout job added. Binary/non-UTF8, >2 MiB, remote-only/unreachable and LFS contents remain out of scope. Added unit fixture tests.
 - Isolated migration runner now includes catalog, login audit and production_costs migrations; all Fasulye tables RLS and selected grants checked. pg_cron scheduling still deliberately omitted from disposable fixture. CI pending. No production changes.
+
+## Checkpoint 19: review/rollout runbook
+- CI 45930736749 passed with real browser smoke tests (Ubuntu 24.04); health telemetry CI 45930800515 also passed. Added single deployment/backup/migration/rollback runbook, corrected legacy README text, documented scope and owner approval gates. Security scanner test fixture constructs synthetic candidate at runtime rather than storing a credential-shaped literal. New CI pending.

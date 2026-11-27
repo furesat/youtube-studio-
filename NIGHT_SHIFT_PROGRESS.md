@@ -96,3 +96,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 19: review/rollout runbook
 - CI 45930736749 passed with real browser smoke tests (Ubuntu 24.04); health telemetry CI 45930800515 also passed. Added single deployment/backup/migration/rollback runbook, corrected legacy README text, documented scope and owner approval gates. Security scanner test fixture constructs synthetic candidate at runtime rather than storing a credential-shaped literal. New CI pending.
+
+## Checkpoint 19a: scanner fixture correction
+- Audit 45930985055 still matched the synthetic credential-URL test across adjacent quoted strings. Confirmed one pattern occurrence at test_security_scan.py line 8, not a live secret. Construct the fixture with separated components; the scanner and assertions are unchanged. Latest full scan pending. Prior audit scanned 578 unique UTF-8 text blobs of 777 reachable blobs; 184 binary/non-UTF8 and 15 oversized blobs excluded; six current and four historical-only email-shaped candidate blobs require review. No other credential category matched; historical fixture remains in Git history. Do not equate this with a clean comprehensive audit.

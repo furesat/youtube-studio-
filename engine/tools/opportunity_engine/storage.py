@@ -2,12 +2,18 @@
 import json
 import os
 import re
-from urllib.request import Request, urlopen
+from urllib.request import Request, HTTPRedirectHandler, build_opener
 from urllib.error import HTTPError, URLError
 
 PROJECT_URL = "https://niihqywncuwxfxipkgte.supabase.co"
 
-def save_report(report, *, environ=None, opener=urlopen):
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
+
+
+def save_report(report, *, environ=None, opener=None):
+    opener = opener or build_opener(NoRedirect()).open
     env = os.environ if environ is None else environ
     url = env.get("SUPABASE_URL", PROJECT_URL).rstrip("/")
     key = env.get("SUPABASE_SECRET_KEY", "").strip()

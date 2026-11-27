@@ -1,6 +1,6 @@
 """Collect observations and prepare separate editorial and revenue inputs."""
 
-from datetime import timedelta
+from datetime import datetime, timedelta
 from decimal import Decimal
 
 from .config import COMPONENTS
@@ -14,11 +14,14 @@ def count(value):
 
 
 def collect(client, pairs, search, now):
-    before = now.isoformat(timespec="seconds")
     rows, hits = [], {}
     for topic, market, queries in pairs:
         days = market.get("lookback_days", search["lookback_days"])
-        after = (now - timedelta(days=days)).isoformat(timespec="seconds")
+        anchor = datetime.fromisoformat(market["window_anchor"].replace("Z", "+00:00")) if market.get("window_anchor") else now
+        if anchor.tzinfo is None or anchor > now:
+            raise ValueError("invalid publication window anchor")
+        before = anchor.isoformat(timespec="seconds")
+        after = (anchor - timedelta(days=days)).isoformat(timespec="seconds")
         collected = []
         for query in queries:
             ids, pages, token, error = [], 0, None, None
@@ -41,6 +44,12 @@ def collect(client, pairs, search, now):
             collected.append({
                 "query": query, "order": market.get("search_order", "relevance"), "lookback_days": days, "pages": pages, "has_more": None if error else bool(token),
                 "error": error, "video_ids": list(dict.fromkeys(ids)),
+                "methodology_version": market.get("methodology_version", "legacy-v1"),
+                "comparison_axis": market.get("comparison_axis"), "query_variant": market.get("query_variant"),
+                "published_after": after, "published_before": before,
+                "observed_at": now.isoformat(timespec="seconds"),
+                "requested_pages": search["pages_per_query"], "results_per_page": search["results_per_page"],
+                "observation_status": ("partial" if pages else "failed") if error else ("observed" if ids else "zero_results"),
             })
         rows.append((topic, market, collected))
 

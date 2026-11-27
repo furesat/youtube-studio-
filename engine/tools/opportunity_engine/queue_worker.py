@@ -38,6 +38,9 @@ def prepare(tasks):
         market = {"id":task["market_id"],"label":task["region"]+" / "+task["language"],
                   "region":task["region"],"language":task["language"],
                   "search_order":task.get("search_order","relevance"),"lookback_days":task.get("lookback_days",365)}
+        for field in ("methodology_version", "comparison_axis", "query_variant", "window_anchor"):
+            if task.get(field) is not None:
+                market[field] = task[field]
         pairs.append((topic,market,[task["query"]]))
     return pairs
 

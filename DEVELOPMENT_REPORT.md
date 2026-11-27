@@ -49,3 +49,6 @@ Official references: https://developers.google.com/youtube/terms/developer-polic
 
 ## V4 draft checkpoint
 See NIGHT_SHIFT_PROGRESS.md for new security implementation, policy review, test evidence and remaining work. No live changes. No full-suite result yet.
+
+### V4 checkpoint 2
+Controlled campaign planning and provenance implemented behind an enqueue opt-in. Five isolated planner assertions passed; full tests/migration remain unverified. See progress file.

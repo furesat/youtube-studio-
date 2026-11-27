@@ -20,3 +20,8 @@ Current official quota documentation describes separate daily search.list call a
 
 ## Next exact step
 Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing batch tests; implement one-variable controlled campaign plans with fixed query and window anchor, separate provenance and explicit observation status. Then run all Node/Python tests in a network-enabled checkout. Remaining P0: complete security/history scan and revocation, controlled campaigns, lease recovery/report atomicity, standalone worker, independent evidence providers. P1/P2 backlog follows uploaded 4.0 specification. No production migration, deployment, data deletion, secret rotation, spending or merge authorized in this session.
+
+## P0 checkpoint 2: controlled campaign
+- Added opt-in controlled planner with window, order, and local variant axes; fixed publication anchor and query provenance; legacy 320-task campaign unchanged. Five isolated JavaScript assertions passed in the orchestration runtime; new Node integration and Python tests authored, not run as a suite here.
+- Added service-role-only additive SQL migration and disabled enqueue by default. Apply migration and upgrade all workers first; then set Functions-only FASULYE_CONTROLLED_CAMPAIGNS=1 after review. No production migration. Raw search results are still temporary, no derived metrics introduced. Existing market comparison UI still needs provenance display.
+- Next: standalone worker, lease recovery, independent evidence. Complete tests, SQL integration and CI are outstanding.

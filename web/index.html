@@ -16,11 +16,11 @@
   <section id="login-screen" class="login-screen"><div class="login-card"><p class="eyebrow">FASULYE / ÖZEL ARAŞTIRMA ALANI</p><h1>İyi fikirler<br>burada başlar.</h1><p>Devam etmek için panel parolanı gir.</p><form id="login-form"><label for="login-password">Parola</label><input id="login-password" type="password" autocomplete="current-password" required maxlength="4096"><label for="device-label">Cihaz adı (isteğe bağlı)</label><input id="device-label" maxlength="80" placeholder="Örn. MacBook"><label class="remember"><input id="remember-device" type="checkbox" checked> Bu tarayıcıyı 90 gün hatırla</label><button id="login-submit" type="submit">Giriş yap</button></form><p id="login-status" role="status">Oturum kontrol ediliyor…</p><small>Giriş zamanı, isteğe bağlı cihaz adı, tarayıcı ve işletim sistemi 90 gün tutulabilir. IP veya parola kaydedilmez.</small></div></section>
   <main id="dashboard" hidden>
     <header class="intro">
-      <h1>Opportunity Engine 3.0</h1>
+      <h1>Opportunity Engine 3.2</h1>
       <p>Bir konuyu yerel dilde ara, farklı pazarlardaki videoları karşılaştır ve yayın fikrini değerlendir.</p>
     </header>
 
-    <nav class="section-nav" aria-label="Panel bölümleri"><button data-page="search" type="button">Araştır</button><button data-page="batch" type="button">Pazar keşfi</button><button data-page="results" type="button">Sonuçlar</button><button data-page="history" type="button">Geçmiş</button><button data-page="trend" type="button">Trendler</button><button data-page="rpm" type="button">Gelir</button><button data-page="review" type="button">Fırsatlar</button><button data-page="system" type="button">Ayarlar</button></nav><p id="panel-warning" role="status" hidden></p>
+    <nav class="section-nav" aria-label="Panel bölümleri"><button data-page="search" type="button">Araştır</button><button data-page="batch" type="button">Pazar keşfi</button><button data-page="results" type="button">Sonuçlar</button><button data-page="history" type="button">Geçmiş</button><button data-page="trend" type="button">Trendler</button><button data-page="rpm" type="button">Gelir</button><button data-page="review" type="button">Fırsatlar</button><button data-page="editorial" type="button">Editoryal iş listesi</button><button data-page="system" type="button">Ayarlar</button></nav><p id="panel-warning" role="status" hidden></p>
     <section id="page-search" class="workspace" aria-labelledby="research-title">
       <div class="form-panel">
         <h2 id="research-title">Yeni araştırma</h2>
@@ -174,6 +174,73 @@
       <div class="table-scroll"><table><thead><tr><th>Konu</th><th>Pazar</th><th>Puan</th><th>Kapsam</th><th>Güven</th><th>Kaynak</th></tr></thead><tbody id="review-comparison"></tbody></table></div>
       </div><div id="evidence-system"><h2 id="system-title">Sistem durumu</h2><button id="system-check" type="button" class="secondary">Canlı bağlantıları kontrol et</button><div id="system-status" role="status"></div>
       <h3>Giriş kayıtları</h3><p class="hint">Kayıtları yalnızca ayrı yönetici parolasıyla açabilirsin. Cihaz sayısı, benzersiz kişi sayısı değildir.</p><form id="admin-form"><label for="admin-password">Yönetici parolası</label><input id="admin-password" type="password" autocomplete="off" required><button type="submit">Kayıtları aç</button></form><button id="audit-refresh" type="button" class="secondary" hidden>Girişleri yenile</button><p id="audit-status" role="status"></p><div id="audit-metrics"></div><div class="table-scroll"><table><thead><tr><th>Giriş zamanı</th><th>Cihaz</th><th>Tarayıcı / Sistem</th><th>Hatırlandı</th></tr></thead><tbody id="audit-rows"></tbody></table></div></div>
+    </section>
+    <section id="page-editorial" class="form-panel" aria-labelledby="editorial-title" hidden>
+      <div class="result-head">
+        <h2 id="editorial-title">Editoryal iş listesi</h2>
+        <button id="editorial-new" type="button">Yeni aday</button>
+      </div>
+      <p class="hint">Fikirleri hedef pazara göre geliştir ve üretim durumunu takip et. Kaynak bulguları ve tahminler editoryal girdilerdir.</p>
+      <p id="editorial-status" role="status"></p>
+      <form id="editorial-form" class="editorial-form" hidden>
+        <h3 id="editorial-form-title">Yeni aday</h3>
+        <label for="editorial-name">Fikrin çalışma başlığı</label>
+        <input id="editorial-name" maxlength="160" required>
+        <div class="columns">
+          <div><label for="editorial-market">Hedef pazar</label><select id="editorial-market" required><option value="">Pazar seç</option></select></div>
+          <div><label for="editorial-state">Durum</label><select id="editorial-state" required></select></div>
+        </div>
+        <label for="editorial-hypothesis">Pazara özgü hipotez</label>
+        <textarea id="editorial-hypothesis" required maxlength="1600" rows="3" placeholder="Bu ülkede ve dilde hangi izleyici ihtiyacı olabilir?"></textarea>
+        <label for="editorial-angle">Özgün anlatım açısı</label>
+        <textarea id="editorial-angle" required maxlength="1600" rows="3" placeholder="Hangi soru, olay veya bakış açısı hikâyeyi taşıyacak?"></textarea>
+        <label for="editorial-uncertainty">Belirsizlik ve doğrulanacak noktalar</label>
+        <textarea id="editorial-uncertainty" required maxlength="1200" rows="3" placeholder="Neyi henüz bilmiyoruz? Hangi bulgu fikri değiştirebilir?"></textarea>
+        <div class="columns">
+          <div><label for="editorial-format">Video formatı</label><select id="editorial-format"><option value="undecided">Karar verilmedi</option><option value="shorts">Shorts</option><option value="long_form">Uzun video</option></select></div>
+          <div><label for="editorial-amount">Tahmini maliyet (isteğe bağlı)</label><input id="editorial-amount" type="number" min="0" max="10000000" step="any" placeholder="Bilinmiyorsa boş bırak"></div>
+        </div>
+        <div class="columns" id="editorial-cost-fields" hidden>
+          <div><label for="editorial-currency">Para birimi</label><input id="editorial-currency" maxlength="3" pattern="[A-Z]{3}" placeholder="EUR"></div>
+          <div><label for="editorial-basis">Maliyet dayanağı</label><input id="editorial-basis" maxlength="400" placeholder="Örn. Kurgu ve çeviri için kendi tahminim"></div>
+        </div>
+        <fieldset>
+          <legend>Bağımsız kaynaklar</legend>
+          <p class="hint">Bulguyu kendi cümlelerinle yaz. Hazır, üretimde ve yayınlandı durumları en az bir kaynak gerektirir.</p>
+          <div id="editorial-sources"></div>
+          <button id="editorial-add-source" type="button" class="secondary">Kaynak ekle</button>
+        </fieldset>
+        <label class="remember"><input id="editorial-independent" type="checkbox" required> Kayıt özgün editoryal metne ve varsa bağımsız kaynaklara dayanıyor. YouTube API içeriği, türetilmiş metrik veya rakip metni içermiyor.</label>
+        <p id="editorial-form-status" role="status" hidden></p>
+        <div class="editorial-actions">
+          <button id="editorial-save" type="submit">Adayı kaydet</button>
+          <button id="editorial-cancel" type="button" class="secondary">Vazgeç</button>
+        </div>
+      </form>
+      <template id="editorial-source-template">
+        <fieldset class="editorial-source">
+          <legend>Kaynak</legend>
+          <div class="columns">
+            <label>Yayıncı veya kurum<input name="publisher" required maxlength="120"></label>
+            <label>Kaynak adresi (HTTPS)<input name="url" required type="url" maxlength="1500"></label>
+            <label>İnceleme tarihi<input name="checked_on" required type="date"></label>
+            <label>Kanıt türü<select name="kind"><option value="context">Konu bağlamı</option><option value="demand">İzleyici ilgisi</option><option value="coverage">Pazardaki içerik kapsamı</option></select></label>
+          </div>
+          <label>Bulgu ve hipotezle ilişkisi<textarea name="finding" required maxlength="800" rows="2"></textarea></label>
+          <button type="button" class="secondary">Bu kaynağı çıkar</button>
+        </fieldset>
+      </template>
+      <div id="editorial-backlog">
+        <div class="filters">
+          <label>Pazar <select id="editorial-market-filter"><option value="">Tümü</option></select></label>
+          <label>Durum <select id="editorial-state-filter"><option value="">Tümü</option></select></label>
+        </div>
+        <div id="editorial-list"></div>
+        <div class="editorial-actions">
+          <button id="editorial-prev" type="button" class="secondary" hidden>Önceki sayfa</button>
+          <button id="editorial-next" type="button" class="secondary" hidden>Sonraki sayfa</button>
+        </div>
+      </div>
     </section>
     <section id="page-history" class="form-panel" hidden><h2>Araştırma geçmişi</h2><p>Önceki araştırmalarını veya gruplarını seç.</p><div id="history-slot"></div><div id="groups-slot"></div></section>
   </main>

@@ -10,6 +10,6 @@ test("dashboard JavaScript parses and all static DOM bindings exist",()=>{
   const ids=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   assert.equal(new Set(ids).size,ids.length);
   for(const [,id] of js.matchAll(/\bel\("([a-z0-9-]+)"\)/g))assert.ok(ids.includes(id),"Missing HTML element: "+id);
-  for(const id of ["batch-form","batch-preview","batch-submit","batch-progress","trend-form","rpm-form","review-form","system-check","video-comparison"])assert.ok(ids.includes(id));
+  for(const id of ["batch-form","batch-preview","batch-submit","batch-progress","trend-form","rpm-form","review-form","system-check","video-comparison","page-editorial","editorial-form","editorial-source-template"])assert.ok(ids.includes(id));
   assert.doesNotMatch(html+js,/sb_secret_[a-z0-9_]{12,}/i);
 });

@@ -2,6 +2,7 @@
 import sys
 from PIL import Image, ImageDraw, ImageFont
 v, txt = sys.argv[1].rstrip("/"), sys.argv[2]
+lang = sys.argv[3] if len(sys.argv) > 3 else "tr"  # çıktı soneki: tr / de
 im = Image.open(f"{v}/images/001_T01_v1.png").convert("RGBA").resize((1280, 720), Image.LANCZOS)
 f = ImageFont.truetype("engine/fonts/ShantellSans[BNCE,INFM,SPAC,wght].ttf", 220)
 f.set_variation_by_axes([800, 60, 0, 0])  # ağırlık, gayriresmîlik, zıplama, aralık
@@ -12,5 +13,5 @@ d.text((40 - bb[0], 40 - bb[1]), txt, font=f, fill=(184, 58, 43, 255), stroke_wi
 L = L.crop((0, 0, w + 100, h + 100)).rotate(6, expand=True, resample=Image.BICUBIC)
 s = 520 / L.width; L = L.resize((int(L.width * s), int(L.height * s)), Image.LANCZOS)
 im.alpha_composite(L, (1262 - L.width, 70))
-im = im.convert("RGB"); im.save(f"{v}/renders/thumbnail_tr.png"); im.save(f"{v}/renders/thumbnail_tr.jpg", quality=92)
+im = im.convert("RGB"); im.save(f"{v}/renders/thumbnail_{lang}.png"); im.save(f"{v}/renders/thumbnail_{lang}.jpg", quality=92)
 print(L.size)

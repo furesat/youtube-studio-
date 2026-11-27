@@ -349,17 +349,27 @@ async function submitBatch(preview) {
   try {
     const data=await request("/api/batch"+(preview?"?preview=1":""),{method:"POST",body:JSON.stringify(batchInput())});
     el("batch-status").textContent=data.tasks+" görev · "+data.missing.length+" eksik pazar yerelleştirmesi"+(preview?" · Plan; henüz kuyruğa eklenmedi.":" · Kuyruğa kaydedildi.");
-    if(!preview) void watchBatch(data.id);
+    if(!preview) { el("batch-status").textContent += data.worker?.state==="dispatched"?" Worker başlatıldı.":" Zamanlanmış worker bekleniyor."; void watchBatch(data.id); }
   } catch(e) {el("batch-status").textContent=e.message;}
   finally {button.disabled=false;}
 }
 el("batch-preview").addEventListener("click",()=>void submitBatch(true));
 el("batch-form").addEventListener("submit",e=>{e.preventDefault();void submitBatch(false);});
+let taskBatchId,taskOffset=0,taskTotal=0;
+async function loadBatchTasks(){
+  if(!taskBatchId)return;
+  try{const rows=await request("/api/batch?"+new URLSearchParams({id:taskBatchId,tasks:"1",offset:String(taskOffset)}));el("batch-task-rows").replaceChildren();for(const t of rows)addRow("batch-task-rows",[t.topic+" / "+t.query,t.region+" / "+t.language,t.status,t.attempts,t.error_code]);el("batch-task-prev").disabled=taskOffset===0;el("batch-task-next").disabled=taskOffset+100>=taskTotal;}catch(e){el("batch-status").textContent=e.message;}
+}
+el("batch-task-details").addEventListener("toggle",()=>{if(el("batch-task-details").open)void loadBatchTasks();});
+el("batch-task-prev").addEventListener("click",()=>{taskOffset=Math.max(0,taskOffset-100);void loadBatchTasks();});
+el("batch-task-next").addEventListener("click",()=>{taskOffset+=100;void loadBatchTasks();});
 async function watchBatch(id) {
+  taskBatchId=id;taskOffset=0;el("batch-task-details").hidden=false;
   batchController?.abort();batchController=new AbortController();const {signal}=batchController;
   try {
     while(!signal.aborted){
       const b=await request("/api/batch?"+new URLSearchParams({id}),{signal});
+      taskTotal=b.total;if(el("batch-task-details").open)void loadBatchTasks();
       const p=el("batch-progress");p.hidden=false;p.max=b.total||1;p.value=b.done+b.failed;
       el("batch-status").textContent=b.label+" · "+b.done+"/"+b.total+" tamamlandı · "+b.running+" çalışıyor · "+b.queued+" sırada · "+b.failed+" başarısız";
       const container=el("batch-reports");container.replaceChildren();

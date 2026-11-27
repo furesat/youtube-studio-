@@ -3,7 +3,7 @@ import { WebStandardStreamableHTTPServerTransport } from "@modelcontextprotocol/
 import { z } from "zod";
 import { mcpAuthorized, mcpUnauthorized, oauthConfig, resourceMetadata } from "../lib/mcp-auth.mjs";
 import {
-  getArtifact, getRun, json, publicCatalog, readSchema, reportFromZip, ResearchError,
+  getHistory, getReport, getRun, json, publicCatalog, readSchema, ResearchError,
   startResearch, startSchema, trustedOrigin,
 } from "../lib/research.mjs";
 
@@ -37,6 +37,11 @@ function buildServer() {
     annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: true },
   }, input => tool("start_youtube_research", () => startResearch(input)));
 
+  server.registerTool("list_research_history", {
+    title: "Araştırma geçmişi", description: "Son 50 çalıştırmanın bağımsız konu, pazar ve gelir senaryolarını okur.",
+    annotations: { readOnlyHint: true, openWorldHint: true },
+  }, () => tool("list_research_history", () => getHistory()));
+
   server.registerTool("get_research_result", {
     title: "Araştırma sonucunu oku",
     description: "Bir araştırmanın durumunu ve bittiyse kaynaklarıyla birlikte sınırlı özetini "
@@ -47,7 +52,7 @@ function buildServer() {
     const run = await getRun(id);
     if (run.status !== "completed") return run;
     try {
-      const report = await reportFromZip(await getArtifact(id));
+      const report = await getReport(id);
       return {
         ...run,
         collected_at: report.collected_at,

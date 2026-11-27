@@ -11,6 +11,7 @@ from .config import load_config, max_search_pages, plan_pairs
 from .report import write_report
 from .research import run
 from .youtube import YouTube
+from .storage import save_report
 
 
 def main(argv=None):
@@ -22,6 +23,7 @@ def main(argv=None):
     parser.add_argument("--query", help="Tek bir yerel sorgu")
     parser.add_argument("--region", default="TR", help="Manuel sorgu için ISO ülke kodu")
     parser.add_argument("--language", default="tr", help="Manuel sorgu için dil kodu")
+    parser.add_argument("--persist", action="store_true", help="Raporu Supabase üzerinden sakla")
     parser.add_argument("--plan", action="store_true", help="API çağrısı yapmadan planı göster")
     args = parser.parse_args(argv)
     try:
@@ -83,6 +85,13 @@ def main(argv=None):
         return 2
     print(f"{client.successes['search']}/{client.calls['search']} arama başarılı. "
           f"{len(report['videos'])} benzersiz video. Rapor: {args.output}")
+    if args.persist:
+        try:
+            saved = save_report(report)
+            print(f"Supabase kayıt doğrulandı: {saved['run_id']}, {saved['videos']} video.")
+        except (ValueError, RuntimeError) as error:
+            print(str(error), file=sys.stderr)
+            return 2
     errors = {query["error"] for row in report["opportunities"] for query in row["queries"]
               if query["error"]}
     errors.update(error for group in report["detail_errors"].values() for error in group)

@@ -5,21 +5,24 @@ Fasulye’nin yayın fikirlerini YouTube’da yerel sorgularla araştırır. Ba�
 ## Web panelini Netlify’a bağlama
 
 1. Bu depoyu Netlify’da **Import an existing project** ile bağla. Yayın dalı `main`. Derleme komutu ve yayın dizini depo kökündeki `netlify.toml` dosyasından gelir.
-2. Netlify → Environment variables bölümünde aşağıdaki iki değişkeni **Functions** kapsamında tanımla ve yeniden deploy et.
+2. Netlify → Environment variables bölümünde aşağıdaki dört değişkeni **Functions** kapsamında tanımla ve yeniden deploy et.
 
    | Değişken | Değer |
    |---|---|
    | `FASULYE_ACCESS_TOKEN` | Panel ve kişisel MCP istemcileri için yeni bir erişim anahtarı. Örneğin `openssl rand -hex 32` ile üret. |
    | `FASULYE_GITHUB_TOKEN` | Yalnızca `furesat/youtube-studio-` deposuna erişebilen fine-grained GitHub token. Depo izni **Actions: Read and write**. |
 
-3. `YOUTUBE_API_KEY` GitHub’da **Settings → Secrets and variables → Actions** altında kalır. Panelde **Panel erişim anahtarı** alanına `FASULYE_ACCESS_TOKEN` değerini gir.
+   | `SUPABASE_URL` | `https://niihqywncuwxfxipkgte.supabase.co` |
+   | `SUPABASE_SECRET_KEY` | Supabase API Keys bölümünde Netlify için oluşturulmuş ayrı `sb_secret_` anahtarı. Secret / Functions kapsamında. |
+
+3. GitHub Actions secrets bölümüne aynı proje için **ayrı** bir `SUPABASE_SECRET_KEY` ekle. `YOUTUBE_API_KEY` GitHub’da **Settings → Secrets and variables → Actions** altında kalır. Panelde **Panel erişim anahtarı** alanına `FASULYE_ACCESS_TOKEN` değerini gir.
 4. **Manuel sorgu** ile bir arama metni ve ülke/dil kodlarını gir veya **Hazır konular** sekmesinden konu ve pazar seç. Çalıştırma numarasıyla başka bir zamanda aynı raporu açabilirsin.
 
-Panelde çalıştırma durumunu, kaynak video bağlantılarını, bağımsız puanı ve gelir senaryolarını görebilirsin. ZIP arşivi GitHub Actions çalıştırmasına yüklenir ve 14 gün saklanır. Arşiv yüklemesi kota nedeniyle başarısız olursa panelde çalıştırma bağlantısı ve raporun erişilemediği bilgisi görünür. GitHub’daki **Rapor biçimlerini doğrula** adımı, dosyaların çalıştırıcıda oluşup oluşmadığını gösterir. Yerel çalıştırma çıkışlarını 30 gün içinde sil veya güncelle.
+Panelde çalıştırma durumunu, kaynak video bağlantılarını, bağımsız puanı ve gelir senaryolarını görebilirsin. ZIP arşivi Supabase raporundan istek üzerine üretilir; GitHub Artifact kotası kullanılmaz. YouTube raporları en fazla 30 gün, bağımsız araştırma bağlamı ise geçmişte tutulur. GitHub’daki **Rapor biçimlerini doğrula** adımı, dosyaların çalıştırıcıda oluşup oluşmadığını gösterir. Yerel çalıştırma çıkışlarını 30 gün içinde sil veya güncelle.
 
 ## ChatGPT ve Claude bağlantısı
 
-`https://NETLIFY-SITE/mcp` adresi üç araç sunar. `list_research_catalog` konu ve pazarları getirir. `start_youtube_research` bir sorgu veya seçilmiş konu ve pazarlarla araştırmayı başlatır ve çalıştırma numarası verir. `get_research_result` durumu ve hazır olduğunda video bağlantılarıyla sınırlı bir özeti okur. Tam rapor için paneli veya GitHub çalıştırma sayfasını kullan.
+`https://NETLIFY-SITE/mcp` adresi dört araç sunar. `list_research_catalog` konu ve pazarları getirir. `start_youtube_research` bir sorgu veya seçilmiş konu ve pazarlarla araştırmayı başlatır ve çalıştırma numarası verir. `get_research_result` durumu ve hazır olduğunda video bağlantılarıyla sınırlı bir özeti okur. `list_research_history` son 50 araştırmanın bağımsız bağlamını getirir. Tam rapor için paneli kullan.
 
 **Claude Code ve Bearer başlığı destekleyen MCP istemcileri.** `FASULYE_ACCESS_TOKEN` değerini bir ortam değişkeni olarak tanımladıktan sonra şu komutu kullanabilirsin.
 
@@ -86,3 +89,19 @@ Girdilerin tümü mevcutsa denklem doğrudan uygulanır. Kapsam en az %75 ise ya
 | `videos.csv` | Her konu/pazara bağlı bulunan videolar |
 | `revenue.csv` | Pazar ve format için RPM girdileri ve hedef senaryoları |
 | `dashboard.html` | Arşiv açıldığında tarayıcıda çevrimdışı çalışan filtreli panel |
+
+## Supabase entegrasyonu ve doğrulama
+
+- Tek hedef proje: `niihqywncuwxfxipkgte`. Şema: [supabase/schema.sql](supabase/schema.sql), uygulanan migrasyon: `20261127004923`.
+- `fasulye_runs` bağımsız konu, pazar, dil, ülke, editoryal değerlendirme ve RPM senaryolarını; `fasulye_reports` geçici API raporunun tamamını tutar. Tek RPC işleminde yazılır; GitHub run ID ve attempt ile yeniden çalıştırma korunur.
+- RLS açık. Anon ve authenticated rollerinin tablo/RPC erişimi yok. Secret key yalnızca GitHub Actions ve Netlify Functions ortamında bulunur, frontend'e verilmez. Ayrı anahtarlar oluştur, kaynak koduna veya loglara yazma. Netlify paneli mevcut erişim anahtarı/OAuth ile korunur.
+- Cron her 15 dakikada dolmak üzere olan raporları siler; okuma da `expires_at` sınırını kontrol eder. ZIP kopyalarını yerelde 30 gün dolmadan sil veya güncelle. Eski GitHub arşivleri yeni sistemde okunmaz.
+- Kurulum sonrası Actions üzerinden bir manuel sorgu çalıştır. Step özetinde Supabase kayıt onayını, Supabase SQL Editor'da gerçek satırları, panelde aynı run ID ile raporu ve ZIP'i, MCP üzerinden `get_research_result` sonucunu doğrula. Canlı test yapılmadan tamamlandı kabul etme.
+
+```sql
+select run_id, collected_at, expires_at,
+       (select count(*) from jsonb_object_keys(report->'videos')) as videos
+from public.fasulye_reports order by collected_at desc;
+```
+
+Yerel kullanımda `--persist` isteğe bağlıdır. Geçerli `GITHUB_RUN_ID` ve sunucu secret key gerektirir. CI testleri üretim veritabanına sahte veri yazmaz.

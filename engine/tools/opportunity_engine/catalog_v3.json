@@ -1,0 +1,581 @@
+{
+  "version": 3,
+  "priority_markets": [
+    "de",
+    "en",
+    "nl",
+    "pl",
+    "cs",
+    "sv",
+    "ro",
+    "tr"
+  ],
+  "priority_categories": [
+    "history",
+    "psychology",
+    "science",
+    "inventions",
+    "economics",
+    "technology",
+    "culture",
+    "mystery",
+    "events",
+    "everyday"
+  ],
+  "profiles": [
+    {
+      "days": 365,
+      "order": "relevance",
+      "variant": 0
+    },
+    {
+      "days": 90,
+      "order": "relevance",
+      "variant": 1
+    },
+    {
+      "days": 30,
+      "order": "viewCount",
+      "variant": 0
+    },
+    {
+      "days": 7,
+      "order": "date",
+      "variant": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": "history",
+      "label": "Tuhaf tarih",
+      "queries": {
+        "tr": [
+          "tarihin en tuhaf olayları",
+          "tarihte yaşanmış tuhaf olayların hikayesi"
+        ],
+        "de": [
+          "kuriose Ereignisse der Geschichte",
+          "skurrile historische Begebenheiten die wirklich passiert sind"
+        ],
+        "en": [
+          "strange true stories from history",
+          "weird historical events that really happened"
+        ],
+        "nl": [
+          "vreemde gebeurtenissen uit de geschiedenis",
+          "bizarre historische gebeurtenissen die echt gebeurden"
+        ],
+        "pl": [
+          "najdziwniejsze wydarzenia w historii",
+          "dziwne wydarzenia historyczne które naprawdę się zdarzyły"
+        ],
+        "cs": [
+          "podivné události z historie",
+          "podivné historické události které se opravdu staly"
+        ],
+        "sv": [
+          "märkliga händelser i historien",
+          "märkliga historiska händelser som verkligen inträffat"
+        ],
+        "ro": [
+          "întâmplări ciudate din istorie",
+          "întâmplări istorice ciudate care chiar au avut loc"
+        ]
+      }
+    },
+    {
+      "id": "psychology",
+      "label": "Psikoloji",
+      "queries": {
+        "tr": [
+          "insan psikolojisi neden böyle davranıyoruz",
+          "insanlar neden böyle davranır psikoloji deneyleri"
+        ],
+        "de": [
+          "warum Menschen sich so verhalten Psychologie",
+          "psychologische Experimente warum wir so handeln"
+        ],
+        "en": [
+          "psychology behind everyday behavior",
+          "psychology experiments that explain human behavior"
+        ],
+        "nl": [
+          "waarom mensen zich zo gedragen psychologie",
+          "psychologische experimenten over menselijk gedrag"
+        ],
+        "pl": [
+          "psychologia codziennych zachowań",
+          "eksperymenty psychologiczne wyjaśniające ludzkie zachowanie"
+        ],
+        "cs": [
+          "psychologie lidského chování",
+          "psychologické experimenty o lidském chování"
+        ],
+        "sv": [
+          "psykologi bakom människors beteende",
+          "psykologiska experiment som förklarar mänskligt beteende"
+        ],
+        "ro": [
+          "psihologia comportamentului uman",
+          "experimente psihologice care explică comportamentul uman"
+        ]
+      }
+    },
+    {
+      "id": "science",
+      "label": "Bilim",
+      "queries": {
+        "tr": [
+          "şaşırtıcı bilimsel keşifler",
+          "bilimde akıl almaz keşifler nasıl oldu"
+        ],
+        "de": [
+          "verblüffende wissenschaftliche Entdeckungen",
+          "wissenschaftliche Entdeckungen einfach erklärt"
+        ],
+        "en": [
+          "surprising scientific discoveries explained",
+          "unexpected discoveries that changed science"
+        ],
+        "nl": [
+          "bijzondere wetenschappelijke ontdekkingen",
+          "wetenschappelijke ontdekkingen die alles veranderden"
+        ],
+        "pl": [
+          "zaskakujące odkrycia naukowe",
+          "odkrycia które zmieniły oblicze nauki"
+        ],
+        "cs": [
+          "překvapivé vědecké objevy",
+          "vědecké objevy které změnily svět"
+        ],
+        "sv": [
+          "överraskande vetenskapliga upptäckter",
+          "vetenskapliga upptäckter som förändrade världen"
+        ],
+        "ro": [
+          "descoperiri științifice uimitoare",
+          "descoperiri care au schimbat știința"
+        ]
+      }
+    },
+    {
+      "id": "inventions",
+      "label": "İcatlar",
+      "queries": {
+        "tr": [
+          "dünyayı değiştiren icatların hikayesi",
+          "gündelik icatlar nasıl ortaya çıktı"
+        ],
+        "de": [
+          "die Geschichte bahnbrechender Erfindungen",
+          "wie alltägliche Erfindungen entstanden sind"
+        ],
+        "en": [
+          "the stories behind world changing inventions",
+          "how everyday inventions came to exist"
+        ],
+        "nl": [
+          "het verhaal achter beroemde uitvindingen",
+          "hoe alledaagse uitvindingen zijn ontstaan"
+        ],
+        "pl": [
+          "historia przełomowych wynalazków",
+          "jak powstały wynalazki codziennego użytku"
+        ],
+        "cs": [
+          "příběhy slavných vynálezů",
+          "jak vznikly každodenní vynálezy"
+        ],
+        "sv": [
+          "historien bakom stora uppfinningar",
+          "hur vardagens uppfinningar kom till"
+        ],
+        "ro": [
+          "povestea marilor invenții",
+          "cum au apărut invențiile de zi cu zi"
+        ]
+      }
+    },
+    {
+      "id": "economics",
+      "label": "Ekonomi",
+      "queries": {
+        "tr": [
+          "ekonomide yaşanmış ilginç olaylar",
+          "tarihteki ekonomik balonlar ve krizler"
+        ],
+        "de": [
+          "kuriose Geschichten aus der Wirtschaft",
+          "Geschichte von Finanzblasen und Wirtschaftskrisen"
+        ],
+        "en": [
+          "strange stories from economic history",
+          "historical financial bubbles and economic crises explained"
+        ],
+        "nl": [
+          "opmerkelijke economische geschiedenis",
+          "financiële zeepbellen en economische crises geschiedenis"
+        ],
+        "pl": [
+          "ciekawostki z historii gospodarki",
+          "bańki spekulacyjne i kryzysy w historii gospodarczej"
+        ],
+        "cs": [
+          "zajímavosti z dějin ekonomiky",
+          "spekulační bubliny a hospodářské krize v historii"
+        ],
+        "sv": [
+          "märkliga ekonomiska händelser",
+          "finansbubblor och ekonomiska kriser genom historien"
+        ],
+        "ro": [
+          "curiozități din istoria economiei",
+          "bule speculative și crize economice din istorie"
+        ]
+      }
+    },
+    {
+      "id": "technology",
+      "label": "Teknoloji",
+      "queries": {
+        "tr": [
+          "teknoloji nasıl çalışır",
+          "teknoloji nereden geldi nasıl çalışıyor"
+        ],
+        "de": [
+          "wie funktioniert moderne Technik",
+          "Technikgeschichte wie funktioniert das eigentlich"
+        ],
+        "en": [
+          "how everyday technology works",
+          "the surprising history of everyday technology"
+        ],
+        "nl": [
+          "hoe technologie werkt",
+          "de verrassende geschiedenis van technologie"
+        ],
+        "pl": [
+          "jak działa technologia",
+          "niezwykła historia współczesnej techniki"
+        ],
+        "cs": [
+          "jak funguje technologie",
+          "překvapivá historie techniky"
+        ],
+        "sv": [
+          "hur teknik fungerar",
+          "teknikens överraskande historia"
+        ],
+        "ro": [
+          "cum funcționează tehnologia",
+          "istoria surprinzătoare a tehnologiei"
+        ]
+      }
+    },
+    {
+      "id": "culture",
+      "label": "Kültür ve gelenekler",
+      "queries": {
+        "tr": [
+          "dünyanın ilginç gelenekleri",
+          "eski geleneklerin ilginç kökenleri"
+        ],
+        "de": [
+          "ungewöhnliche Bräuche weltweit",
+          "woher kommen ungewöhnliche Bräuche"
+        ],
+        "en": [
+          "unusual traditions around the world",
+          "the origins of unusual customs and traditions"
+        ],
+        "nl": [
+          "bijzondere tradities wereldwijd",
+          "waar komen vreemde gewoonten vandaan"
+        ],
+        "pl": [
+          "niezwykłe tradycje świata",
+          "skąd pochodzą nietypowe zwyczaje"
+        ],
+        "cs": [
+          "neobvyklé tradice světa",
+          "odkud pocházejí neobvyklé zvyky"
+        ],
+        "sv": [
+          "ovanliga traditioner i världen",
+          "varifrån kommer ovanliga seder"
+        ],
+        "ro": [
+          "tradiții neobișnuite din lume",
+          "de unde provin obiceiurile neobișnuite"
+        ]
+      }
+    },
+    {
+      "id": "mystery",
+      "label": "Gizemler",
+      "queries": {
+        "tr": [
+          "çözülememiş tarihi gizemler",
+          "tarihin çözülmeyen esrarengiz olayları"
+        ],
+        "de": [
+          "ungelöste historische Rätsel",
+          "rätselhafte ungelöste Fälle der Geschichte"
+        ],
+        "en": [
+          "unsolved historical mysteries explained",
+          "strange unsolved mysteries from history"
+        ],
+        "nl": [
+          "onopgeloste historische mysteries",
+          "onverklaarde raadsels uit de geschiedenis"
+        ],
+        "pl": [
+          "nierozwiązane zagadki historii",
+          "niewyjaśnione tajemnice z historii"
+        ],
+        "cs": [
+          "nevyřešené záhady historie",
+          "nevysvětlené záhady z historie"
+        ],
+        "sv": [
+          "olösta historiska mysterier",
+          "oförklarade gåtor från historien"
+        ],
+        "ro": [
+          "mistere istorice nerezolvate",
+          "enigme istorice care nu au fost elucidate"
+        ]
+      }
+    },
+    {
+      "id": "events",
+      "label": "Gerçek olaylar",
+      "queries": {
+        "tr": [
+          "gerçekten yaşanmış ilginç olaylar",
+          "gerçek hayattan inanılmaz hikayeler"
+        ],
+        "de": [
+          "unglaubliche wahre Geschichten",
+          "wahre unglaubliche Begebenheiten"
+        ],
+        "en": [
+          "incredible true events you never heard of",
+          "unbelievable events that actually happened"
+        ],
+        "nl": [
+          "ongelooflijke waargebeurde verhalen",
+          "waargebeurde verhalen die bijna ongelooflijk zijn"
+        ],
+        "pl": [
+          "niezwykłe prawdziwe historie",
+          "niewiarygodne historie które wydarzyły się naprawdę"
+        ],
+        "cs": [
+          "neuvěřitelné skutečné příběhy",
+          "neuvěřitelné příběhy které se skutečně staly"
+        ],
+        "sv": [
+          "otroliga sanna berättelser",
+          "otroliga händelser som faktiskt hänt"
+        ],
+        "ro": [
+          "povești adevărate incredibile",
+          "întâmplări incredibile care s-au petrecut cu adevărat"
+        ]
+      }
+    },
+    {
+      "id": "everyday",
+      "label": "Gündelik hayat",
+      "queries": {
+        "tr": [
+          "gündelik eşyaların bilinmeyen tarihi",
+          "her gün kullandığımız eşyalar nasıl ortaya çıktı"
+        ],
+        "de": [
+          "Geschichte alltäglicher Gegenstände",
+          "warum gibt es Dinge des Alltags Geschichte"
+        ],
+        "en": [
+          "hidden history of everyday objects",
+          "why everyday objects were invented"
+        ],
+        "nl": [
+          "geschiedenis van alledaagse voorwerpen",
+          "waarom alledaagse voorwerpen zijn uitgevonden"
+        ],
+        "pl": [
+          "historia codziennych przedmiotów",
+          "dlaczego wynaleziono przedmioty codziennego użytku"
+        ],
+        "cs": [
+          "historie každodenních předmětů",
+          "proč vznikly předměty každodenní potřeby"
+        ],
+        "sv": [
+          "vardagsföremålens historia",
+          "varför vardagsföremål uppfanns"
+        ],
+        "ro": [
+          "istoria obiectelor de zi cu zi",
+          "de ce au fost inventate obiectele cotidiene"
+        ]
+      }
+    },
+    {
+      "id": "companies",
+      "label": "Şirket hikâyeleri",
+      "queries": {
+        "tr": [
+          "şirketlerin bilinmeyen tarihi",
+          "ünlü şirketlerin yükseliş ve çöküş hikayeleri"
+        ],
+        "de": [
+          "Geschichte bekannter Unternehmen",
+          "Aufstieg und Fall bekannter Unternehmen"
+        ],
+        "en": [
+          "the untold history of famous companies",
+          "rise and fall of famous companies explained"
+        ],
+        "nl": [
+          "de onbekende geschiedenis van bedrijven",
+          "opkomst en ondergang van bekende bedrijven"
+        ],
+        "pl": [
+          "nieznana historia znanych przedsiębiorstw",
+          "wzlot i upadek znanych firm"
+        ],
+        "cs": [
+          "neznámá historie firem",
+          "vzestup a pád známých společností"
+        ],
+        "sv": [
+          "företagens okända historia",
+          "kända företags uppgång och fall"
+        ],
+        "ro": [
+          "istoria necunoscută a marilor companii",
+          "ascensiunea și declinul unor companii celebre"
+        ]
+      }
+    },
+    {
+      "id": "geography",
+      "label": "Coğrafya",
+      "queries": {
+        "tr": [
+          "dünyanın şaşırtıcı coğrafi özellikleri",
+          "haritalardaki tuhaf sınırlar ülkeler"
+        ],
+        "de": [
+          "verrückte Geografie der Welt",
+          "kuriose Grenzen und Länder auf der Weltkarte"
+        ],
+        "en": [
+          "unusual geography of the world",
+          "strange borders and geographical anomalies"
+        ],
+        "nl": [
+          "bijzondere geografie van de wereld",
+          "vreemde landsgrenzen en geografische bijzonderheden"
+        ],
+        "pl": [
+          "niezwykła geografia świata",
+          "dziwne granice państw ciekawostki geograficzne"
+        ],
+        "cs": [
+          "zajímavosti světové geografie",
+          "podivné státní hranice geografické zajímavosti"
+        ],
+        "sv": [
+          "världens märkliga geografi",
+          "märkliga landsgränser geografiska kuriositeter"
+        ],
+        "ro": [
+          "curiozități geografice ale lumii",
+          "granițe ciudate și curiozități geografice"
+        ]
+      }
+    },
+    {
+      "id": "laws",
+      "label": "Tuhaf yasalar",
+      "queries": {
+        "tr": [
+          "eskiden yasak olan şaşırtıcı şeyler",
+          "tarihte yürürlükte olan garip yasalar"
+        ],
+        "de": [
+          "seltsame historische Verbote",
+          "absurde Gesetze aus vergangenen Zeiten"
+        ],
+        "en": [
+          "strange things that used to be illegal",
+          "bizarre historical laws that actually existed"
+        ],
+        "nl": [
+          "vreemde historische verboden",
+          "bizarre wetten uit het verleden"
+        ],
+        "pl": [
+          "dziwne historyczne zakazy",
+          "absurdalne prawa z przeszłości"
+        ],
+        "cs": [
+          "podivné historické zákazy",
+          "absurdní zákony z minulosti"
+        ],
+        "sv": [
+          "märkliga historiska förbud",
+          "bisarra lagar från förr"
+        ],
+        "ro": [
+          "interdicții istorice neobișnuite",
+          "legi absurde din trecut"
+        ]
+      }
+    },
+    {
+      "id": "archives",
+      "label": "Eski gazete arşivleri",
+      "queries": {
+        "tr": [
+          "eski gazete arşivlerinden ilginç haberler",
+          "eski gazetelerde tuhaf ilanlar arşiv"
+        ],
+        "de": [
+          "kuriose Meldungen in alten Zeitungen",
+          "kuriose Zeitungsanzeigen historische Zeitungsarchive"
+        ],
+        "en": [
+          "unusual stories from newspaper archives",
+          "strange advertisements in historical newspapers"
+        ],
+        "nl": [
+          "bijzondere berichten in oude kranten",
+          "vreemde advertenties in oude krantenarchieven"
+        ],
+        "pl": [
+          "niezwykłe historie z archiwów prasowych",
+          "dziwne ogłoszenia w starych gazetach archiwum"
+        ],
+        "cs": [
+          "zajímavé zprávy ze starých novin",
+          "podivné inzeráty ve starých novinách archiv"
+        ],
+        "sv": [
+          "märkliga nyheter i gamla tidningar",
+          "märkliga annonser i gamla tidningsarkiv"
+        ],
+        "ro": [
+          "știri neobișnuite din arhivele ziarelor",
+          "anunțuri ciudate în arhivele ziarelor vechi"
+        ]
+      }
+    }
+  ]
+}

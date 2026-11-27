@@ -328,7 +328,12 @@ function batchInput() {
   const lines=raw.includes("|")?raw.split(/\r?\n/):raw.split(/[,\r\n]+/);
   for(const line of lines.map(s=>s.trim()).filter(Boolean)){
     const parts=line.split("|").map(s=>s.trim());
-    if(parts.length===1 && languages.length===1) parts.push(languages[0],parts[0]);
+    if(parts.length===1){
+      const normalized=parts[0].normalize("NFC").toLocaleLowerCase("tr");
+      const known=batchCatalog.topics?.some(t=>[t.id,t.label,...t.aliases].some(s=>s.normalize("NFC").toLocaleLowerCase("tr")===normalized));
+      if(known || languages.length!==1){if(!topics.has(parts[0]))topics.set(parts[0],{topic:parts[0],queries:{}});continue;}
+      parts.push(languages[0],parts[0]);
+    }
     if(parts.length!==3 || !batchCatalog.languages[parts[1]] || !parts[0] || !parts[2]) throw new Error("Her satırda konu | dil kodu | yerel sorgu gir veya tek dil seç.");
     if(!topics.has(parts[0])) topics.set(parts[0],{topic:parts[0],queries:{}});
     topics.get(parts[0]).queries[parts[1]]=parts[2];

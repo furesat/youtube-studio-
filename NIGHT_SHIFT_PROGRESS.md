@@ -45,3 +45,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 - Added authenticated REST/MCP queue health and controls with explicit cancel/retry confirmation, heartbeat reporting, local report lookup test and safe service/launchd examples. Runtime enablement gated. Current checkpoint CI pending. Panel controls next.
 - Current core source secret scan: 57/58 selected files read, no credential-pattern matches, one personal email in ACCOUNT.md, one email-shaped test fixture still to classify; CSS file and non-core/history scans remain. No claims of comprehensive audit.
 - Next: connect panel, CI verify, finish security/history scan and session revocation, then evidence quality, editorial/experiment/economics and discovery. No production changes.
+
+## Checkpoint 7: panel queue and controlled campaign controls
+- Connected controlled campaign axis selection, preview provenance, batch and individual task controls with confirmation, canceled/reused counts and original report filtering, standalone report status, and real system heartbeat display. Existing visual identity retained. CI/browser verification outstanding.

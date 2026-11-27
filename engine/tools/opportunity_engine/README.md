@@ -183,3 +183,5 @@ Migration order after existing queue/profile/shared budget/evidence/market evide
 
 ### Queue controls and worker service examples (V4 draft)
 After queue_controls.sql is reviewed and applied, set FASULYE_QUEUE_CONTROLS=1 for Functions and worker environment (Actions variable for GitHub worker). The authenticated API and MCP permit explicit pause/resume, priority, cancellation and retry, and expose actual stored heartbeats. Running cancellation is cooperative; spent reservations are not refunded. Standalone report IDs never require GitHub. See deploy/*.example for systemd and launchd examples; copy configuration outside the repo with restricted permissions and substitute absolute paths. Nothing is installed or activated by this change. Stop local services and disable flags before reverting workers. Heartbeat records are telemetry, not proof of upstream health.
+
+Dashboard: controlled campaign selection supports preview without enqueue activation; queue management controls appear when queue-controls flag is enabled. Cached observations show original report source. Local worker reports do not link to GitHub Actions.

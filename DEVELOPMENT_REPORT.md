@@ -64,3 +64,6 @@ Queue control, deduplication and observability SQL draft, isolated PostgreSQL re
 
 ### V4 checkpoint 6
 Isolated SQL migration/concurrency CI succeeded (45928051692: 18 Python, 36 Node, build). Queue management API/MCP, worker heartbeat and local service examples added; latest checkpoint CI pending.
+
+### V4 checkpoint 7
+Controlled research, queue actions, cached-source provenance and real system telemetry surfaced in existing dashboard. No deployment.

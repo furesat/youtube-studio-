@@ -2,26 +2,20 @@ import assert from "node:assert/strict";
 import { execFileSync } from "node:child_process";
 import { generateKeyPair, SignJWT } from "jose";
 import { test } from "node:test";
+import { exportReport } from "../lib/report-export.mjs";
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/streamableHttp.js";
 import research from "../functions/research.mts";
 import mcp from "../functions/mcp.mts";
 import { verifyAccessToken } from "../lib/mcp-auth.mjs";
-import { getArtifact, getRun, reportFromZip, startResearch } from "../lib/research.mjs";
+import { getReport, getHistory, getRun, startResearch } from "../lib/research.mjs";
 
 process.env.FASULYE_GITHUB_TOKEN = "test-github";
 process.env.FASULYE_ACCESS_TOKEN = "test-personal-token";
 
 const auth = { Authorization: "Bearer test-personal-token" };
 const run = { path: ".github/workflows/fasulye-opportunity.yml", status: "completed", conclusion: "success" };
-const report = { schema_version: 1, opportunities: [], test: "Türkçe" };
-const zip = execFileSync("python3", ["-c", [
-  "import io,sys,zipfile", "stream=io.BytesIO()",
-  "archive=zipfile.ZipFile(stream,'w',zipfile.ZIP_DEFLATED)",
-  `archive.writestr('report.json',${JSON.stringify(JSON.stringify(report))})`,
-  "archive.close()", "sys.stdout.buffer.write(stream.getvalue())",
-].join("\n")]);
-
+const report = { schema_version: 1, opportunities: [], videos: {}, revenue_by_market: {}, test: "Türkçe" };
 test("dispatches a project run with manual query but without exposing GitHub token", async () => {
   const result = await startResearch({query: " çatalın tarihi ", region: "TR", language: "tr"}, async (url, options) => {
     assert.match(url, /fasulye-opportunity\.yml\/dispatches$/);
@@ -43,32 +37,35 @@ test("rejects invalid inputs before contacting GitHub", async () => {
   }
 });
 
-test("verifies run ownership before retrieving the artifact without leaking bearer to storage", async () => {
-  const calls = [];
-  const bytes = await getArtifact("123", async (url, request) => {
-    const address = String(url);
-    calls.push(address);
-    if (address === "https://object.example/signed") {
-      assert.equal(request.headers, undefined);
-      return new Response(zip);
-    }
-    if (address.endsWith("/runs/123")) return Response.json(run);
-    if (address.endsWith("/runs/123/artifacts")) {
-      return Response.json({artifacts: [{name: "fasulye-opportunity-report", id: 987, expired: false}]});
-    }
-    assert.match(address, /artifacts\/987\/zip$/);
-    assert.equal(request.redirect, "manual");
-    return new Response(null, {status: 302, headers: {location: "https://object.example/signed"}});
-  });
-  assert.equal(calls.length, 4);
-  assert.deepEqual(await reportFromZip(bytes), report);
-  await assert.rejects(() => getRun("123", async () => Response.json({...run, path: "different.yml"})),
-    {status: 404});
+test("reads only unexpired Supabase report after verifying workflow ownership", async () => {
+  process.env.SUPABASE_SECRET_KEY = "sb_secret_unit_test";
+  try {
+    const calls = [];
+    const result = await getReport("123", async (url, request) => {
+      calls.push(String(url));
+      if (String(url).endsWith("/runs/123")) return Response.json(run);
+      assert.equal(new URL(url).origin, "https://niihqywncuwxfxipkgte.supabase.co");
+      assert.equal(new URL(url).searchParams.get("run_id"), "eq.123");
+      assert.match(new URL(url).searchParams.get("expires_at"), /^gt\./);
+      assert.equal(request.headers.apikey, "sb_secret_unit_test");
+      assert.equal(request.headers.Authorization, undefined);
+      return Response.json([{report}]);
+    });
+    assert.equal(calls.length, 2);
+    assert.deepEqual(result, report);
+    await assert.rejects(() => getReport("123", async () => Response.json({...run,path:"different.yml"})), {status:404});
+    await assert.rejects(() => getReport("123", async url => Response.json(String(url).endsWith("/123") ? run : [])), {status:404});
+    assert.deepEqual(await getHistory(async url => {
+      assert.match(String(url), /fasulye_runs/);
+      return Response.json([]);
+    }), []);
+  } finally { delete process.env.SUPABASE_SECRET_KEY; }
 });
 
-test("returns a clear error when Actions has no archive", async () => {
-  await assert.rejects(getArtifact("123", async url =>
-    Response.json(url.endsWith("/123") ? run : {artifacts: []})), {status: 404});
+test("generated ZIP contains five valid portable files", async () => {
+  const zip = await exportReport(report);
+  const names = execFileSync("python3", ["-c", "import io,sys,zipfile; z=zipfile.ZipFile(io.BytesIO(sys.stdin.buffer.read())); assert z.testzip() is None; print(','.join(z.namelist()))"], {input:zip,encoding:"utf8"});
+  assert.equal(names.trim(),"report.json,opportunities.csv,videos.csv,revenue.csv,dashboard.html");
 });
 
 test("REST catalog is public while runs and cross-origin requests are protected", async () => {
@@ -98,7 +95,7 @@ test("an MCP client connects, lists tools and reads the catalog using its bearer
   await client.connect(transport);
   try {
     const tools = await client.listTools();
-    assert.equal(tools.tools.length, 3);
+    assert.equal(tools.tools.length, 4);
     assert.equal(tools.tools.find(tool => tool.name === "start_youtube_research").annotations.readOnlyHint, false);
     const result = await client.callTool({name: "list_research_catalog"});
     assert.equal(JSON.parse(result.content[0].text).topics.length, 4);

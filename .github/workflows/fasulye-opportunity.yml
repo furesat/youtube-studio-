@@ -1,9 +1,6 @@
 name: Fasulye Opportunity Engine
 
 on:
-  push:
-    branches: [feature/opportunity-engine-v2]
-    paths: [".github/workflows/fasulye-opportunity.yml"]
   schedule:
     - cron: "17 */8 * * *"
   workflow_dispatch:
@@ -72,7 +69,7 @@ jobs:
             echo "Configure SUPABASE_SECRET_KEY in Actions secrets before research." >&2
             exit 1
           fi
-          if [[ "$FASULYE_QUEUE" == "true" || "$GITHUB_EVENT_NAME" == "schedule" || "$GITHUB_EVENT_NAME" == "push" ]]; then
+          if [[ "$FASULYE_QUEUE" == "true" || "$GITHUB_EVENT_NAME" == "schedule" ]]; then
             python -m engine.tools.opportunity_engine.queue_worker
             exit $?
           fi

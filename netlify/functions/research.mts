@@ -3,7 +3,7 @@ import {
   ResearchError, startResearch, trustedOrigin,
 } from "../lib/research.mjs";
 
-import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks } from "../lib/batch.mjs";
+import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
 import { exportReport } from "../lib/report-export.mjs";
@@ -46,6 +46,7 @@ export default async (request: Request) => {
       }
       if (request.method === "GET") {
         const id=url.searchParams.get("id");
+        if(id&&url.searchParams.get("compare")==="1")return json(await marketEvidence(id,{topic:url.searchParams.get("topic")||null,market:url.searchParams.get("market")||null,days:url.searchParams.has("days")?Number(url.searchParams.get("days")):null,offset:Number(url.searchParams.get("offset")??0),limit:50}));
         if(id&&url.searchParams.get("tasks")==="1")return json(await listBatchTasks(id,Number(url.searchParams.get("offset")??0),100));
         if (id) { const result=await batchStatus(id); if (!result) throw new ResearchError(404,"Grup bulunamadı."); return json(result); }
         return json(await listBatches());

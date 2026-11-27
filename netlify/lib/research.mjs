@@ -139,6 +139,7 @@ export async function getReport(id, fetcher = fetch) {
   if (!rows.length) throw new ResearchError(404, "Rapor kaydedilmemiş veya 30 günlük süresi dolmuş.");
   const report = rows[0].report;
   if (report?.schema_version !== 1 || !Array.isArray(report.opportunities)) throw new ResearchError(502, "Rapor biçimi geçersiz.");
+  for(const row of report.opportunities)row.sample_total_known_views=null;
   return report;
 }
 export async function getHistory(fetcher = fetch) {

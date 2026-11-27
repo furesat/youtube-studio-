@@ -1,7 +1,9 @@
 import {
-  acceptsToken, env, errorResponse, getArtifact, getRun, json, publicCatalog, readBearer,
-  reportFromZip, ResearchError, startResearch, trustedOrigin,
+  acceptsToken, env, errorResponse, getHistory, getReport, getRun, json, publicCatalog, readBearer,
+  ResearchError, startResearch, trustedOrigin,
 } from "../lib/research.mjs";
+
+import { exportReport } from "../lib/report-export.mjs";
 
 export default async (request: Request) => {
   const url = new URL(request.url);
@@ -26,11 +28,13 @@ export default async (request: Request) => {
       return json(await startResearch(input), 202);
     }
     if (url.pathname === "/api/research" && request.method === "GET") {
+      if (url.searchParams.get("result") === "history") return json(await getHistory());
       const id = url.searchParams.get("id") ?? "";
       const result = url.searchParams.get("result");
       if (result === "report" || result === "zip") {
-        const zip = await getArtifact(id);
-        if (result === "report") return json(await reportFromZip(zip));
+        const report = await getReport(id);
+        if (result === "report") return json(report);
+        const zip = await exportReport(report);
         return new Response(new Uint8Array(zip), {
           headers: {
             "Content-Type": "application/zip",

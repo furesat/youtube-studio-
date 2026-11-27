@@ -70,3 +70,6 @@ Controlled research, queue actions, cached-source provenance and real system tel
 
 ### V4 checkpoint 8
 Panel and worker CI passed; optional server-side session registry and revocation implemented. Scoped main-history security review documented; not a complete all-ref scan. No deployment.
+
+### V4 checkpoint 9
+Optional shared detail-budget ledger and request validation. Existing search ceiling unchanged. Isolated tests pending CI.

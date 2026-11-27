@@ -69,7 +69,8 @@ def _work(env=os.environ):
     config["search"]["max_search_calls"] = len(tasks)
     config["revenue"]["view_targets"] = {"long_form":[10000,100000,1000000,10000000],"shorts":[10000,100000,1000000,10000000]}
     pairs = prepare(tasks)
-    client = YouTube(youtube_key, len(tasks), config["search"]["max_detail_units"], before_request=renew)
+    reserve = (lambda endpoint: rpc("fasulye_reserve_detail", {"p_endpoint": endpoint}, env)) if env.get("FASULYE_SHARED_DETAIL_BUDGET") == "1" else None
+    client = YouTube(youtube_key, len(tasks), config["search"]["max_detail_units"], before_request=renew, reserve_detail=reserve)
     report = run(client,config,pairs,datetime.now(timezone.utc),len(tasks))
     report["channel_samples"] = collect_channel_samples(client, report["videos"])
     report["quota"]["attempts"] = {name:client.calls[name] for name in ("search","videos","channels","playlistItems")}

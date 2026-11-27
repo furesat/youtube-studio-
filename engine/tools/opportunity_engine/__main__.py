@@ -76,18 +76,30 @@ def main(argv=None):
         print("YOUTUBE_API_KEY ortam değişkeni gerekli.", file=sys.stderr)
         return 2
 
-    if args.persist:
+    shared = os.environ.get("FASULYE_SHARED_DETAIL_BUDGET") == "1"
+    reserve_detail = None
+    if args.persist or shared:
         from .queue_worker import rpc
         try:
-            if not rpc("fasulye_reserve_manual", {"p_run_id": os.environ.get("GITHUB_RUN_ID", ""),
+            run_id = os.environ.get("GITHUB_RUN_ID", "")
+            if shared and not run_id and not args.persist:
+                import secrets
+                run_id = "9" + str(secrets.randbelow(10**15)).zfill(15)
+            if not rpc("fasulye_reserve_manual", {"p_run_id": run_id,
                        "p_attempt": int(os.environ.get("GITHUB_RUN_ATTEMPT", "1")), "p_amount": planned}):
                 raise ValueError("Günlük ortak arama bütçesi yetersiz veya çalıştırma zaten ayrılmış.")
         except (ValueError, RuntimeError) as error:
             print(str(error), file=sys.stderr)
             return 2
 
-    client = YouTube(key, search["max_search_calls"], search["max_detail_units"])
-    report = run(client, config, pairs, datetime.now(timezone.utc), planned)
+    if shared:
+        reserve_detail = lambda endpoint: rpc("fasulye_reserve_detail", {"p_endpoint": endpoint})
+    client = YouTube(key, planned, search["max_detail_units"], reserve_detail=reserve_detail)
+    try:
+        report = run(client, config, pairs, datetime.now(timezone.utc), planned)
+    except (ValueError, RuntimeError) as error:
+        print(str(error), file=sys.stderr)
+        return 2
     try:
         write_report(args.output, report)
     except OSError:

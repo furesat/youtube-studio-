@@ -73,7 +73,7 @@ async function github(path, request = {}, fetcher = fetch) {
       "X-GitHub-Api-Version": "2026-03-10",
       ...request.headers,
     },
-    signal: AbortSignal.timeout(12_000),
+    redirect: "error", signal: AbortSignal.timeout(12_000),
   });
 }
 

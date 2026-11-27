@@ -20,7 +20,7 @@ def sql(source):
 if sql("select current_database()") != "fasulye_test" or sql("select to_regclass('public.fasulye_runs') is null") != "t":
     raise SystemExit("Test database is not fresh; refusing to run")
 sql("create role anon; create role authenticated; create role service_role bypassrls; grant usage on schema public to service_role;")
-for name in ("schema.sql","queue.sql","queue_idempotency.sql","query_profiles.sql","shared_budget.sql","batch_status.sql","evidence.sql","market_evidence.sql","controlled_campaigns.sql","atomic_queue.sql","wikimedia_evidence.sql","queue_controls.sql","session_revocation.sql"):
+for name in ("schema.sql","queue.sql","queue_idempotency.sql","query_profiles.sql","shared_budget.sql","batch_status.sql","evidence.sql","market_evidence.sql","controlled_campaigns.sql","atomic_queue.sql","wikimedia_evidence.sql","queue_controls.sql","session_revocation.sql","detail_budget.sql"):
     source = (ROOT / name).read_text()
     if name == "schema.sql":
         # The fixture has no pg_cron extension. Retention scheduling itself is NOT tested here.
@@ -50,3 +50,10 @@ assert sql("select has_table_privilege('anon','public.fasulye_sessions','SELECT'
 assert sql("select has_table_privilege('authenticated','public.fasulye_sessions','UPDATE')") == "f"
 assert sql("select relrowsecurity from pg_class where oid='public.fasulye_sessions'::regclass") == "t"
 print("Session registry grants and RLS passed", flush=True)
+
+assert sql("select has_function_privilege('anon','public.fasulye_reserve_detail(text)','execute')") == "f"
+sql("insert into public.fasulye_detail_budget(day,videos) values((now() at time zone 'America/Los_Angeles')::date,5999)")
+with ThreadPoolExecutor(max_workers=4) as pool:
+    reserved=list(pool.map(lambda i:sql("set role service_role; select public.fasulye_reserve_detail('channels')"),range(4)))
+assert reserved.count("t")==1 and reserved.count("f")==3, reserved
+print("Concurrent detail reservations enforce independent 6000-unit application ceiling",flush=True)

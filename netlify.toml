@@ -7,6 +7,7 @@
 
 [functions]
   node_bundler = "esbuild"
+  included_files = ["engine/tools/opportunity_engine/dashboard.html"]
 
 [[headers]]
   for = "/*"

@@ -196,3 +196,21 @@ A small 1970s East German living room with patterned wallpaper and a cabinet wit
 
 All characters bean-shaped without noses. No brand names: no text, letters, numbers, stamps or logos anywhere.
 ```
+
+---
+
+## ChatGPT'de toplu üretim (GitHub erişimi olan ChatGPT için)
+
+Depo herkese açık: `https://github.com/furesat/youtube-studio-` (dal: `main`).
+
+**ChatGPT'ye yapıştırılacak talimat:**
+
+```
+Depo: github.com/furesat/youtube-studio-
+Dosya: videos/001/IMAGE_PROMPTS_de_v3.md
+Stil referansları (aynı depoda): videos/001/images/ altındaki 001_S001_v1.jpg, 001_S037_v1.jpg, 001_S043_v1.jpg, 001_S046_v1.jpg, 001_S047_v1.jpg, 001_S050_v1.jpg ve character-references/fasulye/01_donus_sayfasi.png
+
+Görev: Dosyadaki D01'den D14'e kadar olan 14 promptu sırayla üret. Her prompt için "Ekle" satırında yazan referans görselleri depodan al ve stil/dünya referansı olarak kullan. Her promptun kod bloğunun tamamını kullan. 16:9 yatay, görsel içinde hiçbir yazı, harf, rakam, logo olmasın. Kaynak görsellerdeki çizim stilini koru. Her görseli ayrı üret, dosya adı: 001_D01_v1.png ... 001_D14_v1.png. D07'den sonra D08'i D07'ye, D11'den sonra D14'ü D11'e bakarak üret. Bitirince 14 görselin hepsini ver.
+```
+
+**Not:** D05 (kapak) için `images/001_S047d_v1.png` referansı kullanılır. Görsel üretimden sonra dosyaları Mac'te `gorseller` klasörüne koy.

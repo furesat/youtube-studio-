@@ -89,3 +89,7 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 17: health telemetry refinement
 - Existing authenticated queue health now reports database reachability, newest unexpired report and expiry, most recent recorded non-reused completed queue task, heartbeat age, optional current Pacific-day detail reservations by endpoint, and explicit unknown/unavailable/disabled statuses. Separate reads use existing tables and no new DB migration; no provider probes or YouTube quota. Additional read-only tests authored; CI pending. Detail flag in Functions controls display, not worker enforcement.
+
+## Checkpoint 18: full local-ref history scan and migration coverage
+- Added bounded redacted Git text-blob scanner across HEAD and all locally reachable refs, optional local-only blob IDs, candidate counts only in CI, no secret values or live credential testing. Current credential-shaped candidates fail audit; historical/email findings are review-only. Full checkout job added. Binary/non-UTF8, >2 MiB, remote-only/unreachable and LFS contents remain out of scope. Added unit fixture tests.
+- Isolated migration runner now includes catalog, login audit and production_costs migrations; all Fasulye tables RLS and selected grants checked. pg_cron scheduling still deliberately omitted from disposable fixture. CI pending. No production changes.

@@ -20,9 +20,9 @@ def sql(source):
 if sql("select current_database()") != "fasulye_test" or sql("select to_regclass('public.fasulye_runs') is null") != "t":
     raise SystemExit("Test database is not fresh; refusing to run")
 sql("create role anon; create role authenticated; create role service_role bypassrls; grant usage on schema public to service_role;")
-for name in ("schema.sql","queue.sql","queue_idempotency.sql","query_profiles.sql","shared_budget.sql","batch_status.sql","evidence.sql","market_evidence.sql","controlled_campaigns.sql","atomic_queue.sql","wikimedia_evidence.sql","queue_controls.sql","session_revocation.sql","detail_budget.sql","editorial_backlog.sql","editorial_workflow.sql"):
+for name in ("schema.sql","catalog.sql","login_audit.sql","queue.sql","queue_idempotency.sql","query_profiles.sql","shared_budget.sql","batch_status.sql","evidence.sql","production_costs.sql","market_evidence.sql","controlled_campaigns.sql","atomic_queue.sql","wikimedia_evidence.sql","queue_controls.sql","session_revocation.sql","detail_budget.sql","editorial_backlog.sql","editorial_workflow.sql"):
     source = (ROOT / name).read_text()
-    if name == "schema.sql":
+    if name in ("schema.sql","login_audit.sql"):
         # The fixture has no pg_cron extension. Retention scheduling itself is NOT tested here.
         source = "\n".join(line for line in source.splitlines() if not line.startswith("create extension if not exists pg_cron") and not line.startswith("select cron.schedule"))
     sql(source)
@@ -65,3 +65,10 @@ with ThreadPoolExecutor(max_workers=2) as pool:
     edits=list(pool.map(lambda i:sql("""set role service_role; select public.fasulye_advance_editorial('00000000-0000-4000-8000-000000000001',1,0,'discovered','{"origin":"fixture"}') ? 'conflict'"""),range(2)))
 assert sorted(edits)==["f","t"], edits
 print("Editorial stage transition revision fencing and grants passed",flush=True)
+
+# Every migration is loaded, including legacy catalog, audit and production costs.
+assert sql("select count(*) from pg_class where relnamespace='public'::regnamespace and relkind='r' and relname like 'fasulye_%' and not relrowsecurity")=="0"
+assert sql("select has_table_privilege('anon','public.fasulye_production_costs','SELECT')")=="f"
+assert sql("select has_function_privilege('authenticated','public.fasulye_login_summary()','execute')")=="f"
+assert sql("select public.fasulye_login_summary()->>'total_logins'")=="0"
+print("All application tables enforce RLS; production costs and login audit grants verified",flush=True)

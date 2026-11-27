@@ -1,4 +1,5 @@
 import { z } from "zod";
+import {rpmProvenance} from "./economics.mjs";
 import { db, discoveryCatalog } from "./batch.mjs";
 import { ResearchError } from "./research.mjs";
 
@@ -25,11 +26,11 @@ export function scoreIndependent(factors) {
     if(typeof value!=="number"||!Number.isFinite(value)||value<0||value>100)throw new ResearchError(400,"Geçersiz değerlendirme.");
     coverage+=weight;total+=weight*(["competition","cost"].includes(key)?100-value:value);
   }
-  return {score:coverage+1e-10>=.75?Math.round(total/coverage*100)/100:null,coverage:Math.round(coverage*100)/100,confidence:coverage+1e-10>=.9?"high":coverage+1e-10>=.75?"medium":"low",basis:"independent_user_inputs"};
+  return {score:coverage+1e-10>=.75?Math.round(total/coverage*100)/100:null,coverage:Math.round(coverage*100)/100,coverage_band:coverage+1e-10>=.9?"high":coverage+1e-10>=.75?"medium":"low",confidence:null,statistical_confidence:null,basis:"independent_user_inputs"};
 }
 export function profitScenarios(row,cost) {
   const total=cost&&cost.currency===row.currency?["voice","visuals","translation","editing","other"].reduce((sum,k)=>sum+Number(cost[k]),0):null;
-  return revenueScenarios(row).map(s=>({...s,production_cost:total,profit:total===null?null:Object.fromEntries(["low","base","high"].map(k=>[k,Math.round((s[k]-total)*100)/100]))}));
+  return revenueScenarios(row).map(s=>({...s,production_cost:total,break_even_views:total===null?null:Object.fromEntries(["low","base","high"].map(k=>[k,total===0?0:Number(row[k])>0?Math.ceil(total*1000/Number(row[k])):null])),profit:total===null?null:Object.fromEntries(["low","base","high"].map(k=>[k,Math.round((s[k]-total)*100)/100]))}));
 }
 export function revenueScenarios(row) {
   return [10000,100000,1000000,10000000].map(views=>({views,format:row.format,currency:row.currency,source:row.source,...Object.fromEntries(["low","base","high"].map(k=>[k,Math.round(Number(row[k])*views/1000*100)/100]))}));
@@ -101,7 +102,7 @@ export async function getEvidence(fetcher=fetch) {
     db("fasulye_independent_reviews?select=*&order=updated_at.desc&limit=100",{fetcher}),
     db("fasulye_production_costs?select=*&order=market_id&limit=100",{fetcher}),
   ]);
-  return {trends,costs,rpm:rpm.map(r=>({...r,scenarios:profitScenarios(r,costs.find(c=>c.market_id===r.market_id&&c.format===r.format))})),reviews:reviews.map(r=>({...r,...scoreIndependent(r.factors)})),trend_api:new GoogleTrendsApiProvider().status(),search_volume:null};
+  return {trends,costs,rpm:rpm.map(r=>({...r,provenance:rpmProvenance(r),scenarios:profitScenarios(r,costs.find(c=>c.market_id===r.market_id&&c.format===r.format))})),reviews:reviews.map(r=>({...r,...scoreIndependent(r.factors)})),trend_api:new GoogleTrendsApiProvider().status(),search_volume:null};
 }
 export async function getTrend(id,fetcher=fetch) {
   if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))throw new ResearchError(400,"Geçersiz seri kimliği.");

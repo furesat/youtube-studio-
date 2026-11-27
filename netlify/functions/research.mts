@@ -5,28 +5,74 @@ import {
 
 import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
-import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
+import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
+import {featureFlags,controlQueue,queueHealth} from "../lib/queue-control.mjs";
+import { activeSession, sameOriginMutation } from "../lib/panel-auth.mjs";
+import {inspectChannels} from "../lib/channel-inspection.mjs";
+import {monthlyEconomics} from "../lib/economics.mjs";
+import {planIndependent,discoverIndependent,crossLanguageEvidence} from "../lib/independent-discovery.mjs";
+import { readWorkflow,advanceWorkflow } from "../lib/editorial-workflow.mjs";
 import { editorialRequest } from "../lib/editorial.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
 export default async (request: Request) => {
   const url = new URL(request.url);
   if (!trustedOrigin(request)) return json({ error: "İstek kaynağına izin verilmedi." }, 403);
-  if (url.pathname === "/api/discovery-catalog" && request.method === "GET") return json(discoveryCatalog);
+  if (url.pathname === "/api/discovery-catalog" && request.method === "GET") return json({...discoveryCatalog,features:featureFlags()});
   if (url.pathname === "/api/catalog" && request.method === "GET") return json(publicCatalog);
   if (!env("FASULYE_ACCESS_TOKEN")) {
     return json({ error: "Panel erişimi Netlify'da yapılandırılmalı." }, 503);
   }
   const bearer=acceptsToken(readBearer(request));
-  const session=sessionFor(request);
+  try {
+  const session=bearer?null:await activeSession(request);
   if (!bearer && !session) {
     return json({ error: "Panel erişim anahtarı geçersiz." }, 401, { "WWW-Authenticate": "Bearer" });
   }
   if (!bearer && request.method !== "GET" && !sameOriginMutation(request)) return json({error:"İstek kaynağına izin verilmedi."},403);
-  try {
+    if(url.pathname==="/api/economics"&&request.method==="POST"){
+      const raw=await request.text();if(Buffer.byteLength(raw)>30000)throw new ResearchError(413,"İstek çok büyük.");
+      let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+      return json(monthlyEconomics(body));
+    }
+    if(url.pathname==="/api/discover"&&request.method==="POST"){
+      const raw=await request.text();if(Buffer.byteLength(raw)>12000)throw new ResearchError(413,"İstek çok büyük.");
+      let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+      const mode=url.searchParams.get("mode");
+      if(mode==="plan")return json(planIndependent(body));
+      if(mode==="map")return json(await crossLanguageEvidence(body));
+      if(mode==="search")return json(await discoverIndependent(body));
+      throw new ResearchError(400,"Keşif işlemi seçin.");
+    }
+    if(url.pathname==="/api/workflow"){
+      if(request.method==="GET")return json(await readWorkflow({candidate_id:url.searchParams.get("candidate_id")}));
+      if(request.method==="POST"){
+        const raw=await request.text();if(Buffer.byteLength(raw)>350000)throw new ResearchError(413,"İstek çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        return json(await advanceWorkflow(body),201);
+      }
+    }
     if (url.pathname === "/api/editorial" && ["GET", "POST", "PUT"].includes(request.method)) {
       const result = await editorialRequest(request, url);
       return json(result.body, result.status);
+    }
+    if(url.pathname==="/api/queue"){
+      if(request.method==="GET")return json(await queueHealth());
+      if(request.method==="POST"){
+        const raw=await request.text();if(raw.length>4096)throw new ResearchError(413,"İstek çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        return json(await controlQueue(body));
+      }
+    }
+    if (url.pathname === "/api/wikimedia") {
+      if(env("FASULYE_WIKIMEDIA_EVIDENCE")!=="1")throw new ResearchError(503,"Wikimedia kanıt modülü henüz etkin değil.");
+      if(request.method==="GET")return json(await listWiki({offset:Number(url.searchParams.get("offset")??0)}));
+      if(request.method==="POST"){
+        const raw=await request.text();if(raw.length>4096)throw new ResearchError(413,"İstek çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        if(url.searchParams.get("search")==="1")return json(await searchWiki(body));
+        return json(await collectWiki(body),201);
+      }
     }
     if (url.pathname === "/api/evidence") {
       if (request.method === "GET") { const id=url.searchParams.get("id"); return json(id?await getTrend(id):await getEvidence()); }
@@ -45,7 +91,7 @@ export default async (request: Request) => {
         try { input = JSON.parse(body); } catch { throw new ResearchError(400,"JSON geçersiz."); }
         if (url.searchParams.get("preview") === "1") {
           const plan = planBatch(input);
-          return json({tasks:plan.tasks.length,missing:plan.missing});
+          return json({tasks:plan.tasks.length,missing:plan.missing,methodology:plan.methodology??null});
         }
         return json(await enqueueBatch(input),202);
       }
@@ -73,6 +119,7 @@ export default async (request: Request) => {
       if (url.searchParams.get("result") === "history") return json(await getHistory());
       const id = url.searchParams.get("id") ?? "";
       const result = url.searchParams.get("result");
+      if(result==="channels")return json(await inspectChannels({id,channel_id:url.searchParams.get("channel_id")??undefined,start:url.searchParams.get("start")??undefined,end:url.searchParams.get("end")??undefined,duration:url.searchParams.get("duration")??"all",language:url.searchParams.get("language")??undefined,sort:url.searchParams.get("sort")??"date",offset:Number(url.searchParams.get("offset")??0),limit:Number(url.searchParams.get("limit")??50)}));
       if(result==="videos")return json(await listReportVideos(id,{offset:Number(url.searchParams.get("offset")??0),limit:Number(url.searchParams.get("limit")??50),region:url.searchParams.get("region")??undefined,language:url.searchParams.get("language")??undefined,sort:url.searchParams.get("sort")??"views",max_subscribers:url.searchParams.has("max_subscribers")?Number(url.searchParams.get("max_subscribers")):undefined}));
       if (result === "report" || result === "zip") {
         const report = await getReport(id);
@@ -96,6 +143,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia", "/api/queue", "/api/workflow", "/api/discover", "/api/economics"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

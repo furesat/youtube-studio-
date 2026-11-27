@@ -145,6 +145,31 @@ class EngineTest(unittest.TestCase):
         self.assertEqual(errors, ["local_details_budget"])
         self.assertEqual(client.calls, Counter(search=1, videos=1))
 
+    def test_detail_reservation_precedes_request_and_cache_does_not_spend(self):
+        reservations, calls = [], []
+        def reserve(endpoint):
+            reservations.append(endpoint)
+            return len(reservations) == 1
+        def opener(request, timeout):
+            calls.append(request.full_url)
+            return BytesIO(b'{"items":[]}')
+        client = YouTube("test-key", 1, 3, opener, reserve_detail=reserve)
+        client.request("videos", id="a")
+        client.request("videos", id="a")
+        with self.assertRaisesRegex(ApiError, "shared_details_budget"):
+            client.request("channels", id="b")
+        self.assertEqual(reservations, ["videos","channels"])
+        self.assertEqual(len(calls), 1)
+        self.assertEqual(client.calls["channels"], 0)
+
+    def test_malformed_and_unapproved_endpoint(self):
+        client = YouTube("test-key", 2, 1, lambda request, timeout: BytesIO(b'{"items":[{"id":{}}]}'))
+        with self.assertRaisesRegex(ApiError, "youtube_invalid_response"):
+            client.request("search", q="test")
+        with self.assertRaisesRegex(ApiError, "youtube_endpoint_not_allowed"):
+            client.request("../unexpected")
+        self.assertEqual(client.calls["search"], 1)
+
     def test_failed_page_preserves_first_page_as_partial(self):
         def opener(request, timeout):
             params = parse_qs(urlsplit(request.full_url).query)

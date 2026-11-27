@@ -107,3 +107,5 @@ textarea{width:100%;padding:.75rem;border:1px solid #a99c88;border-radius:.35rem
 .editorial-card dd{margin:0 0 .6rem;white-space:pre-wrap}
 #page-editorial textarea:focus-visible{outline:3px solid #b45d36;outline-offset:3px}
 @media(max-width:660px){.editorial-form .columns{grid-template-columns:1fr}}
+
+#channel-library li{overflow-wrap:anywhere} #channel-filters label{min-width:0} #channel-filters input,#channel-filters select{max-width:100%} @media(max-width:660px){#channel-filters{display:grid;grid-template-columns:1fr}}

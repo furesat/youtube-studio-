@@ -4,12 +4,19 @@ import { z } from "zod";
 import { mcpAuthorized, mcpUnauthorized, oauthConfig, resourceMetadata } from "../lib/mcp-auth.mjs";
 import {
   getHistory, getReport, getRun, listReportVideos, json, publicCatalog, readSchema, ResearchError,
-  startResearch, startSchema, trustedOrigin,
+  startResearch, startSchema, trustedOrigin, env,
 } from "../lib/research.mjs";
 
 import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 
+import {channelInspectionSchema,inspectChannels} from "../lib/channel-inspection.mjs";
+import {monthlyPlanSchema,monthlyEconomics} from "../lib/economics.mjs";
+import {discoveryPlanSchema,evidenceMapSchema,planIndependent,discoverIndependent,crossLanguageEvidence} from "../lib/independent-discovery.mjs";
+import {workflowReadSchema,workflowAdvanceSchema,readWorkflow,advanceWorkflow} from "../lib/editorial-workflow.mjs";
+import {evidenceQualitySchema,assessEvidence} from "../lib/evidence-quality.mjs";
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
+import {wikiSearchSchema,wikiCollectSchema,wikiListSchema,searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
+import {queueControlSchema,controlQueue,queueHealth,featureFlags} from "../lib/queue-control.mjs";
 
 import {
   candidateListSchema, candidateSchema, candidateUpdateSchema, createCandidate, listCandidates, updateCandidate, getProductionBrief,
@@ -29,7 +36,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "3.3.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "4.0.0-draft" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -86,10 +93,10 @@ function buildServer() {
   }));
   server.registerTool("list_discovery_catalog", {
     description:"23 dil, ülke-dil pazarları ve doğal keşif sorguları.",annotations:{readOnlyHint:true,openWorldHint:false},
-  },()=>tool("list_discovery_catalog",()=>discoveryCatalog));
+  },()=>tool("list_discovery_catalog",()=>({...discoveryCatalog,features:featureFlags()})));
   server.registerTool("preview_batch", {
     description:"Kota kullanmadan görev sayısını ve eksik yerelleştirmeleri gösterir.",inputSchema:batchSchema,annotations:{readOnlyHint:true,openWorldHint:false},
-  },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing};}));
+  },input=>tool("preview_batch",()=>{const p=planBatch(input);return {tasks:p.tasks.length,missing:p.missing,methodology:p.methodology??null};}));
   server.registerTool("enqueue_research_batch", {
     description:"Pazar keşfi veya toplu araştırmayı kuyruğa ekler. Bulk modunda her konu için hedef dilde doğal sorgular sağla. Çalışan motor zamanlanmış şekilde kotaya göre işler.",inputSchema:batchSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:false,openWorldHint:true},
   },input=>tool("enqueue_research_batch",()=>enqueueBatch(input)));
@@ -126,6 +133,20 @@ function buildServer() {
     description:"Mevcut özgün editoryal adayın kaynaklarını, belirsizliklerini ve üretim kontrol listesini Markdown olarak döndürür; yeni iddia veya senaryo üretmez.",
     inputSchema:{id:z.uuid()},annotations:{readOnlyHint:true,openWorldHint:false},
   },({id})=>tool("get_editorial_production_brief",()=>getProductionBrief(id)));
+  const wikiEnabled=()=>{if(env("FASULYE_WIKIMEDIA_EVIDENCE")!=="1")throw new ResearchError(503,"Wikimedia evidence not enabled.");};
+  server.registerTool("search_wikimedia_articles",{description:"Explicit external research: search a Wikipedia language edition for candidate articles. Manually choose the correct page. No YouTube quota.",inputSchema:wikiSearchSchema,annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:true}},input=>tool("search_wikimedia_articles",()=>{wikiEnabled();return searchWiki(input);}));
+  server.registerTool("collect_wikimedia_evidence",{description:"Explicitly collect and save selected article's daily worldwide Wikipedia pageviews (max 90 past days), not country audience or YouTube demand.",inputSchema:wikiCollectSchema,annotations:{readOnlyHint:false,destructiveHint:false,idempotentHint:true,openWorldHint:true}},input=>tool("collect_wikimedia_evidence",()=>{wikiEnabled();return collectWiki(input);}));
+  server.registerTool("list_wikimedia_evidence",{description:"Read stored independent Wikimedia evidence only; never calls provider.",inputSchema:wikiListSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("list_wikimedia_evidence",()=>{wikiEnabled();return listWiki(input);}));
+  server.registerTool("get_queue_health",{description:"Stored queue health and worker heartbeats. Does not launch research or contact YouTube.",annotations:{readOnlyHint:true,openWorldHint:false}},()=>tool("get_queue_health",()=>queueHealth()));
+  server.registerTool("control_research_queue",{description:"Explicit owner-requested queue action: pause/resume, priority -10 to 10, cancellation (running tasks finish cooperatively), or retry failed. Cancel/retry require explicit confirm=true; never refunds quota.",inputSchema:queueControlSchema,annotations:{readOnlyHint:false,destructiveHint:true,idempotentHint:false,openWorldHint:false}},input=>tool("control_research_queue",()=>controlQueue(input)));
+  server.registerTool("assess_independent_evidence",{description:"Assess declared independent sources, freshness, coverage and contradictions; no statistical confidence or success prediction.",inputSchema:evidenceQualitySchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("assess_independent_evidence",()=>assessEvidence(input)));
+  server.registerTool("get_editorial_workflow",{description:"Read versioned editorial research stages and owner experiment observations, with Markdown export.",inputSchema:workflowReadSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("get_editorial_workflow",()=>readWorkflow(input)));
+  server.registerTool("advance_editorial_workflow",{description:"Explicitly advance one stage only, with current candidate and workflow revisions, source evidence or owner-attested first-party CSV. Requires confirmation. Never publishes or calls YouTube.",inputSchema:workflowAdvanceSchema,annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false}},input=>tool("advance_editorial_workflow",()=>advanceWorkflow(input)));
+  server.registerTool("plan_independent_discovery",{description:"Localized reusable subject templates; hypothesis only, no network or quota.",inputSchema:discoveryPlanSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("plan_independent_discovery",()=>planIndependent(input)));
+  server.registerTool("discover_independent_subjects",{description:"Explicit bounded Wikipedia article search (max six queries); candidates, not proven trends. No YouTube quota and no saving.",inputSchema:discoveryPlanSchema,annotations:{readOnlyHint:false,openWorldHint:true}},input=>tool("discover_independent_subjects",()=>discoverIndependent(input)));
+  server.registerTool("map_cross_language_evidence",{description:"Read stored independent evidence and editorial hypotheses for exact topic and selected markets. No live search or derived YouTube metrics.",inputSchema:evidenceMapSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("map_cross_language_evidence",()=>crossLanguageEvidence(input)));
+  server.registerTool("plan_monthly_production_economics",{description:"Calculate owner hypothetical low/base/high monthly budget, cost, revenue and per-video break-even. No competitor metrics or network calls.",inputSchema:monthlyPlanSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("plan_monthly_production_economics",()=>monthlyEconomics(input)));
+  server.registerTool("inspect_channel_uploads",{description:"Filter and paginate unexpired stored public channel uploads by comparable publication dates, declared language and duration; no live refresh, no quota, no performance score.",inputSchema:channelInspectionSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("inspect_channel_uploads",()=>inspectChannels(input)));
   return server;
 }
 

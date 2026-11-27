@@ -1,16 +1,14 @@
 import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 import { env, acceptsToken, ResearchError } from "./research.mjs";
 import { db } from "./batch.mjs";
+import { deriveSessionKey } from "./session-key.mjs";
 
 const SESSION="__Host-fasulye_session", DEVICE="__Host-fasulye_device", ADMIN="__Host-fasulye_admin";
 const DAY=86400;
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 function equal(a,b){const x=Buffer.from(a??""),y=Buffer.from(b??"");return x.length===y.length&&timingSafeEqual(x,y);}
 function secret(kind){
-  const access=env("FASULYE_ACCESS_TOKEN"), github=env("FASULYE_GITHUB_TOKEN");
-  const admin=env("FASULYE_ADMIN_TOKEN");
-  if(!access||!github||(kind==="admin"&&(!admin||admin===access||admin===github)))return null;
-  return createHmac("sha256",github).update(JSON.stringify(["fasulye-session-v1",kind,access,kind==="admin"?admin:""])).digest();
+  return deriveSessionKey(kind, {access:env("FASULYE_ACCESS_TOKEN"), github:env("FASULYE_GITHUB_TOKEN"), admin:env("FASULYE_ADMIN_TOKEN"), signing:env("FASULYE_SESSION_SECRET")});
 }
 function sign(payload,kind){
   const key=secret(kind);if(!key)throw new ResearchError(503,"Oturum yapılandırması eksik.");
@@ -47,8 +45,22 @@ function deviceInfo(ua){
   return {browser,platform};
 }
 export function auditConfigured(){return (env("SUPABASE_SECRET_KEY")??"").startsWith("sb_secret_");}
-export function sessionStatus(request){
-  return {authenticated:!!sessionFor(request),admin:adminFor(request),admin_configured:!!secret("admin"),audit_configured:auditConfigured()};
+function revocationEnabled(){return env("FASULYE_SESSION_REVOCATION")==="1";}
+export async function activeSession(request,fetcher=fetch,now=Date.now()){
+  const session=sessionFor(request,now);
+  if(!session||!revocationEnabled())return session;
+  const rows=await db("fasulye_sessions?"+new URLSearchParams({select:"sid",sid:"eq."+session.sid,revoked_at:"is.null",expires_at:"gt."+new Date(now).toISOString(),limit:"1"}),{fetcher});
+  if(!Array.isArray(rows))throw new ResearchError(502,"Oturum doğrulanamadı.");
+  return rows.length===1&&rows[0].sid===session.sid?session:null;
+}
+export async function sessionStatus(request,fetcher=fetch){
+  const active=await activeSession(request,fetcher);
+  return {authenticated:!!active,admin:!!active&&adminFor(request),admin_configured:!!secret("admin"),audit_configured:auditConfigured()};
+}
+export async function revokeSession(request,fetcher=fetch){
+  const session=sessionFor(request);
+  if(!session||!revocationEnabled())return;
+  await db("fasulye_sessions?"+new URLSearchParams({sid:"eq."+session.sid,revoked_at:"is.null"}),{method:"PATCH",body:{revoked_at:new Date().toISOString()},prefer:"return=minimal",fetcher});
 }
 export async function login(request,{password,remember=true,label=""},fetcher=fetch){
   if(typeof password!=="string"||password.length>4096||!acceptsToken(password))throw new ResearchError(401,"Parola yanlış.");
@@ -58,6 +70,10 @@ export async function login(request,{password,remember=true,label=""},fetcher=fe
   if(!uuid.test(device))device=randomUUID();
   const sid=randomUUID(), exp=Math.floor(Date.now()/1000)+age;
   const value=sign({kind:"session",sid,device,exp},"session");
+  if(revocationEnabled()){
+    const rows=await db("fasulye_sessions",{method:"POST",body:{sid,expires_at:new Date(exp*1000).toISOString()},prefer:"return=representation",fetcher});
+    if(!Array.isArray(rows)||rows.length!==1||rows[0].sid!==sid)throw new ResearchError(502,"Oturum kaydedilemedi.");
+  }
   let audit="unavailable";
   if(auditConfigured()){
     try{

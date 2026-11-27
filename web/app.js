@@ -78,8 +78,9 @@ function showRun(id) {
   const url = new URL(location.href);
   url.searchParams.set("run", id);
   history.replaceState(null, "", url);
-  el("run-link").href = "https://github.com/furesat/youtube-studio-/actions/runs/" + id;
-  el("run-link").hidden = false;
+  const local=/^9\d{15}$/.test(id);
+  if(!local)el("run-link").href = "https://github.com/furesat/youtube-studio-/actions/runs/" + id;
+  el("run-link").hidden = local;
 }
 
 async function watch(id, signal) {
@@ -93,12 +94,12 @@ async function watch(id, signal) {
       try {
         const data = await request("/api/research?" + query, { signal });
         displayReport(data, id);
-        showStatus(run.conclusion === "success"
+        showStatus(run.source==="standalone" ? "Yerel worker raporu açıldı; eksik gözlemler raporda belirtilir." : run.conclusion === "success"
           ? "Araştırma tamamlandı."
-          : "Çalıştırma eksik sona erdi. Kaydedilen raporu görüntülüyorsun.", run.conclusion !== "success");
+          : "Çalıştırma eksik sona erdi. Kaydedilen raporu görüntülüyorsun.", run.source!=="standalone"&&run.conclusion !== "success");
       } catch (error) {
         if (signal.aborted) return;
-        throw new Error("Supabase raporu açılamadı. " + error.message + " Ayrıntılar GitHub Actions kaydında.");
+        throw new Error("Supabase raporu açılamadı. " + error.message + (run.source==="standalone"?" Yerel worker kaydını kontrol edin.":" Ayrıntılar GitHub Actions kaydında."));
       }
       return;
     }
@@ -227,6 +228,7 @@ function filterOptions(target, entries) {
 
 function displayReport(data, id) {
   report = data;
+  if(!Number.isFinite(reportExpiry())||reportExpiry()<=Date.now()){clearReport();throw new Error("Raporun saklama süresi doldu veya tarih geçersiz.");}
   el("download").dataset.runId = id;
   const markets = new Map(data.opportunities.map(row => [row.market_id, row.market]));
   const topics = new Map(data.opportunities.map(row => [row.topic_id, row.topic]));
@@ -241,6 +243,7 @@ function displayReport(data, id) {
   filterOptions("video-declared-language",declared.map(l=>[l,l==="unknown"?"Bilinmiyor":(batchCatalog?.languages[l]??l)]));
   el("video-include").value="";el("video-exclude").value="";
   renderRows();
+  setupChannelFilters(data.channel_samples??[]);
   renderChannels(data.channel_samples??[]);
 }
 
@@ -324,6 +327,7 @@ function batchInput() {
   if(!batchCatalog) throw new Error("Katalog yüklenmedi.");
   const mode=el("batch-mode").value,languages=selected("batch-languages");
   const input={mode,countries:selected("batch-countries"),languages};
+  if(mode==="controlled") return {...input,categories:selected("batch-categories"),comparison_axis:el("comparison-axis").value};
   if(mode!=="bulk") return {...input,categories:selected("batch-categories")};
   const topics=new Map();
   const raw=el("batch-topics").value.trim();
@@ -345,12 +349,14 @@ function batchInput() {
 el("batch-mode").addEventListener("change",()=>{
   const discovery=el("batch-mode").value!=="bulk";
   el("category-field").hidden=!discovery;el("bulk-field").hidden=discovery;
+  el("controlled-field").hidden=el("batch-mode").value!=="controlled";
 });
 async function submitBatch(preview) {
   const button=el(preview?"batch-preview":"batch-submit");button.disabled=true;
   try {
     const data=await request("/api/batch"+(preview?"?preview=1":""),{method:"POST",body:JSON.stringify(batchInput())});
     el("batch-status").textContent=data.tasks+" görev · "+data.missing.length+" eksik pazar yerelleştirmesi"+(preview?" · Plan; henüz kuyruğa eklenmedi.":" · Kuyruğa kaydedildi.");
+    if(preview&&data.methodology)el("batch-status").textContent+=" · Sabit yayın sınırı: "+data.methodology.anchor+" · "+data.methodology.axis;
     if(!preview) { el("batch-status").textContent += data.worker?.state==="dispatched"?" Worker başlatıldı.":" Zamanlanmış worker bekleniyor."; void watchBatch(data.id); }
   } catch(e) {el("batch-status").textContent=e.message;}
   finally {button.disabled=false;}
@@ -360,7 +366,7 @@ el("batch-form").addEventListener("submit",e=>{e.preventDefault();void submitBat
 let taskBatchId,taskOffset=0,taskTotal=0;
 async function loadBatchTasks(){
   if(!taskBatchId)return;
-  try{const rows=await request("/api/batch?"+new URLSearchParams({id:taskBatchId,tasks:"1",offset:String(taskOffset)}));el("batch-task-rows").replaceChildren();for(const t of rows)addRow("batch-task-rows",[t.topic+" / "+t.query,t.region+" / "+t.language,(t.lookback_days??365)+" gün / "+(t.search_order??"relevance"),t.status,t.attempts,t.error_code]);el("batch-task-prev").disabled=taskOffset===0;el("batch-task-next").disabled=taskOffset+100>=taskTotal;}catch(e){el("batch-status").textContent=e.message;}
+  try{const id=taskBatchId;const rows=await request("/api/batch?"+new URLSearchParams({id,tasks:"1",offset:String(taskOffset)}));if(id!==taskBatchId)return;el("batch-task-rows").replaceChildren();for(const t of rows){const actions=node("div");if(batchCatalog?.features?.queue_controls&&["queued","running","failed"].includes(t.status)){const retry=t.status==="failed";const button=node("button",retry?"Yeniden dene":"İptal");button.type="button";button.className="secondary";button.addEventListener("click",()=>void queueAction(retry?"retry_failed":"cancel",t.id));actions.append(button);}addRow("batch-task-rows",[t.topic+" / "+t.query,t.region+" / "+t.language,(t.lookback_days??365)+" gün / "+(t.search_order??"relevance"),t.status+(t.reused_at?" · önbellek":t.cancel_requested?" · iptal istendi":""),t.attempts,t.error_code,actions]);}el("batch-task-prev").disabled=taskOffset===0;el("batch-task-next").disabled=taskOffset+100>=taskTotal;}catch(e){el("batch-status").textContent=e.message;}
 }
 el("batch-task-details").addEventListener("toggle",()=>{if(el("batch-task-details").open)void loadBatchTasks();});
 el("batch-task-prev").addEventListener("click",()=>{taskOffset=Math.max(0,taskOffset-100);void loadBatchTasks();});
@@ -368,17 +374,19 @@ el("batch-task-next").addEventListener("click",()=>{taskOffset+=100;void loadBat
 async function watchBatch(id) {
   navigate("batch");
   taskBatchId=id;taskOffset=0;el("batch-task-details").hidden=false;
+  el("queue-controls").hidden=!batchCatalog?.features?.queue_controls;
   compareBatchId=id;compareOffset=0;el("market-evidence").hidden=false;el("compare-topic").value="";el("compare-market").value="";el("compare-days").value="";if(el("market-evidence").open)void loadMarketEvidence();
   batchController?.abort();batchController=new AbortController();const {signal}=batchController;
   try {
     while(!signal.aborted){
       const b=await request("/api/batch?"+new URLSearchParams({id}),{signal});
       taskTotal=b.total;if(el("batch-task-details").open)void loadBatchTasks();
-      const p=el("batch-progress");p.hidden=false;p.max=b.total||1;p.value=b.done+b.failed;
-      el("batch-status").textContent=b.label+" · "+b.done+"/"+b.total+" tamamlandı · "+b.running+" çalışıyor · "+b.queued+" sırada · "+b.failed+" başarısız";
+      const p=el("batch-progress");p.hidden=false;p.max=b.total||1;p.value=b.done+b.failed+(b.cancelled??0);
+      el("queue-pause").disabled=!!b.paused;el("queue-resume").disabled=!b.paused;
+      el("batch-status").textContent=b.label+" · "+b.done+"/"+b.total+" tamamlandı · "+b.running+" çalışıyor · "+b.queued+" sırada · "+b.failed+" başarısız"+(b.cancelled?" · "+b.cancelled+" iptal":"")+(b.paused?" · duraklatıldı":"")+(b.reused?" · "+b.reused+" tekrar kullanılan rapor":"");
       const container=el("batch-reports");container.replaceChildren();
       for(const runId of b.reports){const button=node("button","Raporu aç · "+runId);button.type="button";button.className="secondary";button.addEventListener("click",()=>void supervise(s=>watch(runId,s)));container.append(button);}
-      if(b.done+b.failed>=b.total) break;
+      if(b.done+b.failed+(b.cancelled??0)>=b.total) break;
       await new Promise(resolve=>setTimeout(resolve,15000));
     }
   } catch(e){if(!signal.aborted)el("batch-status").textContent=e.message;}
@@ -434,11 +442,11 @@ function renderEvidence(){
   const market=el("rpm-filter-market").value,format=el("rpm-filter-format").value,views=Number(el("rpm-filter-views").value);
   for(const row of evidenceData.rpm.filter(r=>(!market||r.market_id===market)&&(!format||r.format===format))){
     const s=row.scenarios.find(x=>x.views===views);if(!s)continue;
-    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.production_cost==null?"Bilinmiyor":fmt(s.production_cost)+" "+s.currency,s.profit?["low","base","high"].map(k=>fmt(s.profit[k])+" "+s.currency).join(" / "):"Bilinmiyor",s.source+" · "+(row.source_date??"yayın tarihi bilinmiyor")+" · "+(row.source_checked_at??"doğrulama tarihi yok")+" · "+(row.reliability??"unspecified")]);
+    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.production_cost==null?"Bilinmiyor":fmt(s.production_cost)+" "+s.currency,s.profit?["low","base","high"].map(k=>fmt(s.profit[k])+" "+s.currency).join(" / "):"Bilinmiyor",s.break_even_views?["low","base","high"].map(k=>fmt(s.break_even_views[k])).join(" / "):"Bilinmiyor",s.source+" · "+(row.source_date??"yayın tarihi bilinmiyor")+" · "+(row.source_checked_at??"doğrulama tarihi yok")+" · "+(row.reliability??"unspecified")+" · "+(row.provenance?.warnings??[]).join(", ")]);
   }
   if(!el("rpm-comparison").children.length)addRow("rpm-comparison",["Kaynaklı RPM girdisi yok."]);
   for(const row of [...evidenceData.reviews].sort((a,b)=>(b.score??-1)-(a.score??-1))){
-    addRow("review-comparison",[row.topic,marketLabel(row.market_id),fmt(row.score),percentages.format(row.coverage),{high:"Yüksek",medium:"Orta",low:"Düşük"}[row.confidence],row.source]);
+    addRow("review-comparison",[row.topic,marketLabel(row.market_id),fmt(row.score),percentages.format(row.coverage),{high:"Yüksek",medium:"Orta",low:"Düşük"}[row.coverage_band]??"Bilinmiyor",row.source]);
   }
   if(!evidenceData.reviews.length)addRow("review-comparison",["Henüz bağımsız değerlendirme yok."]);
 }
@@ -483,8 +491,11 @@ el("system-check").addEventListener("click",async()=>{
   const checks=await Promise.allSettled([request("/api/discovery-catalog"),request("/api/quota"),request("/api/research?result=history")]);
   results.replaceChildren();
   for(const [i,label] of ["Katalog","Supabase kuyruk kotası","Supabase araştırma geçmişi"].entries())results.append(node("p",label+": "+(checks[i].status==="fulfilled"?"Erişilebilir":checks[i].reason.message)));
+  if(checks[0].status==="fulfilled"&&checks[0].value.features?.queue_controls){
+    try{const health=await request("/api/queue");results.append(node("p","Sistem "+health.software_version+" · günlük rezervasyon "+health.reserved_today+"/"+health.daily_search_limit),node("p","Kuyruk: "+health.counts.queued+" bekleyen / "+health.counts.running+" çalışan / "+health.counts.expired_leases+" süresi dolan lease"),node("p","En eski bekleyen: "+(health.oldest_pending??"Yok")),node("p","Son rapor: "+(health.last_report??"Yok")),node("p","Son bilinen hata: "+(health.last_failure??"Bilinmiyor")));results.append(node("p","Veritabanı: "+(health.database==="reachable"?"Erişilebilir":"Bilinmiyor")));const fresh=health.report_freshness;if(fresh)results.append(node("p","Geçerli rapor: "+(fresh.status==="available"?fresh.collected_at+" · son geçerlilik "+fresh.expires_at:fresh.status==="no_unexpired_report"?"Geçerli rapor yok":"Bilinmiyor")));const done=health.last_completed_task;if(done)results.append(node("p","Son kaydedilmiş başarılı kuyruk görevi: "+(done.at??"Bilinmiyor")));const detail=health.detail_reservations;if(detail)results.append(node("p","Detay rezervasyonları (Pasifik günü): "+(detail.status==="observed"?detail.reserved+"/"+detail.limit:detail.status==="disabled"?"Etkin değil":"Bilinmiyor")));results.append(node("p","YouTube canlı erişimi kontrol edilmedi; Google Trends API onay bekliyor."));for(const w of health.worker_telemetry??health.workers)results.append(node("p",w.source+" · son kayıt "+w.state+" · heartbeat "+w.heartbeat_at+(w.heartbeat_age_seconds!=null?" ("+w.heartbeat_age_seconds+" sn önce)":"")));if(!health.workers.length)results.append(node("p","Worker heartbeat henüz kaydedilmedi."));}catch(e){results.append(node("p","Kuyruk sağlığı: "+e.message));}
+  }
   if(checks[2].status==="fulfilled"&&checks[2].value.length){
-    try{const id=checks[2].value[0].run_id,run=await request("/api/research?"+new URLSearchParams({id}));results.append(node("p","GitHub Actions son kayıtlı çalışma: "+run.status+" / "+(run.conclusion??"bekliyor")));}
+    try{const id=checks[2].value[0].run_id,run=await request("/api/research?"+new URLSearchParams({id}));results.append(node("p",(run.source==="standalone"?"Yerel worker":"GitHub Actions")+" son kayıtlı çalışma: "+run.status+" / "+(run.conclusion??"bekliyor")));}
     catch(e){results.append(node("p","GitHub Actions: "+e.message));}
   }
 });
@@ -492,20 +503,21 @@ el("system-check").addEventListener("click",async()=>{
 let initialized=false,currentPage="search";
 function showLogin(){
   active?.abort();batchController?.abort();
-  clearEditorial();
+  clearEditorial();clearReport();
   el("dashboard").hidden=true;el("account-bar").hidden=true;el("panel-footer").hidden=true;el("login-screen").hidden=false;
   el("login-status").textContent="Devam etmek için giriş yap.";
 }
 function navigate(page){
   currentPage=page;
   const evidence=["trend","rpm","review","system"].includes(page);
-  for(const name of ["search","batch","history","editorial"])el("page-"+name).hidden=page!==name;
+  for(const name of ["search","batch","history","editorial","discover"])el("page-"+name).hidden=page!==name;
   el("results").hidden=page!=="results"||!report;
   el("page-evidence").hidden=!evidence;
   for(const name of ["trend","rpm","review","system"])el("evidence-"+name).hidden=page!==name;
   for(const button of document.querySelectorAll("[data-page]"))button.setAttribute("aria-current",button.dataset.page===page?"page":"false");
   el("panel-warning").hidden=true;
   if(page==="results"&&!report){el("panel-warning").hidden=false;el("panel-warning").textContent="Henüz açık rapor yok. Geçmişten bir rapor seç veya araştırma başlat.";}
+  if(page==="discover")initIndependentDiscovery();
   if(page==="editorial" && el("editorial-form").hidden)void loadEditorial(0);
   if(page==="history"){el("load-history").click();el("batch-history").click();}
   if(["trend","rpm","review"].includes(page))void loadEvidence();
@@ -563,23 +575,54 @@ el("priority-campaign").addEventListener("click",()=>{
   el("batch-preview").click();
 });
 
+function reportExpiry(){
+  if(!report)return NaN;
+  return report.expires_at?Date.parse(report.expires_at):Date.parse(report.collected_at)+30*86400000;
+}
+function clearReport(){
+  report=null;el("results").hidden=true;
+  for(const id of ["observations","reviews","revenue","video-comparison","channel-library"])el(id).replaceChildren();
+  delete el("download").dataset.runId;
+}
+function expireReport(){
+  if(report&&(!Number.isFinite(reportExpiry())||reportExpiry()<=Date.now())){clearReport();if(currentPage==="results"){navigate("results");el("panel-warning").textContent="Raporun saklama süresi doldu. Yeni araştırma başlat.";}}
+}
+function setupChannelFilters(channels){
+  filterOptions("channel-select",channels.map(c=>[c.channel_id,c.channel_title??c.channel_id]));
+  const langs=[...new Set(channels.flatMap(c=>(c.videos??[]).map(v=>v.audio_language??v.default_language??"unknown")))];
+  filterOptions("channel-language",langs.map(l=>[l,l==="unknown"?"Bilinmiyor":batchCatalog?.languages[l]??l]));
+  for(const id of ["channel-start","channel-end","channel-duration"])el(id).value="";
+  el("channel-sort").value="date";
+}
 function renderChannels(channels){
   const box=el("channel-library");box.replaceChildren();
+  if(!report||!Number.isFinite(reportExpiry())||reportExpiry()<=Date.now()){expireReport();return;}
+  const status=el("channel-status"),start=el("channel-start").value,end=el("channel-end").value,selected=el("channel-select").value,lang=el("channel-language").value,duration=el("channel-duration").value;
+  status.textContent="Toplama: "+dates.format(new Date(report.collected_at))+" · Son geçerlilik: "+dates.format(new Date(reportExpiry()))+" · Süre, Shorts formatını doğrulamaz.";
+  if(start&&end&&start>end){status.textContent="Başlangıç tarihi bitişten sonra olamaz.";return;}
   if(!channels.length){box.append(node("p","Bu raporda kanal yükleme örneklemi yok."));return;}
-  for(const channel of channels){
-    const details=node("details");const title=node("summary",(channel.channel_title??channel.channel_id)+" · "+fmt(channel.current_subscribers)+" mevcut abone");
-    details.append(title,node("p","Kanal kuruluşu: "+(channel.channel_created_at?.slice(0,10)??"bilinmiyor")));
+  for(const channel of channels.filter(c=>!selected||c.channel_id===selected)){
+    const details=node("details");details.open=true;const title=node("summary",(channel.channel_title??channel.channel_id)+" · "+fmt(channel.current_subscribers)+" toplama anındaki abone");
+    details.append(title,node("p","Kanal kuruluşu: "+(channel.channel_created_at?.slice(0,10)??"bilinmiyor")+" · Geçmiş abone sayısı bilinmiyor."));
     const link=node("a","YouTube kanalını aç");link.href="https://www.youtube.com/channel/"+encodeURIComponent(channel.channel_id);link.target="_blank";link.rel="noopener noreferrer";details.append(link);
     if(channel.error)details.append(node("p","Eksik veri: "+channel.error));
+    if(channel.playlist_has_more)details.append(node("p","Daha fazla yükleme var; bu örneklem tüm kanalı kapsamaz."));
+    if(channel.missing_video_details!=null&&channel.missing_video_details>0)details.append(node("p",channel.missing_video_details+" video ayrıntısı alınamadı."));
+    const videos=(channel.videos??[]).filter(v=>{const day=v.published_at?.slice(0,10);return (!start||day&&day>=start)&&(!end||day&&day<=end)&&(!duration||durationGroup(v.duration)===duration)&&(!lang||(v.audio_language??v.default_language??"unknown")===lang);});
+    videos.sort((a,b)=>el("channel-sort").value==="views"?(b.views??-1)-(a.views??-1):String(b.published_at??"").localeCompare(String(a.published_at??"")));
     const list=node("ul");
-    for(const v of channel.videos??[]){
+    for(const v of videos){
       const item=node("li"),a=node("a",v.title??v.video_id);
       a.href="https://www.youtube.com/watch?v="+encodeURIComponent(v.video_id);a.target="_blank";a.rel="noopener noreferrer";
-      item.append(a,document.createTextNode(" · "+(v.published_at?.slice(0,10)??"bilinmiyor")+" · "+fmt(v.views)+" izlenme · "+(v.duration??"süre bilinmiyor")));list.append(item);
+      item.append(a,document.createTextNode(" · "+(v.published_at?.slice(0,10)??"bilinmiyor")+" · "+fmt(v.views)+" izlenme · "+(v.duration??"süre bilinmiyor")+" · "+(v.audio_language??v.default_language??"dil bilinmiyor")));list.append(item);
     }
-    details.append(list);box.append(details);
+    details.append(node("p",videos.length+" eşleşen örnek video"),list);box.append(details);
   }
 }
+for(const id of ["channel-select","channel-start","channel-end","channel-duration","channel-language","channel-sort"])el(id).addEventListener("change",()=>{if(report)renderChannels(report.channel_samples??[]);});
+el("channel-refresh").addEventListener("click",()=>{navigate("search");el("query").focus();});
+setInterval(expireReport,30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)expireReport();});
 const costs={voice:"Seslendirme",visuals:"Görsel üretimi",translation:"Çeviri",editing:"Kurgu",other:"Diğer"};
 for(const [key,label] of Object.entries(costs)){
   const wrap=node("div"),lab=node("label",label),input=node("input");
@@ -610,11 +653,11 @@ async function loadMarketEvidence(){
       const source=(r.independent_trend_available?"Trend kaydı var":"Trend bilinmiyor")+" / "+(r.independent_review_available?"Bağımsız inceleme var":"İnceleme yok");
       let detail="Henüz veri yok";
       if(r.report_state==="expired_or_unavailable")detail="Rapor süresi dolmuş / erişilemiyor";
-      if(r.report_run_id){detail=node("button","Örneklemi aç");detail.type="button";detail.className="secondary";detail.addEventListener("click",()=>void supervise(async s=>{await watch(r.report_run_id,s);if(report&&!s.aborted){el("topic-filter").value="queue-"+r.id;renderRows();}}));}
+      if(r.report_run_id){detail=node("button","Örneklemi aç");detail.type="button";detail.className="secondary";detail.addEventListener("click",()=>void supervise(async s=>{await watch(r.report_run_id,s);if(report&&!s.aborted){el("topic-filter").value="queue-"+(r.source_task_id??r.id);renderRows();}}));}
       const count=r.sample_video_count==null?"Bilinmiyor":String(r.sample_video_count)+(r.has_more===true?" · devamı var":"");
       const missing=r.sample_video_count==null?"Bilinmiyor":"İzlenme verisi: "+(r.known_view_video_count??"?")+", abone verisi: "+(r.known_subscriber_video_count??"?")+" videoda mevcut";
       const status=({queued:"Sırada",running:"Çalışıyor",done:"Tamamlandı",failed:"Başarısız"})[r.status]??r.status;
-      addRow("compare-rows",[subject,marketLabel(r.market_id),r.lookback_days+" gün / "+r.search_order,status+(r.error_code?" · "+r.error_code:""),count,missing,source,detail]);
+      addRow("compare-rows",[subject,marketLabel(r.market_id),r.lookback_days+" gün / "+r.search_order+(r.window_anchor?" / "+r.window_anchor.slice(0,10):""),status+(r.reused_at?" · tekrar kullanılan rapor":"")+(r.error_code?" · "+r.error_code:""),count,missing,source,detail]);
     }
     el("compare-prev").disabled=compareOffset===0;el("compare-next").disabled=compareOffset+data.limit>=data.total;
     el("compare-status").textContent=data.total?"Görev "+(compareOffset+1)+"–"+Math.min(compareOffset+data.limit,data.total)+" / "+data.total+" · Arama hacmi bilinmiyor.":"Filtreye uyan görev yok.";
@@ -695,6 +738,7 @@ function editorialCard(candidate) {
     }catch(error){el("editorial-status").textContent=error.message;}finally{brief.disabled=false;}
   });
   const actions=node("div");actions.className="editorial-actions";actions.append(edit,brief);card.append(detail,actions);
+  if(batchCatalog?.features?.editorial_workflow)card.append(workflowPanel(candidate));
   return card;
 }
 
@@ -827,4 +871,247 @@ el("editorial-form").addEventListener("submit", async event => {
   } finally {
     el("editorial-save").disabled = el("editorial-cancel").disabled = false;
   }
+});
+
+let wikiSelectionLanguage=null;
+el("wiki-language").addEventListener("change",()=>{wikiSelectionLanguage=null;el("wiki-page").replaceChildren(new Option("Önce ara",""));});
+el("wiki-query").addEventListener("input",()=>{wikiSelectionLanguage=null;el("wiki-page").replaceChildren(new Option("Önce ara",""));});
+el("wiki-search").addEventListener("submit",async e=>{
+ e.preventDefault();const language=el("wiki-language").value,query=el("wiki-query").value;
+ wikiSelectionLanguage=null;el("wiki-page").replaceChildren(new Option("Seçiniz",""));el("wiki-status").textContent="Makaleler aranıyor…";
+ try{
+  const result=await request("/api/wikimedia?search=1",{method:"POST",body:JSON.stringify({language,query})});
+  if(el("wiki-language").value!==language||el("wiki-query").value!==query)return;
+  for(const row of result.results)el("wiki-page").append(new Option(row.title,String(row.page_id)));
+  wikiSelectionLanguage=language;el("wiki-status").textContent=result.results.length?"Doğru makaleyi elle seçin.":"Makale adayı bulunamadı.";
+ }catch(err){el("wiki-status").textContent=err.message;}
+});
+async function loadWiki(){
+ try{
+  const p=await request("/api/wikimedia");const list=el("wiki-list");list.replaceChildren();
+  for(const r of p.records){
+   const item=node("p",r.topic+" · "+r.article_title+" · "+r.language+" · "+r.period_start+" – "+r.period_end+" · "+r.freshness);
+   const detail=node("details");detail.append(node("summary","Günlük ham gözlemler"));
+   const table=node("ul");for(const v of r.series)table.append(node("li",v.date+": "+(v.views===null?"Bilinmiyor":fmt(v.views))));
+   detail.append(table,node("p",r.limitations),node("p","Kaynak: "+r.source_url),node("p","Alım: "+r.retrieved_at+" / "+r.license));
+   list.append(item,detail);
+  }
+  if(!p.records.length)list.append(node("p","Henüz kanıt yok."));
+  el("wiki-status").textContent="Kayıtlı bağımsız kanıtlar.";
+ }catch(err){el("wiki-status").textContent=err.message;}
+}
+el("wiki-list-button").addEventListener("click",()=>void loadWiki());
+el("wiki-collect").addEventListener("submit",async e=>{
+ e.preventDefault();
+ try{
+  if(wikiSelectionLanguage!==el("wiki-language").value||!el("wiki-page").value)throw new Error("Önce doğru makaleyi seçin.");
+  el("wiki-status").textContent="Gözlemler alınıyor…";
+  await request("/api/wikimedia",{method:"POST",body:JSON.stringify({language:wikiSelectionLanguage,topic:el("wiki-topic").value,page_id:Number(el("wiki-page").value),start:el("wiki-start").value,end:el("wiki-end").value})});await loadWiki();
+ }catch(err){el("wiki-status").textContent=err.message;}
+});
+
+async function queueAction(action,task_id,priority){
+ if(!taskBatchId)return;
+ const id=taskBatchId;
+ const confirmNeeded=["cancel","retry_failed"].includes(action);
+ if(confirmNeeded&&!window.confirm(action==="cancel"?"Seçili görevleri iptal et? Harcanan kota geri gelmez.":"Başarısız görevleri yeniden kuyruğa ekle? Yeni aramalar kota kullanabilir."))return;
+ try{
+  const input={id,action,...(task_id!==undefined?{task_id}:{}),...(priority!==undefined?{priority}:{}),...(confirmNeeded?{confirm:true}:{})};
+  const result=await request("/api/queue",{method:"POST",body:JSON.stringify(input)});
+  el("queue-action-status").textContent=result.changed+" kayıt değiştirildi; kota iadesi yok.";
+  if(taskBatchId===id)void watchBatch(id);
+ }catch(e){el("queue-action-status").textContent=e.message;}
+}
+for(const [id,action] of [["queue-pause","pause"],["queue-resume","resume"],["queue-cancel","cancel"],["queue-retry","retry_failed"]])el(id).addEventListener("click",()=>void queueAction(action));
+el("queue-set-priority").addEventListener("click",()=>void queueAction("priority",undefined,Number(el("queue-priority").value)));
+
+const workflowStages={discovered:"Aday keşfi",sources_collected:"Bağımsız kaynaklar",demand_evaluated:"Talep hipotezi",coverage_reviewed:"Pazar kapsamı",angle_validated:"Özgün açı ve olgular",cost_estimated:"Üretim maliyeti",experiment_ready:"Ön kayıtlı deney ve üretim planı",experiment_completed:"Yayın sonrası deney",long_form_decision:"Uzun video kararı"};
+function downloadWorkflow(content,filename,type){
+ const url=URL.createObjectURL(new Blob([content],{type})),a=node("a");a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+function workflowPanel(candidate){
+ const panel=node("details"),body=node("div");panel.append(node("summary","Araştırma ve deney iş akışı"),body);
+ let loaded=false;
+ async function load(){
+  body.replaceChildren(node("p","İş akışı yükleniyor…"));
+  try{
+   const w=await request("/api/workflow?"+new URLSearchParams({candidate_id:candidate.id}));
+   body.replaceChildren(node("p",w.events.length+"/9 aşama tamamlandı. Kayıtlar değiştirilemez."));
+   const list=node("ol");for(const [id,title] of Object.entries(workflowStages))list.append(node("li",title+(w.events.some(e=>e.stage===id)?" · Kaydedildi":id===w.next_stage?" · Sıradaki":"")));body.append(list);
+   const exports=node("div");exports.className="editorial-actions";
+   for(const [label,ext,content,type] of [["Markdown indir","md",w.markdown,"text/markdown"],["JSON indir","json",JSON.stringify(w,null,2),"application/json"]]){
+    const b=node("button",label);b.type="button";b.className="secondary";b.addEventListener("click",()=>downloadWorkflow(content,"fasulye-workflow-"+candidate.id+"-r"+w.events.length+"."+ext,type));exports.append(b);
+   }body.append(exports);
+   if(w.next_stage)body.append(workflowForm(w,load));
+  }catch(e){body.replaceChildren(node("p",e.message));}
+ }
+ panel.addEventListener("toggle",()=>{if(panel.open&&!loaded){loaded=true;void load();}});
+ return panel;
+}
+function workflowForm(w,refresh){
+ const stage=w.next_stage,form=node("form"),fields=node("div"),status=node("p");form.className="editorial-form";status.setAttribute("role","status");
+ form.append(node("h4",workflowStages[stage]),fields);
+ const inputs={};
+ function field(parent,key,label,{type="text",value="",options,required=true,min,max,step}={}){
+  const wrap=node("label",label),input=node(options?"select":type==="textarea"?"textarea":"input");
+  if(options)for(const [v,t] of options){const o=node("option",t);o.value=v;input.append(o);}
+  else if(type!=="textarea")input.type=type;
+  if(type==="textarea"){input.rows=2;input.maxLength=4000;}
+  if(min!==undefined)input.min=String(min);if(max!==undefined)input.max=String(max);if(step!==undefined)input.step=String(step);
+  if(type==="checkbox")input.checked=Boolean(value);else if(type!=="file")input.value=value;
+  input.required=required;wrap.append(input);parent.append(wrap);return input;
+ }
+ function f(key,label,options){inputs[key]=field(fields,key,label,options);}
+ function notes(keys){for(const [key,label] of keys)f(key,label,{type:"textarea"});}
+ function value(input){return input.type==="checkbox"?input.checked:input.type==="number"?input.valueAsNumber:input.value;}
+ const sourceInputs=[],claimInputs=[];
+ if(stage==="discovered")notes([["origin","Fikrin kaynağı / nasıl bulundu?"]]);
+ if(stage==="sources_collected"||stage==="demand_evaluated"){
+  const old=w.events.find(e=>e.stage==="sources_collected")?.data.evidence.sources;
+  const seeds=old??w.candidate.sources.map(s=>({...s,type:{context:"historical_context",demand:"general_interest",coverage:"market_coverage"}[s.kind],credibility:"unverified",direction:"unknown",independence_group:"",methodology:"",limitations:"",region:null,language:null,license:null}));
+  if(!seeds.length)fields.append(node("p","Önce aday düzenleme ekranından bağımsız kaynak ekle."));
+  const kindOptions=[["general_interest","Genel ilgi"],["search_interest","Arama ilgisi"],["youtube_demand","YouTube talebi (bağımsız kanıt)"],["historical_context","Tarihsel bağlam"],["market_coverage","Pazar kapsamı"],["editorial_fit","Editoryal uygunluk"]];
+  function addSource(s={}){
+   const box=node("fieldset");box.append(node("legend","Kaynak "+(sourceInputs.length+1)));
+   const row={};
+   for(const [key,label,opts] of [
+    ["url","HTTPS kaynak adresi",{type:"url"}],["publisher","Yayıncı",{}],["checked_on","Kontrol tarihi",{type:"date"}],["type","Kanıt türü",{options:kindOptions}],["credibility","Güvenilirlik",{options:[["unverified","Doğrulanmadı"],["primary","Birincil"],["secondary","İkincil"]]}],
+    ["independence_group","Bağımsızlık grubu (ortak dayanağı aynı adla belirt)",{}],["direction","Hipotez ilişkisi",{options:[["unknown","Bilinmiyor"],["supports","Destekliyor"],["contradicts","Çelişiyor"],["neutral","Nötr"]]}],
+    ["finding","Bulgu",{type:"textarea"}],["methodology","Yöntem",{type:"textarea"}],["limitations","Sınırlamalar",{type:"textarea"}],["region","Ülke kodu (varsa)",{required:false}],["language","Dil kodu (varsa)",{required:false}],["license","Lisans (biliniyorsa)",{required:false}]])
+    row[key]=field(box,key,label,{...opts,value:s[key]??(opts.options?opts.options[0][0]:"")});
+   sourceInputs.push(row);fields.append(box);
+  }
+  for(const s of seeds)addSource(s);
+  const add=node("button","Bağımsız kaynak ekle");add.type="button";add.className="secondary";add.addEventListener("click",()=>{if(sourceInputs.length<40)addSource();});fields.append(add);
+  if(stage==="demand_evaluated"){f("conclusion","Sonuç",{options:[["inconclusive","Belirsiz"],["supports","Destekleniyor"],["contradicts","Çelişiyor"]]});notes([["reason","Gerekçe ve belirsizlik"]]);}
+ }
+ if(stage==="coverage_reviewed"){f("manual_review","Pazar kapsamını manuel inceledim",{type:"checkbox"});notes([["method","İnceleme yöntemi"],["findings","Bulgular"],["limitations","Sınırlamalar (az sonuç, boş pazar anlamına gelmez)"]]);}
+ if(stage==="angle_validated"){
+  f("angle","Özgün anlatım açısı",{type:"textarea",value:w.candidate.narrative_angle});
+  f("original","Bu anlatım ve görsel yaklaşım özgündür",{type:"checkbox"});
+  const sources=[...new Set(w.events.flatMap(e=>e.data?.evidence?.sources??[]).map(s=>s.url))];
+  function addClaim(){
+   const box=node("fieldset");box.append(node("legend","Olgu / kurgu "+(claimInputs.length+1)));
+   const row={claim:field(box,"claim","İddia",{type:"textarea"}),kind:field(box,"kind","Tür",{options:[["verified_fact","Doğrulanmış olgu"],["creative_storytelling","Yaratıcı anlatım"],["unverified","Doğrulanmadı"]]}),source_url:field(box,"source_url","İncelenen kaynak",{required:false,options:[["","Yok"],...sources.map(u=>[u,u])]})};claimInputs.push(row);fields.append(box);
+  }addClaim();const add=node("button","Olgu ekle");add.type="button";add.className="secondary";add.addEventListener("click",()=>{if(claimInputs.length<30)addClaim();});fields.append(add);
+ }
+ if(stage==="cost_estimated"){
+  f("currency","Para birimi",{value:w.candidate.cost?.currency??"EUR"});
+  for(const [k,l] of [["research_hours","İnsan araştırma saati"],["hourly_rate","Saat maliyeti"],["translation","Çeviri"],["voice","Ses"],["visuals","Görsel"],["editing","Kurgu"],["other","Diğer"]])f(k,l,{type:"number",min:0,max:10000000,step:"any"});
+  notes([["basis","Maliyet dayanağı"]]);
+ }
+ if(stage==="experiment_ready"){
+  f("format","Deney formatı",{options:[["shorts","Shorts"],["long_form","Uzun video"]]});
+  notes([["hypothesis","Önceden belirlenen hipotez"],["primary_metric","Ana metrik (örneğin CTR)"],["success_rule","Önceden belirlenen değerlendirme kuralı"],["script_outline","Senaryo taslağı"],["scene_requirements","Sahne ihtiyaçları"],["thumbnail_concept","Kapak fikri"],["publication_checklist","Yayın kontrol listesi (her satır bir madde)"]]);
+  f("observation_days","Gözlem süresi (gün)",{type:"number",min:1,max:90,step:1,value:7});
+  f("proposed_long_form","Shorts ile ilişkili uzun video fikri",{type:"textarea",required:false});
+ }
+ if(stage==="experiment_completed"){
+  f("published_at","Gerçek yayın zamanı (yerel saat)",{type:"datetime-local"});
+  f("video_reference","Kendi video referansın",{});
+  f("own_channel","Bu CSV kendi kanalıma ait; paylaşım yetkim var",{type:"checkbox"});
+  f("csv","Normalize edilmiş YouTube Studio CSV",{type:"file"});
+  fields.append(node("p","CSV başlığı: metric,period_start,period_end,value,unit,dimension_type,dimension_value. Boş değer bilinmiyor; 0 gerçek sıfır."));
+  notes([["evaluation","Sonuç değerlendirmesi"],["limitations","Sınırlamalar"]]);
+ }
+ if(stage==="long_form_decision"){
+  f("decision","Karar",{options:[["hold","Bekle"],["go","Uzun videoya geç"],["no_go","Devam etme"]]});
+  notes([["reason","Deney ve kaynaklara dayalı gerekçe"]]);
+  f("episode_outline","Özgün uzun video taslağı",{type:"textarea",required:false});
+ }
+ const confirm=field(form,"confirm","Bu aşamanın kaydını onaylıyorum (geri alınamaz)",{type:"checkbox"});
+ const save=node("button","Aşamayı kaydet");save.type="submit";form.append(save,status);
+ form.addEventListener("submit",async e=>{
+  e.preventDefault();save.disabled=true;status.textContent="Kaydediliyor…";
+  try{
+   const data=Object.fromEntries(Object.entries(inputs).map(([k,input])=>[k,value(input)]));
+   if(sourceInputs.length||stage==="sources_collected"||stage==="demand_evaluated")data.evidence={topic:w.candidate.title,hypothesis:w.candidate.hypothesis,sources:sourceInputs.map(row=>Object.fromEntries(Object.entries(row).map(([k,input])=>[k,["region","language","license"].includes(k)?value(input)||null:value(input)])))};
+   if(stage==="angle_validated")data.claims=claimInputs.map(row=>({claim:value(row.claim),kind:value(row.kind),source_url:value(row.source_url)||null}));
+   if(stage==="experiment_ready"){data.publication_checklist=data.publication_checklist.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);data.proposed_long_form=data.proposed_long_form||null;}
+   if(stage==="experiment_completed"){const file=inputs.csv.files[0];if(!file||file.size>300000)throw new Error("300 KB altında CSV seç.");data.csv=await file.text();data.published_at=new Date(data.published_at).toISOString();data.source="owner_youtube_studio_csv";}
+   if(stage==="long_form_decision")data.episode_outline=data.episode_outline||null;
+   await request("/api/workflow",{method:"POST",body:JSON.stringify({candidate_id:w.candidate.id,candidate_revision:w.candidate.revision,expected_revision:w.events.length,stage,data,confirm:confirm.checked})});
+   await refresh();
+  }catch(err){status.textContent=err.message;save.disabled=false;}
+ });
+ return form;
+}
+
+let discoveryInitialized=false;
+function initIndependentDiscovery(){
+ if(discoveryInitialized||!batchCatalog)return;discoveryInitialized=true;
+ const categories={everyday:"Gündelik nesneler",history:"Tuhaf tarih",professions:"Unutulan meslekler",companies:"Şirket başarısızlıkları",inventions:"İcatlar",psychology:"Psikoloji",geography:"Coğrafya",culture:"Kültür",laws:"Tuhaf yasalar",science:"Bilimsel keşifler",mystery:"Tarihsel gizemler",archives:"Eski gazeteler",economics:"Ekonomi tarihi",events:"Gerçek olaylar"};
+ for(const [id,label] of Object.entries(categories))appendOption("discover-category",id,label);
+ for(const [id,label] of Object.entries(batchCatalog.languages)){appendOption("discover-language",id,label);}
+ el("discover-language").value="tr";
+ for(const m of batchCatalog.markets)appendOption("map-markets",m.id,flag(m.region)+" "+m.label);
+ el("map-markets").value="tr";
+ for(const t of batchCatalog.topics??[])appendOption("map-known-topics",t.label,t.label);
+}
+const selectedValues=id=>[...el(id).selectedOptions].map(o=>o.value);
+el("independent-discover-form").addEventListener("submit",async e=>{
+ e.preventDefault();const mode=e.submitter?.value??"plan";const box=el("discover-results");box.replaceChildren();el("discover-status").textContent="Hazırlanıyor…";
+ const buttons=[...e.currentTarget.querySelectorAll("button")];buttons.forEach(b=>b.disabled=true);
+ try{
+  const data=await request("/api/discover?mode="+mode,{method:"POST",body:JSON.stringify({categories:[el("discover-category").value],languages:selectedValues("discover-language"),interest_hypothesis:el("discover-interest").value})});
+  for(const q of data.queries)box.append(node("p",q.language+" · "+q.query));
+  for(const q of data.missing)box.append(node("p",q.language+" · yerel ifade eksik"));
+  for(const row of data.observations??[]){
+   const detail=node("details");detail.append(node("summary",row.language+" · "+(row.articles===null?"Erişilemedi":row.articles.length+" makale adayı")));
+   if(row.articles===null)detail.append(node("p",row.error));
+   for(const a of row.articles??[]){
+    const link=node("a",a.title);link.href=a.url;link.target="_blank";link.rel="noopener noreferrer";const p=node("p");p.append(link);
+    const select=node("button","Aday taslağına al");select.type="button";select.className="secondary";select.addEventListener("click",()=>{navigate("editorial");openEditorialForm();el("editorial-name").value=a.title;el("editorial-uncertainty").value="Wikipedia makale adayı; talep, kaynak ve özgün açı henüz doğrulanmadı.";});detail.append(p,select);
+   }box.append(detail);
+  }
+  el("discover-status").textContent="Hipotez doğrulanmadı. "+(data.unattempted?.length?"İstek sınırı nedeniyle "+data.unattempted.length+" sorgu çalışmadı.":"");
+ }catch(err){el("discover-status").textContent=err.message;}finally{buttons.forEach(b=>b.disabled=false);}
+});
+el("evidence-map-form").addEventListener("submit",async e=>{
+ e.preventDefault();const box=el("map-results");box.replaceChildren();el("map-status").textContent="Kayıtlar okunuyor…";
+ try{
+  const data=await request("/api/discover?mode=map",{method:"POST",body:JSON.stringify({topic:el("map-topic").value,markets:selectedValues("map-markets")})});
+  for(const row of data.markets){
+   const card=node("article");card.className="editorial-card";card.append(node("h3",row.label),node("p","Yerel ifade: "+(row.local_expressions.join(" / ")||"Bilinmiyor")),node("p","YouTube talebi ve rekabet açığı: bilinmiyor"));
+   for(const [label,records] of [["Google Trends göreli arama ilgisi",row.trends],["Dünya çapında Wikipedia dil sürümü",row.worldwide_language_interest],["Bağımsız değerlendirmeler",row.manual_reviews],["Özgün editoryal açılar",row.editorial_angles]]){
+    const detail=node("details");detail.append(node("summary",label+" · "+(records===null?"Erişilemiyor":records.length+" kayıt")));
+    if(!records?.length)detail.append(node("p","Kanıt bilinmiyor."));
+    for(const record of records??[])detail.append(node("p",[record.article_title,record.source,record.source_url,record.narrative_angle,record.hypothesis,record.uncertainty,record.period_start,record.period_end,record.freshness?.age_days!=null?"Kontrol / alım "+record.freshness.age_days+" gün önce":null].filter(Boolean).join(" · ")));
+    card.append(detail);
+   }box.append(card);
+  }
+  el("map-status").textContent=data.limitations.join(" ");
+ }catch(err){el("map-status").textContent=err.message;}
+});
+
+const scenarioKeys=["low","base","high"],scenarioLabels=["Düşük","Orta","Yüksek"];
+function bandFields(parent,label,{integer=false}={}){
+ const group=node("fieldset");group.append(node("legend",label));const fields=node("div");fields.className="columns";
+ const inputs={};scenarioKeys.forEach((key,i)=>{const lab=node("label",scenarioLabels[i]),inp=node("input");inp.type="number";inp.min="0";inp.step=integer?"1":"any";inp.required=true;lab.append(inp);fields.append(lab);inputs[key]=inp;});group.append(fields);parent.append(group);
+ return ()=>Object.fromEntries(scenarioKeys.map(k=>[k,inputs[k].valueAsNumber]));
+}
+const fixedMonthly=bandFields(el("monthly-fixed"),"Aylık sabit maliyet");
+const monthlyLines=[];
+function addMonthlyLine(){
+ if(monthlyLines.length>=12)return;
+ const box=node("fieldset");box.append(node("legend","Üretim satırı"));
+ const field=(label,kind,options)=>{const l=node("label",label),i=node(options?"select":"input");if(options)for(const [v,t] of options){const o=node("option",t);o.value=v;i.append(o);}else i.type=kind;i.required=true;l.append(i);box.append(l);return i;};
+ const label=field("İçerik grubu","text"),format=field("Format","text",[["shorts","Shorts"],["long_form","Uzun video"]]),videos=field("Aylık video sayısı","number");videos.min="0";videos.max="1000";videos.step="1";
+ const rpm=bandFields(box,"Bağımsız RPM varsayımı"),rpmBasis=field("RPM dayanağı","text"),rpmKind=field("RPM kaynak türü","text",[["owner_assumption","Kendi varsayımım"],["owner_actual","Kendi gerçek verim (beyan)"],["third_party_estimate","Üçüncü taraf tahmini"]]);
+ const views=bandFields(box,"Video başına izlenme hedefi (Shorts için etkileşimli)",{integer:true});
+ const costs={};for(const [key,title] of [["research_hours","Araştırma saati"],["hourly_rate","Saat maliyeti"],["translation","Çeviri"],["voice","Ses"],["visuals","Görsel"],["editing","Kurgu"],["other","Diğer"]])costs[key]=bandFields(box,title);
+ const costBasis=field("Maliyet dayanağı","text");
+ const get=()=>({label:label.value,format:format.value,videos:videos.valueAsNumber,currency:el("monthly-currency").value,rpm:rpm(),rpm_basis:rpmBasis.value,rpm_kind:rpmKind.value,view_targets:views(),costs:Object.fromEntries(Object.entries(costs).map(([k,read])=>[k,read()])),cost_basis:costBasis.value});
+ const remove=node("button","Satırı çıkar");remove.type="button";remove.className="secondary";remove.addEventListener("click",()=>{const i=monthlyLines.indexOf(get);if(i>=0)monthlyLines.splice(i,1);box.remove();});box.append(remove);el("monthly-lines").append(box);monthlyLines.push(get);
+}
+el("monthly-add-line").addEventListener("click",addMonthlyLine);addMonthlyLine();
+el("monthly-plan").addEventListener("submit",async e=>{
+ e.preventDefault();el("monthly-status").textContent="Hesaplanıyor…";el("monthly-results").replaceChildren();
+ try{
+  const result=await request("/api/economics",{method:"POST",body:JSON.stringify({currency:el("monthly-currency").value,monthly_budget:el("monthly-budget").valueAsNumber,monthly_fixed:fixedMonthly(),lines:monthlyLines.map(read=>read())})});
+  const box=el("monthly-results");const show=x=>scenarioKeys.map(k=>fmt(x[k])+" "+result.currency).join(" / ");
+  for(const [label,values] of [["Toplam aylık maliyet",result.monthly_costs],["Aylık gelir",result.monthly_revenue],["Vergi öncesi sonuç (kötü/orta/iyi)",result.monthly_profit],["Kalan bütçe (kötü/orta/iyi)",result.budget_remaining]])box.append(node("p",label+": "+show(values)));
+  for(const l of result.lines)box.append(node("h4",l.label),node("p","Video başı maliyet: "+show(l.cost_per_video)),node("p","Başa baş (kötü/orta/iyi): "+scenarioKeys.map(k=>l.break_even_views[k]===null?"Bilinmiyor":fmt(l.break_even_views[k])).join(" / ")));
+  el("monthly-status").textContent=result.limitations.join(" ");
+ }catch(err){el("monthly-status").textContent=err.message;}
 });

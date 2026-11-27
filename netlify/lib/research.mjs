@@ -73,7 +73,7 @@ async function github(path, request = {}, fetcher = fetch) {
       "X-GitHub-Api-Version": "2026-03-10",
       ...request.headers,
     },
-    signal: AbortSignal.timeout(12_000),
+    redirect: "error", signal: AbortSignal.timeout(12_000),
   });
 }
 
@@ -103,6 +103,11 @@ export async function startResearch(input, fetcher = fetch) {
 
 export async function getRun(id, fetcher = fetch) {
   if (!ids.safeParse(id).success) throw new ResearchError(400, "Çalıştırma numarası geçersiz.");
+  if (/^9\d{15}$/.test(id)) {
+    const rows = await supabase("fasulye_runs", {select:"run_id,collected_at",run_id:"eq."+id,limit:"1"}, fetcher);
+    if (!rows.length) throw new ResearchError(404,"Yerel araştırma bulunamadı.");
+    return {id,status:"completed",conclusion:null,started_at:rows[0].collected_at,url:null,source:"standalone"};
+  }
   const response = await github(`/runs/${id}`, {}, fetcher);
   if (response.status === 404) throw new ResearchError(404, "Araştırma bulunamadı.");
   if (!response.ok) throw new ResearchError(502, "GitHub çalıştırma durumu okunamadı.");
@@ -134,12 +139,13 @@ export async function getReport(id, fetcher = fetch) {
   const run = await getRun(id, fetcher);
   if (run.status !== "completed") throw new ResearchError(409, "Araştırma devam ediyor.");
   const rows = await supabase("fasulye_reports", {
-    select: "report", run_id: "eq." + id, expires_at: "gt." + new Date().toISOString(), limit: "1",
+    select: "report,expires_at", run_id: "eq." + id, expires_at: "gt." + new Date().toISOString(), limit: "1",
   }, fetcher);
   if (!rows.length) throw new ResearchError(404, "Rapor kaydedilmemiş veya 30 günlük süresi dolmuş.");
   const report = rows[0].report;
   if (report?.schema_version !== 1 || !Array.isArray(report.opportunities)) throw new ResearchError(502, "Rapor biçimi geçersiz.");
   for(const row of report.opportunities)row.sample_total_known_views=null;
+  if(rows[0].expires_at)report.expires_at=rows[0].expires_at;
   return report;
 }
 export async function getHistory(fetcher = fetch) {

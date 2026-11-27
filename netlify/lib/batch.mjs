@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { buildControlled } from "./controlled-campaign.mjs";
 import catalog from "../../engine/tools/opportunity_engine/catalog_v2.json" with { type: "json" };
 import campaign from "../../engine/tools/opportunity_engine/catalog_v3.json" with { type: "json" };
 import { env, ResearchError, startQueueWorker } from "./research.mjs";
@@ -9,13 +10,16 @@ const categoryIds = [...new Set([...catalog.categories,...campaign.categories].m
 const phrase = z.string().trim().min(1).max(160).regex(/^[^\u0000-\u001f\u007f]+$/u);
 export const batchSchema = z.strictObject({
   label: phrase.optional(),
-  mode: z.enum(["discovery","bulk","campaign"]),
+  mode: z.enum(["discovery","bulk","campaign","controlled"]),
   markets: z.array(z.enum(marketIds)).max(marketIds.length).optional(),
   countries: z.array(z.string().regex(/^[A-Z]{2}$/)).max(36).optional(),
   languages: z.array(z.enum(Object.keys(catalog.languages))).max(23).optional(),
   categories: z.array(z.enum(categoryIds)).max(categoryIds.length).optional(),
   lookback_days:z.array(z.union([z.literal(7),z.literal(30),z.literal(90),z.literal(365)])).max(4).optional(),
   orders:z.array(z.enum(["relevance","date","viewCount"])).max(3).optional(),
+  comparison_axis:z.enum(["window","order","variant"]).optional(),
+  query_variant:z.union([z.literal(0),z.literal(1)]).optional(),
+  window_anchor:z.string().datetime({precision:3}).optional(),
   topics: z.array(z.strictObject({topic:phrase,queries:z.partialRecord(z.enum(Object.keys(catalog.languages)),phrase).optional()})).max(500).optional(),
 });
 export function planBatch(input) {
@@ -27,6 +31,15 @@ export function planBatch(input) {
     && (!x.languages?.length || x.languages.includes(m.language)));
   if (!markets.length) throw new ResearchError(400,"Eşleşen pazar bulunamadı.");
   if(x.mode==="campaign")return planCampaign(x,markets);
+  if(x.mode==="controlled"){
+    const selected=markets.filter(m=>Boolean(x.markets?.length||x.countries?.length||x.languages?.length)||campaign.priority_markets.includes(m.id));
+    const categories=campaign.categories.filter(c=>(x.categories?.length?x.categories:campaign.priority_categories).includes(c.id));
+    const anchor=x.window_anchor??new Date(Math.floor(Date.now()/86400000)*86400000).toISOString();
+    if(Date.parse(anchor)>Date.now())throw new ResearchError(400,"Gelecekteki pencere tarihi geçersiz.");
+    const p=buildControlled(categories,selected,{axis:x.comparison_axis,variant:x.query_variant,anchor});
+    if(!p.tasks.length||p.tasks.length>10000)throw new ResearchError(400,"Kontrollü kampanya için geçerli sorgu bulunamadı.");
+    return {label:x.label??"4.0 / Kontrollü araştırma",...p};
+  }
   const topics = x.mode === "discovery"
     ? catalog.categories.filter(c => !x.categories?.length || x.categories.includes(c.id)).map(c => ({topic:c.label,queries:c.queries}))
     : x.topics ?? [];
@@ -73,14 +86,16 @@ export async function db(path,{method="GET",body,fetcher=fetch,prefer}={}) {
 }
 export async function enqueueBatch(input,fetcher=fetch) {
   const plan=planBatch(input);
-  const id=await db("rpc/fasulye_enqueue",{method:"POST",body:{p_label:plan.label,p_tasks:plan.tasks},fetcher});
+  if(input.mode==="controlled"&&env("FASULYE_CONTROLLED_CAMPAIGNS")!=="1")throw new ResearchError(503,"Kontrollü kampanya henüz etkin değil.");
+  const id=await db(input.mode==="controlled"?"rpc/fasulye_enqueue_controlled":"rpc/fasulye_enqueue",{method:"POST",body:{p_label:plan.label,p_tasks:plan.tasks},fetcher});
   if (typeof id!=="string" || !/^[0-9a-f-]{36}$/i.test(id)) throw new ResearchError(502,"Kuyruk kimliği alınamadı.");
   let worker={state:"scheduled",run_id:null};
   try { worker=await startQueueWorker(fetcher); } catch { /* Durable queue already saved; scheduled worker is fallback. */ }
   return {id,status:"queued",tasks:plan.tasks.length,missing:plan.missing,worker};
 }
 export async function listBatches(fetcher=fetch) {
-  return db("fasulye_batches?select=id,label,created_at&order=created_at.desc&limit=50",{fetcher});
+  const columns="id,label,created_at"+(env("FASULYE_QUEUE_CONTROLS")==="1"?",paused,priority":"");
+  return db("fasulye_batches?select="+columns+"&order=created_at.desc&limit=50",{fetcher});
 }
 export async function batchStatus(id,fetcher=fetch) {
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)) throw new ResearchError(400,"Geçersiz grup kimliği.");
@@ -88,12 +103,13 @@ export async function batchStatus(id,fetcher=fetch) {
 }
 export async function queueBudget(fetcher=fetch) {
   const rows=await db("fasulye_queue_budget?select=day,reserved&order=day.desc&limit=7",{fetcher});
-  return {daily_limit:30,reservations:rows,scope:"Fasulye Actions rezervasyonları; Google Cloud proje kotası değildir."};
+  return {daily_limit:30,reservations:rows,scope:"Fasulye uygulama rezervasyonları; Google Cloud proje kotası değildir."};
 }
 
 export async function listBatchTasks(id,offset=0,limit=100,fetcher=fetch) {
   if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)||!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>100)throw new ResearchError(400,"Grup veya sayfalama geçersiz.");
-  return db("fasulye_tasks?"+new URLSearchParams({select:"id,topic,query,region,language,search_order,lookback_days,status,attempts,next_attempt_at,report_run_id,error_code",batch_id:"eq."+id,order:"id.asc",offset:String(offset),limit:String(limit)}),{fetcher});
+  const columns="id,topic,query,region,language,search_order,lookback_days,status,attempts,next_attempt_at,report_run_id,error_code"+(env("FASULYE_QUEUE_CONTROLS")==="1"?",priority,cancel_requested,source_task_id,reused_at,methodology_version,comparison_axis,query_variant,window_anchor":"");
+  return db("fasulye_tasks?"+new URLSearchParams({select:columns,batch_id:"eq."+id,order:"id.asc",offset:String(offset),limit:String(limit)}),{fetcher});
 }
 
 export async function marketEvidence(id,{topic=null,market=null,days=null,offset=0,limit=50}={},fetcher=fetch){

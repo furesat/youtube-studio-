@@ -46,3 +46,57 @@ Official references: https://developers.google.com/youtube/terms/developer-polic
 - Verified 3.2 production deployment commit `7a639bdd8c08b7d1bf642bf4d1e1b5ac3a4f2cfb`, successful CI run 45925822474, and RLS enabled / anonymous SELECT denied on all 13 Fasulye tables. At inspection the active campaign remained 10/320 completed with 310 queued, no failures.
 - Added three genuine editorial candidates via Supabase: US railroad time standardization (Smithsonian), Dutch tulip satire (Rijksmuseum), and British calendar reform for Turkish audience (UK statute/Hansard). Read back three rows, two independent context sources each, status researching, unknown budgets. These are editorial hypotheses, not proven demand, competition gaps or profit estimates. No test fixture written to production, no YouTube quota used for these records.
 - Added protected `GET /api/editorial?brief=<uuid>`, read-only MCP tool `get_editorial_production_brief`, and a Markdown download button on every editorial candidate. The brief includes the latest revision, source links, format, cost, uncertainty and conditional pre-production checklist. Source presence is not source validation; missing demand, coverage, cost and format stay explicit. No generated script, ranking or paid provider. Added unit/REST/MCP tests. No DB schema change needed for this feature.
+
+## V4 draft checkpoint
+See NIGHT_SHIFT_PROGRESS.md for new security implementation, policy review, test evidence and remaining work. No live changes. No full-suite result yet.
+
+### V4 checkpoint 2
+Controlled campaign planning and provenance implemented behind an enqueue opt-in. Five isolated planner assertions passed; full tests/migration remain unverified. See progress file.
+
+### V4 checkpoint 3
+Atomic queue and standalone worker draft implemented. Prior two commits passed GitHub Actions. New SQL and worker behavior require isolated integration checks and owner-approved migration before activation.
+
+### V4 checkpoint 4
+Independent Wikimedia evidence provider implemented, gated until migration/test approval. Does not measure YouTube search volume or national audience. No live provider verification.
+
+### V4 checkpoint 5
+Queue control, deduplication and observability SQL draft, isolated PostgreSQL regression harness. Worker CI passed; Wikimedia CI initially 35/36 due to old MCP count, corrected with explicit registration assertions. Latest CI pending.
+
+### V4 checkpoint 6
+Isolated SQL migration/concurrency CI succeeded (45928051692: 18 Python, 36 Node, build). Queue management API/MCP, worker heartbeat and local service examples added; latest checkpoint CI pending.
+
+### V4 checkpoint 7
+Controlled research, queue actions, cached-source provenance and real system telemetry surfaced in existing dashboard. No deployment.
+
+### V4 checkpoint 8
+Panel and worker CI passed; optional server-side session registry and revocation implemented. Scoped main-history security review documented; not a complete all-ref scan. No deployment.
+
+### V4 checkpoint 9
+Optional shared detail-budget ledger and request validation. Existing search ceiling unchanged. Isolated tests pending CI.
+
+### V4 checkpoint 10
+Evidence quality evaluator and independent break-even math; coverage is not statistical confidence. No competitor revenue estimates.
+
+### V4 checkpoint 11
+Nine-stage independent editorial workflow with revision fencing, manual owner CSV experiment import, factual-claim and decision gates, Markdown/JSON export, API/MCP. Gated, pending CI and UI. No automatic publishing, generation or OAuth.
+
+### V4 checkpoint 12
+Dashboard stage controls and owner CSV import attached to candidate cards. Existing visual identity preserved. No production activation.
+
+### V4 checkpoint 13
+Independent topic templates, bounded article discovery and stored cross-language evidence map with UI/MCP. No fabricated trends or automatic competition ranking.
+
+### V4 checkpoint 14
+Monthly production economics and source provenance flags. Independent assumptions only; no competitor analytics. Existing RPM numbers unchanged.
+
+### V4 checkpoint 15a
+Raw channel sample metadata enriched without additional requests. CI pending.
+
+### V4 checkpoint 15
+Channel sample workspace filters, raw metadata and expiry guard; 34 MCP tools. Existing bounded sample retained, no production changes.
+
+### V4 checkpoint 17
+Improved read-only system health and reservation transparency. No production changes.
+
+### V4 checkpoint 19
+Review and rollout runbook: architecture, test commands, isolated migration order, backup/retention, gates, activation and rollback. See engine/tools/opportunity_engine/V4_ROLLOUT.md. Production untouched.

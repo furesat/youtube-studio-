@@ -5,7 +5,8 @@ from itertools import islice
 import json
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
-from urllib.request import Request, urlopen
+from urllib.request import Request, build_opener
+from .storage import NoRedirect
 
 
 class ApiError(Exception):
@@ -21,7 +22,7 @@ def error_code(error):
         reasons = []
     if {"quotaExceeded", "dailyLimitExceeded", "QUOTA_EXCEEDED"}.intersection(reasons):
         return "youtube_quota_exceeded"
-    if {"rateLimitExceeded", "userRateLimitExceeded", "RATE_LIMIT_EXCEEDED"}.intersection(reasons):
+    if error.code == 429 or {"rateLimitExceeded", "userRateLimitExceeded", "RATE_LIMIT_EXCEEDED"}.intersection(reasons):
         return "youtube_rate_limited"
     if {"keyInvalid", "API_KEY_INVALID", "API_KEY_SERVICE_BLOCKED",
         "API_KEY_IP_ADDRESS_BLOCKED", "API_KEY_HTTP_REFERRER_BLOCKED"}.intersection(reasons):
@@ -32,16 +33,20 @@ def error_code(error):
 
 
 class YouTube:
-    def __init__(self, key, search_limit, detail_limit, opener=urlopen):
+    def __init__(self, key, search_limit, detail_limit, opener=None, before_request=None, reserve_detail=None):
         self.key = key
         self.limits = {"search": search_limit, "details": detail_limit}
         self.calls = Counter()
         self.successes = Counter()
         self.cache = {}
-        self.opener = opener
+        self.opener = opener or build_opener(NoRedirect()).open
+        self.reserve_detail = reserve_detail
+        self.before_request = before_request
         self.halted = None
 
     def request(self, endpoint, **parameters):
+        if endpoint not in ("search", "videos", "channels", "playlistItems"):
+            raise ApiError("youtube_endpoint_not_allowed")
         cache_key = (endpoint, tuple(sorted(parameters.items())))
         if cache_key in self.cache:
             return self.cache[cache_key]
@@ -55,12 +60,31 @@ class YouTube:
             "https://www.googleapis.com/youtube/v3/" + endpoint + "?" + urlencode(parameters),
             headers={"X-Goog-Api-Key": self.key},
         )
-        self.calls[endpoint] += 1
         try:
+            if self.before_request is not None:
+                self.before_request()
+            if bucket == "details" and self.reserve_detail is not None:
+                if not self.reserve_detail(endpoint):
+                    raise ApiError("shared_details_budget")
+            self.calls[endpoint] += 1
             with self.opener(request, timeout=20) as response:
                 payload = json.load(response)
             if not isinstance(payload, dict) or not isinstance(payload.get("items"), list):
                 raise ApiError("youtube_invalid_response")
+            if payload.get("nextPageToken") is not None and not isinstance(payload["nextPageToken"], str):
+                raise ApiError("youtube_invalid_response")
+            for item in payload["items"]:
+                if not isinstance(item, dict):
+                    raise ApiError("youtube_invalid_response")
+                if endpoint == "search":
+                    ident = item.get("id")
+                    if not isinstance(ident, dict) or not isinstance(ident.get("videoId"), str) or not ident["videoId"] or not isinstance(item.get("snippet"), dict):
+                        raise ApiError("youtube_invalid_response")
+                if endpoint in ("videos", "channels") and (not isinstance(item.get("id"), str) or not item["id"]):
+                    raise ApiError("youtube_invalid_response")
+                for field in ("snippet", "statistics", "contentDetails"):
+                    if field in item and not isinstance(item[field], dict):
+                        raise ApiError("youtube_invalid_response")
         except HTTPError as error:
             with error:
                 code = error_code(error)
@@ -95,7 +119,7 @@ class YouTube:
                 result = self.request(endpoint, id=",".join(batch), part=part, fields=fields)
             except ApiError as error:
                 errors.add(str(error))
-                if self.halted or str(error) == "local_details_budget":
+                if self.halted or str(error) in ("local_details_budget", "shared_details_budget"):
                     break
             else:
                 records.update((item["id"], item) for item in result["items"])

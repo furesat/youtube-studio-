@@ -1,5 +1,5 @@
 import { env, json, errorResponse, ResearchError, trustedOrigin } from "../lib/research.mjs";
-import { login, logoutCookies, sessionStatus, unlockAdmin, adminFor, sameOriginMutation, auditLog } from "../lib/panel-auth.mjs";
+import { login, logoutCookies, sessionStatus, unlockAdmin, adminFor, sameOriginMutation, auditLog, activeSession, revokeSession } from "../lib/panel-auth.mjs";
 
 function reply(body:unknown,cookies:string[]=[],status=200){
   const response=json(body,status);
@@ -17,9 +17,9 @@ export default async (request:Request)=>{
   const path=new URL(request.url).pathname;
   try{
     if(!env("FASULYE_ACCESS_TOKEN"))throw new ResearchError(503,"Panel parolası yapılandırılmamış.");
-    if(request.method==="GET"&&path==="/api/session")return json(sessionStatus(request));
+    if(request.method==="GET"&&path==="/api/session")return json(await sessionStatus(request));
     if(request.method==="GET"&&path==="/api/admin/logins"){
-      if(!adminFor(request))throw new ResearchError(403,"Yönetici oturumu gerekli.");
+      if(!await activeSession(request)||!adminFor(request))throw new ResearchError(403,"Yönetici oturumu gerekli.");
       return json(await auditLog());
     }
     if(request.method!=="POST")throw new ResearchError(405,"Bu yöntem desteklenmiyor.");
@@ -28,8 +28,13 @@ export default async (request:Request)=>{
       const result=await login(request,await readBody(request));
       return reply(result.body,result.cookies);
     }
-    if(path==="/api/logout")return reply({authenticated:false},logoutCookies());
+    if(path==="/api/logout"){
+      try{await revokeSession(request);}
+      catch{return reply({authenticated:false,error:"Sunucu oturumu iptal edilemedi; bağlantı düzeldiğinde tekrar deneyin."},[],503);}
+      return reply({authenticated:false},logoutCookies());
+    }
     if(path==="/api/admin/unlock"){
+      if(!await activeSession(request))throw new ResearchError(401,"Önce giriş yap.");
       const {password}=await readBody(request);
       return reply({admin:true},[unlockAdmin(request,password)]);
     }

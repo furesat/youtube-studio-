@@ -58,6 +58,9 @@ jobs:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           SUPABASE_SECRET_KEY: ${{ secrets.SUPABASE_SECRET_KEY }}
           SUPABASE_URL: https://niihqywncuwxfxipkgte.supabase.co
+          FASULYE_QUEUE_CONTROLS: ${{ vars.FASULYE_QUEUE_CONTROLS }}
+          FASULYE_SHARED_DETAIL_BUDGET: ${{ vars.FASULYE_SHARED_DETAIL_BUDGET }}
+          FASULYE_ATOMIC_QUEUE: ${{ vars.FASULYE_ATOMIC_QUEUE }}
           FASULYE_QUEUE: ${{ inputs.queue }}
           FASULYE_TOPICS: ${{ inputs.topics }}
           FASULYE_MARKETS: ${{ inputs.markets }}

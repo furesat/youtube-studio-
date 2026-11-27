@@ -3,6 +3,7 @@ import hashlib
 import json
 import os
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.request import Request, build_opener
@@ -38,10 +39,13 @@ def prepare(tasks):
         market = {"id":task["market_id"],"label":task["region"]+" / "+task["language"],
                   "region":task["region"],"language":task["language"],
                   "search_order":task.get("search_order","relevance"),"lookback_days":task.get("lookback_days",365)}
+        for field in ("methodology_version", "comparison_axis", "query_variant", "window_anchor"):
+            if task.get(field) is not None:
+                market[field] = task[field]
         pairs.append((topic,market,[task["query"]]))
     return pairs
 
-def work(env=os.environ):
+def _work(env=os.environ):
     run_id = env.get("GITHUB_RUN_ID","")
     youtube_key = env.get("YOUTUBE_API_KEY","").strip()
     if not youtube_key:
@@ -50,30 +54,71 @@ def work(env=os.environ):
     if not tasks:
         print("No eligible tasks or daily queue budget exhausted.")
         return 0
+    atomic = env.get("FASULYE_ATOMIC_QUEUE") == "1"
+    last_renew = time.monotonic()
+    def renew(force=False):
+        nonlocal last_renew
+        if atomic and (force or time.monotonic() - last_renew >= 60):
+            if not rpc("fasulye_renew_lease", {"p_run_id": run_id, "p_count": len(tasks)}, env):
+                raise RuntimeError("Queue lease lost")
+            last_renew = time.monotonic()
+            heartbeat(env,"running")
     config, _, _ = load_config(ROOT/"config.json")
     config["search"]["pages_per_query"] = 1
     config["search"]["results_per_page"] = 50
     config["search"]["max_search_calls"] = len(tasks)
     config["revenue"]["view_targets"] = {"long_form":[10000,100000,1000000,10000000],"shorts":[10000,100000,1000000,10000000]}
     pairs = prepare(tasks)
-    client = YouTube(youtube_key, len(tasks), config["search"]["max_detail_units"])
+    reserve = (lambda endpoint: rpc("fasulye_reserve_detail", {"p_endpoint": endpoint}, env)) if env.get("FASULYE_SHARED_DETAIL_BUDGET") == "1" else None
+    client = YouTube(youtube_key, len(tasks), config["search"]["max_detail_units"], before_request=renew, reserve_detail=reserve)
     report = run(client,config,pairs,datetime.now(timezone.utc),len(tasks))
     report["channel_samples"] = collect_channel_samples(client, report["videos"])
     report["quota"]["attempts"] = {name:client.calls[name] for name in ("search","videos","channels","playlistItems")}
     report["quota"]["successes"] = {name:client.successes[name] for name in ("search","videos","channels","playlistItems")}
-    save_report(report,environ=env)
     by_topic = {row["topic_id"]: row for row in report["opportunities"]}
     detail_errors = sorted({error for values in report["detail_errors"].values() for error in values})
     failures = 0
+    results = []
     for task in tasks:
         row = by_topic["queue-"+str(task["id"])]
         errors = [q["error"] for q in row["queries"] if q["error"]] or detail_errors
         error = errors[0] if errors else None
-        if not rpc("fasulye_finish",{"p_id":task["id"],"p_run_id":run_id,"p_error":error},env):
-            raise RuntimeError("Queue completion not acknowledged")
+        results.append({"id": task["id"], "error": error})
         failures += bool(error)
+    if atomic:
+        renew(force=True)
+        payload = {"p_run_id": run_id, "p_attempt": 1, "p_report": report, "p_results": results}
+        receipt = rpc("fasulye_commit_queue_report", payload, env)
+        if not isinstance(receipt, dict) or receipt.get("saved") is not True or receipt.get("run_id") != run_id or receipt.get("videos") != len(report["videos"]):
+            raise RuntimeError("Queue commit receipt invalid")
+    else:
+        save_report(report,environ=env)
+        for result in results:
+            if not rpc("fasulye_finish",{"p_id":result["id"],"p_run_id":run_id,"p_error":result["error"]},env):
+                raise RuntimeError("Queue completion not acknowledged")
     print(f"Queue: {len(tasks)-failures}/{len(tasks)} tasks complete; {len(report['videos'])} real videos; report {run_id}")
     return 2 if failures else 0
+
+def heartbeat(env, state):
+    if env.get("FASULYE_QUEUE_CONTROLS") != "1":
+        return
+    run_id=env.get("GITHUB_RUN_ID","")
+    source="standalone" if len(run_id)==16 and run_id.startswith("9") else "github"
+    worker_id=env.get("FASULYE_WORKER_ID") or source+":"+run_id
+    try:
+        rpc("fasulye_worker_heartbeat", {"p_worker_id":worker_id,"p_source":source,"p_state":state,"p_run_id":run_id or None},env)
+    except (RuntimeError,ValueError):
+        print("Worker heartbeat unavailable",file=sys.stderr)
+
+def work(env=os.environ):
+    heartbeat(env,"running")
+    try:
+        code=_work(env)
+    except Exception:
+        heartbeat(env,"error")
+        raise
+    heartbeat(env,"idle" if code==0 else "error")
+    return code
 
 if __name__ == "__main__":
     try:

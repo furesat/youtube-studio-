@@ -1,0 +1,7 @@
+#!/bin/sh
+# Example only: copy outside repository; use an owner-only file with mode 0600.
+set -eu
+set -a
+. "$HOME/.config/fasulye/worker.env"
+set +a
+exec /ABSOLUTE/PATH/python3 -m engine.tools.opportunity_engine.standalone_worker --poll-seconds 300

@@ -10,7 +10,9 @@ test("parses single-series Google Trends CSV with censored values",()=>{
 });
 test("no invented scoring or API data",async()=>{
   assert.equal(scoreIndependent({}).score,null);
-  assert.equal(scoreIndependent({demand:100}).confidence,"low");
+  assert.equal(scoreIndependent({demand:100}).confidence,null);
+  assert.equal(scoreIndependent({demand:100}).coverage_band,"low");
+  assert.equal(scoreIndependent({demand:100}).statistical_confidence,null);
   assert.equal(scoreIndependent({demand:100,gap:100,competition:0,revenue:100,cost:0,cultural_fit:100,long_term:100}).score,100);
   assert.equal(new GoogleTrendsApiProvider().status(),"awaiting_approved_api_access");
   await assert.rejects(()=>new GoogleTrendsApiProvider().fetch({}),{status:503});
@@ -28,6 +30,7 @@ test("profit estimates use independent costs and do not silently convert currenc
   const rpm={format:"shorts",currency:"USD",source:"unit test",low:0,base:.1,high:.2};
   const cost={currency:"USD",voice:5,visuals:10,translation:0,editing:5,other:0};
   assert.equal(profitScenarios(rpm,cost)[0].profit.base,-19);
+  assert.deepEqual(profitScenarios(rpm,cost)[0].break_even_views,{low:null,base:200000,high:100000});
   assert.equal(profitScenarios(rpm,{...cost,currency:"EUR"})[0].profit,null);
   assert.equal(profitScenarios(rpm,null)[0].profit,null);
 });

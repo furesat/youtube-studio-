@@ -65,3 +65,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 12: editorial workflow UI
 - Added progressive nine-stage controls inside existing candidate cards, evidence-quality fields, fact/creative checklist, cost estimate, preregistration, owner CSV upload, decision and versioned export downloads. No raw JSON or run IDs required in routine use. Source declarations remain editor-reviewed; no automatic publication. Feature gated; CI and browser checks pending.
+
+## Checkpoint 13: independent discovery and cross-language map
+- Added fourteen reusable topic templates, neutral Turkish/German/English expressions, existing localized dictionary fallback where available and explicit missing translations. Manual bounded Wikimedia candidate search (max six, stop on 429) plus editor draft handoff. No automated trend claim or YouTube use. Stored cross-language evidence map separates worldwide language readership, country/language Trends, manual reviews and angles, exposes missing/unavailable providers and freshness. New dashboard section and three MCP tools; tests pending CI. Official open-data providers beyond Wikimedia not yet implemented.

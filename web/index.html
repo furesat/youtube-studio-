@@ -20,7 +20,7 @@
       <p>Bir konuyu yerel dilde ara, farklı pazarlardaki videoları karşılaştır ve yayın fikrini değerlendir.</p>
     </header>
 
-    <nav class="section-nav" aria-label="Panel bölümleri"><button data-page="search" type="button">Araştır</button><button data-page="batch" type="button">Pazar keşfi</button><button data-page="results" type="button">Sonuçlar</button><button data-page="history" type="button">Geçmiş</button><button data-page="trend" type="button">Trendler</button><button data-page="rpm" type="button">Gelir</button><button data-page="review" type="button">Fırsatlar</button><button data-page="editorial" type="button">Editoryal iş listesi</button><button data-page="system" type="button">Ayarlar</button></nav><p id="panel-warning" role="status" hidden></p>
+    <nav class="section-nav" aria-label="Panel bölümleri"><button data-page="search" type="button">Araştır</button><button data-page="discover" type="button">Bağımsız keşif</button><button data-page="batch" type="button">Pazar kampanyaları</button><button data-page="results" type="button">Sonuçlar</button><button data-page="history" type="button">Geçmiş</button><button data-page="trend" type="button">Trendler</button><button data-page="rpm" type="button">Gelir</button><button data-page="review" type="button">Fırsatlar</button><button data-page="editorial" type="button">Editoryal iş listesi</button><button data-page="system" type="button">Ayarlar</button></nav><p id="panel-warning" role="status" hidden></p>
     <section id="page-search" class="workspace" aria-labelledby="research-title">
       <div class="form-panel">
         <h2 id="research-title">Yeni araştırma</h2>
@@ -177,6 +177,13 @@
       <div class="table-scroll"><table><thead><tr><th>Konu</th><th>Pazar</th><th>Puan</th><th>Kapsam</th><th>Kapsam düzeyi (istatistiksel güven değil)</th><th>Kaynak</th></tr></thead><tbody id="review-comparison"></tbody></table></div>
       </div><div id="evidence-system"><h2 id="system-title">Sistem durumu</h2><button id="system-check" type="button" class="secondary">Canlı bağlantıları kontrol et</button><div id="system-status" role="status"></div>
       <h3>Giriş kayıtları</h3><p class="hint">Kayıtları yalnızca ayrı yönetici parolasıyla açabilirsin. Cihaz sayısı, benzersiz kişi sayısı değildir.</p><form id="admin-form"><label for="admin-password">Yönetici parolası</label><input id="admin-password" type="password" autocomplete="off" required><button type="submit">Kayıtları aç</button></form><button id="audit-refresh" type="button" class="secondary" hidden>Girişleri yenile</button><p id="audit-status" role="status"></p><div id="audit-metrics"></div><div class="table-scroll"><table><thead><tr><th>Giriş zamanı</th><th>Cihaz</th><th>Tarayıcı / Sistem</th><th>Hatırlandı</th></tr></thead><tbody id="audit-rows"></tbody></table></div></div>
+    </section>
+    <section id="page-discover" class="form-panel" hidden>
+      <h2>Bağımsız konu keşfi</h2><p class="hint">Hazır konu şablonları yalnızca araştırma başlangıcıdır. Wikipedia makale sonuçları YouTube talebi veya trend kanıtı değildir.</p>
+      <form id="independent-discover-form"><label>Konu kategorisi<select id="discover-category"></select></label><label>Yerel dil<select id="discover-language" multiple size="4"></select></label><label>İlgi hipotezi<select id="discover-interest"><option value="uncertain">Belirsiz</option><option value="emerging">Yükselen ilgi hipotezi</option><option value="evergreen">Kalıcı konu hipotezi</option><option value="seasonal">Mevsimsel hipotez</option></select></label>
+      <button type="submit" value="plan">Sorguları planla</button><button type="submit" value="search">Wikipedia'da ara</button></form>
+      <p id="discover-status" role="status"></p><div id="discover-results"></div>
+      <h3>Diller arası kanıt haritası</h3><form id="evidence-map-form"><label>Konu (kayıtlı tam başlık veya katalog konusu)<input id="map-topic" required maxlength="160" list="map-known-topics"></label><datalist id="map-known-topics"></datalist><label>Pazarlar<select id="map-markets" multiple size="5" required></select></label><button type="submit">Kayıtlı kanıtı karşılaştır</button></form><p id="map-status" role="status"></p><div id="map-results"></div>
     </section>
     <section id="page-editorial" class="form-panel" aria-labelledby="editorial-title" hidden>
       <div class="result-head">

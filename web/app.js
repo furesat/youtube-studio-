@@ -508,13 +508,14 @@ function showLogin(){
 function navigate(page){
   currentPage=page;
   const evidence=["trend","rpm","review","system"].includes(page);
-  for(const name of ["search","batch","history","editorial"])el("page-"+name).hidden=page!==name;
+  for(const name of ["search","batch","history","editorial","discover"])el("page-"+name).hidden=page!==name;
   el("results").hidden=page!=="results"||!report;
   el("page-evidence").hidden=!evidence;
   for(const name of ["trend","rpm","review","system"])el("evidence-"+name).hidden=page!==name;
   for(const button of document.querySelectorAll("[data-page]"))button.setAttribute("aria-current",button.dataset.page===page?"page":"false");
   el("panel-warning").hidden=true;
   if(page==="results"&&!report){el("panel-warning").hidden=false;el("panel-warning").textContent="Henüz açık rapor yok. Geçmişten bir rapor seç veya araştırma başlat.";}
+  if(page==="discover")initIndependentDiscovery();
   if(page==="editorial" && el("editorial-form").hidden)void loadEditorial(0);
   if(page==="history"){el("load-history").click();el("batch-history").click();}
   if(["trend","rpm","review"].includes(page))void loadEvidence();
@@ -1002,3 +1003,50 @@ function workflowForm(w,refresh){
  });
  return form;
 }
+
+let discoveryInitialized=false;
+function initIndependentDiscovery(){
+ if(discoveryInitialized||!batchCatalog)return;discoveryInitialized=true;
+ const categories={everyday:"Gündelik nesneler",history:"Tuhaf tarih",professions:"Unutulan meslekler",companies:"Şirket başarısızlıkları",inventions:"İcatlar",psychology:"Psikoloji",geography:"Coğrafya",culture:"Kültür",laws:"Tuhaf yasalar",science:"Bilimsel keşifler",mystery:"Tarihsel gizemler",archives:"Eski gazeteler",economics:"Ekonomi tarihi",events:"Gerçek olaylar"};
+ for(const [id,label] of Object.entries(categories))appendOption("discover-category",id,label);
+ for(const [id,label] of Object.entries(batchCatalog.languages)){appendOption("discover-language",id,label);}
+ el("discover-language").value="tr";
+ for(const m of batchCatalog.markets)appendOption("map-markets",m.id,flag(m.region)+" "+m.label);
+ el("map-markets").value="tr";
+ for(const t of batchCatalog.topics??[])appendOption("map-known-topics",t.label,t.label);
+}
+const selectedValues=id=>[...el(id).selectedOptions].map(o=>o.value);
+el("independent-discover-form").addEventListener("submit",async e=>{
+ e.preventDefault();const mode=e.submitter?.value??"plan";const box=el("discover-results");box.replaceChildren();el("discover-status").textContent="Hazırlanıyor…";
+ const buttons=[...e.currentTarget.querySelectorAll("button")];buttons.forEach(b=>b.disabled=true);
+ try{
+  const data=await request("/api/discover?mode="+mode,{method:"POST",body:JSON.stringify({categories:[el("discover-category").value],languages:selectedValues("discover-language"),interest_hypothesis:el("discover-interest").value})});
+  for(const q of data.queries)box.append(node("p",q.language+" · "+q.query));
+  for(const q of data.missing)box.append(node("p",q.language+" · yerel ifade eksik"));
+  for(const row of data.observations??[]){
+   const detail=node("details");detail.append(node("summary",row.language+" · "+(row.articles===null?"Erişilemedi":row.articles.length+" makale adayı")));
+   if(row.articles===null)detail.append(node("p",row.error));
+   for(const a of row.articles??[]){
+    const link=node("a",a.title);link.href=a.url;link.target="_blank";link.rel="noopener noreferrer";const p=node("p");p.append(link);
+    const select=node("button","Aday taslağına al");select.type="button";select.className="secondary";select.addEventListener("click",()=>{navigate("editorial");openEditorialForm();el("editorial-name").value=a.title;el("editorial-uncertainty").value="Wikipedia makale adayı; talep, kaynak ve özgün açı henüz doğrulanmadı.";});detail.append(p,select);
+   }box.append(detail);
+  }
+  el("discover-status").textContent="Hipotez doğrulanmadı. "+(data.unattempted?.length?"İstek sınırı nedeniyle "+data.unattempted.length+" sorgu çalışmadı.":"");
+ }catch(err){el("discover-status").textContent=err.message;}finally{buttons.forEach(b=>b.disabled=false);}
+});
+el("evidence-map-form").addEventListener("submit",async e=>{
+ e.preventDefault();const box=el("map-results");box.replaceChildren();el("map-status").textContent="Kayıtlar okunuyor…";
+ try{
+  const data=await request("/api/discover?mode=map",{method:"POST",body:JSON.stringify({topic:el("map-topic").value,markets:selectedValues("map-markets")})});
+  for(const row of data.markets){
+   const card=node("article");card.className="editorial-card";card.append(node("h3",row.label),node("p","Yerel ifade: "+(row.local_expressions.join(" / ")||"Bilinmiyor")),node("p","YouTube talebi ve rekabet açığı: bilinmiyor"));
+   for(const [label,records] of [["Google Trends göreli arama ilgisi",row.trends],["Dünya çapında Wikipedia dil sürümü",row.worldwide_language_interest],["Bağımsız değerlendirmeler",row.manual_reviews],["Özgün editoryal açılar",row.editorial_angles]]){
+    const detail=node("details");detail.append(node("summary",label+" · "+(records===null?"Erişilemiyor":records.length+" kayıt")));
+    if(!records?.length)detail.append(node("p","Kanıt bilinmiyor."));
+    for(const record of records??[])detail.append(node("p",[record.article_title,record.source,record.source_url,record.narrative_angle,record.hypothesis,record.uncertainty,record.period_start,record.period_end,record.freshness?.age_days!=null?"Kontrol / alım "+record.freshness.age_days+" gün önce":null].filter(Boolean).join(" · ")));
+    card.append(detail);
+   }box.append(card);
+  }
+  el("map-status").textContent=data.limitations.join(" ");
+ }catch(err){el("map-status").textContent=err.message;}
+});

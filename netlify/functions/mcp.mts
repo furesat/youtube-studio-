@@ -9,6 +9,7 @@ import {
 
 import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 
+import {discoveryPlanSchema,evidenceMapSchema,planIndependent,discoverIndependent,crossLanguageEvidence} from "../lib/independent-discovery.mjs";
 import {workflowReadSchema,workflowAdvanceSchema,readWorkflow,advanceWorkflow} from "../lib/editorial-workflow.mjs";
 import {evidenceQualitySchema,assessEvidence} from "../lib/evidence-quality.mjs";
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
@@ -139,6 +140,9 @@ function buildServer() {
   server.registerTool("assess_independent_evidence",{description:"Assess declared independent sources, freshness, coverage and contradictions; no statistical confidence or success prediction.",inputSchema:evidenceQualitySchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("assess_independent_evidence",()=>assessEvidence(input)));
   server.registerTool("get_editorial_workflow",{description:"Read versioned editorial research stages and owner experiment observations, with Markdown export.",inputSchema:workflowReadSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("get_editorial_workflow",()=>readWorkflow(input)));
   server.registerTool("advance_editorial_workflow",{description:"Explicitly advance one stage only, with current candidate and workflow revisions, source evidence or owner-attested first-party CSV. Requires confirmation. Never publishes or calls YouTube.",inputSchema:workflowAdvanceSchema,annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false}},input=>tool("advance_editorial_workflow",()=>advanceWorkflow(input)));
+  server.registerTool("plan_independent_discovery",{description:"Localized reusable subject templates; hypothesis only, no network or quota.",inputSchema:discoveryPlanSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("plan_independent_discovery",()=>planIndependent(input)));
+  server.registerTool("discover_independent_subjects",{description:"Explicit bounded Wikipedia article search (max six queries); candidates, not proven trends. No YouTube quota and no saving.",inputSchema:discoveryPlanSchema,annotations:{readOnlyHint:false,openWorldHint:true}},input=>tool("discover_independent_subjects",()=>discoverIndependent(input)));
+  server.registerTool("map_cross_language_evidence",{description:"Read stored independent evidence and editorial hypotheses for exact topic and selected markets. No live search or derived YouTube metrics.",inputSchema:evidenceMapSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("map_cross_language_evidence",()=>crossLanguageEvidence(input)));
   return server;
 }
 

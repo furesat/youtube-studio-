@@ -82,3 +82,6 @@ Nine-stage independent editorial workflow with revision fencing, manual owner CS
 
 ### V4 checkpoint 12
 Dashboard stage controls and owner CSV import attached to candidate cards. Existing visual identity preserved. No production activation.
+
+### V4 checkpoint 13
+Independent topic templates, bounded article discovery and stored cross-language evidence map with UI/MCP. No fabricated trends or automatic competition ranking.

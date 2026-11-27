@@ -11,16 +11,17 @@
 <body>
   <header class="top">
     <div class="brand"><span class="mark" aria-hidden="true">F</span> Fasulye</div>
-    <a href="https://github.com/furesat/youtube-studio-" target="_blank" rel="noopener">GitHub ↗</a>
+    <div id="account-bar" hidden><span>Oturum açık</span> <button id="logout" type="button" class="secondary">Çıkış</button></div>
   </header>
-  <main>
+  <section id="login-screen" class="login-screen"><div class="login-card"><p class="eyebrow">FASULYE / ÖZEL ARAŞTIRMA ALANI</p><h1>İyi fikirler<br>burada başlar.</h1><p>Devam etmek için panel parolanı gir.</p><form id="login-form"><label for="login-password">Parola</label><input id="login-password" type="password" autocomplete="current-password" required maxlength="4096"><label for="device-label">Cihaz adı (isteğe bağlı)</label><input id="device-label" maxlength="80" placeholder="Örn. MacBook"><label class="remember"><input id="remember-device" type="checkbox" checked> Bu tarayıcıyı 90 gün hatırla</label><button id="login-submit" type="submit">Giriş yap</button></form><p id="login-status" role="status">Oturum kontrol ediliyor…</p><small>Giriş zamanı, isteğe bağlı cihaz adı, tarayıcı ve işletim sistemi 90 gün tutulabilir. IP veya parola kaydedilmez.</small></div></section>
+  <main id="dashboard" hidden>
     <header class="intro">
-      <h1>Opportunity Engine 2.0</h1>
+      <h1>Opportunity Engine 3.0</h1>
       <p>Bir konuyu yerel dilde ara, farklı pazarlardaki videoları karşılaştır ve yayın fikrini değerlendir.</p>
     </header>
 
-    <nav class="section-nav" aria-label="Panel bölümleri"><a href="#research-title">Genel bakış</a><a href="#batch-title">Keşif ve toplu araştırma</a><a href="#trend-title">Trendler</a><a href="#comparison-title">Rakip videolar</a><a href="#review-title">Fırsatlar</a><a href="#rpm-title">Gelir ve pazarlar</a><a href="#batch-history">Geçmiş</a><a href="#quota-load">Kota</a><a href="#system-title">Sistem</a></nav>
-    <section class="workspace" aria-labelledby="research-title">
+    <nav class="section-nav" aria-label="Panel bölümleri"><button data-page="search" type="button">Araştır</button><button data-page="batch" type="button">Pazar keşfi</button><button data-page="results" type="button">Sonuçlar</button><button data-page="history" type="button">Geçmiş</button><button data-page="trend" type="button">Trendler</button><button data-page="rpm" type="button">Gelir</button><button data-page="review" type="button">Fırsatlar</button><button data-page="system" type="button">Ayarlar</button></nav><p id="panel-warning" role="status" hidden></p>
+    <section id="page-search" class="workspace" aria-labelledby="research-title">
       <div class="form-panel">
         <h2 id="research-title">Yeni araştırma</h2>
         <form id="search">
@@ -34,13 +35,13 @@
             <input id="query" type="search" maxlength="160" placeholder="Ör. Takvimden silinen 11 gün" required>
             <div class="columns">
               <div>
-                <label for="region">Ülke kodu</label>
-                <input id="region" value="TR" maxlength="2" pattern="[A-Za-z]{2}" list="regions" required>
+                <label for="region">Ülke</label>
+                <select id="region" required><option value="TR">Türkiye</option></select>
                 <datalist id="regions"></datalist>
               </div>
               <div>
-                <label for="language">Dil kodu</label>
-                <input id="language" value="tr" maxlength="7" pattern="[a-z]{2}|zh\-Hans|zh\-Hant" list="languages" required>
+                <label for="language">Dil</label>
+                <select id="language" required><option value="tr">Türkçe</option></select>
                 <datalist id="languages"></datalist>
               </div>
             </div>
@@ -55,16 +56,14 @@
 
       <aside class="run-panel">
         <h2>Çalıştırma</h2>
-        <label for="token">Panel erişim anahtarı</label>
-        <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="Netlify’da tanımladığın anahtar">
-        <p class="hint">Anahtar bu sekme açıkken bellekte tutulur.</p>
-        <form id="resume">
+        <p>Tek giriş yeterli. Araştırma durumunu burada izle.</p>
+        <details><summary>Gelişmiş: çalıştırma numarası</summary><form id="resume">
           <label for="run-id">GitHub Actions çalıştırma numarası</label>
           <div class="resume-row">
             <input id="run-id" type="text" inputmode="numeric" pattern="[1-9][0-9]{0,15}" required placeholder="Çalıştırma numarası">
             <button type="submit" class="secondary">Aç</button>
           </div>
-        </form>
+        </form></details>
         <button id="load-history" type="button" class="secondary">Araştırma geçmişi</button>
         <div id="research-history" hidden></div>
         <p id="status" class="status" role="status" aria-live="polite">Araştırma başlatabilir veya önceki bir sonucu açabilirsin.</p>
@@ -72,12 +71,13 @@
       </aside>
     </section>
 
-    <section class="form-panel" aria-labelledby="batch-title">
+    <section id="page-batch" class="form-panel" aria-labelledby="batch-title" hidden>
       <h2 id="batch-title">Uluslararası pazar keşfi ve toplu araştırma</h2>
       <p class="hint">Hazır keşif sorguları 23 dilde yerelleştirilmiştir. Özel konular için hedef dilde doğal arama ifadeleri gir; eksik dil otomatik olarak çevrilmiş sayılmaz.</p>
+      <button id="priority-campaign" type="button" class="secondary">8 öncelikli pazar · 10 kategori · 4 dönem</button><p class="hint">Derin keşif 320 görevi en fazla günlük 30 aramayla sırayla işler. İlk sonuçlar hazır oldukça görünür.</p>
       <form id="batch-form">
         <label for="batch-mode">Araştırma tipi</label>
-        <select id="batch-mode"><option value="discovery">Otomatik kategori keşfi</option><option value="bulk">Özel konular</option></select>
+        <select id="batch-mode"><option value="discovery">Hızlı kategori keşfi</option><option value="campaign">Derin pazar keşfi (3.0)</option><option value="bulk">Özel konular</option></select>
         <div class="columns">
           <div><label for="batch-countries">Ülkeler (boş = tümü)</label><select id="batch-countries" multiple size="7"></select></div>
           <div><label for="batch-languages">Diller (boş = tümü)</label><select id="batch-languages" multiple size="7"></select></div>
@@ -94,7 +94,7 @@
       <p id="batch-status" role="status" aria-live="polite"></p>
       <progress id="batch-progress" max="1" value="0" hidden></progress>
       <div id="batch-reports"></div>
-      <details id="batch-task-details" hidden><summary>Görev ayrıntıları</summary><div class="table-scroll"><table><thead><tr><th>Konu / sorgu</th><th>Pazar</th><th>Durum</th><th>Deneme</th><th>Hata</th></tr></thead><tbody id="batch-task-rows"></tbody></table></div><button id="batch-task-prev" type="button" class="secondary">Önceki</button> <button id="batch-task-next" type="button" class="secondary">Sonraki</button></details>
+      <details id="batch-task-details" hidden><summary>Görev ayrıntıları</summary><div class="table-scroll"><table><thead><tr><th>Konu / sorgu</th><th>Pazar</th><th>Dönem / sıra</th><th>Durum</th><th>Deneme</th><th>Hata</th></tr></thead><tbody id="batch-task-rows"></tbody></table></div><button id="batch-task-prev" type="button" class="secondary">Önceki</button> <button id="batch-task-next" type="button" class="secondary">Sonraki</button></details>
       <h3>Araştırma grupları</h3>
       <button id="batch-history" type="button" class="secondary">Grupları yükle</button>
       <div id="batch-list"></div>
@@ -115,21 +115,21 @@
         <label for="market-filter">Pazar <select id="market-filter"></select></label>
       </div>
       <h3>YouTube arama gözlemleri</h3>
-      <p class="hint">Örnekteki izlenmeler talep, bulunan videolar ve kanallar rekabet hakkında ipucu verir. Bunlar arama hacmini veya izleyici ülkesini ölçmez.</p>
+      <p class="hint">Bu, arama örneklemidir. Arama hacmi, toplam içerik sayısı ve gerçek izleyici coğrafyası bilinmiyor.</p>
       <div class="table-scroll" tabindex="0" role="region" aria-label="YouTube arama gözlemleri">
         <table>
-          <thead><tr><th scope="col">Konu / pazar</th><th scope="col">Arama durumu</th><th scope="col">Video / kanal</th><th scope="col">Bilinen toplam izlenme</th><th scope="col">Sorgular ve videolar</th></tr></thead>
+          <thead><tr><th scope="col">Konu / pazar</th><th scope="col">Arama durumu</th><th scope="col">Video / kanal</th><th scope="col">Yayın dönemi / sıralama</th><th scope="col">Sorgular ve videolar</th></tr></thead>
           <tbody id="observations"></tbody>
         </table>
       </div>
       <h3 id="comparison-title">Rakip videolar · ham API verileri</h3>
       <p class="hint">İzlenme ve abone sayılarını ayrı ayrı filtrele. Küçük kanal başarısı için türetilmiş oran veya tahmini kazanç üretmez. Videoların izleyici ülkesi bilinmiyor.</p>
-      <div class="filters">
+      <div class="filters"><label for="video-period">Yayın dönemi <select id="video-period"><option value="">Tümü</option><option value="7">Son 7 gün</option><option value="30">Son 30 gün</option><option value="90">Son 90 gün</option><option value="365">Son 365 gün</option></select></label><label for="video-format">Süre grubu <select id="video-format"><option value="">Tümü</option><option value="short">3 dk ve altı (Shorts doğrulanmadı)</option><option value="long">3 dk üstü</option><option value="unknown">Bilinmiyor</option></select></label>
         <label for="video-sort">Sırala <select id="video-sort"><option value="views">İzlenme (çoktan aza)</option><option value="subscribers">Abone (azdan çoğa)</option><option value="date">Yeni yayınlar</option></select></label>
-        <label for="video-max-subs">Azami abone <select id="video-max-subs"><option value="">Tümü</option><option value="1000">1.000</option><option value="10000">10.000</option><option value="100000">100.000</option></select></label>
+        <label for="video-max-subs">Azami abone <select id="video-max-subs"><option value="">Tümü</option><option value="1000">1.000</option><option value="10000">10.000</option><option value="50000">50.000</option><option value="100000">100.000</option></select></label>
       </div>
-      <div class="table-scroll"><table><thead><tr><th>Video</th><th>Kanal</th><th>İzlenme</th><th>Abone</th><th>Yayın</th><th>Süre (ISO)</th><th>Beyan edilen dil</th></tr></thead><tbody id="video-comparison"></tbody></table></div>
-      <h3>Bağımsız fırsat puanı</h3>
+      <div class="table-scroll"><table><thead><tr><th>Video</th><th>Kanal</th><th>İzlenme</th><th>Abone</th><th>Yayın</th><th>Süre (ISO)</th><th>Beyan edilen dil</th><th>İçerik incelemesi</th></tr></thead><tbody id="video-comparison"></tbody></table></div>
+      <h3>Küçük kanal kütüphanesi</h3><p class="hint">Her kuyruk çalışmasında seçilen en fazla iki kanalın son 25 herkese açık yüklemesi. Abone sayısı veri toplama anına aittir. Başarı puanı hesaplanmaz.</p><div id="channel-library"></div><h3>Bağımsız fırsat puanı</h3>
       <p class="hint">Talep, rekabet ve kanal uyumu puanları bağımsız değerlendirme girdileridir.</p>
       <div class="table-scroll" tabindex="0" role="region" aria-label="Bağımsız fırsat puanı">
         <table>
@@ -146,8 +146,8 @@
         </table>
       </div>
     </section>
-    <section class="form-panel evidence-panel" aria-labelledby="trend-title">
-      <h2 id="trend-title">Trendler ve arama ilgisi</h2>
+    <section id="page-evidence" class="form-panel evidence-panel" aria-labelledby="trend-title" hidden><p id="evidence-status" role="status"></p>
+      <div id="evidence-trend"><h2 id="trend-title">Trendler ve arama ilgisi</h2>
       <p id="trend-provider" class="hint">Google Trends API erişimi bekleniyor. CSV aktarımı, 0–100 göreli ilgi; mutlak arama hacmi değildir.</p>
       <form id="trend-form">
         <label for="trend-topic">Konu</label><input id="trend-topic" required maxlength="160">
@@ -157,23 +157,25 @@
         <button type="submit">CSV kaydet</button>
       </form>
       <button id="evidence-load" type="button" class="secondary">Kaynakları ve hesaplamaları yükle</button>
-      <p id="evidence-status" role="status"></p><div id="trend-list"></div><div id="trend-detail"></div>
-      <h2 id="rpm-title">Gelir hesaplayıcısı ve ülke karşılaştırması</h2>
+      <div id="trend-list"></div><div id="trend-detail"></div>
+      </div><div id="evidence-rpm"><h2 id="rpm-title">Gelir hesaplayıcısı ve ülke karşılaştırması</h2>
       <p class="hint">Üçüncü taraf RPM varsayımlarıdır; YouTube tarafından onaylanmaz veya garanti edilmez. Ülke, varsayılan izleyici konumudur. Shorts için gelir hesabına esas etkileşimli izlenmeleri kullan. Alt/üst değerler duyarlılık senaryolarıdır, ölçülmüş güven aralığı değildir.</p>
-      <form id="rpm-form">
+      <details><summary>RPM varsayımlarını düzenle</summary><form id="rpm-form">
         <div class="columns"><div><label for="rpm-market">Pazar</label><select id="rpm-market" required></select></div><div><label for="rpm-format">Format</label><select id="rpm-format"><option value="long_form">Normal video</option><option value="shorts">Shorts</option></select></div></div>
         <div class="columns"><div><label for="rpm-low">Düşük RPM</label><input id="rpm-low" type="number" min="0" max="1000000" step="any" required></div><div><label for="rpm-base">Orta RPM</label><input id="rpm-base" type="number" min="0" max="1000000" step="any" required></div><div><label for="rpm-high">Yüksek RPM</label><input id="rpm-high" type="number" min="0" max="1000000" step="any" required></div><div><label for="rpm-currency">Para birimi</label><input id="rpm-currency" value="USD" pattern="[A-Z]{3}" required></div></div>
-        <label for="rpm-source">Kaynak ve varsayım yöntemi</label><input id="rpm-source" required maxlength="1000"><button type="submit">RPM varsayımını kaydet</button>
+        <label for="rpm-source-date">Kaynak tarihi (biliniyorsa)</label><input id="rpm-source-date" type="date"><label for="rpm-reliability">Kaynak türü</label><select id="rpm-reliability"><option value="user_assumption">Kullanıcı varsayımı</option><option value="third_party_model">Üçüncü taraf model</option><option value="third_party_sample">Üçüncü taraf örneklem</option><option value="owner_actual">Kendi gerçek RPM verim</option></select><label for="rpm-source">Kaynak ve varsayım yöntemi</label><input id="rpm-source" required maxlength="1000"><button type="submit">RPM varsayımını kaydet</button>
       </form>
-      <div class="filters"><label for="rpm-filter-market">Pazar <select id="rpm-filter-market"><option value="">Tümü</option></select></label><label for="rpm-filter-format">Format <select id="rpm-filter-format"><option value="">Tümü</option><option value="long_form">Normal video</option><option value="shorts">Shorts</option></select></label><label for="rpm-filter-views">Hedef <select id="rpm-filter-views"><option value="10000">10.000</option><option value="100000">100.000</option><option value="1000000" selected>1 milyon</option><option value="10000000">10 milyon</option></select></label></div>
-      <div class="table-scroll"><table><thead><tr><th>Pazar</th><th>Format</th><th>Düşük</th><th>Orta</th><th>Yüksek</th><th>Kaynak</th></tr></thead><tbody id="rpm-comparison"></tbody></table></div>
-      <h2 id="review-title">Bağımsız içerik fırsatları</h2>
+      </details><details><summary>Üretim maliyetlerini gir</summary><form id="cost-form"><div class="columns"><div><label for="cost-market">Pazar</label><select id="cost-market" required></select></div><div><label for="cost-format">Format</label><select id="cost-format"><option value="long_form">Normal video</option><option value="shorts">Shorts</option></select></div></div><div class="columns" id="cost-fields"></div><label for="cost-currency">Para birimi (RPM ile aynı olmalı)</label><input id="cost-currency" value="USD" pattern="[A-Z]{3}" required><label for="cost-source">Maliyet dayanağı</label><input id="cost-source" required maxlength="1000"><button type="submit">Maliyetleri kaydet</button></form></details><div class="filters"><label for="rpm-filter-market">Pazar <select id="rpm-filter-market"><option value="">Tümü</option></select></label><label for="rpm-filter-format">Format <select id="rpm-filter-format"><option value="">Tümü</option><option value="long_form">Normal video</option><option value="shorts">Shorts</option></select></label><label for="rpm-filter-views">Hedef <select id="rpm-filter-views"><option value="10000">10.000</option><option value="100000">100.000</option><option value="1000000" selected>1 milyon</option><option value="10000000">10 milyon</option></select></label></div>
+      <div class="table-scroll"><table><thead><tr><th>Pazar</th><th>Format</th><th>Düşük</th><th>Orta</th><th>Yüksek</th><th>Üretim maliyeti</th><th>Vergi öncesi kâr (D/O/Y)</th><th>Kaynak</th></tr></thead><tbody id="rpm-comparison"></tbody></table></div>
+      </div><div id="evidence-review"><h2 id="review-title">Bağımsız içerik fırsatları</h2>
       <p class="hint">0–100 girdileri YouTube API verilerinden bağımsız araştırmaya dayanmalıdır. Eksik olanları boş bırak. Rekabet ve maliyette yüksek değer olumsuzdur.</p>
       <form id="review-form"><label for="review-topic">Konu</label><input id="review-topic" maxlength="160" required><label for="review-market">Pazar</label><select id="review-market" required></select><div id="review-factors" class="columns"></div><label for="review-source">Bağımsız kaynak ve yöntem</label><input id="review-source" maxlength="1000" required><button type="submit">Değerlendirmeyi kaydet</button></form>
       <div class="table-scroll"><table><thead><tr><th>Konu</th><th>Pazar</th><th>Puan</th><th>Kapsam</th><th>Güven</th><th>Kaynak</th></tr></thead><tbody id="review-comparison"></tbody></table></div>
-      <h2 id="system-title">Sistem durumu</h2><button id="system-check" type="button" class="secondary">Canlı bağlantıları kontrol et</button><div id="system-status" role="status"></div>
+      </div><div id="evidence-system"><h2 id="system-title">Sistem durumu</h2><button id="system-check" type="button" class="secondary">Canlı bağlantıları kontrol et</button><div id="system-status" role="status"></div>
+      <h3>Giriş kayıtları</h3><p class="hint">Kayıtları yalnızca ayrı yönetici parolasıyla açabilirsin. Cihaz sayısı, benzersiz kişi sayısı değildir.</p><form id="admin-form"><label for="admin-password">Yönetici parolası</label><input id="admin-password" type="password" autocomplete="off" required><button type="submit">Kayıtları aç</button></form><button id="audit-refresh" type="button" class="secondary" hidden>Girişleri yenile</button><p id="audit-status" role="status"></p><div id="audit-metrics"></div><div class="table-scroll"><table><thead><tr><th>Giriş zamanı</th><th>Cihaz</th><th>Tarayıcı / Sistem</th><th>Hatırlandı</th></tr></thead><tbody id="audit-rows"></tbody></table></div></div>
     </section>
+    <section id="page-history" class="form-panel" hidden><h2>Araştırma geçmişi</h2><p>Önceki araştırmalarını veya gruplarını seç.</p><div id="history-slot"></div><div id="groups-slot"></div></section>
   </main>
-  <footer>Video ve kanal verileri YouTube Data API’den gelir. <a href="https://www.youtube.com/t/terms">YouTube Hizmet Şartları</a></footer>
+  <footer id="panel-footer" hidden>Video ve kanal verileri YouTube Data API’den gelir. <a href="https://www.youtube.com/t/terms">YouTube Hizmet Şartları</a></footer>
 </body>
 </html>

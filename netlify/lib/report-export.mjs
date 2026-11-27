@@ -15,8 +15,8 @@ export async function exportReport(report) {
   const template = await readFile(resolve(process.cwd(), "engine/tools/opportunity_engine/dashboard.html"), "utf8");
   const files = {
     "report.json": serialized + "\n",
-    "opportunities.csv": csv(["topic_id","topic","market_id","market","region","language","search_status","sample_video_count","sample_channel_count","known_view_video_count","known_subscriber_video_count","sample_total_known_views","demand","competition","channel_fit","coverage","score","source"], report.opportunities.map(row => ({...row,...row.review}))),
-    "videos.csv": csv(["topic_id","market_id","video_id","title","published_at","channel_id","channel_title","views","subscribers"], report.opportunities.flatMap(row => row.video_ids.map(id => ({topic_id:row.topic_id,market_id:row.market_id,...report.videos[id]})))),
+    "opportunities.csv": csv(["topic_id","topic","market_id","market","region","language","search_status","sample_video_count","sample_channel_count","known_view_video_count","known_subscriber_video_count","lookback_days","search_order","demand","competition","channel_fit","coverage","score","source"], report.opportunities.map(row => ({...row,...row.review}))),
+    "videos.csv": csv(["topic_id","market_id","video_id","title","published_at","channel_id","channel_title","views","subscribers","duration","category_id","default_language","audio_language","description","channel_created_at"], report.opportunities.flatMap(row => row.video_ids.map(id => ({topic_id:row.topic_id,market_id:row.market_id,...report.videos[id]})))),
     "revenue.csv": csv(["market_id","format","views","currency","rpm_low","rpm_base","rpm_high","rpm_source","low","base","high"], Object.entries(report.revenue_by_market).flatMap(([market_id, scenarios]) => scenarios.map(s => ({market_id,...s,...Object.fromEntries(Object.entries(s.rpm ?? {}).map(([k,v])=>["rpm_"+k,v]))})))),
     "dashboard.html": template.replace("__REPORT_JSON__", () => serialized.replaceAll("<", "\\u003c")),
   };

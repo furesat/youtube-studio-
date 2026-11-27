@@ -48,7 +48,7 @@ class YouTube:
         if self.halted:
             raise ApiError(self.halted)
         bucket = "search" if endpoint == "search" else "details"
-        used = self.calls["search"] if bucket == "search" else self.calls["videos"] + self.calls["channels"]
+        used = self.calls["search"] if bucket == "search" else sum(v for k,v in self.calls.items() if k != "search")
         if used >= self.limits[bucket]:
             raise ApiError(f"local_{bucket}_budget")
         request = Request(
@@ -77,7 +77,7 @@ class YouTube:
 
     def search(self, market, query, after, before, limit, token):
         parameters = dict(
-            part="snippet", type="video", order="relevance", q=query,
+            part="snippet", type="video", order=market.get("search_order", "relevance"), q=query,
             regionCode=market["region"], relevanceLanguage=market["language"],
             publishedAfter=after, publishedBefore=before, maxResults=limit,
             fields="nextPageToken,items(id/videoId,snippet(channelId,channelTitle,title,publishedAt))",

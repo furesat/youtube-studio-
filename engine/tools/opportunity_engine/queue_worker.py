@@ -11,6 +11,7 @@ from .config import load_config, max_search_pages
 from .research import run
 from .storage import PROJECT_URL, NoRedirect, save_report
 from .youtube import YouTube
+from .channel_samples import collect_channel_samples
 
 ROOT = Path(__file__).parent
 
@@ -35,7 +36,8 @@ def prepare(tasks):
         # Keep each requested subject independently identifiable, even for equal labels.
         topic = {"id":"queue-" + str(task["id"]), "label":task["topic"]}
         market = {"id":task["market_id"],"label":task["region"]+" / "+task["language"],
-                  "region":task["region"],"language":task["language"]}
+                  "region":task["region"],"language":task["language"],
+                  "search_order":task.get("search_order","relevance"),"lookback_days":task.get("lookback_days",365)}
         pairs.append((topic,market,[task["query"]]))
     return pairs
 
@@ -50,11 +52,15 @@ def work(env=os.environ):
         return 0
     config, _, _ = load_config(ROOT/"config.json")
     config["search"]["pages_per_query"] = 1
+    config["search"]["results_per_page"] = 50
     config["search"]["max_search_calls"] = len(tasks)
     config["revenue"]["view_targets"] = {"long_form":[10000,100000,1000000,10000000],"shorts":[10000,100000,1000000,10000000]}
     pairs = prepare(tasks)
     client = YouTube(youtube_key, len(tasks), config["search"]["max_detail_units"])
-    report = run(client,config,pairs,datetime.now(timezone.utc),max_search_pages(pairs,config["search"]))
+    report = run(client,config,pairs,datetime.now(timezone.utc),len(tasks))
+    report["channel_samples"] = collect_channel_samples(client, report["videos"])
+    report["quota"]["attempts"] = {name:client.calls[name] for name in ("search","videos","channels","playlistItems")}
+    report["quota"]["successes"] = {name:client.successes[name] for name in ("search","videos","channels","playlistItems")}
     save_report(report,environ=env)
     by_topic = {row["topic_id"]: row for row in report["opportunities"]}
     detail_errors = sorted({error for values in report["detail_errors"].values() for error in values})

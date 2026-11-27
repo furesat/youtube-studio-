@@ -4,6 +4,7 @@ import {
 } from "../lib/research.mjs";
 
 import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch } from "../lib/batch.mjs";
+import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
 export default async (request: Request) => {
@@ -18,6 +19,15 @@ export default async (request: Request) => {
     return json({ error: "Panel erişim anahtarı geçersiz." }, 401, { "WWW-Authenticate": "Bearer" });
   }
   try {
+    if (url.pathname === "/api/evidence") {
+      if (request.method === "GET") { const id=url.searchParams.get("id"); return json(id?await getTrend(id):await getEvidence()); }
+      if (request.method === "POST") {
+        const raw=await request.text();
+        if(raw.length>350000)throw new ResearchError(413,"Kaynak dosyası çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        return json(await writeEvidence(body),201);
+      }
+    }
     if (url.pathname === "/api/batch") {
       if (request.method === "POST") {
         const body = await request.text();
@@ -74,6 +84,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

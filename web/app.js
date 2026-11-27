@@ -228,6 +228,7 @@ function filterOptions(target, entries) {
 
 function displayReport(data, id) {
   report = data;
+  if(!Number.isFinite(reportExpiry())||reportExpiry()<=Date.now()){clearReport();throw new Error("Raporun saklama süresi doldu veya tarih geçersiz.");}
   el("download").dataset.runId = id;
   const markets = new Map(data.opportunities.map(row => [row.market_id, row.market]));
   const topics = new Map(data.opportunities.map(row => [row.topic_id, row.topic]));
@@ -242,6 +243,7 @@ function displayReport(data, id) {
   filterOptions("video-declared-language",declared.map(l=>[l,l==="unknown"?"Bilinmiyor":(batchCatalog?.languages[l]??l)]));
   el("video-include").value="";el("video-exclude").value="";
   renderRows();
+  setupChannelFilters(data.channel_samples??[]);
   renderChannels(data.channel_samples??[]);
 }
 
@@ -501,7 +503,7 @@ el("system-check").addEventListener("click",async()=>{
 let initialized=false,currentPage="search";
 function showLogin(){
   active?.abort();batchController?.abort();
-  clearEditorial();
+  clearEditorial();clearReport();
   el("dashboard").hidden=true;el("account-bar").hidden=true;el("panel-footer").hidden=true;el("login-screen").hidden=false;
   el("login-status").textContent="Devam etmek için giriş yap.";
 }
@@ -573,23 +575,54 @@ el("priority-campaign").addEventListener("click",()=>{
   el("batch-preview").click();
 });
 
+function reportExpiry(){
+  if(!report)return NaN;
+  return report.expires_at?Date.parse(report.expires_at):Date.parse(report.collected_at)+30*86400000;
+}
+function clearReport(){
+  report=null;el("results").hidden=true;
+  for(const id of ["observations","reviews","revenue","video-comparison","channel-library"])el(id).replaceChildren();
+  delete el("download").dataset.runId;
+}
+function expireReport(){
+  if(report&&(!Number.isFinite(reportExpiry())||reportExpiry()<=Date.now())){clearReport();if(currentPage==="results"){navigate("results");el("panel-warning").textContent="Raporun saklama süresi doldu. Yeni araştırma başlat.";}}
+}
+function setupChannelFilters(channels){
+  filterOptions("channel-select",channels.map(c=>[c.channel_id,c.channel_title??c.channel_id]));
+  const langs=[...new Set(channels.flatMap(c=>(c.videos??[]).map(v=>v.audio_language??v.default_language??"unknown")))];
+  filterOptions("channel-language",langs.map(l=>[l,l==="unknown"?"Bilinmiyor":batchCatalog?.languages[l]??l]));
+  for(const id of ["channel-start","channel-end","channel-duration"])el(id).value="";
+  el("channel-sort").value="date";
+}
 function renderChannels(channels){
   const box=el("channel-library");box.replaceChildren();
+  if(!report||!Number.isFinite(reportExpiry())||reportExpiry()<=Date.now()){expireReport();return;}
+  const status=el("channel-status"),start=el("channel-start").value,end=el("channel-end").value,selected=el("channel-select").value,lang=el("channel-language").value,duration=el("channel-duration").value;
+  status.textContent="Toplama: "+dates.format(new Date(report.collected_at))+" · Son geçerlilik: "+dates.format(new Date(reportExpiry()))+" · Süre, Shorts formatını doğrulamaz.";
+  if(start&&end&&start>end){status.textContent="Başlangıç tarihi bitişten sonra olamaz.";return;}
   if(!channels.length){box.append(node("p","Bu raporda kanal yükleme örneklemi yok."));return;}
-  for(const channel of channels){
-    const details=node("details");const title=node("summary",(channel.channel_title??channel.channel_id)+" · "+fmt(channel.current_subscribers)+" mevcut abone");
-    details.append(title,node("p","Kanal kuruluşu: "+(channel.channel_created_at?.slice(0,10)??"bilinmiyor")));
+  for(const channel of channels.filter(c=>!selected||c.channel_id===selected)){
+    const details=node("details");details.open=true;const title=node("summary",(channel.channel_title??channel.channel_id)+" · "+fmt(channel.current_subscribers)+" toplama anındaki abone");
+    details.append(title,node("p","Kanal kuruluşu: "+(channel.channel_created_at?.slice(0,10)??"bilinmiyor")+" · Geçmiş abone sayısı bilinmiyor."));
     const link=node("a","YouTube kanalını aç");link.href="https://www.youtube.com/channel/"+encodeURIComponent(channel.channel_id);link.target="_blank";link.rel="noopener noreferrer";details.append(link);
     if(channel.error)details.append(node("p","Eksik veri: "+channel.error));
+    if(channel.playlist_has_more)details.append(node("p","Daha fazla yükleme var; bu örneklem tüm kanalı kapsamaz."));
+    if(channel.missing_video_details!=null&&channel.missing_video_details>0)details.append(node("p",channel.missing_video_details+" video ayrıntısı alınamadı."));
+    const videos=(channel.videos??[]).filter(v=>{const day=v.published_at?.slice(0,10);return (!start||day&&day>=start)&&(!end||day&&day<=end)&&(!duration||durationGroup(v.duration)===duration)&&(!lang||(v.audio_language??v.default_language??"unknown")===lang);});
+    videos.sort((a,b)=>el("channel-sort").value==="views"?(b.views??-1)-(a.views??-1):String(b.published_at??"").localeCompare(String(a.published_at??"")));
     const list=node("ul");
-    for(const v of channel.videos??[]){
+    for(const v of videos){
       const item=node("li"),a=node("a",v.title??v.video_id);
       a.href="https://www.youtube.com/watch?v="+encodeURIComponent(v.video_id);a.target="_blank";a.rel="noopener noreferrer";
-      item.append(a,document.createTextNode(" · "+(v.published_at?.slice(0,10)??"bilinmiyor")+" · "+fmt(v.views)+" izlenme · "+(v.duration??"süre bilinmiyor")));list.append(item);
+      item.append(a,document.createTextNode(" · "+(v.published_at?.slice(0,10)??"bilinmiyor")+" · "+fmt(v.views)+" izlenme · "+(v.duration??"süre bilinmiyor")+" · "+(v.audio_language??v.default_language??"dil bilinmiyor")));list.append(item);
     }
-    details.append(list);box.append(details);
+    details.append(node("p",videos.length+" eşleşen örnek video"),list);box.append(details);
   }
 }
+for(const id of ["channel-select","channel-start","channel-end","channel-duration","channel-language","channel-sort"])el(id).addEventListener("change",()=>{if(report)renderChannels(report.channel_samples??[]);});
+el("channel-refresh").addEventListener("click",()=>{navigate("search");el("query").focus();});
+setInterval(expireReport,30000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)expireReport();});
 const costs={voice:"Seslendirme",visuals:"Görsel üretimi",translation:"Çeviri",editing:"Kurgu",other:"Diğer"};
 for(const [key,label] of Object.entries(costs)){
   const wrap=node("div"),lab=node("label",label),input=node("input");

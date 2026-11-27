@@ -77,3 +77,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 15b: channel inspection API
 - Added read-only stored channel upload filtering and pagination, report expiry guard, and MCP tool. No new YouTube API requests. Two Node fixtures added; CI pending. UI next.
+
+## Checkpoint 15c: channel inspection dashboard
+- Added date, channel, language, duration and raw-view sort filters; visible collection and expiry dates, incomplete sample warning, report clearing on expiry and logout. New research remains an explicit owner action, no background refresh or extra quota. Existing bounded max-two-channel sample retained. Arbitrary channel-ID collection not implemented. Browser tests next; CI pending.

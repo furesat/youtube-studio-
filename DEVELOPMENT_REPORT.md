@@ -91,3 +91,6 @@ Monthly production economics and source provenance flags. Independent assumption
 
 ### V4 checkpoint 15a
 Raw channel sample metadata enriched without additional requests. CI pending.
+
+### V4 checkpoint 15
+Channel sample workspace filters, raw metadata and expiry guard; 34 MCP tools. Existing bounded sample retained, no production changes.

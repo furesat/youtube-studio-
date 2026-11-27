@@ -201,3 +201,6 @@ Use the Independent discovery dashboard or MCP plan_independent_discovery (pure)
 
 ### Monthly economics
 The monthly calculator and MCP plan_monthly_production_economics use owner-entered low/base/high assumptions for per-video targets, RPM, research hours/rate and cost components. Use matching supported ISO currencies. Downside pairs low revenue with high costs; upside pairs high revenue with low costs. Fixed costs are monthly only, not in per-video break-even. RPM references are unverified third-party estimates unless explicitly owner-declared, and even owner declaration is not verified by OAuth. RevenueLab model and AIR sample need per-market method/currency review; no existing figures were replaced.
+
+### Channel inspection
+Use an unexpired report's channel section or `inspect_channel_uploads` MCP tool (read-only). Filter by shared publication dates, duration group and declared language, sort raw observations, paginate. Current subscribers refer to collection, never publication. Duration does not establish Shorts classification. No separate permanent channel store. Start a new normal research explicitly to collect fresh samples; direct arbitrary-channel collection is not implemented. Browser clears expired visible reports on periodic check or returning to tab, and when logged out.

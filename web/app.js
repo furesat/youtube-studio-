@@ -195,7 +195,7 @@ function detailFor(row) {
   details.append(node("summary", "Aç"));
   for (const query of row.queries) {
     const suffix = query.error ? ` · ${query.error}` : query.has_more ? " · Daha fazla sonuç var" : "";
-    details.append(node("p", `${query.query} · ${query.pages} sayfa${suffix}`));
+    details.append(node("p", `${query.query} · ${query.lookback_days??365} gün · ${query.order??"relevance"} · ${query.pages} sayfa${suffix}`));
   }
   if (row.video_ids.length === 0) return details;
   const list = node("ul");
@@ -249,7 +249,7 @@ function renderRows() {
   for (const id of ["observations", "reviews", "revenue"]) el(id).replaceChildren();
   for (const row of rows) {
     const label = `${row.topic} / ${row.market}`;
-    const views = `${fmt(row.sample_total_known_views)} (${fmt(row.known_view_video_count)} videoda)`;
+    const views = `${row.lookback_days??365} gün / ${row.search_order??"relevance"}`;
     addRow("observations", [label, statuses[row.search_status],
       `${fmt(row.sample_video_count)} / ${fmt(row.sample_channel_count)}`, views,
       row.queries.length ? detailFor(row) : "—"]);
@@ -308,7 +308,11 @@ async function initBatch() {
     const names=new Intl.DisplayNames(["tr"],{type:"region"});
     for(const code of new Set(batchCatalog.markets.map(m=>m.region))) appendOption("batch-countries",code,flag(code)+" "+names.of(code));
     for(const [code,label] of Object.entries(batchCatalog.languages)) appendOption("batch-languages",code,label);
-    for(const c of batchCatalog.categories) appendOption("batch-categories",c.id,c.label);
+    for(const c of [...new Map([...batchCatalog.categories,...(batchCatalog.campaign?.categories??[])].map(c=>[c.id,c])).values()]) appendOption("batch-categories",c.id,c.label);
+    el("region").replaceChildren();el("language").replaceChildren();
+    for(const code of new Set(batchCatalog.markets.map(m=>m.region))) appendOption("region",code,flag(code)+" "+names.of(code));
+    for(const [code,label] of Object.entries(batchCatalog.languages)) appendOption("language",code,label);
+    el("region").value="TR";el("language").value="tr";
     for(const market of batchCatalog.markets) for(const id of ["trend-market","rpm-market","rpm-filter-market","review-market"]) appendOption(id,market.id,flag(market.region)+" "+market.label);
   } catch(e) { el("batch-status").textContent=e.message; }
 }
@@ -316,7 +320,7 @@ function batchInput() {
   if(!batchCatalog) throw new Error("Katalog yüklenmedi.");
   const mode=el("batch-mode").value,languages=selected("batch-languages");
   const input={mode,countries:selected("batch-countries"),languages};
-  if(mode==="discovery") return {...input,categories:selected("batch-categories")};
+  if(mode!=="bulk") return {...input,categories:selected("batch-categories")};
   const topics=new Map();
   const raw=el("batch-topics").value.trim();
   const lines=raw.includes("|")?raw.split(/\r?\n/):raw.split(/[,\r\n]+/);
@@ -335,7 +339,7 @@ function batchInput() {
   return {...input,topics:[...topics.values()]};
 }
 el("batch-mode").addEventListener("change",()=>{
-  const discovery=el("batch-mode").value==="discovery";
+  const discovery=el("batch-mode").value!=="bulk";
   el("category-field").hidden=!discovery;el("bulk-field").hidden=discovery;
 });
 async function submitBatch(preview) {
@@ -397,18 +401,20 @@ function marketLabel(id){return batchCatalog?.markets.find(m=>m.id===id)?.label?
 function renderComparison(rows) {
   const ids=new Set(rows.flatMap(r=>r.video_ids));
   const cap=el("video-max-subs").value;
-  const videos=[...ids].map(id=>report.videos[id]).filter(v=>v&&(!cap||v.subscribers!=null&&v.subscribers<=Number(cap)));
+  const period=Number(el("video-period").value),format=el("video-format").value;
+  const videos=[...ids].map(id=>report.videos[id]).filter(v=>v&&(!cap||v.subscribers!=null&&v.subscribers<=Number(cap))&&(!period||(Date.parse(report.collected_at)-Date.parse(v.published_at)>=0&&Date.parse(report.collected_at)-Date.parse(v.published_at)<=period*86400000))&&(!format||durationGroup(v.duration)===format));
   const sort=el("video-sort").value;
   videos.sort((a,b)=>sort==="subscribers"?(a.subscribers??Infinity)-(b.subscribers??Infinity):sort==="date"?String(b.published_at??"").localeCompare(String(a.published_at??"")):(b.views??-1)-(a.views??-1));
   el("video-comparison").replaceChildren();
   for(const v of videos){
     const link=node("a",v.title??v.video_id);link.href="https://www.youtube.com/watch?v="+encodeURIComponent(v.video_id);link.target="_blank";link.rel="noopener noreferrer";
     const channel=node("a",v.channel_title??v.channel_id??"Bilinmiyor");channel.href="https://www.youtube.com/channel/"+encodeURIComponent(v.channel_id??"");channel.target="_blank";channel.rel="noopener noreferrer";
-    addRow("video-comparison",[link,channel,fmt(v.views),fmt(v.subscribers),v.published_at?.slice(0,10),v.duration,v.audio_language??v.default_language??"Bilinmiyor"]);
+    const detail=node("details");detail.append(node("summary","İncele"),node("p",v.description??"Açıklama yok"),node("p","Kategori kodu: "+(v.category_id??"bilinmiyor")),node("p","Kanal kuruluşu: "+(v.channel_created_at?.slice(0,10)??"bilinmiyor")),node("p","Alaka: manuel inceleme gerekli. Shorts: doğrulanmadı."));
+    addRow("video-comparison",[link,channel,fmt(v.views),fmt(v.subscribers),v.published_at?.slice(0,10),v.duration,v.audio_language??v.default_language??"Bilinmiyor",detail]);
   }
   if(!videos.length)addRow("video-comparison",["Eşleşen video yok."]);
 }
-for(const id of ["video-sort","video-max-subs"])el(id).addEventListener("change",()=>{if(report)renderRows();});
+for(const id of ["video-sort","video-max-subs","video-period","video-format"])el(id).addEventListener("change",()=>{if(report)renderRows();});
 function renderEvidence(){
   if(!evidenceData)return;
   for(const id of ["rpm-comparison","review-comparison","trend-list"])el(id).replaceChildren();
@@ -535,3 +541,15 @@ el("admin-form").addEventListener("submit",async e=>{
 });
 el("audit-refresh").addEventListener("click",()=>void loadAudit());
 void (async()=>{try{const session=await request("/api/session");if(session.authenticated)await openDashboard(session);else showLogin();}catch(e){el("login-status").textContent=e.message;}})();
+
+function durationGroup(duration){
+  const m=/^PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?$/.exec(duration??"");
+  if(!m||!m.slice(1).some(Boolean))return "unknown";
+  return Number(m[1]??0)*3600+Number(m[2]??0)*60+Number(m[3]??0)<=180?"short":"long";
+}
+el("priority-campaign").addEventListener("click",()=>{
+  if(!batchCatalog?.campaign)return;
+  el("batch-mode").value="campaign";el("batch-mode").dispatchEvent(new Event("change"));
+  for(const id of ["batch-countries","batch-languages","batch-categories"])for(const option of el(id).options)option.selected=false;
+  el("batch-preview").click();
+});

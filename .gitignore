@@ -32,3 +32,6 @@ videos/*/audio/dub_*.wav
 
 # Shorts görselleri (PNG) git dışı
 shorts/**/images/
+shorts/**/*.mp4
+shorts/**/*.mp3
+shorts/**/*.wav

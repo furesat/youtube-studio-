@@ -17,7 +17,6 @@ Yazım: ekranda/altyazıda rakamlar rakamla; seslendirme metninde (ElevenLabs) y
 | L08 | FM01_E8 | Üstelik tokalaşmanın herkesle selamlaşma hâline gelmesi çok daha yeni. Yüzyıllarca insanlar eğildi, şapka çıkardı. | aynı |
 | L09 | FM_ORTAK_02 → FM_ORTAK_03 (+ "ŞÜPHELİ" damgası) | Mahkemenin kararı: Silahsızlık iddiası… kanıt yetersizliğinden şüpheli. | aynı (… yerinde kısa duraklama) |
 | L10 | FM01_E9 | Ama yine de… kollarını bir kontrol et. | aynı |
-| son kart | FM01_E9 (donuk) | Sıradaki dava: Ispanakta gerçekten çok demir var mı? | (ses yok) |
 
 **Açıklama:**
 Herkes tokalaşmanın "silahım yok" demek için icat edildiğini söylüyor. Fasulye Mahkemesi kanıtlara baktı: 3.000 yıllık bir Asur kabartması, Yunan mezar taşları… ve hançer hikâyesine dair tek bir kaynak bile yok. Karar: ŞÜPHELİ. 🤝⚖️

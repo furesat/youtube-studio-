@@ -1,0 +1,121 @@
+{
+ "audio": "FM01_ses_v1.mp3",
+ "images_dir": "images",
+ "out": "FM01_tokalasma.mp4",
+ "verdict": "ŞÜPHELİ",
+ "series": "Fasulye Mahkemesi #01",
+ "lines": [
+  {
+   "text": "Tokalaşma, silahsız olduğunu göstermek için icat edildi. Herkes böyle anlatıyor.",
+   "shots": [
+    [
+     "FM_ORTAK_01_v1.png",
+     0.4
+    ],
+    [
+     "FM01_E1_v1.png",
+     0.6
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Peki kanıt var mı? Fasulye Mahkemesi dosyayı açıyor.",
+   "shots": [
+    [
+     "FM_ORTAK_02_v1.png",
+     0.25
+    ],
+    [
+     "FM01_E2_v1.png",
+     0.75
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Bilinen en eski tokalaşma tasviri yaklaşık 3.000 yıllık. Irak'ta bulunan bir taş kabartmada Asur Kralı III. Salmanassar, Babil kralıyla el sıkışıyor.",
+   "shots": [
+    [
+     "FM01_E3_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Ama ortada \"silahım yok\" mesajı yok. Bu bir ittifak. Yani anlaşma tokası.",
+   "shots": [
+    [
+     "FM01_E4_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Eski Yunanlılar da el sıkışmayı mezar taşlarına ve antlaşmalara işledi. Anlamı yine aynı: söz ve bağlılık.",
+   "shots": [
+    [
+     "FM01_E5_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Peki kolundaki hançeri düşürmek için sallanıyordu hikâyesi?",
+   "shots": [
+    [
+     "FM01_E6_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Bunun hiçbir kaynağı yok. Güzel bir hikâye, o kadar.",
+   "shots": [
+    [
+     "FM01_E7_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Üstelik tokalaşmanın herkesle selamlaşma hâline gelmesi çok daha yeni. Yüzyıllarca insanlar eğildi, şapka çıkardı.",
+   "shots": [
+    [
+     "FM01_E8_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  },
+  {
+   "text": "Mahkemenin kararı: Silahsızlık iddiası… kanıt yetersizliğinden şüpheli.",
+   "shots": [
+    [
+     "FM_ORTAK_02_v1.png",
+     0.25
+    ],
+    [
+     "FM_ORTAK_03_v1.png",
+     0.75
+    ]
+   ],
+   "stamp": true
+  },
+  {
+   "text": "Ama yine de… kollarını bir kontrol et.",
+   "shots": [
+    [
+     "FM01_E9_v1.png",
+     1
+    ]
+   ],
+   "stamp": false
+  }
+ ]
+}

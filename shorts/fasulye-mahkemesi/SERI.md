@@ -7,7 +7,7 @@
 2. **3–25 sn — Kanıtlar:** 2–3 kısa kanıt; her biri bir görsel.
 3. **25–38 sn — İkinci ters köşe:** "Peki bu efsane nereden çıktı?"
 4. **38–45 sn — Karar:** damga (SUÇLU / BERAAT / ŞÜPHELİ) + kuru şaka.
-5. Kapanış kartı: "Sıradaki dava: …" (seriyi bağlar)
+5. Kapanış kartı YOK: son şakadan sonra video biter (sıradaki davayı duyurma).
 
 ## Görsel kimlik
 - Fasulye cübbe + tokmak (sabit karakter görseli, her bölümde aynı).

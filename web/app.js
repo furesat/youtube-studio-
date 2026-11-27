@@ -317,7 +317,7 @@ async function initBatch() {
     for(const code of new Set(batchCatalog.markets.map(m=>m.region))) appendOption("region",code,flag(code)+" "+names.of(code));
     for(const [code,label] of Object.entries(batchCatalog.languages)) appendOption("language",code,label);
     el("region").value="TR";el("language").value="tr";
-    for(const market of batchCatalog.markets) for(const id of ["trend-market","rpm-market","rpm-filter-market","review-market","cost-market"]) appendOption(id,market.id,flag(market.region)+" "+market.label);
+    for(const market of batchCatalog.markets) for(const id of ["trend-market","rpm-market","rpm-filter-market","review-market","cost-market","editorial-market","editorial-market-filter"]) appendOption(id,market.id,flag(market.region)+" "+market.label);
   } catch(e) { el("batch-status").textContent=e.message; }
 }
 function batchInput() {
@@ -492,19 +492,21 @@ el("system-check").addEventListener("click",async()=>{
 let initialized=false,currentPage="search";
 function showLogin(){
   active?.abort();batchController?.abort();
+  clearEditorial();
   el("dashboard").hidden=true;el("account-bar").hidden=true;el("panel-footer").hidden=true;el("login-screen").hidden=false;
   el("login-status").textContent="Devam etmek için giriş yap.";
 }
 function navigate(page){
   currentPage=page;
   const evidence=["trend","rpm","review","system"].includes(page);
-  for(const name of ["search","batch","history"])el("page-"+name).hidden=page!==name;
+  for(const name of ["search","batch","history","editorial"])el("page-"+name).hidden=page!==name;
   el("results").hidden=page!=="results"||!report;
   el("page-evidence").hidden=!evidence;
   for(const name of ["trend","rpm","review","system"])el("evidence-"+name).hidden=page!==name;
   for(const button of document.querySelectorAll("[data-page]"))button.setAttribute("aria-current",button.dataset.page===page?"page":"false");
   el("panel-warning").hidden=true;
   if(page==="results"&&!report){el("panel-warning").hidden=false;el("panel-warning").textContent="Henüz açık rapor yok. Geçmişten bir rapor seç veya araştırma başlat.";}
+  if(page==="editorial" && el("editorial-form").hidden)void loadEditorial(0);
   if(page==="history"){el("load-history").click();el("batch-history").click();}
   if(["trend","rpm","review"].includes(page))void loadEvidence();
 }
@@ -623,3 +625,196 @@ el("compare-refresh").addEventListener("click",()=>void loadMarketEvidence());
 for(const id of ["compare-topic","compare-market","compare-days"])el(id).addEventListener("change",()=>{compareOffset=0;void loadMarketEvidence();});
 el("compare-prev").addEventListener("click",()=>{compareOffset=Math.max(0,compareOffset-50);void loadMarketEvidence();});
 el("compare-next").addEventListener("click",()=>{compareOffset+=50;void loadMarketEvidence();});
+
+const editorialStates = {
+  draft: "Taslak", researching: "Araştırılıyor", ready: "Üretime hazır",
+  in_production: "Üretimde", published: "Yayınlandı", archived: "Arşivlendi",
+};
+const editorialFormats = { undecided: "Karar verilmedi", shorts: "Shorts", long_form: "Uzun video" };
+const editorialSourceKinds = { context: "Konu bağlamı", demand: "İzleyici ilgisi", coverage: "İçerik kapsamı" };
+const editorialFields = {
+  title: "editorial-name", market_id: "editorial-market", hypothesis: "editorial-hypothesis",
+  narrative_angle: "editorial-angle", uncertainty: "editorial-uncertainty",
+  format: "editorial-format", status: "editorial-state",
+};
+for (const [value, label] of Object.entries(editorialStates)) {
+  appendOption("editorial-state", value, label);
+  appendOption("editorial-state-filter", value, label);
+}
+let editorialOffset = 0, editorialNext = null, editorialEditing = null, editorialRead;
+
+function clearEditorial() {
+  editorialRead?.abort();
+  closeEditorialForm();
+  el("editorial-list").replaceChildren();
+  el("editorial-status").textContent = "";
+}
+
+function editorialCard(candidate) {
+  const card = node("article");
+  card.className = "editorial-card";
+  card.append(node("h3", candidate.title), node("p", [
+    marketLabel(candidate.market_id), editorialStates[candidate.status], editorialFormats[candidate.format],
+  ].join(" · ")));
+  const cost = candidate.cost ? fmt(candidate.cost.amount) + " " + candidate.cost.currency + " · " + candidate.cost.basis : "Bilinmiyor";
+  const detail = node("details");
+  detail.append(node("summary", "Hipotez, anlatım ve kaynaklar"));
+  const facts = node("dl");
+  for (const [label, value] of [
+    ["Pazar hipotezi", candidate.hypothesis], ["Özgün anlatım açısı", candidate.narrative_angle],
+    ["Belirsizlik", candidate.uncertainty], ["Tahmini maliyet", cost],
+  ]) facts.append(node("dt", label), node("dd", value));
+  detail.append(facts);
+  if (candidate.sources.length) {
+    const sources = node("ul");
+    for (const source of candidate.sources) {
+      const item = node("li");
+      const link = node("a", source.publisher);
+      link.href = source.url;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      item.append(link, node("span", " · " + source.checked_on + " · " + editorialSourceKinds[source.kind]), node("p", source.finding));
+      sources.append(item);
+    }
+    detail.append(sources);
+  } else {
+    detail.append(node("p", "Bağımsız kaynak henüz eklenmedi."));
+  }
+  const edit = node("button", "Adayı düzenle");
+  edit.type = "button";
+  edit.className = "secondary";
+  edit.addEventListener("click", () => openEditorialForm(candidate));
+  card.append(detail, edit);
+  return card;
+}
+
+async function loadEditorial(offset) {
+  editorialRead?.abort();
+  const reader = editorialRead = new AbortController();
+  const params = new URLSearchParams({ offset, limit: 10 });
+  for (const [key, id] of [["market_id", "editorial-market-filter"], ["status", "editorial-state-filter"]]) {
+    if (el(id).value) params.set(key, el(id).value);
+  }
+  el("editorial-status").textContent = "Adaylar yükleniyor…";
+  el("editorial-list").replaceChildren();
+  el("editorial-prev").hidden = el("editorial-next").hidden = true;
+  try {
+    const data = await request("/api/editorial?" + params, { signal: reader.signal });
+    if (reader.signal.aborted) return;
+    editorialOffset = offset;
+    editorialNext = data.next_offset;
+    el("editorial-list").replaceChildren(...data.candidates.map(editorialCard));
+    el("editorial-prev").hidden = !offset;
+    el("editorial-next").hidden = editorialNext === null;
+    el("editorial-status").textContent = data.candidates.length ? "" : "Bu görünümde henüz aday yok.";
+  } catch (error) {
+    if (!reader.signal.aborted) {
+      el("editorial-status").textContent = error.message;
+      const retry = node("button", "Tekrar dene");
+      retry.type = "button";
+      retry.className = "secondary";
+      retry.addEventListener("click", () => void loadEditorial(offset));
+      el("editorial-list").replaceChildren(retry);
+    }
+  }
+}
+
+function showEditorialCost() {
+  const hasCost = el("editorial-amount").value !== "";
+  el("editorial-cost-fields").hidden = !hasCost;
+  el("editorial-currency").required = el("editorial-basis").required = hasCost;
+}
+function addEditorialSource(values = {}) {
+  const container = el("editorial-sources");
+  if (container.children.length >= 8) return;
+  const source = el("editorial-source-template").content.firstElementChild.cloneNode(true);
+  for (const input of source.querySelectorAll("[name]")) {
+    if (input.name in values) input.value = values[input.name];
+  }
+  const add = el("editorial-add-source");
+  source.querySelector("button").addEventListener("click", () => {
+    source.remove();
+    add.disabled = false;
+    add.focus();
+  });
+  container.append(source);
+  add.disabled = container.children.length >= 8;
+  return source;
+}
+function closeEditorialForm() {
+  editorialEditing = null;
+  el("editorial-form").reset();
+  el("editorial-form").hidden = true;
+  el("editorial-backlog").hidden = false;
+  el("editorial-new").hidden = false;
+  el("editorial-sources").replaceChildren();
+  el("editorial-add-source").disabled = false;
+  el("editorial-form-status").hidden = true;
+  el("editorial-form-status").textContent = "";
+  showEditorialCost();
+}
+function openEditorialForm(candidate = null) {
+  closeEditorialForm();
+  editorialEditing = candidate;
+  el("editorial-form-title").textContent = candidate ? "Adayı düzenle" : "Yeni aday";
+  if (candidate) {
+    for (const [key, id] of Object.entries(editorialFields)) el(id).value = candidate[key];
+    if (candidate.cost) {
+      for (const key of ["amount", "currency", "basis"]) el("editorial-" + key).value = candidate.cost[key];
+    }
+    for (const source of candidate.sources) addEditorialSource(source);
+  }
+  showEditorialCost();
+  el("editorial-backlog").hidden = true;
+  el("editorial-new").hidden = true;
+  el("editorial-form").hidden = false;
+  el("editorial-name").focus();
+}
+el("editorial-new").addEventListener("click", () => openEditorialForm());
+el("editorial-cancel").addEventListener("click", () => {
+  closeEditorialForm();
+  el("editorial-new").focus();
+});
+el("editorial-add-source").addEventListener("click", () => addEditorialSource()?.querySelector("input").focus());
+el("editorial-amount").addEventListener("input", showEditorialCost);
+el("editorial-prev").addEventListener("click", () => void loadEditorial(Math.max(0, editorialOffset - 10)));
+el("editorial-next").addEventListener("click", () => {
+  if (editorialNext !== null) void loadEditorial(editorialNext);
+});
+for (const id of ["editorial-market-filter", "editorial-state-filter"]) {
+  el(id).addEventListener("change", () => void loadEditorial(0));
+}
+el("editorial-form").addEventListener("submit", async event => {
+  event.preventDefault();
+  const editing = editorialEditing;
+  const candidate = Object.fromEntries(Object.entries(editorialFields).map(([key, id]) => [key, el(id).value]));
+  candidate.independent = el("editorial-independent").checked;
+  candidate.cost = el("editorial-amount").value === "" ? null : {
+    amount: el("editorial-amount").valueAsNumber,
+    currency: el("editorial-currency").value, basis: el("editorial-basis").value,
+  };
+  candidate.sources = [...el("editorial-sources").children].map(source =>
+    Object.fromEntries([...source.querySelectorAll("[name]")].map(input => [input.name, input.value])));
+  el("editorial-save").disabled = el("editorial-cancel").disabled = true;
+  const feedback = el("editorial-form-status");
+  feedback.hidden = true;
+  try {
+    const body = editing ? { id: editing.id, revision: editing.revision, candidate } : candidate;
+    await request("/api/editorial", { method: editing ? "PUT" : "POST", body: JSON.stringify(body) });
+    closeEditorialForm();
+    if (currentPage === "editorial" && !el("dashboard").hidden) {
+      el("editorial-market-filter").value = el("editorial-state-filter").value = "";
+      await loadEditorial(0);
+      const status = el("editorial-status");
+      if (currentPage === "editorial" && !el("dashboard").hidden) {
+        status.textContent = ["Aday kaydedildi.", status.textContent].filter(Boolean).join(" ");
+        el("editorial-new").focus();
+      }
+    }
+  } catch (error) {
+    feedback.hidden = false;
+    feedback.textContent = error.message;
+  } finally {
+    el("editorial-save").disabled = el("editorial-cancel").disabled = false;
+  }
+});

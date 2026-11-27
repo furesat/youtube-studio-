@@ -141,3 +141,21 @@ Yerel kullanımda `--persist` isteğe bağlıdır. Geçerli `GITHUB_RUN_ID` ve s
 Araştırma grubu açıldığında **Pazar ve konu karşılaştırması** bölümünde konu, ülke/dil pazarı ve yayın dönemi filtrelenebilir. Arama örneklemi, eksik alanlar, bağımsız trend/değerlendirme varlığı ve süresi dolmamış kaynak rapor ayrı gösterilir. Rapor içindeki başlık/açıklama dahil et ve hariç tut filtreleri kelime eşleşmesidir; semantik doğrulama değildir. Tek sorgu da artık en fazla 50 video ister. MCP: `compare_market_evidence`; API: `GET /api/batch?id=...&compare=1&topic=...&market=...&days=365&offset=0`. Mevcut yetkilendirme ve 30 günlük saklama sınırı korunur.
 
 Gerçek 320 görevli kampanya: `7d1e1f6c-d5ac-4243-9e9d-66d421e20409`. İlk 10 görev [45924619213](https://github.com/furesat/youtube-studio-/actions/runs/45924619213) ile tamamlandı; 499 benzersiz video. Kalanlar zamanlanmış worker ile işlenir. Bulgular için DEVELOPMENT_REPORT.md dosyasına bakın. Bağımsız kanıt bulunmadıkça talep veya içerik açığı kararı üretilmez.
+
+### 3.2 — Editoryal iş listesi
+
+Panelde **Editoryal iş listesi → Yeni aday**. Her aday için ülke ve dil pazarı, o pazarda sınanacak hipotez, özgün anlatım açısı, format ve doğrulanması gereken noktalar girilir. Maliyet bilinmiyorsa alanı boş bırak. Maliyet girildiğinde tutar, para birimi ve tahmin dayanağı birlikte kaydedilir. Aynı fikri farklı pazarlarda sınamak için her pazar için ayrı aday aç.
+
+Kaynak başına yayıncı, bağımsız HTTPS adresi, inceleme tarihi, kanıt türü ve kendi cümlelerinle bulgunun hipotezle ilişkisini kaydet. Konu bağlamı, izleyici ilgisi ve pazardaki içerik kapsamı farklı kanıt türleridir. Bir kaynak bir iddiayı destekleyebilir, zayıflatabilir veya açık bırakabilir. Editör bunu bulgu ve belirsizlik alanlarına yazar. Kaynak adresleri otomatik açılmaz veya içe aktarılmaz ve kaynakların güvenilirliği editör tarafından değerlendirilir. Taslak ve araştırma durumunda kaynak eklemek isteğe bağlıdır. Üretime hazır, üretimde veya yayınlandı durumları en az bir kaynak gerektirir. Durum ve pazar filtreleriyle listeyi daraltabilir, aday kartından düzenleyebilir veya arşivleyebilirsin.
+
+Adaylarda YouTube API kayıtları ve bunlardan türetilen metrikler için alan veya rapordan aktarım yoktur. YouTube bağlantıları kaynak olarak kabul edilmez. Serbest metinde de API içeriğini, rakiplerin metinlerini ve API verisinden çıkarılmış değerlendirmeleri kullanma. Adaylar editoryal kayıt olarak saklanır ve arşivlenebilir. Süreli YouTube raporları ve giriş kayıtlarının mevcut temizliği devam eder. [YouTube API geliştirici politikaları](https://developers.google.com/youtube/terms/developer-policies/)
+
+| REST | İşlem |
+| --- | --- |
+| `GET /api/editorial?market_id=de&status=draft&offset=0&limit=10` | Filtreler isteğe bağlıdır. Yanıt `candidates` ve `next_offset` döner. |
+| `POST /api/editorial` | Yeni aday oluşturur ve `201` ile kaydı döner. |
+| `PUT /api/editorial` | `{id, revision, candidate}` ile alanların tamamını günceller. Eski bir revizyon `409` döner. Güncel adayı listeden açıp düzenle. |
+
+`candidate` alanları `title`, `market_id`, `hypothesis`, `narrative_angle`, `format` (`shorts`, `long_form`, `undecided`), `cost` (bilinmiyorsa `null`, aksi halde `{amount,currency,basis}`), `uncertainty`, `status` (`draft`, `researching`, `ready`, `in_production`, `published`, `archived`), `sources` (en çok sekiz adet `{publisher,url,checked_on,kind,finding}`, türler `demand`, `coverage`, `context`) ve `independent: true` değeridir. Aynı şema MCP araçlarında kullanılır. `list_editorial_candidates` filtreleri kabul eder, `create_editorial_candidate` adayı doğrudan alır, `update_editorial_candidate` ise REST ile aynı güncelleme zarfını alır.
+
+REST mevcut panel oturumu veya bearer ile korunur. Tarayıcı oturumlu yazmalar aynı kaynaktan yapılır. MCP mevcut erişim kontrolünü kullanır. Yayından önce [editorial_backlog.sql](supabase/editorial_backlog.sql) migrasyonunu hedef projeye uygula. Tabloda RLS açıktır ve okuma, oluşturma ve güncelleme yalnızca sunucu rolüne verilmiştir. Ek ortam değişkeni veya dış servis gerekmez.

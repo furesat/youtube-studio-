@@ -96,3 +96,14 @@ textarea{width:100%;padding:.75rem;border:1px solid #a99c88;border-radius:.35rem
 #batch-form select[multiple]{min-height:12rem}
 #dashboard .intro{margin:2rem 0 1.2rem}
 #dashboard .intro h1{font-size:clamp(2rem,4vw,3.6rem)}
+
+.editorial-form{display:grid;gap:.7rem;max-width:50rem;margin-top:1rem}
+.editorial-form .columns{margin:0}
+.editorial-form h3,.editorial-card h3{margin:0}
+.editorial-actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.5rem}
+.editorial-source,.editorial-card{border:1px solid var(--line);border-radius:.45rem;padding:1rem;margin:.8rem 0;overflow-wrap:anywhere}
+.editorial-source button,.editorial-card button{margin-top:.6rem}
+.editorial-card dt{font-weight:650}
+.editorial-card dd{margin:0 0 .6rem;white-space:pre-wrap}
+#page-editorial textarea:focus-visible{outline:3px solid #b45d36;outline-offset:3px}
+@media(max-width:660px){.editorial-form .columns{grid-template-columns:1fr}}

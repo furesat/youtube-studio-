@@ -11,6 +11,10 @@ import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, 
 
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 
+import {
+  candidateListSchema, candidateSchema, candidateUpdateSchema, createCandidate, listCandidates, updateCandidate,
+} from "../lib/editorial.mjs";
+
 function tool(name: string, fn: () => Promise<unknown> | unknown) {
   return Promise.resolve().then(async () => {
     console.info("Fasulye MCP tool:", name);
@@ -25,7 +29,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "3.0.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "3.2.0" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -101,6 +105,23 @@ function buildServer() {
   server.registerTool("list_report_videos",{description:"Raporun ham YouTube video örneklemini, ülke/dil filtresi ve ayrı izlenme/abone/tarih sıralamasıyla sayfalar. Ülke arama pazarıdır, izleyici coğrafyası değildir.",inputSchema:{id:readSchema,offset:z.number().int().min(0).default(0),limit:z.number().int().min(1).max(100).default(30),region:z.string().regex(/^[A-Z]{2}$/).optional(),language:z.string().optional(),sort:z.enum(["views","subscribers","date"]).default("views"),max_subscribers:z.number().int().min(0).optional()},annotations:{readOnlyHint:true}},({id,...options})=>tool("list_report_videos",()=>listReportVideos(id,options)));
   server.registerTool("get_channel_samples",{description:"Raporda yer alan küçük kanalların son 25 herkese açık yüklemelerini ham istatistiklerle gösterir. Abone sayısı toplama anına aittir.",inputSchema:{id:readSchema},annotations:{readOnlyHint:true}},({id})=>tool("get_channel_samples",async()=>{const r=await getReport(id);return {collected_at:r.collected_at,channels:r.channel_samples??[]};}));
   server.registerTool("compare_market_evidence",{description:"Grup içindeki gerçek araştırma satırlarını konu, pazar ve dönem bazında karşılaştırır; arama örneklemi toplam YouTube içerik sayısı değildir. Bağımsız talep veya değerlendirme yoksa eksik gösterilir.",inputSchema:{id:z.string().uuid(),topic:z.string().max(160).optional(),market:z.string().optional(),days:z.union([z.literal(7),z.literal(30),z.literal(90),z.literal(365)]).optional(),offset:z.number().int().min(0).default(0),limit:z.number().int().min(1).max(100).default(50)},annotations:{readOnlyHint:true}},({id,...filters})=>tool("compare_market_evidence",()=>marketEvidence(id,filters)));
+  server.registerTool("list_editorial_candidates", {
+    description: "Pazar ve durum filtreleriyle bağımsız editoryal adayları sayfalar.",
+    inputSchema: candidateListSchema,
+    annotations: { readOnlyHint: true, openWorldHint: false },
+  }, input => tool("list_editorial_candidates", () => listCandidates(input)));
+
+  server.registerTool("create_editorial_candidate", {
+    description: "Kullanıcının istediği özgün adayı kaydeder. Bağımsız, incelenmiş kaynakların bulgularını kendi cümlelerinle yaz. YouTube API verisi, türetilmiş metrik, rapor bağlantısı veya rakip içerik ekleme. Kaynak yoksa taslak veya araştırma durumunu kullan.",
+    inputSchema: candidateSchema,
+    annotations: { readOnlyHint: false, destructiveHint: false, idempotentHint: false, openWorldHint: false },
+  }, input => tool("create_editorial_candidate", () => createCandidate(input)));
+
+  server.registerTool("update_editorial_candidate", {
+    description: "Kullanıcı istediğinde güncel aday kimliği ve revision ile adayın tüm editoryal alanlarını günceller. Kaynaklar ve özgün metin için create_editorial_candidate kuralları geçerlidir.",
+    inputSchema: candidateUpdateSchema,
+    annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: false },
+  }, input => tool("update_editorial_candidate", () => updateCandidate(input)));
   return server;
 }
 

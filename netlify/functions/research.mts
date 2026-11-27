@@ -6,6 +6,7 @@ import {
 import { discoveryCatalog, enqueueBatch, listBatches, batchStatus, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import { sessionFor, sameOriginMutation } from "../lib/panel-auth.mjs";
+import { editorialRequest } from "../lib/editorial.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
 export default async (request: Request) => {
@@ -23,6 +24,10 @@ export default async (request: Request) => {
   }
   if (!bearer && request.method !== "GET" && !sameOriginMutation(request)) return json({error:"İstek kaynağına izin verilmedi."},403);
   try {
+    if (url.pathname === "/api/editorial" && ["GET", "POST", "PUT"].includes(request.method)) {
+      const result = await editorialRequest(request, url);
+      return json(result.body, result.status);
+    }
     if (url.pathname === "/api/evidence") {
       if (request.method === "GET") { const id=url.searchParams.get("id"); return json(id?await getTrend(id):await getEvidence()); }
       if (request.method === "POST") {
@@ -91,6 +96,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

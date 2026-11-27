@@ -198,3 +198,6 @@ Apply `supabase/editorial_workflow.sql` after existing editorial_backlog.sql and
 
 ### Independent discovery
 Use the Independent discovery dashboard or MCP plan_independent_discovery (pure), discover_independent_subjects (explicit external search, max six localized queries, requires Wikimedia flag), map_cross_language_evidence (stored exact-topic records only). Templates do not establish emerging/evergreen/seasonal interest. Wikipedia results must be manually verified. Exact topic label linkage is intentional; semantic entity matching is not yet implemented. Country and worldwide language data remain distinct.
+
+### Monthly economics
+The monthly calculator and MCP plan_monthly_production_economics use owner-entered low/base/high assumptions for per-video targets, RPM, research hours/rate and cost components. Use matching supported ISO currencies. Downside pairs low revenue with high costs; upside pairs high revenue with low costs. Fixed costs are monthly only, not in per-video break-even. RPM references are unverified third-party estimates unless explicitly owner-declared, and even owner declaration is not verified by OAuth. RevenueLab model and AIR sample need per-market method/currency review; no existing figures were replaced.

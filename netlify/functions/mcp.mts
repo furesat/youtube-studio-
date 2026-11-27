@@ -9,6 +9,7 @@ import {
 
 import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 
+import {monthlyPlanSchema,monthlyEconomics} from "../lib/economics.mjs";
 import {discoveryPlanSchema,evidenceMapSchema,planIndependent,discoverIndependent,crossLanguageEvidence} from "../lib/independent-discovery.mjs";
 import {workflowReadSchema,workflowAdvanceSchema,readWorkflow,advanceWorkflow} from "../lib/editorial-workflow.mjs";
 import {evidenceQualitySchema,assessEvidence} from "../lib/evidence-quality.mjs";
@@ -143,6 +144,7 @@ function buildServer() {
   server.registerTool("plan_independent_discovery",{description:"Localized reusable subject templates; hypothesis only, no network or quota.",inputSchema:discoveryPlanSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("plan_independent_discovery",()=>planIndependent(input)));
   server.registerTool("discover_independent_subjects",{description:"Explicit bounded Wikipedia article search (max six queries); candidates, not proven trends. No YouTube quota and no saving.",inputSchema:discoveryPlanSchema,annotations:{readOnlyHint:false,openWorldHint:true}},input=>tool("discover_independent_subjects",()=>discoverIndependent(input)));
   server.registerTool("map_cross_language_evidence",{description:"Read stored independent evidence and editorial hypotheses for exact topic and selected markets. No live search or derived YouTube metrics.",inputSchema:evidenceMapSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("map_cross_language_evidence",()=>crossLanguageEvidence(input)));
+  server.registerTool("plan_monthly_production_economics",{description:"Calculate owner hypothetical low/base/high monthly budget, cost, revenue and per-video break-even. No competitor metrics or network calls.",inputSchema:monthlyPlanSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("plan_monthly_production_economics",()=>monthlyEconomics(input)));
   return server;
 }
 

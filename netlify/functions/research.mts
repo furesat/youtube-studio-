@@ -8,6 +8,7 @@ import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 import {featureFlags,controlQueue,queueHealth} from "../lib/queue-control.mjs";
 import { activeSession, sameOriginMutation } from "../lib/panel-auth.mjs";
+import {monthlyEconomics} from "../lib/economics.mjs";
 import {planIndependent,discoverIndependent,crossLanguageEvidence} from "../lib/independent-discovery.mjs";
 import { readWorkflow,advanceWorkflow } from "../lib/editorial-workflow.mjs";
 import { editorialRequest } from "../lib/editorial.mjs";
@@ -28,6 +29,11 @@ export default async (request: Request) => {
     return json({ error: "Panel erişim anahtarı geçersiz." }, 401, { "WWW-Authenticate": "Bearer" });
   }
   if (!bearer && request.method !== "GET" && !sameOriginMutation(request)) return json({error:"İstek kaynağına izin verilmedi."},403);
+    if(url.pathname==="/api/economics"&&request.method==="POST"){
+      const raw=await request.text();if(Buffer.byteLength(raw)>30000)throw new ResearchError(413,"İstek çok büyük.");
+      let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+      return json(monthlyEconomics(body));
+    }
     if(url.pathname==="/api/discover"&&request.method==="POST"){
       const raw=await request.text();if(Buffer.byteLength(raw)>12000)throw new ResearchError(413,"İstek çok büyük.");
       let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
@@ -135,6 +141,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia", "/api/queue", "/api/workflow", "/api/discover"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia", "/api/queue", "/api/workflow", "/api/discover", "/api/economics"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

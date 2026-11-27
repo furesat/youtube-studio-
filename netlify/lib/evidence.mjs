@@ -1,4 +1,5 @@
 import { z } from "zod";
+import {rpmProvenance} from "./economics.mjs";
 import { db, discoveryCatalog } from "./batch.mjs";
 import { ResearchError } from "./research.mjs";
 
@@ -101,7 +102,7 @@ export async function getEvidence(fetcher=fetch) {
     db("fasulye_independent_reviews?select=*&order=updated_at.desc&limit=100",{fetcher}),
     db("fasulye_production_costs?select=*&order=market_id&limit=100",{fetcher}),
   ]);
-  return {trends,costs,rpm:rpm.map(r=>({...r,scenarios:profitScenarios(r,costs.find(c=>c.market_id===r.market_id&&c.format===r.format))})),reviews:reviews.map(r=>({...r,...scoreIndependent(r.factors)})),trend_api:new GoogleTrendsApiProvider().status(),search_volume:null};
+  return {trends,costs,rpm:rpm.map(r=>({...r,provenance:rpmProvenance(r),scenarios:profitScenarios(r,costs.find(c=>c.market_id===r.market_id&&c.format===r.format))})),reviews:reviews.map(r=>({...r,...scoreIndependent(r.factors)})),trend_api:new GoogleTrendsApiProvider().status(),search_volume:null};
 }
 export async function getTrend(id,fetcher=fetch) {
   if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id))throw new ResearchError(400,"Geçersiz seri kimliği.");

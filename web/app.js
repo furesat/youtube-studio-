@@ -440,7 +440,7 @@ function renderEvidence(){
   const market=el("rpm-filter-market").value,format=el("rpm-filter-format").value,views=Number(el("rpm-filter-views").value);
   for(const row of evidenceData.rpm.filter(r=>(!market||r.market_id===market)&&(!format||r.format===format))){
     const s=row.scenarios.find(x=>x.views===views);if(!s)continue;
-    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.production_cost==null?"Bilinmiyor":fmt(s.production_cost)+" "+s.currency,s.profit?["low","base","high"].map(k=>fmt(s.profit[k])+" "+s.currency).join(" / "):"Bilinmiyor",s.source+" · "+(row.source_date??"yayın tarihi bilinmiyor")+" · "+(row.source_checked_at??"doğrulama tarihi yok")+" · "+(row.reliability??"unspecified")]);
+    addRow("rpm-comparison",[marketLabel(row.market_id),row.format==="shorts"?"Shorts":"Normal video",...["low","base","high"].map(k=>fmt(s[k])+" "+s.currency),s.production_cost==null?"Bilinmiyor":fmt(s.production_cost)+" "+s.currency,s.profit?["low","base","high"].map(k=>fmt(s.profit[k])+" "+s.currency).join(" / "):"Bilinmiyor",s.break_even_views?["low","base","high"].map(k=>fmt(s.break_even_views[k])).join(" / "):"Bilinmiyor",s.source+" · "+(row.source_date??"yayın tarihi bilinmiyor")+" · "+(row.source_checked_at??"doğrulama tarihi yok")+" · "+(row.reliability??"unspecified")+" · "+(row.provenance?.warnings??[]).join(", ")]);
   }
   if(!el("rpm-comparison").children.length)addRow("rpm-comparison",["Kaynaklı RPM girdisi yok."]);
   for(const row of [...evidenceData.reviews].sort((a,b)=>(b.score??-1)-(a.score??-1))){
@@ -1049,4 +1049,36 @@ el("evidence-map-form").addEventListener("submit",async e=>{
   }
   el("map-status").textContent=data.limitations.join(" ");
  }catch(err){el("map-status").textContent=err.message;}
+});
+
+const scenarioKeys=["low","base","high"],scenarioLabels=["Düşük","Orta","Yüksek"];
+function bandFields(parent,label,{integer=false}={}){
+ const group=node("fieldset");group.append(node("legend",label));const fields=node("div");fields.className="columns";
+ const inputs={};scenarioKeys.forEach((key,i)=>{const lab=node("label",scenarioLabels[i]),inp=node("input");inp.type="number";inp.min="0";inp.step=integer?"1":"any";inp.required=true;lab.append(inp);fields.append(lab);inputs[key]=inp;});group.append(fields);parent.append(group);
+ return ()=>Object.fromEntries(scenarioKeys.map(k=>[k,inputs[k].valueAsNumber]));
+}
+const fixedMonthly=bandFields(el("monthly-fixed"),"Aylık sabit maliyet");
+const monthlyLines=[];
+function addMonthlyLine(){
+ if(monthlyLines.length>=12)return;
+ const box=node("fieldset");box.append(node("legend","Üretim satırı"));
+ const field=(label,kind,options)=>{const l=node("label",label),i=node(options?"select":"input");if(options)for(const [v,t] of options){const o=node("option",t);o.value=v;i.append(o);}else i.type=kind;i.required=true;l.append(i);box.append(l);return i;};
+ const label=field("İçerik grubu","text"),format=field("Format","text",[["shorts","Shorts"],["long_form","Uzun video"]]),videos=field("Aylık video sayısı","number");videos.min="0";videos.max="1000";videos.step="1";
+ const rpm=bandFields(box,"Bağımsız RPM varsayımı"),rpmBasis=field("RPM dayanağı","text"),rpmKind=field("RPM kaynak türü","text",[["owner_assumption","Kendi varsayımım"],["owner_actual","Kendi gerçek verim (beyan)"],["third_party_estimate","Üçüncü taraf tahmini"]]);
+ const views=bandFields(box,"Video başına izlenme hedefi (Shorts için etkileşimli)",{integer:true});
+ const costs={};for(const [key,title] of [["research_hours","Araştırma saati"],["hourly_rate","Saat maliyeti"],["translation","Çeviri"],["voice","Ses"],["visuals","Görsel"],["editing","Kurgu"],["other","Diğer"]])costs[key]=bandFields(box,title);
+ const costBasis=field("Maliyet dayanağı","text");
+ const get=()=>({label:label.value,format:format.value,videos:videos.valueAsNumber,currency:el("monthly-currency").value,rpm:rpm(),rpm_basis:rpmBasis.value,rpm_kind:rpmKind.value,view_targets:views(),costs:Object.fromEntries(Object.entries(costs).map(([k,read])=>[k,read()])),cost_basis:costBasis.value});
+ const remove=node("button","Satırı çıkar");remove.type="button";remove.className="secondary";remove.addEventListener("click",()=>{const i=monthlyLines.indexOf(get);if(i>=0)monthlyLines.splice(i,1);box.remove();});box.append(remove);el("monthly-lines").append(box);monthlyLines.push(get);
+}
+el("monthly-add-line").addEventListener("click",addMonthlyLine);addMonthlyLine();
+el("monthly-plan").addEventListener("submit",async e=>{
+ e.preventDefault();el("monthly-status").textContent="Hesaplanıyor…";el("monthly-results").replaceChildren();
+ try{
+  const result=await request("/api/economics",{method:"POST",body:JSON.stringify({currency:el("monthly-currency").value,monthly_budget:el("monthly-budget").valueAsNumber,monthly_fixed:fixedMonthly(),lines:monthlyLines.map(read=>read())})});
+  const box=el("monthly-results");const show=x=>scenarioKeys.map(k=>fmt(x[k])+" "+result.currency).join(" / ");
+  for(const [label,values] of [["Toplam aylık maliyet",result.monthly_costs],["Aylık gelir",result.monthly_revenue],["Vergi öncesi sonuç (kötü/orta/iyi)",result.monthly_profit],["Kalan bütçe (kötü/orta/iyi)",result.budget_remaining]])box.append(node("p",label+": "+show(values)));
+  for(const l of result.lines)box.append(node("h4",l.label),node("p","Video başı maliyet: "+show(l.cost_per_video)),node("p","Başa baş (kötü/orta/iyi): "+scenarioKeys.map(k=>l.break_even_views[k]===null?"Bilinmiyor":fmt(l.break_even_views[k])).join(" / ")));
+  el("monthly-status").textContent=result.limitations.join(" ");
+ }catch(err){el("monthly-status").textContent=err.message;}
 });

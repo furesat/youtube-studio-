@@ -59,3 +59,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 10: independent evidence quality and break-even
 - Added explicit source credibility, editor-declared independence groups, verification freshness, contradictions, methodological limitations and unknown categories through reusable evidence-quality evaluation. Coverage band no longer claims statistical confidence; probability remains null. Break-even views derived only from independent RPM and production assumptions, null for zero RPM or missing/incompatible costs. UI column relabeled. Tests pending. Evidence-quality evaluator not yet wired to transport; next checkpoint will add workflow integration.
+
+## Checkpoint 11: versioned editorial workflow and owner analytics import
+- CI 45928625311 and 45928728479 passed (session registry and quota ledger). Added nine explicit sequential stages, immutable events with candidate revision and atomic expected revision fencing, source quality gates, fact/creative distinction, cost plan, preregistered experiment, owner-attested first-party normalized CSV validation, long-form decision, JSON/Markdown exports, REST/MCP read/advance. No OAuth or live analytics; manual export normalization required. No fabricated observations or external calls. SQL and unit tests pending CI. UI next.

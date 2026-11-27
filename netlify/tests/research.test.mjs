@@ -95,7 +95,9 @@ test("an MCP client connects, lists tools and reads the catalog using its bearer
   await client.connect(transport);
   try {
     const tools = await client.listTools();
-    assert.equal(tools.tools.length, 26);
+    assert.equal(tools.tools.length, 29);
+    assert.equal(tools.tools.find(t=>t.name==="get_editorial_workflow").annotations.readOnlyHint,true);
+    assert.equal(tools.tools.find(t=>t.name==="advance_editorial_workflow").annotations.readOnlyHint,false);
     assert.equal(tools.tools.find(t=>t.name==="get_queue_health").annotations.readOnlyHint,true);
     assert.equal(tools.tools.find(t=>t.name==="control_research_queue").annotations.destructiveHint,true);
     for(const name of ["search_wikimedia_articles","collect_wikimedia_evidence","list_wikimedia_evidence"]){

@@ -76,3 +76,6 @@ Optional shared detail-budget ledger and request validation. Existing search cei
 
 ### V4 checkpoint 10
 Evidence quality evaluator and independent break-even math; coverage is not statistical confidence. No competitor revenue estimates.
+
+### V4 checkpoint 11
+Nine-stage independent editorial workflow with revision fencing, manual owner CSV experiment import, factual-claim and decision gates, Markdown/JSON export, API/MCP. Gated, pending CI and UI. No automatic publishing, generation or OAuth.

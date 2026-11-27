@@ -8,6 +8,7 @@ import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 import {featureFlags,controlQueue,queueHealth} from "../lib/queue-control.mjs";
 import { activeSession, sameOriginMutation } from "../lib/panel-auth.mjs";
+import { readWorkflow,advanceWorkflow } from "../lib/editorial-workflow.mjs";
 import { editorialRequest } from "../lib/editorial.mjs";
 import { exportReport } from "../lib/report-export.mjs";
 
@@ -26,6 +27,14 @@ export default async (request: Request) => {
     return json({ error: "Panel erişim anahtarı geçersiz." }, 401, { "WWW-Authenticate": "Bearer" });
   }
   if (!bearer && request.method !== "GET" && !sameOriginMutation(request)) return json({error:"İstek kaynağına izin verilmedi."},403);
+    if(url.pathname==="/api/workflow"){
+      if(request.method==="GET")return json(await readWorkflow({candidate_id:url.searchParams.get("candidate_id")}));
+      if(request.method==="POST"){
+        const raw=await request.text();if(Buffer.byteLength(raw)>350000)throw new ResearchError(413,"İstek çok büyük.");
+        let body;try{body=JSON.parse(raw);}catch{throw new ResearchError(400,"JSON geçersiz.");}
+        return json(await advanceWorkflow(body),201);
+      }
+    }
     if (url.pathname === "/api/editorial" && ["GET", "POST", "PUT"].includes(request.method)) {
       const result = await editorialRequest(request, url);
       return json(result.body, result.status);
@@ -116,6 +125,6 @@ export default async (request: Request) => {
 };
 
 export const config = {
-  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia", "/api/queue"],
+  path: ["/api/research", "/api/catalog", "/api/discovery-catalog", "/api/batch", "/api/quota", "/api/evidence", "/api/editorial", "/api/wikimedia", "/api/queue", "/api/workflow"],
   rateLimit: { action: "rate_limit", aggregateBy: ["ip", "domain"], windowSize: 60, windowLimit: 40 },
 };

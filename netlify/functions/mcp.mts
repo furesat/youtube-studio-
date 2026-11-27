@@ -9,6 +9,8 @@ import {
 
 import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, queueBudget, planBatch, listBatchTasks, marketEvidence } from "../lib/batch.mjs";
 
+import {workflowReadSchema,workflowAdvanceSchema,readWorkflow,advanceWorkflow} from "../lib/editorial-workflow.mjs";
+import {evidenceQualitySchema,assessEvidence} from "../lib/evidence-quality.mjs";
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {wikiSearchSchema,wikiCollectSchema,wikiListSchema,searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 import {queueControlSchema,controlQueue,queueHealth,featureFlags} from "../lib/queue-control.mjs";
@@ -134,6 +136,9 @@ function buildServer() {
   server.registerTool("list_wikimedia_evidence",{description:"Read stored independent Wikimedia evidence only; never calls provider.",inputSchema:wikiListSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("list_wikimedia_evidence",()=>{wikiEnabled();return listWiki(input);}));
   server.registerTool("get_queue_health",{description:"Stored queue health and worker heartbeats. Does not launch research or contact YouTube.",annotations:{readOnlyHint:true,openWorldHint:false}},()=>tool("get_queue_health",()=>queueHealth()));
   server.registerTool("control_research_queue",{description:"Explicit owner-requested queue action: pause/resume, priority -10 to 10, cancellation (running tasks finish cooperatively), or retry failed. Cancel/retry require explicit confirm=true; never refunds quota.",inputSchema:queueControlSchema,annotations:{readOnlyHint:false,destructiveHint:true,idempotentHint:false,openWorldHint:false}},input=>tool("control_research_queue",()=>controlQueue(input)));
+  server.registerTool("assess_independent_evidence",{description:"Assess declared independent sources, freshness, coverage and contradictions; no statistical confidence or success prediction.",inputSchema:evidenceQualitySchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("assess_independent_evidence",()=>assessEvidence(input)));
+  server.registerTool("get_editorial_workflow",{description:"Read versioned editorial research stages and owner experiment observations, with Markdown export.",inputSchema:workflowReadSchema,annotations:{readOnlyHint:true,openWorldHint:false}},input=>tool("get_editorial_workflow",()=>readWorkflow(input)));
+  server.registerTool("advance_editorial_workflow",{description:"Explicitly advance one stage only, with current candidate and workflow revisions, source evidence or owner-attested first-party CSV. Requires confirmation. Never publishes or calls YouTube.",inputSchema:workflowAdvanceSchema,annotations:{readOnlyHint:false,destructiveHint:false,openWorldHint:false}},input=>tool("advance_editorial_workflow",()=>advanceWorkflow(input)));
   return server;
 }
 

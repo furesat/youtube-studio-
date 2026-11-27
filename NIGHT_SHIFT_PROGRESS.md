@@ -83,3 +83,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 16: browser smoke harness
 - Added a separate GitHub Actions Chromium/Playwright job with pinned Python dependency, local static HTTP server and intercepted fixture APIs only. Tests exercise login, actual report rendering, local channel filter without network, expired-report rejection, logout, mobile keyboard navigation and horizontal overflow. No production credentials, real external data or live service calls. CI results pending.
+
+## Checkpoint 16a: browser runner compatibility
+- First browser job (45930664755) failed at installation: pinned Playwright does not support ubuntu26.04-x64; no browser test executed. Pin browser job to ubuntu-24.04 (supported by selected runner). Retest pending; do not report browser pass yet.

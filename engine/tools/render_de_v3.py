@@ -40,10 +40,9 @@ def frame(task):
         z = 1.10; ox = (W - W / z) * (u if move == "pan_r" else 1 - u)
     elif move == "push": z = 1.0 + 0.07 * u; ox = (W - W / z) / 2
     else: z = 1.025; ox = (W - W / z) / 2
-    z *= 1 + 0.003 * np.sin(2 * np.pi * t / 4.0); oy = (H - H / z) / 2
-    gx, gy = noise(int(t * 8), fp)
-    sx = (XS / z + ox + gx).astype(np.float32); sy = (YS / z + oy + gy).astype(np.float32)
-    out = cv2.remap(im, sx, sy, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
+    oy = (H - H / z) / 2
+    M = np.float32([[z, 0, -ox * z], [0, z, -oy * z]])  # titreşim/nefes yok: yalnız pan + yakınlaşma
+    out = cv2.warpAffine(im, M, (W, H), flags=cv2.INTER_LINEAR, borderMode=cv2.BORDER_REFLECT)
     return grade(out, grey).astype(np.uint8).tobytes()
 def resolve(v, s, sh):
     n = s["shot"]

@@ -5,7 +5,7 @@ import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/
 import research from "../functions/research.mts";
 import mcp from "../functions/mcp.mts";
 import { login } from "../lib/panel-auth.mjs";
-import { candidateSchema } from "../lib/editorial.mjs";
+import { candidateSchema, buildProductionBrief, getProductionBrief } from "../lib/editorial.mjs";
 
 const host = "https://example.test";
 const api = host + "/api/editorial";
@@ -131,4 +131,24 @@ test("MCP uses the shared editorial contract on all three tools", async t => {
   } finally {
     await client.close();
   }
+});
+
+test("production briefs preserve missing evidence and do not invent facts", async () => {
+  const saved={...candidate,id,revision:1,sources:[source]};
+  const brief=buildProductionBrief(saved);
+  assert.deepEqual(brief.source_presence,{context:true,demand:false,coverage:false});
+  assert.match(brief.markdown,/arama hacmi bilinmiyor/);
+  assert.match(brief.markdown,/içerik boşluğu doğrulanmadı/);
+  assert.match(brief.markdown,/bütçe bilinmiyor/);
+  assert.match(brief.markdown,/https:\/\/archive\.example\/calendar/);
+  assert.equal(brief.revision,1);
+  assert.doesNotMatch(buildProductionBrief({...saved,title:"<script>alert(1)</script>"}).markdown,/<script>/);
+  const loaded=await getProductionBrief(id,async(url,init)=>{
+    assert.equal(new URL(url).searchParams.get("id"),"eq."+id);
+    assert.equal(init.method,"GET");
+    return Response.json([saved]);
+  });
+  assert.deepEqual(loaded,brief);
+  await assert.rejects(()=>getProductionBrief("invalid"),{status:400});
+  await assert.rejects(()=>getProductionBrief(id,async()=>Response.json([])),{status:404});
 });

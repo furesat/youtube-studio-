@@ -94,3 +94,6 @@ Raw channel sample metadata enriched without additional requests. CI pending.
 
 ### V4 checkpoint 15
 Channel sample workspace filters, raw metadata and expiry guard; 34 MCP tools. Existing bounded sample retained, no production changes.
+
+### V4 checkpoint 17
+Improved read-only system health and reservation transparency. No production changes.

@@ -86,3 +86,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 16a: browser runner compatibility
 - First browser job (45930664755) failed at installation: pinned Playwright does not support ubuntu26.04-x64; no browser test executed. Pin browser job to ubuntu-24.04 (supported by selected runner). Retest pending; do not report browser pass yet.
+
+## Checkpoint 17: health telemetry refinement
+- Existing authenticated queue health now reports database reachability, newest unexpired report and expiry, most recent recorded non-reused completed queue task, heartbeat age, optional current Pacific-day detail reservations by endpoint, and explicit unknown/unavailable/disabled statuses. Separate reads use existing tables and no new DB migration; no provider probes or YouTube quota. Additional read-only tests authored; CI pending. Detail flag in Functions controls display, not worker enforcement.

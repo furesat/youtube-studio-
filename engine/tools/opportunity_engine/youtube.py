@@ -48,7 +48,7 @@ class YouTube:
         if self.halted:
             raise ApiError(self.halted)
         bucket = "search" if endpoint == "search" else "details"
-        used = self.calls["search"] if bucket == "search" else self.calls["videos"] + self.calls["channels"]
+        used = self.calls["search"] if bucket == "search" else sum(v for k,v in self.calls.items() if k != "search")
         if used >= self.limits[bucket]:
             raise ApiError(f"local_{bucket}_budget")
         request = Request(

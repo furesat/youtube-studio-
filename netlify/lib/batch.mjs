@@ -39,14 +39,15 @@ export function planBatch(input) {
   if (!tasks.length || tasks.length > 10000) throw new ResearchError(400,"Görev sayısı 1–10.000 olmalı; eksik yerelleştirmeleri tamamlayın.");
   return {label:x.label ?? (x.mode === "discovery" ? "Pazar keşfi" : "Toplu araştırma"),tasks,missing};
 }
-async function db(path,{method="GET",body,fetcher=fetch}={}) {
+export async function db(path,{method="GET",body,fetcher=fetch,prefer}={}) {
   const url = "https://niihqywncuwxfxipkgte.supabase.co";
   const key = env("SUPABASE_SECRET_KEY") ?? "";
   if ((env("SUPABASE_URL") ?? url).replace(/\/$/,"") !== url || !key.startsWith("sb_secret_"))
     throw new ResearchError(503,"Supabase sunucu bağlantısı yapılandırılmalı.");
-  const response = await fetcher(url+"/rest/v1/"+path,{method,headers:{apikey:key,"Content-Type":"application/json",Accept:"application/json"},body:body===undefined?undefined:JSON.stringify(body),redirect:"error",signal:AbortSignal.timeout(12000)});
+  const response = await fetcher(url+"/rest/v1/"+path,{method,headers:{apikey:key,"Content-Type":"application/json",Accept:"application/json",...(prefer?{Prefer:prefer}:{})},body:body===undefined?undefined:JSON.stringify(body),redirect:"error",signal:AbortSignal.timeout(12000)});
   if (!response.ok) throw new ResearchError(502,"Supabase kuyruk işlemi başarısız.");
-  return response.json();
+  const raw=await response.text();
+  return raw ? JSON.parse(raw) : null;
 }
 export async function enqueueBatch(input,fetcher=fetch) {
   const plan=planBatch(input);

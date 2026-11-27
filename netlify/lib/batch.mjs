@@ -13,7 +13,7 @@ export const batchSchema = z.strictObject({
   countries: z.array(z.string().regex(/^[A-Z]{2}$/)).max(36).optional(),
   languages: z.array(z.enum(Object.keys(catalog.languages))).max(23).optional(),
   categories: z.array(z.enum(categoryIds)).max(categoryIds.length).optional(),
-  topics: z.array(z.strictObject({topic:phrase,queries:z.partialRecord(z.enum(Object.keys(catalog.languages)),phrase)})).max(500).optional(),
+  topics: z.array(z.strictObject({topic:phrase,queries:z.partialRecord(z.enum(Object.keys(catalog.languages)),phrase).optional()})).max(500).optional(),
 });
 export function planBatch(input) {
   const parsed = batchSchema.safeParse(input);
@@ -27,9 +27,11 @@ export function planBatch(input) {
     ? catalog.categories.filter(c => !x.categories?.length || x.categories.includes(c.id)).map(c => ({topic:c.label,queries:c.queries}))
     : x.topics ?? [];
   if (!topics.length) throw new ResearchError(400,"En az bir konu gerekli.");
+  const normalize = value => value.normalize("NFC").trim().toLocaleLowerCase("tr");
   const tasks = [], missing = [], seen = new Set();
   for (const topic of topics) for (const m of markets) {
-    const query = topic.queries[m.language];
+    const known = catalog.topics?.find(t => [t.id,t.label,...t.aliases].some(v=>normalize(v)===normalize(topic.topic)));
+    const query = topic.queries?.[m.language] ?? known?.queries[m.language];
     if (!query) {missing.push({topic:topic.topic,language:m.language,market_id:m.id});continue;}
     const key = JSON.stringify([query.normalize("NFC").trim(),m.region,m.language]);
     if (seen.has(key)) continue;

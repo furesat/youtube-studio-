@@ -95,3 +95,10 @@ export async function listBatchTasks(id,offset=0,limit=100,fetcher=fetch) {
   if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)||!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>100)throw new ResearchError(400,"Grup veya sayfalama geçersiz.");
   return db("fasulye_tasks?"+new URLSearchParams({select:"id,topic,query,region,language,search_order,lookback_days,status,attempts,next_attempt_at,report_run_id,error_code",batch_id:"eq."+id,order:"id.asc",offset:String(offset),limit:String(limit)}),{fetcher});
 }
+
+export async function marketEvidence(id,{topic=null,market=null,days=null,offset=0,limit=50}={},fetcher=fetch){
+  if(!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id)||!Number.isInteger(offset)||offset<0||!Number.isInteger(limit)||limit<1||limit>100||days!==null&&![7,30,90,365].includes(days)||topic!==null&&(typeof topic!=="string"||topic.length>160)||market!==null&&!marketIds.includes(market))throw new ResearchError(400,"Karşılaştırma filtresi geçersiz.");
+  const result=await db("rpc/fasulye_market_evidence",{method:"POST",body:{p_batch_id:id,p_topic:topic,p_market:market,p_days:days,p_offset:offset,p_limit:limit},fetcher});
+  if(!result)throw new ResearchError(404,"Araştırma grubu bulunamadı.");
+  return result;
+}

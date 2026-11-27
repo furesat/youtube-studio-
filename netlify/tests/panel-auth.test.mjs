@@ -46,3 +46,25 @@ test("3.0 campaign has all 8 markets, 10 categories and four reserved search pro
  assert.equal(new Set(plan.tasks.map(t=>t.search_order)).size,3);
  assert.equal(planBatch({mode:"campaign",countries:["DE"],categories:["history"]}).tasks.length,4);
 });
+
+test("dedicated session signing migration rejects legacy cookies without coupling GitHub rotation",async()=>{
+ const previous=process.env.FASULYE_SESSION_SECRET;
+ const github=process.env.FASULYE_GITHUB_TOKEN;
+ try{
+  delete process.env.FASULYE_SESSION_SECRET;
+  const legacy=await login(request("/api/login"),{password:"unit-test-panel"});
+  const oldCookie=legacy.cookies[0].split(";")[0];
+  process.env.FASULYE_SESSION_SECRET="unit-test-new-dedicated-session-secret";
+  assert.equal(sessionFor(request("/api/session",{cookie:oldCookie})),null);
+  const fresh=await login(request("/api/login"),{password:"unit-test-panel"});
+  const cookie=fresh.cookies[0].split(";")[0];
+  process.env.FASULYE_GITHUB_TOKEN="rotated-github";
+  assert.ok(sessionFor(request("/api/session",{cookie})));
+  process.env.FASULYE_SESSION_SECRET="too-short";
+  assert.equal(sessionFor(request("/api/session",{cookie})),null);
+  await assert.rejects(()=>login(request("/api/login"),{password:"unit-test-panel"}),{status:503});
+ }finally{
+  if(previous===undefined)delete process.env.FASULYE_SESSION_SECRET;else process.env.FASULYE_SESSION_SECRET=previous;
+  process.env.FASULYE_GITHUB_TOKEN=github;
+ }
+});

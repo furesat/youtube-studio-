@@ -163,3 +163,8 @@ REST mevcut panel oturumu veya bearer ile korunur. Tarayıcı oturumlu yazmalar 
 ## 3.3 üretim brifi
 
 Editoryal iş listesinde **Üretim brifini indir** düğmesi adayın güncel revizyonunu Markdown olarak dışa aktarır. İçerik, pazar hipotezi, format, bağımsız kaynaklar, maliyet ve eksik doğrulamalar ayrı gösterilir. Kaynak varlığı doğruluk veya talep garantisi değildir. API: `GET /api/editorial?brief=<uuid>` (yetkilendirme gerekir). MCP: `get_editorial_production_brief` (salt okuma; YouTube kotası harcamaz). Brif bir senaryo değildir; editoryal doğrulama gerekir.
+
+## V4 security migration (draft)
+
+Set a new independent Functions-only `FASULYE_SESSION_SECRET` (generate with `openssl rand -hex 32`; never commit it). It must differ from the panel, admin and GitHub credentials. Deploy only after checks pass and owner approval. With the new secret, existing panel/admin cookies are deliberately invalidated once; sign in again. Rotating the GitHub token then no longer rotates the session key. Rotating the panel password or session secret invalidates sessions. An unset secret preserves legacy behavior during rollout; a nonempty invalid secret fails closed. Keep the dedicated secret configured after rollout: removing it can re-enable legacy signatures until their original expiry. Logout currently clears cookies only; per-session server-side revocation is still outstanding. Do not remove the secret as a routine rollback. If reverting code, coordinate credential rotation to invalidate legacy sessions.
+

@@ -1,16 +1,14 @@
 import { createHmac, randomUUID, timingSafeEqual } from "node:crypto";
 import { env, acceptsToken, ResearchError } from "./research.mjs";
 import { db } from "./batch.mjs";
+import { deriveSessionKey } from "./session-key.mjs";
 
 const SESSION="__Host-fasulye_session", DEVICE="__Host-fasulye_device", ADMIN="__Host-fasulye_admin";
 const DAY=86400;
 const uuid=/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 function equal(a,b){const x=Buffer.from(a??""),y=Buffer.from(b??"");return x.length===y.length&&timingSafeEqual(x,y);}
 function secret(kind){
-  const access=env("FASULYE_ACCESS_TOKEN"), github=env("FASULYE_GITHUB_TOKEN");
-  const admin=env("FASULYE_ADMIN_TOKEN");
-  if(!access||!github||(kind==="admin"&&(!admin||admin===access||admin===github)))return null;
-  return createHmac("sha256",github).update(JSON.stringify(["fasulye-session-v1",kind,access,kind==="admin"?admin:""])).digest();
+  return deriveSessionKey(kind, {access:env("FASULYE_ACCESS_TOKEN"), github:env("FASULYE_GITHUB_TOKEN"), admin:env("FASULYE_ADMIN_TOKEN"), signing:env("FASULYE_SESSION_SECRET")});
 }
 function sign(payload,kind){
   const key=secret(kind);if(!key)throw new ResearchError(503,"Oturum yapılandırması eksik.");

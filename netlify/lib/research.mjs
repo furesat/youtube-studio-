@@ -1,13 +1,10 @@
 import { timingSafeEqual } from "node:crypto";
-import yauzl from "yauzl";
 import { z } from "zod";
 import catalog from "../../engine/tools/opportunity_engine/config.json" with { type: "json" };
 
 const repo = "furesat/youtube-studio-";
 const workflow = "fasulye-opportunity.yml";
 const apiRoot = `https://api.github.com/repos/${repo}/actions`;
-const artifactName = "fasulye-opportunity-report";
-const maxBytes = 3_000_000;
 const ids = z.string().regex(/^[1-9]\d{0,15}$/);
 
 export const startSchema = z.strictObject({
@@ -85,7 +82,7 @@ export async function startResearch(input, fetcher = fetch) {
   if (!parsed.success) throw new ResearchError(400, "Sorgu, konu veya pazar girdisi geçersiz.");
   const { query, region, language, topics, markets } = parsed.data;
   const inputs = query ? { query, region: region ?? "TR", language: language ?? "tr" } : {
-    topics: [...new Set(topics)].join(","), markets: [...new Set(markets)].join(","),
+    topics: [...new Set(topics ?? [])].join(","), markets: [...new Set(markets ?? [])].join(","),
   };
   const response = await github(`/workflows/${workflow}/dispatches`, {
     method: "POST",
@@ -119,64 +116,31 @@ export async function getRun(id, fetcher = fetch) {
   };
 }
 
-async function boundedBytes(response) {
-  if (!response.body) throw new ResearchError(502, "GitHub rapor arşivi boş.");
-  const reader = response.body.getReader();
-  const parts = [];
-  let length = 0;
-  try {
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) return Buffer.concat(parts, length);
-      length += value.byteLength;
-      if (length > maxBytes) {
-        await reader.cancel();
-        throw new ResearchError(413, "Rapor büyük. Tam arşivi GitHub Actions üzerinden indirin.");
-      }
-      parts.push(value);
-    }
-  } finally {
-    reader.releaseLock();
+const projectUrl = "https://niihqywncuwxfxipkgte.supabase.co";
+async function supabase(table, params, fetcher = fetch) {
+  const url = (env("SUPABASE_URL") ?? projectUrl).replace(/\/$/, "");
+  const key = env("SUPABASE_SECRET_KEY") ?? "";
+  if (url !== projectUrl || !key.startsWith("sb_secret_")) {
+    throw new ResearchError(503, "Supabase sunucu bağlantısı yapılandırılmalı.");
   }
+  const response = await fetcher(url + "/rest/v1/" + table + "?" + new URLSearchParams(params), {
+    headers: { apikey: key, Accept: "application/json" },
+    redirect: "error", signal: AbortSignal.timeout(12_000),
+  });
+  if (!response.ok) throw new ResearchError(502, "Supabase raporu okunamadı.");
+  return response.json();
 }
-
-export async function getArtifact(id, fetcher = fetch) {
+export async function getReport(id, fetcher = fetch) {
   const run = await getRun(id, fetcher);
   if (run.status !== "completed") throw new ResearchError(409, "Araştırma devam ediyor.");
-  const response = await github(`/runs/${id}/artifacts`, {}, fetcher);
-  if (!response.ok) throw new ResearchError(502, "GitHub rapor listesi okunamadı.");
-  const { artifacts } = await response.json();
-  const artifact = artifacts.find(item => item.name === artifactName && !item.expired);
-  if (!artifact) throw new ResearchError(404, "İndirilebilir rapor arşivi bulunamadı. Arşiv yüklenememiş veya saklama süresi dolmuş olabilir.");
-  if (artifact.size_in_bytes > maxBytes) {
-    throw new ResearchError(413, "Rapor büyük. Tam arşivi GitHub Actions üzerinden indirin.");
-  }
-  const download = await github(`/artifacts/${artifact.id}/zip`, { redirect: "manual" }, fetcher);
-  if (download.status !== 302 || !download.headers.has("location")) {
-    throw new ResearchError(502, "GitHub rapor indirme bağlantısını döndürmedi.");
-  }
-  const url = new URL(download.headers.get("location"));
-  if (url.protocol !== "https:") throw new ResearchError(502, "Rapor bağlantısı geçersiz.");
-  const bytes = await fetcher(url, { signal: AbortSignal.timeout(12_000), redirect: "error" });
-  if (!bytes.ok) throw new ResearchError(502, "GitHub arşivi indirilemedi.");
-  return boundedBytes(bytes);
+  const rows = await supabase("fasulye_reports", {
+    select: "report", run_id: "eq." + id, expires_at: "gt." + new Date().toISOString(), limit: "1",
+  }, fetcher);
+  if (!rows.length) throw new ResearchError(404, "Rapor kaydedilmemiş veya 30 günlük süresi dolmuş.");
+  const report = rows[0].report;
+  if (report?.schema_version !== 1 || !Array.isArray(report.opportunities)) throw new ResearchError(502, "Rapor biçimi geçersiz.");
+  return report;
 }
-
-export async function reportFromZip(zip) {
-  const file = await yauzl.fromBufferPromise(zip);
-  try {
-    for await (const entry of file.eachEntry()) {
-      if (entry.fileName !== "report.json") continue;
-      if (entry.uncompressedSize > maxBytes) throw new ResearchError(413, "JSON raporu çok büyük.");
-      const stream = await file.openReadStreamPromise(entry);
-      const parts = [];
-      for await (const piece of stream) parts.push(piece);
-      const report = JSON.parse(Buffer.concat(parts).toString("utf-8"));
-      if (report.schema_version !== 1 || !Array.isArray(report.opportunities)) break;
-      return report;
-    }
-  } finally {
-    file.close();
-  }
-  throw new ResearchError(502, "Arşivde okunabilir JSON raporu yok.");
+export async function getHistory(fetcher = fetch) {
+  return supabase("fasulye_runs", {select:"run_id,attempt,collected_at,context",order:"collected_at.desc",limit:"50"},fetcher);
 }

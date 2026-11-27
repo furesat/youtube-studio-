@@ -139,12 +139,13 @@ export async function getReport(id, fetcher = fetch) {
   const run = await getRun(id, fetcher);
   if (run.status !== "completed") throw new ResearchError(409, "Araştırma devam ediyor.");
   const rows = await supabase("fasulye_reports", {
-    select: "report", run_id: "eq." + id, expires_at: "gt." + new Date().toISOString(), limit: "1",
+    select: "report,expires_at", run_id: "eq." + id, expires_at: "gt." + new Date().toISOString(), limit: "1",
   }, fetcher);
   if (!rows.length) throw new ResearchError(404, "Rapor kaydedilmemiş veya 30 günlük süresi dolmuş.");
   const report = rows[0].report;
   if (report?.schema_version !== 1 || !Array.isArray(report.opportunities)) throw new ResearchError(502, "Rapor biçimi geçersiz.");
   for(const row of report.opportunities)row.sample_total_known_views=null;
+  if(rows[0].expires_at)report.expires_at=rows[0].expires_at;
   return report;
 }
 export async function getHistory(fetcher = fetch) {

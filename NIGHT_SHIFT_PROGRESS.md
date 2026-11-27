@@ -74,3 +74,6 @@ Read netlify/lib/batch.mjs, catalog profiles, query_profiles.sql and existing ba
 
 ## Checkpoint 15a: raw channel metadata
 - Economics CI 45929238055 passed. Added declared languages, playlist truncation and missing video detail fields to existing bounded channel samples; explicit unverified format. No extra API calls. Two fixture tests added; CI pending. Next: read-only filtering API/MCP, dashboard and expiry.
+
+## Checkpoint 15b: channel inspection API
+- Added read-only stored channel upload filtering and pagination, report expiry guard, and MCP tool. No new YouTube API requests. Two Node fixtures added; CI pending. UI next.

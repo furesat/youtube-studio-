@@ -8,6 +8,7 @@ import { getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 import {searchWiki,collectWiki,listWiki} from "../lib/wikimedia.mjs";
 import {featureFlags,controlQueue,queueHealth} from "../lib/queue-control.mjs";
 import { activeSession, sameOriginMutation } from "../lib/panel-auth.mjs";
+import {inspectChannels} from "../lib/channel-inspection.mjs";
 import {monthlyEconomics} from "../lib/economics.mjs";
 import {planIndependent,discoverIndependent,crossLanguageEvidence} from "../lib/independent-discovery.mjs";
 import { readWorkflow,advanceWorkflow } from "../lib/editorial-workflow.mjs";
@@ -118,6 +119,7 @@ export default async (request: Request) => {
       if (url.searchParams.get("result") === "history") return json(await getHistory());
       const id = url.searchParams.get("id") ?? "";
       const result = url.searchParams.get("result");
+      if(result==="channels")return json(await inspectChannels({id,channel_id:url.searchParams.get("channel_id")??undefined,start:url.searchParams.get("start")??undefined,end:url.searchParams.get("end")??undefined,duration:url.searchParams.get("duration")??"all",language:url.searchParams.get("language")??undefined,sort:url.searchParams.get("sort")??"date",offset:Number(url.searchParams.get("offset")??0),limit:Number(url.searchParams.get("limit")??50)}));
       if(result==="videos")return json(await listReportVideos(id,{offset:Number(url.searchParams.get("offset")??0),limit:Number(url.searchParams.get("limit")??50),region:url.searchParams.get("region")??undefined,language:url.searchParams.get("language")??undefined,sort:url.searchParams.get("sort")??"views",max_subscribers:url.searchParams.has("max_subscribers")?Number(url.searchParams.get("max_subscribers")):undefined}));
       if (result === "report" || result === "zip") {
         const report = await getReport(id);

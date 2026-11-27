@@ -105,3 +105,9 @@ from public.fasulye_reports order by collected_at desc;
 ```
 
 Yerel kullanımda `--persist` isteğe bağlıdır. Geçerli `GITHUB_RUN_ID` ve sunucu secret key gerektirir. CI testleri üretim veritabanına sahte veri yazmaz.
+
+## Hesap kurtarma notu (özel depo)
+
+- Supabase proje sahibi tarafından bildirilen kayıt e-postası: `serakaciklama@gmail.com`.
+- Proje: `niihqywncuwxfxipkgte` (Youtube).
+- Bu adres hesap hatırlatma içindir; parola, API secret veya token değildir. Depo halka açılmadan önce kişisel hesabı belirten bu not kaldırılmalıdır.

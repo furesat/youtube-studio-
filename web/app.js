@@ -358,6 +358,7 @@ el("batch-task-details").addEventListener("toggle",()=>{if(el("batch-task-detail
 el("batch-task-prev").addEventListener("click",()=>{taskOffset=Math.max(0,taskOffset-100);void loadBatchTasks();});
 el("batch-task-next").addEventListener("click",()=>{taskOffset+=100;void loadBatchTasks();});
 async function watchBatch(id) {
+  navigate("batch");
   taskBatchId=id;taskOffset=0;el("batch-task-details").hidden=false;
   batchController?.abort();batchController=new AbortController();const {signal}=batchController;
   try {

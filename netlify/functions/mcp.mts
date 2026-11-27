@@ -12,7 +12,7 @@ import { discoveryCatalog, batchSchema, enqueueBatch, batchStatus, listBatches, 
 import { evidenceSchema, getEvidence, getTrend, writeEvidence } from "../lib/evidence.mjs";
 
 import {
-  candidateListSchema, candidateSchema, candidateUpdateSchema, createCandidate, listCandidates, updateCandidate,
+  candidateListSchema, candidateSchema, candidateUpdateSchema, createCandidate, listCandidates, updateCandidate, getProductionBrief,
 } from "../lib/editorial.mjs";
 
 function tool(name: string, fn: () => Promise<unknown> | unknown) {
@@ -29,7 +29,7 @@ function tool(name: string, fn: () => Promise<unknown> | unknown) {
 }
 
 function buildServer() {
-  const server = new McpServer({ name: "fasulye-opportunity", version: "3.2.0" });
+  const server = new McpServer({ name: "fasulye-opportunity", version: "3.3.0" });
   server.registerTool("list_research_catalog", {
     title: "Fasulye konu ve pazar listesi",
     description: "Hazır konu ve pazar kimliklerini getirir. YouTube kotası kullanmaz.",
@@ -122,6 +122,10 @@ function buildServer() {
     inputSchema: candidateUpdateSchema,
     annotations: { readOnlyHint: false, destructiveHint: true, idempotentHint: false, openWorldHint: false },
   }, input => tool("update_editorial_candidate", () => updateCandidate(input)));
+  server.registerTool("get_editorial_production_brief", {
+    description:"Mevcut özgün editoryal adayın kaynaklarını, belirsizliklerini ve üretim kontrol listesini Markdown olarak döndürür; yeni iddia veya senaryo üretmez.",
+    inputSchema:{id:z.uuid()},annotations:{readOnlyHint:true,openWorldHint:false},
+  },({id})=>tool("get_editorial_production_brief",()=>getProductionBrief(id)));
   return server;
 }
 

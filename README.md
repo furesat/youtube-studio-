@@ -3,7 +3,7 @@
 **Fasulye** · *Sıradan şeyler. Sıra dışı hikâyeler.* · Yüz göstermeyen, çizimli, Türkçe tarih/bilim anlatım kanalı (DE/EN uyarlamalı).
 **Yeni bir AI oturumu `AGENTS.md`'den başlar.**
 
-- [Fasulye Opportunity Engine](engine/tools/opportunity_engine/README.md) — YouTube araştırma paneli, GitHub Actions ve asistan bağlantısı
+- [Fasulye Opportunity Engine](engine/tools/opportunity_engine/README.md) — YouTube araştırma paneli, GitHub Actions, Supabase rapor deposu ve asistan bağlantısı
 - `shorts/` — bağımsız Shorts serileri (Fasulye Mahkemesi), rakip taraması
 
 ## Durum (2026-11-26)
